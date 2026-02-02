@@ -600,6 +600,7 @@ button:focus-within .icon-label,
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 #clauseModal header #modalTitle {
@@ -611,12 +612,15 @@ button:focus-within .icon-label,
     flex: 0 0 auto;
     width: 2.5rem;
     height: 2.5rem;
-    padding: 0.5rem;
+    padding: 0;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #modalBody {
-    max-height: 60vh;
+    max-height: 50vh;
     overflow-y: auto;
 }
 
@@ -628,7 +632,7 @@ button:focus-within .icon-label,
     }
     
     #modalBody {
-        max-height: 70vh;
+        max-height: 60vh;
     }
 }
 
