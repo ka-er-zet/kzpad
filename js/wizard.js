@@ -1813,11 +1813,16 @@ document.getElementById('auditForm').onsubmit = (e) => {
             errorEl.style.display = 'flex';
             firstFieldset.setAttribute('aria-invalid', 'true');
             
-            // Focus the H1 to move screen reader to top and ensure absolute visibility of error
-            const h1 = document.querySelector('h1');
-            h1.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            h1.focus({ preventScroll: true });
-            
+            // Scroll the actual error element into view (account for sticky header) and focus it
+            const header = document.querySelector('.app-header');
+            const headerHeight = header ? header.getBoundingClientRect().height : 0;
+            const targetTop = window.pageYOffset + errorEl.getBoundingClientRect().top - headerHeight - 12;
+            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+            // Ensure the alert can receive focus and announce to SR users
+            errorEl.setAttribute('tabindex', '-1');
+            errorEl.focus();
+
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
