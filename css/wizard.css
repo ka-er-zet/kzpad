@@ -589,82 +589,26 @@ button:focus-within .icon-label,
 .requirement-row section, .requirement-row p { padding: 0 1rem; }
 .requirement-row section { margin-bottom: 1.5rem; }
 
-#clauseModal article { width: 800px; max-width: 95vw; }
-
-#clauseModal header {
-    background: var(--card-sectionning-background-color);
-    border-bottom: 2px solid var(--muted-border-color); /* remove bright blue accent */
-    padding: 1rem 1.5rem; /* slightly tighter vertical padding */
-    margin-bottom: 0.5rem; /* override large default from Pico to tighten gap */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden; /* ensure header doesn't get its own scroll */
+/* Modal */
+#clauseModal article {
+    width: 90vw;
+    max-width: 900px;
 }
 
-#modalTitle {
-    margin: 0;
-    color: var(--color); /* use neutral page color */
-    font-size: 1.28rem; /* slightly smaller to fit denser layout */
-    line-height: 1.2;
-    flex: 1 1 auto;
-    min-width: 0; /* allow flex item to shrink and avoid overflow */
-    overflow-wrap: anywhere;
-    word-break: break-word;
+#modalBody {
+    max-height: 60vh;
+    overflow-y: auto;
 }
 
-/* Mobile: make clause modal fullscreen to avoid horizontal scrolling */
 @media (max-width: 640px) {
-    dialog#clauseModal {
-        width: 100vw !important;
-        height: 100vh !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        max-width: 100vw !important;
-        overflow: hidden;
-    }
-
-    /* Ensure the dialog's content fills the viewport and is vertically scrollable */
-    dialog#clauseModal[open] { align-items: stretch; padding: 0; }
-
     #clauseModal article {
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
+        width: 100vw;
+        max-width: 100vw;
         margin: 0;
     }
-
-    #clauseModal #modalBody {
-        flex: 1 1 auto;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 1rem;
-    }
-
-    /* Keep header and footer visible: make them sticky so they span full width and remain visible while body scrolls */
-    #clauseModal header,
-    #clauseModal footer {
-        flex: 0 0 auto;
-        z-index: 3;
-        position: sticky;
-        left: 0;
-        right: 0;
-        background: var(--card-sectionning-background-color);
-        box-sizing: border-box;
-    }
-
-    #clauseModal header { top: 0; border-bottom: 1px solid var(--muted-border-color); }
-    #clauseModal footer { bottom: 0; border-top: 1px solid var(--muted-border-color); }
-
-    /* Prevent horizontal overflow inside modal content */
-    #clauseModal, #clauseModal * {
-        max-width: 100%;
-        overflow-x: hidden !important;
-        box-sizing: border-box;
+    
+    #modalBody {
+        max-height: 70vh;
     }
 }
 

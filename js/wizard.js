@@ -2180,6 +2180,9 @@ window.showClause = (id) => {
     }
     document.documentElement.classList.add('modal-is-open');
     modal.showModal();
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
 };
 
 const handleCloseModal = () => {

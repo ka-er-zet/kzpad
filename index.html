@@ -181,15 +181,16 @@
     <dialog id="clauseModal">
         <article>
             <header>
-                <h3 id="modalTitle">Szczegóły Klauzuli</h3>
-                <button type="button" aria-label="Zamknij" class="icon-btn" id="closeModal">
-                    <i data-lucide="x" aria-hidden="true"></i>
-                    <span class="sr-only">Zamknij</span>
-                </button>
+                <nav>
+                    <button type="button" aria-label="Zamknij" rel="prev" id="closeModal">
+                        <i data-lucide="x" aria-hidden="true"></i>
+                    </button>
+                </nav>
+                <p id="modalTitle"><strong>Szczegóły Klauzuli</strong></p>
             </header>
-            <section id="modalBody">
+            <div id="modalBody">
                 <!-- Content injected here -->
-            </section>
+            </div>
             <footer>
                 <button class="outline" id="closeModalBtn">Zamknij</button>
             </footer>
