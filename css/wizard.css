@@ -659,6 +659,30 @@ button:focus-within .icon-label,
     opacity: 0.9;
 }
 
+/* Clause title shown inside modal body (moved from header) */
+.clause-body-title {
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    border-bottom: 1px dashed var(--muted-border-color);
+    margin-bottom: 0.75rem;
+}
+.clause-body-title .clause-id {
+    font-weight: 700;
+    color: var(--requirement-id-foreground);
+    font-size: 0.95rem;
+    opacity: 0.95;
+    margin-bottom: 0.15rem;
+}
+.clause-body-title .clause-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+    .clause-body-title .clause-title { font-size: 1rem; }
+}
+
 /* Modal body heading adjustments: ensure h4 is not styled like a link and reduce spacing */
 #clauseModal #modalBody h4 {
     margin-top: 0.25rem;

@@ -2127,9 +2127,15 @@ window.showClause = (id) => {
         };
 
         const cleanTitle = stripNumbering(data.title.replace(/&nbsp;/g, ' '));
-        title.innerHTML = `${data.id} <small>${(W.fixOrphans || (s=>s))(cleanTitle)}</small>`;
+        // Keep a generic modal header; show clause id and title inside the modal body instead
+        title.textContent = 'Szczegóły klauzuli';
         
         body.innerHTML = `
+            <div class="clause-body-title">
+                <div class="clause-id">${data.id}</div>
+                <h4 class="clause-title">${(W.fixOrphans || (s=>s))(cleanTitle)}</h4>
+            </div>
+
             <section>
                 <p class="browser-card-section-title">Warunki wstępne</p>
                 <div class="section-content">
