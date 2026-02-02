@@ -203,6 +203,14 @@ dialog#clauseModal a[target="_blank"]::after,
     background: var(--primary-focus);
 }
 
+/* Hide header subtitle on small screens to avoid crowding */
+@media (max-width: 480px) {
+    .header-content .text-muted { display: none; }
+    .header-title { font-size: 1rem; }
+    .header-icon-container { width: 38px; height: 38px; }
+    .app-logo-svg { max-height: 34px; }
+}
+
 /* --- GLOBAL FOCUS STYLE (MATCHING AUDIT PAGE) --- */
 *:focus-visible {
     outline: 3px solid var(--focus-color) !important;
