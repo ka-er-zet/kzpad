@@ -595,6 +595,26 @@ button:focus-within .icon-label,
     max-width: 900px;
 }
 
+#clauseModal header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#clauseModal header #modalTitle {
+    flex: 1;
+    margin: 0;
+}
+
+#clauseModal header #closeModal {
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    margin: 0;
+}
+
 #modalBody {
     max-height: 60vh;
     overflow-y: auto;
