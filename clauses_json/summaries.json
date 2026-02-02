@@ -58,12 +58,14 @@
         "untested_label": "Kryteria niepoddane ocenie:",
         "conclusions_label": "Wnioski:",
         "conclusions_value": "Niezależnie od wyników kontroli w pozostałych obszarach, konieczne jest niezwłoczne przystąpienie do naprawy już zidentyfikowanych błędów."
-      }    },
+      }
+    },
     "no_assessment": {
       "id": "no_assessment",
       "status": "BRAK OCENY",
       "title": "Błąd generowania podsumowania",
-      "description": "Nie można wygenerować podsumowania kontroli dla produktu {productName}, ponieważ nie oceniono żadnego z wymaganych kryteriów.\n\nAby otrzymać wynik kontroli, należy uzupełnić oceny (Spełnione, Niespełnione lub Nie dotyczy) dla przynajmniej części wymagań wyświetlonych w arkuszu."    },
+      "description": "Nie można wygenerować podsumowania kontroli dla produktu {productName}, ponieważ nie oceniono żadnego z wymaganych kryteriów.\n\nAby otrzymać wynik kontroli, należy uzupełnić oceny (Spełnione, Niespełnione lub Nie dotyczy) dla przynajmniej części wymagań wyświetlonych w arkuszu."
+    },
     "all_inapplicable": {
       "id": "all_inapplicable",
       "status": "BRAK MAJĄCYCH ZASTOSOWANIE WYMAGAŃ",
