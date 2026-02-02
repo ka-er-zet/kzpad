@@ -181,12 +181,39 @@ function placeIconLabel(buttonEl, labelEl) {
     }
 }
 
+// Global function to hide all icon labels
+function hideAllIconLabels() {
+    document.querySelectorAll('.icon-label').forEach(label => {
+        label.style.opacity = '0';
+        label.style.visibility = 'hidden';
+        label.style.transform = 'translateY(-5px)'; // slight upward animation
+    });
+}
+
+// Global timeout for auto-hide
+let iconLabelTimeout = null;
+
+function showIconLabel(label) {
+    // Hide all others immediately
+    hideAllIconLabels();
+    // Show this one
+    label.style.opacity = '1';
+    label.style.visibility = 'visible';
+    label.style.transform = 'translateY(0)';
+    // Clear any existing timeout
+    if (iconLabelTimeout) clearTimeout(iconLabelTimeout);
+    // Set new timeout to hide after 4 seconds
+    iconLabelTimeout = setTimeout(() => {
+        hideAllIconLabels();
+    }, 4000);
+}
+
 /**
  * Enhance icon-only buttons with visible labels on hover/focus for affordance.
  * Adds .icon-label spans that appear on hover/focus, removes redundant aria-label/title.
  */
 function enhanceIconButtons(){
-    const selectors = ['#menu-toggle', '#btn-save-audit', '#btn-edit-config', 'button[onclick*="toggleTheme"]', '.theme-toggle'];
+    const selectors = ['#menu-toggle', '#btn-save-audit', '#btn-edit-config', '#btn-save-wizard', '#btn-load-wizard', '#btn-download-spreadsheet', 'button[onclick*="toggleTheme"]', '.theme-toggle'];
     const seen = new Set();
     selectors.forEach(sel => {
         document.querySelectorAll(sel).forEach(el => {
@@ -217,6 +244,13 @@ function enhanceIconButtons(){
             }
 
             // Position label correctly to avoid viewport overflow; do in next tick to allow layout to settle
+            const showAndPosition = () => {
+                placeIconLabel(el, span);
+                showIconLabel(span);
+            };
+            el.addEventListener('mouseenter', showAndPosition);
+            el.addEventListener('focus', showAndPosition);
+            el.addEventListener('mousemove', () => placeIconLabel(el, span)); // reposition only
             try { setTimeout(() => { placeIconLabel(el, span); }, 0); } catch (e) { /* ignore */ }
         });
     });
@@ -228,6 +262,14 @@ window.addEventListener('resize', () => {
         const btn = label.parentElement;
         placeIconLabel(btn, label);
     });
+});
+
+// Hide icon labels on scroll or when clicking outside
+window.addEventListener('scroll', () => hideAllIconLabels());
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('button') && !e.target.closest('.clause-tag')) {
+        hideAllIconLabels();
+    }
 });
 
 /**
@@ -1022,5 +1064,12 @@ document.addEventListener('DOMContentLoaded', () => {
         protectAssistiveHelpers(document);
     } catch (e) {
         console.warn('protectAssistiveHelpers invocation failed', e);
+    }
+
+    // Enhance icon buttons with labels
+    try {
+        enhanceIconButtons();
+    } catch (e) {
+        console.warn('enhanceIconButtons invocation failed', e);
     }
 });

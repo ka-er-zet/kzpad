@@ -25,6 +25,8 @@ def fix_polish_mojibake(text):
     text = text.replace('ĹĽ', 'ż')    # książek, sprzedaży
     text = text.replace('Ä…', 'ą')    # urządzenia
     text = text.replace('Ĺş', 'ź')    # przewoźników
+    text = text.replace('Ä™', 'ę')    # identyfikację
+    text = text.replace('Ĺ‚', 'ł')    # jeśli potrzebne
     
     return text
 

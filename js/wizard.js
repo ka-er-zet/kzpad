@@ -13,8 +13,17 @@ const W = window.utils || {};
  * @param {number} duration - How long to show the toast in ms (default: 5000)
  */
 function showToast(message, type = 'success', duration = 5000) {
+    // Wait for DOM to be ready if called too early
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => showToast(message, type, duration));
+        return;
+    }
+
     const container = document.getElementById('toast-container');
-    if (!container) return;
+    if (!container) {
+        console.error('Toast container (#toast-container) not found in DOM');
+        return;
+    }
 
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
@@ -29,14 +38,29 @@ function showToast(message, type = 'success', duration = 5000) {
     };
     const iconName = icons[type] || 'info';
 
-    toast.innerHTML = `
-        <i data-lucide="${iconName}" class="toast-icon" aria-hidden="true"></i>
-        <div class="toast-content">${message}</div>
-        <button class="toast-close" aria-label="Zamknij powiadomienie" type="button">
-            <i data-lucide="x" style="width: 16px; height: 16px;" aria-hidden="true"></i>
-        </button>
-    `;
+    // Create icon
+    const icon = document.createElement('i');
+    icon.setAttribute('data-lucide', iconName);
+    icon.className = 'toast-icon';
+    icon.setAttribute('aria-hidden', 'true');
 
+    // Create content span
+    const content = document.createElement('span');
+    content.className = 'toast-content';
+    content.textContent = message;
+
+    // Create close button (last, so it's on the right)
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'toast-close';
+    closeBtn.setAttribute('aria-label', 'Zamknij powiadomienie');
+    closeBtn.setAttribute('type', 'button');
+    closeBtn.innerHTML = '<i data-lucide="x" style="width: 16px; height: 16px;" aria-hidden="true"></i>';
+
+    // Assemble toast: icon - content - close button
+    toast.appendChild(icon);
+    toast.appendChild(content);
+    toast.appendChild(closeBtn);
+    
     container.appendChild(toast);
     
     // Initialize Lucide icons in the toast
@@ -45,7 +69,6 @@ function showToast(message, type = 'success', duration = 5000) {
     }
 
     // Close button handler
-    const closeBtn = toast.querySelector('.toast-close');
     closeBtn.addEventListener('click', () => {
         toast.remove();
     });
@@ -111,7 +134,6 @@ async function init() {
         // and the first Tab lands on the first radio button
         document.querySelector('h1').focus();
         // Enhance icon buttons with visible labels and set ARIA state for theme toggles
-        if (typeof enhanceIconButtonsWizard === 'function') enhanceIconButtonsWizard();
         if (typeof updateThemeToggleButtonsWizard === 'function') updateThemeToggleButtonsWizard(document.documentElement.getAttribute('data-theme') || 'dark');
         // Ensure Lucide renders icons that may have been added dynamically (close button, etc.)
         try { if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') lucide.createIcons(); } catch (e) { /* ignore */ }
@@ -435,6 +457,9 @@ const Browser = {
             const card = this.createRequirementCard(req);
             list.appendChild(card);
         });
+
+        // Annotate links that open in a new tab (visual via CSS + SR text via JS)
+        indicateNewTabLinks(list);
 
         if (typeof lucide !== 'undefined') lucide.createIcons();
         window.scrollTo({ top: list.getBoundingClientRect().top + window.pageYOffset - 150, behavior: 'smooth' });
@@ -1130,6 +1155,21 @@ let isDownloadingWizard = false;
  * Generuje arkusz Excel z wymaganiami do wypełnienia (ExcelJS)
  */
 async function downloadWizardSpreadsheet(includeSummary = false) {
+    // Sprawdź, czy są dane do zapisania. Pobierz aktualne rzędy wymagań
+    const requirementRows = document.querySelectorAll('.requirement-row');
+    if (requirementRows.length === 0) {
+        console.warn('Brak wymagań do eksportu do Excel.');
+        showToast('Nie można wyeksportować: brak wygenerowanego arkusza kontroli.', 'warning');
+        
+        // Komunikat dla screen readerów
+        let liveRegion = document.getElementById('status-message');
+        if (liveRegion) {
+            liveRegion.innerText = 'Nie można wyeksportować: brak wygenerowanego arkusza kontroli.';
+        }
+        
+        return;
+    }
+
     // Sprawdzenie czy ExcelJS jest dostępny
     if (typeof ExcelJS === 'undefined') {
         console.error('ExcelJS library is not loaded');
@@ -1484,6 +1524,7 @@ function downloadWizardAssessment() {
     const rows = document.querySelectorAll('.requirement-row');
     if (rows.length === 0) {
         console.warn('Brak wymagań do zapisania.');
+        showToast('Nie można zapisać: brak wygenerowanego arkusza kontroli.', 'warning');
         
         // Komunikat dla screen readerów
         let liveRegion = document.getElementById('status-message');
@@ -1755,7 +1796,7 @@ async function handleWizardFileLoad(event) {
                 if (err.message.includes('%PDF')) {
                     userMsg = 'Nieprawidłowy format pliku. Proszę wybrać plik JSON zapisany przez aplikację, nie PDF.';
                 } else {
-                    userMsg = 'Plik nie jest prawidłowym plikiem JSON. Upewnij się, że został zapisany przez aplikację KZPAD.';
+                    userMsg = 'Plik nie jest prawidłowym plikiem JSON. Upewnij się, że został zapisany przez aplikację KZ-PAD.';
                 }
             } else if (err.message) {
                 userMsg = 'Błąd wczytywania: ' + err.message;
@@ -2334,33 +2375,6 @@ function placeIconLabelWizard(buttonEl, labelEl) {
     }
 }
 
-function enhanceIconButtonsWizard(){
-    const selectors = ['button[onclick*="toggleTheme"]', '.theme-toggle'];
-    const seen = new Set();
-    selectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach(el => {
-            if (seen.has(el)) return;
-            seen.add(el);
-            
-            const isThemeToggle = el.matches('button[onclick*="toggleTheme"]') || el.classList.contains('theme-toggle');
-            // Prefer aria-label or title
-            const label = el.getAttribute('aria-label') || el.title || el.getAttribute('data-i18n-aria');
-            if (!label) return;
-            if (el.querySelector('.icon-label')) return;
-            if (!getComputedStyle(el).position || getComputedStyle(el).position === 'static') {
-                el.style.position = 'relative';
-            }
-            const span = document.createElement('span');
-            span.className = 'icon-label';
-            span.textContent = label;
-            span.setAttribute('aria-hidden', 'true');
-            el.appendChild(span);
-            if (el.hasAttribute('title')) el.removeAttribute('title');
-            setTimeout(() => placeIconLabelWizard(el, span), 0);
-        });
-    });
-}
-
 function updateThemeToggleButtonsWizard(theme) {
     try {
         const lang = document.documentElement.lang || 'pl';
@@ -2474,10 +2488,13 @@ function enhanceClauseTagsWizard(container = document) {
                 btn.appendChild(span);
 
                 // Position on hover/focus so labels are placed relative to current viewport (fixes off-screen placement)
-                const reposition = () => placeIconLabelWizard(btn, span);
-                btn.addEventListener('mouseenter', reposition);
-                btn.addEventListener('focus', reposition);
-                btn.addEventListener('mousemove', reposition);
+                const repositionAndShow = () => {
+                    placeIconLabelWizard(btn, span);
+                    showIconLabel(span);
+                };
+                btn.addEventListener('mouseenter', repositionAndShow);
+                btn.addEventListener('focus', repositionAndShow);
+                btn.addEventListener('mousemove', () => placeIconLabelWizard(btn, span)); // reposition only on move
 
                 // Also position now in case the button is visible
                 setTimeout(() => { try { placeIconLabelWizard(btn, span); } catch (e) { /* ignore */ } }, 0);
@@ -2500,7 +2517,6 @@ function enhanceClauseTagsWizard(container = document) {
                 if (window.lucide) window.lucide.createIcons();
             }
             if (typeof updateThemeToggleButtonsWizard === 'function') updateThemeToggleButtonsWizard(saved);
-            if (typeof enhanceIconButtonsWizard === 'function') enhanceIconButtonsWizard();
         }
     } catch (e) { /* ignore */ }
 })();

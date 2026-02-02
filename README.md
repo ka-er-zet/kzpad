@@ -1,5 +1,14 @@
 # KZ-PAD — Konfigurator Arkusza Kontroli
 
+<div align="center">
+  <img src="img/EU1.svg" alt="EU1" height="50">
+  <img src="img/EU2.svg" alt="EU2" height="50">
+  <img src="img/EU3.svg" alt="EU3" height="50">
+  <br>
+  <img src="img/pfron.svg" alt="PFRON" height="50">
+  <img src="img/uke.svg" alt="UKE" height="50">
+</div>
+
 **Wersja:** 1.0.0
 **Status:** Stabilna
 

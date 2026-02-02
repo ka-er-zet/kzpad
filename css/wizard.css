@@ -68,7 +68,12 @@
     --skip-color: #ffffff;
 }
 
-body { background-color: var(--background-color); }
+body { 
+    background-color: var(--background-color); 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
 /* Header styles (copied from audit.html, scoped for wizard) */
 .skip-link {
@@ -203,6 +208,21 @@ dialog#clauseModal a[target="_blank"]::after,
     background: var(--primary-focus);
 }
 
+/* Selected product heading adjustments for desktop */
+#selectedProductName {
+    font-size: 1.4rem; /* Slightly larger product name */
+    font-weight: 600;
+    line-height: 1.2;
+    margin-top: 0.25rem;
+}
+#selectedProductName .selected-product-label {
+    display: block;
+    font-size: 1.1rem; /* Smaller label for desktop */
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+    color: var(--color);
+}
+
 /* Hide header subtitle on small screens to avoid crowding */
 @media (max-width: 480px) {
     .header-content .text-muted { display: none; }
@@ -223,21 +243,6 @@ dialog#clauseModal a[target="_blank"]::after,
     h1 { font-size: clamp(1.25rem, 4vw, 1.6rem); margin-top: 2rem; margin-bottom: 1rem; }
     h2 { font-size: clamp(1rem, 3.5vw, 1.25rem); }
     h3 { font-size: clamp(0.95rem, 3vw, 1.05rem); }
-
-    /* Selected product heading adjustments */
-    #selectedProductName {
-        font-size: 1.4rem; /* Slightly larger product name */
-        font-weight: 600;
-        line-height: 1.2;
-        margin-top: 0.25rem;
-    }
-    #selectedProductName .selected-product-label {
-        display: block;
-        font-size: 1.5rem; /* Desktop label size */
-        font-weight: 400;
-        margin-bottom: 0.25rem;
-        color: var(--color);
-    }
 
     /* Mobile: reduce label size to 1.2rem */
     #selectedProductName .selected-product-label {
@@ -373,7 +378,14 @@ button:focus-within .icon-label,
     opacity: 0.95;
 }
 
-.container { padding-top: 2rem; }
+.container { 
+    padding-top: 2rem; 
+    padding-bottom: 0rem;}
+
+main {
+    padding-bottom: 0;
+    flex: 1;
+}
 .clause-tag {
     display: inline-block;
     width: auto;
@@ -1168,64 +1180,55 @@ fieldset[aria-invalid="true"] {
     top: 5rem;
     right: 1rem;
     z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-width: 400px;
+    max-width: 500px;
     pointer-events: none;
 }
 
-#toast-container .toast {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+.toast {
+    background-color: var(--card-background-color);
+    color: var(--color);
+    border: 1px solid var(--card-border-color);
+    border-left: 4px solid #FF8383;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     pointer-events: auto;
+    margin-bottom: 0.75rem;
     animation: slideIn 0.3s ease-out;
-    border: 1px solid;
     font-size: 0.95rem;
     line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.5rem;
 }
 
-/* Toast types - Dark theme (default) */
 .toast-success {
-    background-color: rgba(0, 188, 212, 0.95);
-    color: #000000;
-    border-color: #00BCD4;
+    border-left-color: #00BCD4;
 }
 
 .toast-error {
-    background-color: #FFB8B8;
-    color: #000000;
-    border-color: #FF8383;
+    border-left-color: #FF4444;
 }
 
 .toast-warning {
-    background-color: #FDB965;
-    color: #000000;
-    border-color: #FD8A00;
+    border-left-color: #FFA726;
 }
 
-/* Toast types - Light theme */
+[data-theme="light"] .toast {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 [data-theme="light"] .toast-success {
-    background-color: rgba(0, 150, 136, 0.95);
-    color: #ffffff;
-    border-color: #009688;
+    border-left-color: #009688;
 }
 
 [data-theme="light"] .toast-error {
-    background-color: #D32F2F;
-    color: #ffffff;
-    border-color: #B71C1C;
+    border-left-color: #D32F2F;
 }
 
 [data-theme="light"] .toast-warning {
-    background-color: #F57C00;
-    color: #ffffff;
-    border-color: #E65100;
+    border-left-color: #F57C00;
 }
 
 .toast-icon {
@@ -1235,35 +1238,31 @@ fieldset[aria-invalid="true"] {
 }
 
 .toast-content {
-    flex: 1 1 auto;
-    min-width: 0;
+    flex: 1;
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
 }
 
 .toast-close {
     flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
     background: transparent;
     border: none;
-    padding: 0.25rem;
+    padding: 0;
     cursor: pointer;
     color: inherit;
-    opacity: 0.8;
-    transition: opacity 0.2s;
+    opacity: 0.6;
+    line-height: 1;
+    border-radius: 4px;
+    transition: opacity 0.2s, background 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
 }
 
 .toast-close:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] .toast-close:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary-focus);
 }
 
 @keyframes slideIn {
@@ -1350,7 +1349,7 @@ fieldset[aria-invalid="true"] {
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid var(--card-border-color);
-    padding-bottom: 4rem;
+    padding-bottom: 2.5rem;
     padding-top: 1rem;
 }
 
@@ -1362,6 +1361,10 @@ fieldset[aria-invalid="true"] {
 
 .hero-card:hover {
     box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+#hero-section {
+    margin-bottom: 0;
 }
 
 /* Ensure sections are spaced out */
@@ -1578,5 +1581,47 @@ p.hero-card-title {
     margin-top: 0;
     margin-bottom: 0.75rem;
     color: var(--primary);
+}
+
+/* Footer styles - light background for logos */
+.app-footer {
+    background-color: #ffffff; /* Light background for both themes */
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
+
+.footer-logos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-row:last-child {
+    margin-bottom: 0;
+}
+
+.footer-logo {
+    height: 1.5rem;
+    width: auto;
+}
+
+/* Mobile adjustments for footer */
+@media (max-width: 640px) {
+    .footer-row {
+        gap: 1rem;
+    }
+    
+    .footer-logo {
+        height: 1.1rem;
+    }
 }
 

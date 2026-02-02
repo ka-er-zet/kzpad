@@ -665,7 +665,7 @@
       "id": "A08-00-05-a",
       "article": "Art. 8 pkt 5 lit.a",
       "category": "Wymagania projektowe i interfejsu użytkownika (Art. 8)",
-      "requirement": "Zapewnia siÄ™ rozwiązania alternatywne dla identyfikacji biometrycznej",
+      "requirement": "Zapewnia się rozwiązania alternatywne dla identyfikacji biometrycznej",
       "product_mappings": {
         "p01": "C.5.3; U.8.0.5.a",
         "p02": "",
@@ -955,7 +955,7 @@
       "id": "A26-01-00",
       "article": "Art. 26 ust.1",
       "category": "Oznakowanie CE, deklaracja zgodności i identyfikacja (Art. 23, 24, 26)",
-      "requirement": "Na produkcie (lub opakowaniu/dokumencie) umieszczono nazwÄ™ typu, numer partii, numer serii lub inne informacje umożliwiające identyfikacjÄ™ produktu",
+      "requirement": "Na produkcie (lub opakowaniu/dokumencie) umieszczono nazwę typu, numer partii, numer serii lub inne informacje umożliwiające identyfikację produktu",
       "product_mappings": {
         "p01": "U.26.1.0",
         "p02": "U.26.1.0",
