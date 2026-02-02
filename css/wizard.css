@@ -614,6 +614,8 @@ button:focus-within .icon-label,
     }
 
     /* Ensure the dialog's content fills the viewport and is vertically scrollable */
+    dialog#clauseModal[open] { align-items: stretch; padding: 0; }
+
     #clauseModal article {
         width: 100% !important;
         height: 100% !important;
@@ -621,6 +623,7 @@ button:focus-within .icon-label,
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+        margin: 0;
     }
 
     #clauseModal #modalBody {
@@ -630,18 +633,26 @@ button:focus-within .icon-label,
         padding: 1rem;
     }
 
-    /* Keep header and footer visible and compact */
+    /* Keep header and footer visible: make them sticky so they span full width and remain visible while body scrolls */
     #clauseModal header,
     #clauseModal footer {
         flex: 0 0 auto;
-        z-index: 2;
-        position: relative;
+        z-index: 3;
+        position: sticky;
+        left: 0;
+        right: 0;
+        background: var(--card-sectionning-background-color);
+        box-sizing: border-box;
     }
+
+    #clauseModal header { top: 0; border-bottom: 1px solid var(--muted-border-color); }
+    #clauseModal footer { bottom: 0; border-top: 1px solid var(--muted-border-color); }
 
     /* Prevent horizontal overflow inside modal content */
     #clauseModal, #clauseModal * {
         max-width: 100%;
         overflow-x: hidden !important;
+        box-sizing: border-box;
     }
 }
 
@@ -664,13 +675,6 @@ button:focus-within .icon-label,
     padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 1px dashed var(--muted-border-color);
     margin-bottom: 0.75rem;
-}
-.clause-body-title .clause-id {
-    font-weight: 700;
-    color: var(--requirement-id-foreground);
-    font-size: 0.95rem;
-    opacity: 0.95;
-    margin-bottom: 0.15rem;
 }
 .clause-body-title .clause-title {
     margin: 0;
