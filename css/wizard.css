@@ -224,10 +224,25 @@ dialog#clauseModal a[target="_blank"]::after,
     h2 { font-size: clamp(1rem, 3.5vw, 1.25rem); }
     h3 { font-size: clamp(0.95rem, 3vw, 1.05rem); }
 
+    /* Selected product heading adjustments */
+    #selectedProductName {
+        font-size: 1.4rem; /* Slightly larger product name */
+        font-weight: 600;
+        line-height: 1.2;
+        margin-top: 0.25rem;
+    }
+    #selectedProductName span {
+        display: block;
+        font-size: 0.95rem; /* Label 'Arkusz dla:' */
+        font-weight: 400;
+        margin-bottom: 0.25rem;
+        color: var(--color);
+    }
+
     /* Requirement rows and summary cards become more compact on mobile */
     .requirement-row { padding: 0.5rem; }
     .requirement-text { font-size: 1rem; }
-    .category-header { font-size: 1.15rem; margin: 2rem 0 1rem 0; }
+    .category-header { font-size: 1.05rem; margin: 1.5rem 0 0.75rem 0; }
 
     .summary-result-card { padding: 1rem; }
     .summary-header { padding-bottom: 1rem; }
@@ -875,7 +890,6 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
 }
 .product-select-container {
     margin-bottom: 3rem;
-    padding: 0 1rem;
     overflow: hidden;
     border: 1px solid var(--requirement-row-border-color);
     box-shadow: none;
@@ -1179,8 +1193,8 @@ fieldset[aria-invalid="true"] {
 
 /* Ensure sections are spaced out */
 .product-select-container {
-    margin-top: 4rem;
-    padding-top: 2rem;
+    margin-top: 2rem;
+    padding-top: 0rem;
 }
 
 
