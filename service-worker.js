@@ -59,7 +59,16 @@ self.addEventListener('activate', (event) => {
             }));
         })
     );
+    // Immediately take control of clients
     self.clients.claim();
+});
+
+// Listen for messages from the page (e.g., SKIP_WAITING to activate immediately)
+self.addEventListener('message', (event) => {
+    if (!event.data) return;
+    if (event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
 });
 
 // Fetch Event - Network First with Cache Fallback for JSON data, Cache First for assets

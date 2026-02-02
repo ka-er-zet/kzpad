@@ -974,18 +974,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
             .then(registration => {
-                // Check for updates
+                // Immediately check for updates once on load
+                try { registration.update(); } catch (e) { /* ignore */ }
+
+                // Auto-check periodically (every 6 hours)
+                setInterval(() => {
+                    try { registration.update(); } catch (e) { /* ignore */ }
+                }, 1000 * 60 * 60 * 6);
+
+                // If a new worker is found, request it to skip waiting so it activates immediately
                 registration.addEventListener('updatefound', () => {
                     const newWorker = registration.installing;
                     if (newWorker) {
                         newWorker.addEventListener('statechange', () => {
-                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                // New version available, show update prompt
-                                showUpdatePrompt();
+                            if (newWorker.state === 'installed') {
+                                // If there's an active controller, this is an update. Ask SW to skip waiting.
+                                if (navigator.serviceWorker.controller) {
+                                    try {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                    } catch (e) {
+                                        // Fallback: send message to registration.waiting if present
+                                        if (registration.waiting) registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+                                    }
+                                }
                             }
                         });
                     }
                 });
+
+                // When the active controller changes (new SW took control), reload the page automatically
+                let refreshing = false;
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (refreshing) return;
+                    refreshing = true;
+                    // Give a small timeout to ensure new SW is fully controlling fetches
+                    setTimeout(() => window.location.reload(true), 300);
+                });
+
             })
             .catch(error => {
                 console.error('Service Worker registration failed:', error);
