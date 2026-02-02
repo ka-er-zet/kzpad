@@ -796,6 +796,35 @@ dialog[open] article {
 .hidden { 
     display: none !important;
 }
+
+/* Prevent horizontal overflow on small screens: make images and tables responsive
+   and allow tables to scroll horizontally when necessary. Also ensure long words wrap. */
+img, #clauseModal img, .summary-result-card img, .requirement-row img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Tables can be wide (from normative content) — make them scroll inside their container */
+.requirement-row table, .summary-result-card table, #clauseModal table, .technical-area table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure inline content breaks so long tokens don't force horizontal scroll */
+.requirement-row, .summary-result-card, .summary-link-list, .browser-card-body, #modalBody {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* Extra safety on very narrow viewports */
+@media (max-width: 480px) {
+    body, .container, #resultsContent { max-width: 100%; overflow-x: hidden; }
+}
+
 #product-selection-error {
     display: flex;
     align-items: center;
