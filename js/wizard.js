@@ -2185,6 +2185,10 @@ window.showClause = (id) => {
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
     }
+    // Move focus to close button for screen reader announcement
+    setTimeout(() => {
+        document.getElementById('closeModal').focus();
+    }, 100);
 };
 
 const handleCloseModal = () => {
