@@ -1177,6 +1177,7 @@ fieldset[aria-invalid="true"] {
 
 #toast-container .toast {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.25rem;

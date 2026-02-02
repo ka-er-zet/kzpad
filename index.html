@@ -170,13 +170,15 @@
         </section> <!-- /setup-section -->
 
         <section id="resultsArea" class="hidden">
-            <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
             <div id="status-message" role="status" aria-live="polite" class="sr-only"></div>
             <div id="generation-announcement" class="sr-only" aria-live="polite"></div>
             <hr aria-hidden="true">
             <div id="resultsContent"></div>
         </section>
     </main>
+
+    <!-- Toast Container - outside resultsArea so it's always visible -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
     <!-- Modal for Clause Details -->
     <dialog id="clauseModal" aria-modal="true" aria-labelledby="modalTitle">
