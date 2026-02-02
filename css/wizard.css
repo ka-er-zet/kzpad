@@ -247,6 +247,18 @@ dialog#clauseModal a[target="_blank"]::after,
     .summary-result-card { padding: 1rem; }
     .summary-header { padding-bottom: 1rem; }
 
+    /* Stack header and button vertically in initial summary on mobile */
+    .summary-header.initial {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+    }
+    .summary-header.initial #btn-generate-summary {
+        width: 100%;
+        display: block;
+    }
+
     /* Compact modal spacing on small devices */
     #clauseModal #modalBody { padding: 0.75rem; }
 }
