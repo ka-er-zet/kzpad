@@ -610,8 +610,6 @@ button:focus-within .icon-label,
 
 #clauseModal header #closeModal {
     flex: 0 0 auto;
-    width: 2.5rem;
-    height: 2.5rem;
     padding: 0;
     margin: 0;
     display: flex;
