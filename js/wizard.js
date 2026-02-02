@@ -1432,6 +1432,13 @@ function downloadWizardAssessment() {
     const rows = document.querySelectorAll('.requirement-row');
     if (rows.length === 0) {
         console.warn('Brak wymagań do zapisania.');
+        
+        // Komunikat dla screen readerów
+        let liveRegion = document.getElementById('status-message');
+        if (liveRegion) {
+            liveRegion.innerText = 'Nie można zapisać: brak wygenerowanego arkusza kontroli.';
+        }
+        
         return;
     }
 
@@ -1683,6 +1690,13 @@ async function handleWizardFileLoad(event) {
 
         } catch (err) {
             console.error('Błąd podczas wczytywania pliku:', err);
+            
+            // Komunikat dla screen readerów
+            let liveRegion = document.getElementById('status-message');
+            if (liveRegion) {
+                liveRegion.innerText = 'Błąd podczas wczytywania pliku: ' + err.message;
+            }
+            
             alert('Błąd podczas wczytywania pliku: ' + err.message);
         }
     };
