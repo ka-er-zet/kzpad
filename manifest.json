@@ -1,7 +1,7 @@
 {
   "name": "KZ-PAD - Kontrola zgodności z PAD",
   "short_name": "KZ-PAD",
-  "start_url": "./index.html",
+  "start_url": "/kzpad/index.html",
   "display": "standalone",
   "background_color": "#11191f",
   "theme_color": "#11191f",
