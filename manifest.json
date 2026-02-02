@@ -1,0 +1,34 @@
+{
+  "name": "KZ-PAD - Kontrola zgodności z PAD",
+  "short_name": "KZ-PAD",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#11191f",
+  "theme_color": "#11191f",
+  "orientation": "any",
+  "description": "Narzędzie do generowania arkuszy kontrolnych zgodności z ustawą (EAA) i normą EN 301 549.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "lang": "pl"
+}

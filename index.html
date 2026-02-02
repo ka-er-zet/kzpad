@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAA POC - Konfigurator Arkusza</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon-180.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/pico.min.css">
+    <!-- Lucide Icons -->
+    <script src="js/lucide.min.js"></script>
+    <!-- ExcelJS for Excel generation (supports formatting and dropdowns) -->
+    <script src="js/exceljs.min.js"></script>
+    <!-- JSZip for ODT generation -->
+    <script src="js/jszip.min.js"></script>
+    <!-- Utils common helpers -->
+    <script src="js/utils.js"></script>
+    <script src="js/exporter.js"></script>
+    <link rel="stylesheet" href="css/wizard.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pomiń nawigację</a>
+
+    <!-- Header -->
+    <header class="app-header" role="banner">
+        <div class="header-content">
+            <a href="index.html" id="app-logo" class="header-icon-container" aria-label="Strona główna">
+                <img src="img/eaa.svg" class="app-logo-svg" alt="" aria-hidden="true" />
+            </a>
+            <div>
+                <strong class="header-title">KZ-PAD</strong>
+                <small class="text-muted">Kontrola zgodności z PAD</small>
+            </div>
+        </div>
+        <nav class="header-actions" role="navigation" aria-label="Opcje narzędzia">
+            <button class="outline secondary icon-btn theme-toggle" id="btn-save-wizard" aria-label="Zapisz wersję roboczą kontroli (JSON)" title="Zapisz wersję roboczą (Ctrl+S)">
+                <i data-lucide="save" aria-hidden="true"></i>
+                <span class="sr-only">Zapisz wersję roboczą kontroli</span>
+            </button>
+            <button class="outline secondary icon-btn theme-toggle" id="btn-load-wizard" aria-label="Wczytaj wersję roboczą kontroli (JSON)" title="Wczytaj wersję roboczą">
+                <i data-lucide="upload" aria-hidden="true"></i>
+                <span class="sr-only">Wczytaj wersję roboczą kontroli</span>
+            </button>
+            <button class="outline secondary icon-btn theme-toggle" id="btn-download-spreadsheet" aria-label="Pobierz arkusz kontroli w formacie Excel" title="Pobierz arkusz kontroli w formacie Excel">
+                <i data-lucide="file-spreadsheet" aria-hidden="true"></i>
+                <span class="sr-only">Pobierz arkusz kontroli w formacie Excel</span>
+            </button>
+            <button class="outline secondary icon-btn theme-toggle" onclick="window.utils && window.utils.toggleTheme()" aria-label="Zmień motyw" role="switch" aria-checked="true">
+                <i id="theme-icon" data-lucide="moon" aria-hidden="true"></i>
+                <span class="sr-only">Zmień motyw</span>
+            </button>
+        </nav>
+    </header>
+
+    <input type="file" id="wizard-file-input" style="display: none;" accept=".json" aria-label="Wczytaj plik JSON ze stanem kontroli">
+
+    <main class="container" id="main-content">
+        <!-- Sekcja Hero / Start -->
+        <section id="hero-section" class="hero-container">
+            <div class="hero-grid">
+                <article class="hero-card" id="hero-new-audit" role="button" tabindex="0">
+                    <div class="hero-card-icon">
+                        <i data-lucide="file-plus-2"></i>
+                    </div>
+                    <div class="hero-card-content">
+                        <p class="hero-card-title">Nowy arkusz kontroli</p>
+                        <p>Rozpocznij nową konfigurację i wybierz przedmiot kontroli.</p>
+                    </div>
+                </article>
+
+                <article class="hero-card" id="hero-load-audit" role="button" tabindex="0">
+                    <div class="hero-card-icon">
+                        <i data-lucide="upload"></i>
+                    </div>
+                    <div class="hero-card-content">
+                        <p class="hero-card-title">Wczytaj zapisany stan</p>
+                        <p>Kontynuuj badanie wczytując wcześniej zapisany plik JSON.</p>
+                    </div>
+                </article>
+
+                <article class="hero-card" id="hero-browse-requirements" role="button" tabindex="0">
+                    <div class="hero-card-icon">
+                        <i data-lucide="library-big"></i>
+                    </div>
+                    <div class="hero-card-content">
+                        <p class="hero-card-title">Przeglądarka wymagań</p>
+                        <p>Zapoznaj się z wymaganiami ustawy i normy EN 301 549.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Przeglądarka wymagań (ukryta na starcie) -->
+        <section id="browser-section" class="hidden">
+            <header class="browser-header">
+                <h1 id="browser-title" tabindex="-1" style="outline: none; text-align: center; margin-bottom: 2rem;">Przeglądarka Wymagań</h1>
+                
+                <div class="browser-controls">
+                    <div class="view-switcher" role="radiogroup" aria-label="Wybierz sposób przeglądania">
+                        <button id="btn-view-legal" class="primary" role="radio" aria-checked="true">
+                            <i data-lucide="scale"></i> Według Ustawy
+                        </button>
+                        <button id="btn-view-technical" class="outline" role="radio" aria-checked="false">
+                            <i data-lucide="settings"></i> Według Normy EN
+                        </button>
+                    </div>
+                    
+                    <div class="browser-search-container">
+                        <label for="browser-search" class="sr-only">Wyszukaj wymaganie</label>
+                        <input type="search" id="browser-search" placeholder="Wyszukaj wymaganie (np. kontrast, 9.1...)" aria-describedby="search-hint">
+                        <span id="search-hint" class="sr-only">Wpisz tekst, aby przefiltrować widoczne wymagania.</span>
+                        <div id="browser-search-status" aria-live="polite" class="sr-only"></div>
+                    </div>
+                </div>
+            </header>
+
+            <nav id="browser-breadcrumbs" class="browser-breadcrumbs hidden" aria-label="Poprzednie poziomy"></nav>
+            
+            <div id="browser-category-grid" class="browser-category-grid">
+                <!-- Kategorie (artykuły lub rozdziały) renderowane dynamicznie -->
+            </div>
+
+            <div id="browser-requirements-list" class="browser-requirements-list hidden">
+                <!-- Karty wymagań renderowane dynamicznie -->
+            </div>
+        </section>
+
+        <!-- Konfiguracja (ukryta na starcie) -->
+        <div id="setup-section" class="hidden">
+            <h1 id="setup-title" tabindex="-1" style="outline: none; text-align: center; margin: 4rem 0 2rem;">Arkusz kontroli zgodności z PAD</h1>
+            
+            <section class="product-select-container">
+                <h2 class="requirement-id">Przedmiot kontroli</h2>
+                
+                <form id="auditForm">
+                <fieldset id="productFieldset">
+                    <legend>
+                        Wybierz produkt lub usługę
+                        <span style="color: var(--form-element-invalid-border-color); font-weight: bold;" aria-label="pole wymagane">*</span>
+                    </legend>
+                    
+                    <div id="product-selection-error" 
+                         class="hidden" 
+                         role="alert" 
+                         aria-live="assertive">
+                        <i data-lucide="alert-circle" style="width: 24px; height: 24px; flex-shrink: 0; margin-right: 0.5rem;" aria-hidden="true"></i>
+                        <span>Błąd: Nie wybrano produktu ani usługi. Proszę zaznaczyć jedną z opcji poniżej.</span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Informacje dodatkowe o przedmiocie kontroli</legend>
+                    
+                    <label for="wizard-product-name">Nazwa produktu / Usługi</label>
+                    <input type="text" id="wizard-product-name" name="product-name">
+                    
+                    <label for="wizard-product-desc">Opis / Wersja / URL</label>
+                    <input type="text" id="wizard-product-desc" name="product-desc">
+                    
+                    <label for="wizard-auditor-name">Osoba przeprowadzająca kontrolę</label>
+                    <input type="text" id="wizard-auditor-name" name="auditor-name">
+                </fieldset>
+
+                <button type="submit" id="generateBtn">
+                    Generuj Arkusz Kontrolny
+                </button>
+            </form>
+        </section> <!-- /setup-section -->
+
+        <section id="resultsArea" class="hidden">
+            <div id="status-message" role="status" aria-live="polite" class="sr-only"></div>
+            <div id="generation-announcement" class="sr-only" aria-live="polite"></div>
+            <hr aria-hidden="true">
+            <div id="resultsContent"></div>
+        </section>
+    </main>
+
+    <!-- Modal for Clause Details -->
+    <dialog id="clauseModal">
+        <article>
+            <header>
+                <h3 id="modalTitle">Szczegóły Klauzuli</h3>
+                <button type="button" aria-label="Zamknij" class="icon-btn" id="closeModal">
+                    <i data-lucide="x" aria-hidden="true"></i>
+                    <span class="sr-only">Zamknij</span>
+                </button>
+            </header>
+            <section id="modalBody">
+                <!-- Content injected here -->
+            </section>
+            <footer>
+                <button class="outline" id="closeModalBtn">Zamknij</button>
+            </footer>
+        </article>
+    </dialog>
+
+    <script src="js/wizard.js" defer></script>
+</body>
+</html>

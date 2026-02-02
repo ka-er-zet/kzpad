@@ -1,0 +1,1288 @@
+:root {
+    --form-element-invalid-border-color: #FF8383;
+    --form-element-invalid-active-border-color: #FF8383;
+
+    /* Buttons */
+    --btn-bg: #0A5B76; /* primary button background (dark) */
+    --btn-bg-hover: #07465B;
+    --btn-foreground: #ffffff;
+
+    /* Requirement header foreground */
+    --requirement-id-foreground: #ffffff;
+
+    /* Header subtitle color (used for .app-header .text-muted) */
+    --header-subtitle-color: var(--color);
+
+    /* Error states */
+    --error: #FF8383;
+    --error-bg: rgba(255, 131, 131, 0.1);
+
+    /* Card/border color used instead of muted */
+    --card-border-color: rgba(255,255,255,0.06);
+
+    /* Border for individual requirement rows (lighter in dark theme) */
+    --requirement-row-border-color: rgba(255,255,255,0.04);
+
+    /* Emphasis color used for category headers, tags, and labels */
+    --emphasis-color: var(--primary);
+    --primary-inverse: #ffffff; /* Default inverse for darker primary */
+    
+    /* Default focus color (swapped in themes) */
+    --focus-color: hsl(38, 92%, 60%); 
+    /* Skip Link defaults: high contrast teal for safety */
+    --skip-bg: #06425A;
+    --skip-color: #ffffff;
+} 
+
+/* Light theme overrides */
+:root[data-theme="light"], [data-theme="light"] {
+    --btn-bg: #1D6A8C; /* lighter button variant for light theme */
+    --btn-bg-hover: #155766;
+    --btn-foreground: #ffffff;
+
+    --requirement-id-foreground: #111111;
+
+    --error: #C94B56;
+    --error-bg: rgba(201, 77, 94, 0.08);
+
+    --card-border-color: rgba(0,0,0,0.08);
+
+    /* Border for individual requirement rows in light theme (darker for contrast) */
+    --requirement-row-border-color: rgba(0,0,0,0.12);
+
+    /* Background for the whole page in light mode */
+    --background-color: #f3f3f3;
+
+    /* Cards should have white background in light mode */
+    --card-background-color: #ffffff;
+    --card-sectionning-background-color: #ffffff;
+
+    /* In light theme use a stronger/darker emphasis color for these UI accents */
+    --emphasis-color: #0A5B76; /* darker teal for contrast in light mode */
+    --primary: #0A5B76;
+    --primary-inverse: #ffffff;
+    --focus-color: hsl(224, 76%, 48%);
+    
+    /* Skip link high contrast for light theme */
+    --skip-bg: #06425A;
+    --skip-color: #ffffff;
+}
+
+body { background-color: var(--background-color); }
+
+/* Header styles (copied from audit.html, scoped for wizard) */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    background: var(--skip-bg) !important;
+    color: var(--skip-color) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    z-index: 1000;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    font-weight: 600;
+}
+
+/* Pico sets --text-decoration to none by default; restore underlines for ordinary
+   content links inside the wizard for accessibility. Keep UI/navigation exceptions
+   (nav links, icon buttons) unchanged. */
+#main-content a, .u-interpretation a, .technical-area a {
+    --text-decoration: underline;
+    -webkit-text-decoration: var(--text-decoration);
+    text-decoration: var(--text-decoration);
+    text-decoration-thickness: 1px;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 2px;
+}
+
+/* Also ensure anchors inside the clause modal/dialog are underlined. The modal
+   content is injected dynamically and lives inside the <dialog id="clauseModal">.
+   Target specific modal content containers to avoid affecting header/nav UI. */
+dialog#clauseModal a,
+#clauseModal .section-content a,
+#clauseModal li a {
+    --text-decoration: underline;
+    -webkit-text-decoration: var(--text-decoration);
+    text-decoration: var(--text-decoration);
+    text-decoration-thickness: 1px;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 2px;
+}
+
+/* Icon for links that open in a new tab — markup inserted by JS for full flexibility */
+#main-content a[target="_blank"]::after,
+dialog#clauseModal a[target="_blank"]::after,
+.u-interpretation a[target="_blank"]::after,
+.technical-area a[target="_blank"]::after {
+    /* removed textual fallback; JS will insert Lucide icon element */
+    content: none;
+}
+
+.external-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.35rem;
+    width: 1em;
+    height: 1em;
+    font-size: 0.9em;
+    vertical-align: text-top;
+    opacity: 0.95;
+    color: currentColor;
+}
+.external-link-icon i {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+}
+
+.app-header {
+    background-color: var(--card-background-color);
+    border-bottom: 1px solid var(--muted-border-color);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.header-icon-container {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.app-logo-svg {
+    width: 100%;
+    height: auto;
+    max-height: 40px;
+}
+.header-title {
+    display: block;
+    line-height: 1.2;
+    font-size: 1.1rem;
+}
+.icon-btn {
+    padding: 0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+    color: var(--primary); /* using primary theme color for icons */
+    margin: 0;
+    border-radius: 6px;
+}
+.icon-btn:hover {
+    color: var(--primary);
+    background: var(--primary-focus);
+}
+
+/* --- GLOBAL FOCUS STYLE (MATCHING AUDIT PAGE) --- */
+*:focus-visible {
+    outline: 3px solid var(--focus-color) !important;
+    outline-offset: 2px !important;
+}
+
+/* Ensure focus is visible on specific wizard elements */
+#main-content a:focus-visible,
+#main-content button:focus-visible,
+#main-content .icon-btn:focus-visible,
+#main-content .technical-summary:focus-visible,
+#main-content .product-radio-card:focus-within,
+dialog .icon-btn:focus-visible {
+    outline: 3px solid var(--focus-color) !important;
+    outline-offset: 2px !important;
+    /* Do NOT set background: transparent; keep original background for readability */
+}
+
+/* Specific fix for radio cards: use internal focus to show which one is selected vs focused */
+.product-radio-card:focus-within {
+    border-color: var(--focus-color) !important;
+    box-shadow: 0 0 0 3px var(--focus-color) !important;
+}
+
+#main-content input:focus-visible,
+#main-content textarea:focus-visible,
+#main-content select:focus-visible {
+    outline: 3px solid var(--focus-color) !important;
+    outline-offset: 1px !important;
+}
+
+#main-content .technical-summary:focus,
+#main-content .technical-summary:focus-visible {
+    background: var(--primary-focus);
+    border-radius: 4px;
+}
+
+.header-actions .icon-btn {
+    /* ensures vertical centering inside header */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+.header-actions .icon-btn i {
+    vertical-align: middle;
+}
+/* Icon button visible labels (copied from global style.css, scoped for wizard) */
+.icon-label {
+    position: fixed; /* keep label relative to viewport to avoid ancestor clipping */
+    top: 0; /* positioned via JS */
+    left: 0; /* positioned via JS */
+    background: var(--card-background-color);
+    border: 1px solid var(--muted-color);
+    color: var(--h5-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: auto; /* allow hover on the label itself to avoid flicker */
+    cursor: default;
+    z-index: 9999;
+    transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+    transform-origin: center top;
+}
+
+button:hover .icon-label,
+button:focus .icon-label,
+button:focus-within .icon-label,
+.icon-label:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dark mode: ensure high contrast for icon labels */
+[data-theme="dark"] .icon-label {
+    color: hsl(0, 0%, 100%);
+}
+
+/* Dark theme overrides for wizard: adjust primary/emphasis to requested cyan */
+:root[data-theme="dark"], [data-theme="dark"] {
+    --primary: #13C4FF;
+    --emphasis-color: #13C4FF;
+    --primary-inverse: #000000; /* High contrast black for cyan background */
+    --skip-bg: var(--primary);
+    --skip-color: var(--primary-inverse);
+}
+
+/* On touch devices, show only on focus (no hover) */
+@media (hover: none) {
+    button:hover .icon-label { opacity: 0; visibility: hidden; }
+}.text-muted {
+    opacity: 0.7;
+    font-size: 0.8rem;
+}
+/* High-contrast subtitle for the wizard header */
+.app-header .text-muted {
+    color: var(--header-subtitle-color);
+    opacity: 0.95;
+}
+
+.container { padding-top: 2rem; }
+.clause-tag {
+    display: inline-block;
+    width: auto;
+    background: transparent;
+    padding: 2px 10px;
+    border-radius: var(--border-radius);
+    margin: 0 4px 8px 0;
+    font-size: 0.8em;
+    cursor: pointer;
+    border: 1px solid var(--emphasis-color);
+    transition: all 0.2s;
+    color: var(--emphasis-color);
+    line-height: 1.2;
+    font-weight: 500;
+}
+.clause-tag:hover { 
+    background: var(--emphasis-color);
+    color: var(--primary-inverse);
+    border-color: var(--emphasis-color);
+}
+.clause-tag:focus-visible {
+    outline: 3px solid var(--focus-color) !important;
+    outline-offset: 2px !important;
+}
+
+.clause-group {
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+}
+.clause-group-title {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    text-transform: none;
+    border: none;
+    padding: 0;
+}
+
+.category-description {
+    margin: 0.75rem 0 1.5rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--card-background-color);
+    border-left: 3px solid var(--emphasis-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color);
+    opacity: 0.95;
+}
+
+.category-description p {
+    margin: 0 0 1rem 0;
+}
+
+.art19-switch-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.art19-switch-label input[type="checkbox"][role="switch"] {
+    margin: 0;
+}
+
+.art19-switch-label span {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.art19-requirements-container {
+    margin-top: 1.5rem;
+}
+
+.requirement-row {
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+    overflow: hidden;
+    border: 1px solid var(--requirement-row-border-color);
+    box-shadow: none;
+    border-radius: var(--border-radius);
+    background: var(--card-background-color);
+}
+.requirement-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+.interpretation-area {
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 1rem 1.5rem 2rem;
+    border-left: 0.125rem solid var(--primary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+.u-interpretation-header {
+    font-weight: bold;
+    color: var(--emphasis-color);
+    margin: 0 0 1rem 0;
+    padding: 0;
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+}
+.u-interpretation {
+    font-size: 0.95rem;
+    color: var(--color);
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.u-interpretation p { 
+    padding: 0 !important; 
+    margin: 0 0 0.75rem 0 !important;
+    line-height: 1.5;
+}
+.u-interpretation ul {
+    list-style-type: disc !important;
+    padding-left: 1.5rem !important;
+    margin: 0.5rem 0 1rem 0 !important;
+}
+.u-interpretation li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    display: list-item !important;
+}
+
+.technical-area {
+    margin: 2rem 1rem 1rem 1rem;
+    padding-top: 0;
+    border-top: 1px solid var(--card-border-color);
+}
+.technical-area p small {
+    font-size: 0.8rem;
+    color: var(--color);
+    opacity: 0.9;
+    font-weight: bold;
+}
+/* Technical tests (EN 301 549) styling */
+.technical-area details,
+.technical-details {
+    border: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 1.25rem;
+}
+.technical-area summary,
+.technical-summary {
+    color: var(--color);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    margin-left: -0.75rem; /* pull back to align text despite padding */
+    gap: 0.5rem;
+}
+.technical-summary:focus .technical-title,
+.technical-summary:focus-visible .technical-title {
+    text-decoration: underline;
+}
+.technical-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    line-height: 1.2;
+    /* Always underline technical title */
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+/* Ensure the chevron (Pico pseudo-element) is vertically centered */
+.technical-summary::after {
+    float: none !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+/* Underline for interactive technical summary */
+.technical-summary:hover .technical-title,
+.technical-summary:focus .technical-title,
+.technical-summary:focus-visible .technical-title,
+.technical-details[open] .technical-title {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+.technical-section {
+    margin-top: 1.25rem;
+}
+.requirement-id { 
+    font-weight: bold; 
+    color: var(--requirement-id-foreground); 
+    font-size: 1rem; 
+    margin: 0;
+    padding: 1rem;
+    border-bottom: 1px solid var(--card-border-color);
+    display: block;
+}
+.requirement-id small {
+    display: block;
+    color: var(--color);
+    opacity: 0.8;
+    font-weight: normal;
+    font-size: 0.8em;
+    margin-top: 0.2rem;
+}
+.requirement-row section, .requirement-row p { padding: 0 1rem; }
+.requirement-row section { margin-bottom: 1.5rem; }
+
+#clauseModal article { width: 800px; max-width: 95vw; }
+
+#clauseModal header {
+    background: var(--card-sectionning-background-color);
+    border-bottom: 2px solid var(--muted-border-color); /* remove bright blue accent */
+    padding: 1rem 1.5rem; /* slightly tighter vertical padding */
+    margin-bottom: 0.5rem; /* override large default from Pico to tighten gap */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#modalTitle {
+    margin: 0;
+    color: var(--color); /* use neutral page color */
+    font-size: 1.28rem; /* slightly smaller to fit denser layout */
+    line-height: 1.2;
+}
+#modalTitle small {
+    display: block;
+    font-weight: normal;
+    color: var(--color);
+    margin-top: 0.3rem;
+    opacity: 0.9;
+}
+
+/* Modal body heading adjustments: ensure h4 is not styled like a link and reduce spacing */
+#clauseModal #modalBody h4 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color); /* Removed emphasis color to avoid blue text */
+}
+
+#clauseModal #modalBody .browser-card-section-title {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color);
+}
+    text-decoration: none;
+    border-bottom: none;
+}
+
+/* Normalize list and paragraph spacing inside modal body */
+#clauseModal #modalBody p, 
+#clauseModal #modalBody li {
+    margin: 0 0 0.4rem 0;
+    line-height: 1.5;
+}
+
+#clauseModal #modalBody ul, 
+#clauseModal #modalBody ol {
+    margin: 0 0 1rem 1.25rem;
+    padding: 0;
+}
+
+/* Increase spacing after sections slightly so 'after criteria' gap feels consistent */
+#clauseModal article section {
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+}
+
+#clauseModal article section:first-of-type {
+    margin-top: 1.25rem;
+}
+
+/* Modal footer close button styling */
+#clauseModal #closeModalBtn {
+    --background-color: transparent;
+    --border-color: var(--primary);
+    --color: var(--primary);
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    padding: 0.5rem 2rem;
+}
+
+#clauseModal #closeModalBtn:hover,
+#clauseModal #closeModalBtn:focus {
+    --background-color: var(--primary);
+    --color: var(--primary-inverse);
+}
+
+#clauseModal .section-content {
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--muted-border-color);
+    margin-top: 0.5rem;
+    margin-left: 0.25rem; /* subtle offset for the vertical line */
+}
+
+/* More breathing room specifically for checklist items in "How to check" */
+#clauseModal .how-to-check-section .checklist-item {
+    margin-bottom: 0.75rem;
+}
+
+/* Specific spacing for criteria section to prevent border from sticking to last item */
+#clauseModal article section.criteria-section {
+    padding-bottom: 0.5rem; 
+}
+
+/* Stylizacja dla product-select-container form */
+#auditForm {
+    padding: 1rem 1.25rem 0 1.25rem;
+    margin: 0;
+    border: none;
+}
+
+#product-selection-error {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid var(--error);
+    border-radius: 8px;
+    margin: 0 0 1rem 0;
+    background-color: var(--error-bg);
+    color: var(--error);
+}
+
+#product-selection-error:not(.hidden) {
+    display: flex;
+}
+
+#auditForm fieldset legend {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+#auditForm fieldset label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#auditForm fieldset label:first-of-type {
+    margin-top: 0;
+}
+
+#auditForm fieldset input {
+    margin-bottom: 0;
+}
+
+#auditForm button[type="submit"] {
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.product-select-container form {
+    padding: 0 1.25rem 1rem 1.25rem;
+    margin: 0;
+}
+
+.assessment-section {
+    padding: 1rem 0;
+    border-top: 1px solid var(--form-element-border-color);
+    margin-top: 1.5rem;
+}
+
+.assessment-section fieldset {
+    margin: 1rem 0 1.5rem 0;
+    padding: 0;
+    border: none;
+}
+
+.assessment-section fieldset legend {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    padding: 0;
+}
+
+.assessment-section fieldset label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.assessment-section fieldset label input[type="radio"] {
+    margin: 0;
+}
+
+.assessment-section label[for^="comment-"] {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+.assessment-section textarea {
+    min-height: 80px;
+    width: 100%;
+}
+
+/* Stylizacja dla uzyskania "pojedynczego scrolla" dla całego modala */
+dialog[open] {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 2rem 0;
+}
+dialog[open] article {
+    max-height: none;
+    margin: 0;
+}
+
+.hidden { 
+    display: none !important;
+}
+#product-selection-error {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid var(--error);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color: var(--error-bg);
+    color: var(--error);
+}
+
+.category-header {
+    border-bottom: 3px solid var(--emphasis-color);
+    padding-bottom: 0.5rem;
+    margin: 4rem 0 2rem 0;
+    font-size: 1.4rem;
+    color: var(--emphasis-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    display: block;
+}
+.product-select-container {
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+    overflow: hidden;
+    border: 1px solid var(--requirement-row-border-color);
+    box-shadow: none;
+    border-radius: var(--border-radius);
+    background: var(--card-background-color);
+}
+
+/* Stylizacja Radio jako czytelnych kart - Wzorzec Label-Container */
+/* --- Raport / Podsumowanie Kontroli --- */
+.summary-result-card {
+    border-left: 8px solid var(--muted-border-color);
+    padding: 2rem;
+    box-shadow: var(--card-box-shadow);
+    border-radius: var(--border-radius);
+    color: var(--color);
+    background-color: var(--code-background-color) !important;
+    transition: border-color 0.3s ease;
+}
+
+[data-theme="light"] .summary-result-card {
+    background-color: #f8f9fa !important;
+    border: 1px solid var(--muted-border-color);
+    border-left-width: 8px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--muted-border-color);
+    padding-bottom: 2rem;
+}
+
+.summary-header.initial {
+    border-bottom: none;
+    padding-bottom: 2remarrty;
+    margin-bottom: 0;
+}
+
+.summary-header h2 {
+    margin: 0;
+}
+
+.summary-header button {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.summary-content-area {
+    margin-top: 2rem;
+}
+
+.summary-status-title {
+    font-weight: bold;
+    font-size: 1.75rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.summary-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.summary-body {
+    white-space: pre-line;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.summary-sections {
+    margin-top: 1.5rem;
+}
+
+.summary-sections h3 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.summary-link-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.summary-link-list li {
+    margin-bottom: 0.75rem;
+}
+
+.summary-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.summary-item-comment {
+    font-size: 0.9rem;
+    color: var(--color); /* Pełny kontrast zamiast muted */
+    margin: 0.25rem 0 0.5rem 0.5rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--primary);
+    line-height: 1.4;
+}
+
+.summary-anchor {
+    text-decoration: none;
+    color: inherit;
+    display: inline;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.summary-anchor:hover {
+    background-color: var(--card-border-color);
+    text-decoration: underline;
+}
+
+.product-radio-card {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--muted-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 0 !important;
+    user-select: none;
+}
+.product-radio-card:hover {
+    background: var(--primary-focus);
+    border-color: var(--primary);
+}
+.product-radio-card:has(input:checked) {
+    border-color: var(--primary);
+    background: var(--primary-focus);
+}
+.product-radio-card:focus-within {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+.product-radio-card input[type="radio"] {
+    margin: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+.product-radio-card span {
+    flex-grow: 1;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+#generateBtn {
+    margin-top: 1.5rem;
+    width: 100%;
+    background-color: var(--btn-bg);
+    border-color: var(--btn-bg);
+    color: var(--btn-foreground);
+    font-weight: bold;
+}
+#generateBtn:hover, #generateBtn:focus {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-bg-hover);
+}
+
+/* Fieldset error state - Pico CSS pattern */
+fieldset {
+    padding: 1.25rem;
+    border-radius: 8px;
+    transition: border 0.2s;
+}
+fieldset[aria-invalid="true"] {
+    border: 2px solid var(--form-element-invalid-border-color);
+}
+
+/* Fix dla podwójnego scrolla gdy modal jest otwarty */
+.modal-is-open {
+    overflow: hidden !important;
+}
+
+/* Nowe klasy dla list sprawdzających */
+.detailed-checklist-container {
+    margin-top: 1rem;
+}
+.example-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--emphasis-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.checklist-item {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Accessibility utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+/* Hero Section Styles */
+.hero-container {
+    transition: opacity 0.3s ease-out;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.hero-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 2rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    border: 2px solid transparent;
+    background-color: var(--card-background-color);
+    margin: 0 !important; /* Wyzerowanie marginesów pico.css */
+}
+
+.hero-card:hover, .hero-card:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    background-color: var(--card-sectionning-background-color);
+    border-color: var(--primary);
+}
+
+.hero-card-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-card-icon svg {
+    width: 64px;
+    height: 64px;
+}
+
+.hero-card-content .hero-card-title {
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+}
+
+.hero-card-content p {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--h3-color);
+}
+
+#setup-section.hidden, #hero-section.hidden {
+    display: none;
+}
+
+
+/* Refined Hero Styles */
+.hero-container {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--card-border-color);
+    padding-bottom: 4rem;
+    padding-top: 1rem;
+}
+
+.hero-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+.hero-card:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Ensure sections are spaced out */
+.product-select-container {
+    margin-top: 4rem;
+    padding-top: 2rem;
+}
+
+
+/* Browser Section Styles */
+#browser-section {
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.browser-header {
+    margin-bottom: 3rem;
+}
+
+.browser-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.view-switcher {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--card-background-color);
+    padding: 0.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.view-switcher button {
+    border-radius: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.browser-search-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.browser-category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+}
+
+@media (max-width: 900px) {
+    .browser-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .browser-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.browser-category-card {
+    background: var(--card-background-color);
+    padding: 1.25rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--muted-border-color);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.25rem;
+    height: auto;
+    margin: 0 !important; /* Wyzerowanie marginesów pico.css */
+}
+
+.browser-category-card:hover, 
+.browser-category-card:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    color: var(--primary);
+}
+
+.browser-category-card .browser-category-name {
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    font-weight: 600;
+} 
+
+.browser-category-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    opacity: 0.8;
+    color: var(--h3-color);
+}
+
+.browser-category-icon {
+    margin-bottom: 0.25rem;
+    color: var(--secondary);
+}
+
+.browser-category-icon i {
+    width: 24px;
+    height: 24px;
+}
+
+.browser-breadcrumbs {
+    margin-bottom: 1.5rem;
+}
+
+.browser-requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.browser-card {
+    background: var(--card-background-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--muted-border-color);
+}
+
+.browser-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--muted-border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.browser-card-id {
+    font-weight: bold;
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
+.browser-card-labels {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.browser-label {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    background: var(--secondary-focus);
+}
+
+@media (max-width: 768px) {
+    .browser-controls {
+        flex-direction: column;
+    }
+}
+
+.browser-current-category {
+    margin: 1.25rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: left;
+    color: var(--primary);
+} 
+
+
+#browser-back-to-cats {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#browser-back-to-cats:hover {
+    text-decoration: underline;
+}
+
+.procedure-list {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.procedure-list li {
+    margin-bottom: 0.8rem;
+}
+
+.browser-checklist ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.browser-checklist li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+
+/* Hero Card Title adjustments to replace H3 */
+p.hero-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+}
+
