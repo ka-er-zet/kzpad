@@ -662,9 +662,7 @@ button:focus-within .icon-label,
     letter-spacing: 0.5px;
     color: var(--color);
 }
-    text-decoration: none;
-    border-bottom: none;
-}
+
 
 /* Normalize list and paragraph spacing inside modal body */
 #clauseModal #modalBody p, 
@@ -927,7 +925,7 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
 
 .summary-header.initial {
     border-bottom: none;
-    padding-bottom: 2remarrty;
+    padding-bottom: 2rem;
     margin-bottom: 0;
 }
 
