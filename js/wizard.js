@@ -7,6 +7,58 @@ let summaryTemplates = {};
 const W = window.utils || {};
 
 /**
+ * Toast notification system - displays non-blocking messages to users
+ * @param {string} message - The message to display
+ * @param {string} type - Type of toast: 'success', 'error', 'warning' (default: 'success')
+ * @param {number} duration - How long to show the toast in ms (default: 5000)
+ */
+function showToast(message, type = 'success', duration = 5000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'polite');
+
+    // Icon mapping
+    const icons = {
+        success: 'check-circle',
+        error: 'alert-circle',
+        warning: 'alert-triangle'
+    };
+    const iconName = icons[type] || 'info';
+
+    toast.innerHTML = `
+        <i data-lucide="${iconName}" class="toast-icon" aria-hidden="true"></i>
+        <div class="toast-content">${message}</div>
+        <button class="toast-close" aria-label="Zamknij powiadomienie" type="button">
+            <i data-lucide="x" style="width: 16px; height: 16px;" aria-hidden="true"></i>
+        </button>
+    `;
+
+    container.appendChild(toast);
+    
+    // Initialize Lucide icons in the toast
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+
+    // Close button handler
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => {
+        toast.remove();
+    });
+
+    // Auto-remove after duration
+    if (duration > 0) {
+        setTimeout(() => {
+            toast.remove();
+        }, duration);
+    }
+}
+
+/**
  * Uproszczone nazwy rozdziałów do wyświetlenia w Wizardzie
  */
 const chapterNames = {
@@ -877,7 +929,7 @@ function normalizeId(rawId) {
  */
 async function downloadSummaryODT() {
     if (typeof exportToODT !== 'function') {
-        alert('Błąd: Funkcja exportToODT nie jest dostępna. Sprawdź, czy załadowano exporter.js.');
+        showToast('Funkcja eksportu do ODT nie jest dostępna. Sprawdź, czy załadowano exporter.js.', 'error');
         return;
     }
 
@@ -1065,7 +1117,7 @@ async function downloadSummaryODT() {
         exportToODT(state, null, targetFilename);
     } catch (e) {
         console.error('Błąd generowania ODT:', e);
-        alert('Błąd generowania raportu: ' + e.message);
+        showToast('Wystąpił błąd podczas generowania raportu ODT: ' + e.message, 'error');
     }
 }
 
@@ -1697,7 +1749,19 @@ async function handleWizardFileLoad(event) {
                 liveRegion.innerText = 'Błąd podczas wczytywania pliku: ' + err.message;
             }
             
-            alert('Błąd podczas wczytywania pliku: ' + err.message);
+            // Friendly error messages for common issues
+            let userMsg = 'Wystąpił błąd podczas wczytywania pliku.';
+            if (err instanceof SyntaxError) {
+                if (err.message.includes('%PDF')) {
+                    userMsg = 'Nieprawidłowy format pliku. Proszę wybrać plik JSON zapisany przez aplikację, nie PDF.';
+                } else {
+                    userMsg = 'Plik nie jest prawidłowym plikiem JSON. Upewnij się, że został zapisany przez aplikację KZPAD.';
+                }
+            } else if (err.message) {
+                userMsg = 'Błąd wczytywania: ' + err.message;
+            }
+            
+            showToast(userMsg, 'error');
         }
     };
     reader.readAsText(file);

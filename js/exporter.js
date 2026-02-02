@@ -266,7 +266,12 @@
             const doc = parser.parseFromString(contentXml, 'application/xml');
             if (doc.getElementsByTagName('parsererror').length) {
                 console.error('Generated content.xml parse error', doc.getElementsByTagName('parsererror')[0].textContent);
-                alert('Błąd: wygenerowany content.xml jest niepoprawny XML. Szczegóły w konsoli.');
+                // Use showToast if available, otherwise fall back to console
+                if (typeof showToast === 'function') {
+                    showToast('Wygenerowany dokument zawiera błędy XML. Szczegóły w konsoli.', 'error');
+                } else {
+                    console.error('Błąd: wygenerowany content.xml jest niepoprawny XML.');
+                }
                 return;
             }
         } catch (e) {
