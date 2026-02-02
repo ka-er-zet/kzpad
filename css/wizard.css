@@ -637,10 +637,19 @@ button:focus-within .icon-label,
         max-height: 100dvh;
         margin: 0;
         border-radius: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #clauseModal header,
+    #clauseModal footer {
+        flex: 0 0 auto;
     }
     
     #modalBody {
-        max-height: calc(100dvh - 150px);
+        flex: 1 1 auto;
+        max-height: none;
+        overflow-y: auto;
     }
 }
 
