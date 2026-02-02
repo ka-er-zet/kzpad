@@ -1235,8 +1235,11 @@ fieldset[aria-invalid="true"] {
 }
 
 .toast-content {
-    flex-grow: 1;
-    word-break: break-word;
+    flex: 1 1 auto;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .toast-close {
