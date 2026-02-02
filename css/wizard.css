@@ -231,12 +231,17 @@ dialog#clauseModal a[target="_blank"]::after,
         line-height: 1.2;
         margin-top: 0.25rem;
     }
-    #selectedProductName span {
+    #selectedProductName .selected-product-label {
         display: block;
-        font-size: 0.95rem; /* Label 'Arkusz dla:' */
+        font-size: 1.5rem; /* Desktop label size */
         font-weight: 400;
         margin-bottom: 0.25rem;
         color: var(--color);
+    }
+
+    /* Mobile: reduce label size to 1.2rem */
+    #selectedProductName .selected-product-label {
+        font-size: 1.2rem;
     }
 
     /* Requirement rows and summary cards become more compact on mobile */

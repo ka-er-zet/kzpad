@@ -1839,7 +1839,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
 
     const resultsContent = document.getElementById('resultsContent');
     resultsContent.innerHTML = `
-        <h2 id="selectedProductName" tabindex="-1" style="outline: none;"><span style="font-size: 1.5rem; font-weight: 400; display: block; margin-bottom: 0.5rem;">Arkusz dla:</span>${productFullName}</h2>
+        <h2 id="selectedProductName" tabindex="-1" style="outline: none;"><span class="selected-product-label">Arkusz dla:</span>${productFullName}</h2>
         <div id="requirementsList"></div>
     `;
     
