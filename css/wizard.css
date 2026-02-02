@@ -599,6 +599,18 @@ button:focus-within .icon-label,
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden; /* ensure header doesn't get its own scroll */
+}
+
+#modalTitle {
+    margin: 0;
+    color: var(--color); /* use neutral page color */
+    font-size: 1.28rem; /* slightly smaller to fit denser layout */
+    line-height: 1.2;
+    flex: 1 1 auto;
+    min-width: 0; /* allow flex item to shrink and avoid overflow */
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 /* Mobile: make clause modal fullscreen to avoid horizontal scrolling */
@@ -681,6 +693,8 @@ button:focus-within .icon-label,
     font-size: 1.05rem;
     font-weight: 700;
     line-height: 1.2;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 @media (max-width: 640px) {
@@ -868,7 +882,8 @@ dialog[open] {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    overflow-y: auto;
+    /* Prevent outer wrapper scroll — the modal body handles scrolling */
+    overflow: hidden;
     padding: 2rem 0;
 }
 dialog[open] article {
