@@ -1660,7 +1660,7 @@
     "procedure": [
       "Sprawdź, czy informacje o dostępności są publikowane i łatwo dostępne na stronie internetowej, w punktach informacyjnych oraz w materiałach drukowanych.",
       "Zweryfikuj, czy treści opisują bariery poziome i pionowe (np. podjazdy, windy, szerokości przejść) oraz dostęp do poszczególnych pomieszczeń (z wyłączeniem pomieszczeń technicznych).",
-      "Upewnij się, że dostępne są opisy i plany w formatach wizualnych, dotykowych lub głosowych (np. plany tyflograficzne, oznakowanie w Braille’u, wersje audio).",
+      "Upewnij się, że dostępne są opisy i plany w formatach wizualnych, dotykowych lub głosowych (np. plany tyflograficzne, oznakowanie w Braille'u, wersje audio).",
       "Sprawdź, czy zasady dotyczące psów asystujących (warunki wstępu, miejsca) są udostępnione i aktualne.",
       "Zweryfikuj, czy procedury ewakuacyjne dla osób ze szczególnymi potrzebami są opisane oraz czy dostępne są alternatywne instrukcje dla personelu i służb ratunkowych.",
       "Potwierdź, że informacje o dostępnych formach wsparcia komunikacji (np. tłumacz języka migowego online lub na miejscu) oraz o instalacjach wspomagających słyszenie (pętle indukcyjne, systemy FM) zawierają instrukcję sposobu zamawiania i kontakt do rezerwacji.",
@@ -1976,8 +1976,7 @@
       "Polityki sesji i haseł umożliwiają użytkownikom z różnymi potrzebami czas na działanie i dostęp do procedur odzyskiwania.",
       "Powiązane z U.16.01 (usługi identyfikacji w usługach bankowych) — uwzględnić specyficzne wymagania dla usług finansowych tam, gdzie stosowne."
     ],
-    "notes": [
-    ],
+    "notes": [],
     "form": {
       "noteId": "notes-u-18.02"
     }
@@ -2073,7 +2072,7 @@
     "checklist": [
       "<strong>Napisy:</strong> Sprawdź, czy wszystkie nagrania wideo z dźwiękiem (dialogi, istotne odgłosy) posiadają zsynchronizowane napisy dla niesłyszących.",
       "<strong>Kompletność napisów:</strong> Sprawdź, czy napisy zawierają nie tylko dialogi, ale także informacje o istotnych dźwiękach (np. [muzyka], [śmiech], [dzwonek do drzwi]).",
-      "<strong>Uwaga:</strong> Definicja WCAG 2.1 zauważa, że napisy (captions) są czasem nazywane „napisami dla niesłyszących”. Niezależnie od nazwy, muszą one zapewniać zsynchronizowaną alternatywę tekstową zarówno dla mowy, jak i innych dźwięków (efekty dźwiękowe, muzyka, śmiech, identyfikacja mówcy), które są kluczowe dla zrozumienia treści."
+      "<strong>Uwaga:</strong> Definicja WCAG 2.1 zauważa, że napisy (captions) są czasem nazywane \"napisami dla niesłyszących\". Niezależnie od nazwy, muszą one zapewniać zsynchronizowaną alternatywę tekstową zarówno dla mowy, jak i innych dźwięków (efekty dźwiękowe, muzyka, śmiech, identyfikacja mówcy), które są kluczowe dla zrozumienia treści."
     ],
     "notes": [],
     "form": {
@@ -2107,7 +2106,7 @@
     "evaluation": "Inspekcja",
     "checklist": [
       "<strong>Audiodeskrypcja lub tekst:</strong> Sprawdź, czy nagrania wideo posiadają audiodeskrypcję (dodatkową ścieżkę lektora opisującą obraz) LUB pełną alternatywę tekstową (transkrypcję opisową), która pozwala zrozumieć treść wizualną bez oglądania.",
-      "<strong>Uwaga 1:</strong> Definicja WCAG 2.1 wskazuje, że audiodeskrypcja jest czasem nazywana „opisem wideo” lub „narracją opisową”.",
+      "<strong>Uwaga 1:</strong> Definicja WCAG 2.1 wskazuje, że audiodeskrypcja jest czasem nazywana \"opisem wideo\" lub \"narracją opisową\".",
       "<strong>Uwaga 2:</strong> Często wykorzystuje się do tego celu dodatkowe lub alternatywne ścieżki dźwiękowe."
     ],
     "notes": [],
@@ -2142,7 +2141,7 @@
     "evaluation": "Inspekcja",
     "checklist": [
       "<strong>Napisy na żywo:</strong> Jeśli dokument transmituje wideo na żywo z dźwiękiem, sprawdź, czy dostępne są napisy generowane w czasie rzeczywistym.",
-      "<strong>Uwaga:</strong> Definicja WCAG 2.1 zauważa, że napisy (captions) są czasem nazywane „napisami dla niesłyszących”. Niezależnie od nazwy, muszą one zapewniać zsynchronizowaną alternatywę tekstową zarówno dla mowy, jak i innych dźwięków (efekty dźwiękowe, muzyka, śmiech, identyfikacja mówcy), które są kluczowe dla zrozumienia treści."
+      "<strong>Uwaga:</strong> Definicja WCAG 2.1 zauważa, że napisy (captions) są czasem nazywane \"napisami dla niesłyszących\". Niezależnie od nazwy, muszą one zapewniać zsynchronizowaną alternatywę tekstową zarówno dla mowy, jak i innych dźwięków (efekty dźwiękowe, muzyka, śmiech, identyfikacja mówcy), które są kluczowe dla zrozumienia treści."
     ],
     "notes": [],
     "form": {
@@ -2176,7 +2175,7 @@
     "evaluation": "Inspekcja",
     "checklist": [
       "<strong>Audiodeskrypcja:</strong> Sprawdź, czy nagrania wideo posiadają audiodeskrypcję, jeśli informacje wizualne są kluczowe i nie wynikają ze ścieżki dźwiękowej (wymagane dla poziomu AA).",
-      "<strong>Uwaga 1:</strong> Definicja WCAG 2.1 wskazuje, że audiodeskrypcja jest czasem nazywana „opisem wideo” lub „narracją opisową”.",
+      "<strong>Uwaga 1:</strong> Definicja WCAG 2.1 wskazuje, że audiodeskrypcja jest czasem nazywana \"opisem wideo\" lub \"narracją opisową\".",
       "<strong>Uwaga 2:</strong> Często wykorzystuje się do tego celu dodatkowe lub alternatywne ścieżki dźwiękowe."
     ],
     "notes": [],
@@ -2228,10 +2227,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.3.1 Informacje i&nbsp;relacje."
+          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.3.1 Informacje i relacje."
         }
       ],
-      "legend": "Wybierz wynik dla C.10.1.3.1 Informacje i&nbsp;relacje",
+      "legend": "Wybierz wynik dla C.10.1.3.1 Informacje i relacje",
       "noteId": "notes-c-10-1-3-1"
     }
   },
@@ -2409,7 +2408,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.1."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.1."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -2547,7 +2546,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.2."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.2."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -2637,10 +2636,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.12 Odstępy w&nbsp;tekście."
+          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.12 Odstępy w tekście."
         }
       ],
-      "legend": "Wybierz wynik dla C.10.1.4.12 Odstępy w&nbsp;tekście",
+      "legend": "Wybierz wynik dla C.10.1.4.12 Odstępy w tekście",
       "noteId": "notes-c-10-1-4-12"
     }
   },
@@ -2718,13 +2717,13 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.3."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.3."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
       "<strong>Pułapka na klawiaturę:</strong> Sprawdź, czy fokus nie zostaje uwięziony w żadnym elemencie (np. w odtwarzaczu wideo, oknie modalnym) i czy można z niego wyjść standardowymi klawiszami (np. Tab, Esc).",
       "<strong>Kryterium sukcesu (Tabela 10.3):</strong> Jeśli można wejść na element za pomocą klawiatury, musi być też możliwe wyjście z niego za pomocą klawiatury. Jeśli wyjście wymaga użycia innych klawiszy niż standardowe (np. strzałki, Tab), użytkownik musi zostać o tym poinformowany.",
-      "<strong>Uwaga 1:</strong> Ponieważ „pułapka na klawiaturę” może uniemożliwić korzystanie z całego dokumentu, zasada ta dotyczy wszystkich treści w dokumencie.",
+      "<strong>Uwaga 1:</strong> Ponieważ \"pułapka na klawiaturę\" może uniemożliwić korzystanie z całego dokumentu, zasada ta dotyczy wszystkich treści w dokumencie.",
       "<strong>Uwaga 2:</strong> Standardowe metody wyjścia zależą od systemu (np. na komputerach często jest to klawisz Esc)."
     ],
     "notes": [],
@@ -2787,7 +2786,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.4."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.4."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -2822,7 +2821,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.5."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.5."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -2860,7 +2859,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.6."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.6."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -2895,7 +2894,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.7."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.7."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -2931,7 +2930,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.8."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.8."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3017,10 +3016,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.4.6 Nagłówki i&nbsp;etykiety."
+          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.4.6 Nagłówki i etykiety."
         }
       ],
-      "legend": "Wybierz wynik dla C.10.2.4.6 Nagłówki i&nbsp;etykiety",
+      "legend": "Wybierz wynik dla C.10.2.4.6 Nagłówki i etykiety",
       "noteId": "notes-c-10-2-4-6"
     }
   },
@@ -3064,7 +3063,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.9."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.9."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3099,7 +3098,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.10."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.10."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3153,10 +3152,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.5.3 Etykieta w&nbsp;nazwie."
+          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.5.3 Etykieta w nazwie."
         }
       ],
-      "legend": "Wybierz wynik dla C.10.2.5.3 Etykieta w&nbsp;nazwie",
+      "legend": "Wybierz wynik dla C.10.2.5.3 Etykieta w nazwie",
       "noteId": "notes-c-10-2-5-3"
     }
   },
@@ -3200,7 +3199,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.11."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.11."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3234,7 +3233,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.12."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.12."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3436,7 +3435,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.13."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.13."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3459,7 +3458,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.10.3.3.4 Zapobieganie błędom (prawnym, finansowym, w&nbsp;danych)",
+      "legend": "Wybierz wynik dla C.10.3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)",
       "noteId": "notes-c-10-3-3-4"
     }
   },
@@ -3470,7 +3469,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.14."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.14."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3507,7 +3506,7 @@
       "1. TIK nie jest stroną internetową."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 10.15."
+      "1. Sprawdź, czy dokument spełnia kryterium sukcesu zawarte w Tabeli 10.15."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3565,10 +3564,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 4.1.3 Komunikaty o&nbsp;stanie."
+          "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 4.1.3 Komunikaty o stanie."
         }
       ],
-      "legend": "Wybierz wynik dla C.10.4.1.3 Komunikaty o&nbsp;stanie",
+      "legend": "Wybierz wynik dla C.10.4.1.3 Komunikaty o stanie",
       "noteId": "notes-c-10-4-1-3"
     }
   },
@@ -3618,9 +3617,9 @@
     ],
     "procedure": [
       "1. Sprawdź, czy wyjście mowy jest zapewniane jako alternatywa dla treści nietekstowej.",
-      "2. Sprawdź, czy treść nietekstowa jest rzeczywiście istotna i&nbsp;potrzebna.",
+      "2. Sprawdź, czy treść nietekstowa jest rzeczywiście istotna i potrzebna.",
       "3. Sprawdź, czy treść nietekstowa nie jest wyłącznie używana do formatowania wizualnego.",
-      "4. Sprawdź, czy wyjście mowy jest zgodne z&nbsp;wytycznymi dotyczącymi „tekstu alternatywnego” opisanego w&nbsp;kryterium sukcesu WCAG 2.1 dla wytycznej <a href=\"https://www.w3.org/Translations/WCAG21-pl/#tresc-nietekstowa\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 – 1.1.1 Treść nietekstowa</a>."
+      "4. Sprawdź, czy wyjście mowy jest zgodne z&nbsp;wytycznymi dotyczącymi \"tekstu alternatywnego\" opisanego w&nbsp;kryterium sukcesu WCAG 2.1 dla wytycznej <a href=\"https://www.w3.org/Translations/WCAG21-pl/#tresc-nietekstowa\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 – 1.1.1 Treść nietekstowa</a>."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -3633,11 +3632,11 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria (1, 2, 3 i&nbsp;4: prawda); lub (1 i&nbsp;2: fałsz); lub (1 i&nbsp;3: fałsz)"
+          "label": "Kryteria (1, 2, 3 i 4: prawda); lub (1 i 2: fałsz); lub (1 i 3: fałsz)"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria (1: prawda i&nbsp;2: fałsz); lub (1: prawda i&nbsp;3: fałsz); lub (1, 2 i&nbsp;3: prawda oraz 4: fałsz)"
+          "label": "Kryteria (1: prawda i 2: fałsz); lub (1: prawda i 3: fałsz); lub (1, 2 i 3: prawda oraz 4: fałsz)"
         },
         {
           "value": "Nie dotyczy",
@@ -3654,7 +3653,7 @@
     "preconditions": [
       "1. TIK jest oprogramowaniem nieinternetowym, który udostępnia interfejs użytkownika.",
       "2. Oprogramowanie zapewnia wsparcie dla technologii wspomagających odczyt ekranu.",
-      "3. Aby umożliwić korzystanie z&nbsp;funkcjonalności zamkniętych TIK , nie jest konieczne wcześniejsze przygotowanie nagrań informacji dźwiękowej."
+      "3. Aby umożliwić korzystanie z funkcjonalności zamkniętych TIK , nie jest konieczne wcześniejsze przygotowanie nagrań informacji dźwiękowej."
     ],
     "procedure": [
       "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu <a href=\"https://www.w3.org/Translations/WCAG21-pl/#tylko-audio-lub-tylko-wideo-nagranie\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 – 1.2.1 Tylko audio lub tylko wideo (nagranie)</a>."
@@ -3691,7 +3690,7 @@
     "preconditions": [
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika.",
       "2. Interfejs użytkownika jest zamknięty na technologie wspomagające odczyt ekranu.",
-      "3. Aby umożliwić korzystanie z&nbsp;funkcjonalności zamkniętych TIK , konieczne jest wcześniejsze przygotowanie nagrań informacji dźwiękowej."
+      "3. Aby umożliwić korzystanie z funkcjonalności zamkniętych TIK , konieczne jest wcześniejsze przygotowanie nagrań informacji dźwiękowej."
     ],
     "procedure": [
       "1. Sprawdź, czy informacje wizualne odpowiadają nagraniom sygnału dźwiękowego."
@@ -3727,11 +3726,11 @@
     "preconditions": [
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika.",
       "2. Interfejs użytkownika jest zamknięty na technologie wspomagające odczyt ekranu.",
-      "3. Nagrane materiały wideo są niezbędne, aby umożliwić korzystanie z&nbsp;zamkniętych funkcji TIK .",
-      "4. Jako dostęp niewizualny do treści nietekstowej w&nbsp;funkcjonalności zamkniętej jest zapewniane wyjście mowy."
+      "3. Nagrane materiały wideo są niezbędne, aby umożliwić korzystanie z zamkniętych funkcji TIK .",
+      "4. Jako dostęp niewizualny do treści nietekstowej w funkcjonalności zamkniętej jest zapewniane wyjście mowy."
     ],
     "procedure": [
-      "1. Sprawdź, czy wyjście mowy zawiera informacje zgodne z&nbsp;napisami do nagranej treści wideo."
+      "1. Sprawdź, czy wyjście mowy zawiera informacje zgodne z napisami do nagranej treści wideo."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3835,10 +3834,10 @@
     "preconditions": [
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika.",
       "2. Interfejs użytkownika jest zamknięty na technologie wspomagające odczyt ekranu.",
-      "3. Jako dostęp niewizualny do treści nietekstowej w&nbsp;funkcjonalności zamkniętej jest zapewniane wyjście mowy."
+      "3. Jako dostęp niewizualny do treści nietekstowej w funkcjonalności zamkniętej jest zapewniane wyjście mowy."
     ],
     "procedure": [
-      "1. Sprawdź, czy wyjście mowy zawiera informacje zgodne z&nbsp;napisami do nagranej treści wideo."
+      "1. Sprawdź, czy wyjście mowy zawiera informacje zgodne z napisami do nagranej treści wideo."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -3965,7 +3964,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.1.3.1.1 Informacje i&nbsp;relacje (funkcjonalność otwarta)",
+      "legend": "Wybierz wynik dla C.11.1.3.1.1 Informacje i relacje (funkcjonalność otwarta)",
       "noteId": "notes-c-11-1-3-1-1"
     }
   },
@@ -4120,9 +4119,9 @@
       "3. Sygnał dźwiękowy zapewnia niewizualny dostęp do funkcji zamkniętych."
     ],
     "procedure": [
-      "1. Sprawdź, czy sygnał dźwiękowy jest dostarczany za pomocą mechanizmu zawartego w&nbsp;TIK lub dostarczanego wraz z&nbsp;nią.",
+      "1. Sprawdź, czy sygnał dźwiękowy jest dostarczany za pomocą mechanizmu zawartego w TIK lub dostarczanego wraz z nią.",
       "2. Sprawdź, czy sygnał dźwiękowy jest dostarczany za pomocą osobistego zestawu słuchawkowego, który można podłączyć poprzez gniazdo audio 3,5 mm lub standardowe połączenie branżowe, bez konieczności korzystania ze wzroku.",
-      "3. Sprawdź, czy sygnał dźwiękowy obejmuje elementy z&nbsp;sekcji Przeznaczenie pól danych w&nbsp;komponentach interfejsu użytkowników."
+      "3. Sprawdź, czy sygnał dźwiękowy obejmuje elementy z sekcji Przeznaczenie pól danych w komponentach interfejsu użytkowników."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4135,11 +4134,11 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium (1 lub 2): prawda i&nbsp;kryterium 3: prawda"
+          "label": "Kryterium (1 lub 2): prawda i kryterium 3: prawda"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria (1 i&nbsp;2): fałsz lub kryterium 3: fałsz"
+          "label": "Kryteria (1 i 2): fałsz lub kryterium 3: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -4193,7 +4192,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.1"
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.1"
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4378,9 +4377,9 @@
     ],
     "procedure": [
       "1. Sprawdź, czy wyjście mowy jest zapewniane jako alternatywa dla treści nietekstowej.",
-      "2. Sprawdź, czy treść nietekstowa jest rzeczywiście istotna i&nbsp;potrzebna.",
+      "2. Sprawdź, czy treść nietekstowa jest rzeczywiście istotna i potrzebna.",
       "3. Sprawdź, czy treść nietekstowa nie jest wyłącznie używana do formatowania wizualnego.",
-      "4. Sprawdź, czy wyjście mowy jest zgodne z&nbsp;wytycznymi dotyczącymi „tekstu alternatywnego” opisanego w&nbsp;kryterium sukcesu WCAG 2.1 dla wytycznej <a href=\"https://www.w3.org/Translations/WCAG21-pl/#tres-nietekstowa\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 – 1.1.1 Treść nietekstowa</a>."
+      "4. Sprawdź, czy wyjście mowy jest zgodne z&nbsp;wytycznymi dotyczącymi \"tekstu alternatywnego\" opisanego w&nbsp;kryterium sukcesu WCAG 2.1 dla wytycznej <a href=\"https://www.w3.org/Translations/WCAG21-pl/#tres-nietekstowa\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 – 1.1.1 Treść nietekstowa</a>."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -4394,11 +4393,11 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria (1, 2, 3 i&nbsp;4: prawda); lub (1 i&nbsp;2: fałsz); lub (1 i&nbsp;3: fałsz)"
+          "label": "Kryteria (1, 2, 3 i 4: prawda); lub (1 i 2: fałsz); lub (1 i 3: fałsz)"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria (1: prawda i&nbsp;2: fałsz); lub (1: prawda i&nbsp;3: fałsz); lub (1, 2 i&nbsp;3: prawda oraz 4: fałsz)"
+          "label": "Kryteria (1: prawda i 2: fałsz); lub (1: prawda i 3: fałsz); lub (1, 2 i 3: prawda oraz 4: fałsz)"
         },
         {
           "value": "Nie dotyczy",
@@ -4416,7 +4415,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.2."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.2."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4511,10 +4510,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.12 Odstępy w&nbsp;tekście."
+          "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.12 Odstępy w tekście."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.1.4.12 Odstępy w&nbsp;tekście",
+      "legend": "Wybierz wynik dla C.11.1.4.12 Odstępy w tekście",
       "noteId": "notes-c-11-1-4-12"
     }
   },
@@ -4596,7 +4595,7 @@
     "title": "C.11.2.1.1.2 Klawiatura (funkcjonalność zamknięta)",
     "preconditions": [
       "1. TIK jest oprogramowaniem nieinternetowym. Które udostępnia interfejs użytkownika.",
-      "2. Interfejs użytkownika jest zamknięty dla klawiatur i&nbsp;interfejsów klawiatury."
+      "2. Interfejs użytkownika jest zamknięty dla klawiatur i interfejsów klawiatury."
     ],
     "procedure": [
       "1. Sprawdź, czy wszystkie funkcjonalności interfejsu użytkownika można obsługiwać bez użycia wzroku."
@@ -4634,7 +4633,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.3."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.3."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4706,7 +4705,7 @@
     "title": "C.11.2.1.4.2 Jednoznakowe skróty klawiaturowe (funkcjonalność zamknięta)",
     "preconditions": [
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika.",
-      "2. Funkcjonalność TIK jest zamknięta dla klawiatur i&nbsp;interfejsów klawiatury."
+      "2. Funkcjonalność TIK jest zamknięta dla klawiatur i interfejsów klawiatury."
     ],
     "procedure": [
       "1. Sprawdź, czy wszystkie funkcjonalności można obsługiwać bez użycia wzroku."
@@ -4744,7 +4743,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.4."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.4."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4780,7 +4779,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.5."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.5."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4820,7 +4819,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.6."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.6."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4855,7 +4854,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.7."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.7."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -4946,10 +4945,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.6 Nagłówki i&nbsp;etykiety."
+          "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.6 Nagłówki i etykiety."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.2.4.6 Nagłówki i&nbsp;etykiety",
+      "legend": "Wybierz wynik dla C.11.2.4.6 Nagłówki i etykiety",
       "noteId": "notes-c-11-2-4-6"
     }
   },
@@ -4997,7 +4996,7 @@
       "2. Oprogramowanie zapewnia obsługę co najmniej jednej technologii wspomagającej."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.8."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.8."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5033,7 +5032,7 @@
       "2. Oprogramowanie zapewnia obsługę co najmniej jednej technologii wspomagającej."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.9."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.9."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5093,10 +5092,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.3 Etykieta w&nbsp;nazwie."
+          "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.3 Etykieta w nazwie."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.2.5.3.1 Etykieta w&nbsp;nazwie (funkcjonalność otwarta)",
+      "legend": "Wybierz wynik dla C.11.2.5.3.1 Etykieta w nazwie (funkcjonalność otwarta)",
       "noteId": "notes-c-11-2-5-3-1"
     }
   },
@@ -5144,7 +5143,7 @@
       "2. Oprogramowanie zapewnia wsparcie dla technologii wspomagających odczyt ekranu."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.10."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.10."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5177,16 +5176,16 @@
     "id": "C.11.3.1.1.2",
     "title": "C.11.3.1.1.2 Język oprogramowania (funkcjonalność zamknięta)",
     "preconditions": [
-      "1. TIK jest oprogramowaniem nieinternetowym z&nbsp;interfejsem użytkownika.",
+      "1. TIK jest oprogramowaniem nieinternetowym z interfejsem użytkownika.",
       "2. Interfejs użytkownika jest zamknięty na technologie wspomagające odczyt ekranu.",
       "3. Wyjście mowy zapewnia niewizualny dostęp do funkcji zamkniętych.",
-      "4. Sygnałem mowy nie są nazwy własne, terminy techniczne, słowa w&nbsp;nieokreślonym języku ani słowa lub zwroty, które stały się częścią żargonu bezpośrednio otaczającego tekstu.",
-      "5. Treść nie jest generowana zewnętrznie i&nbsp;jest kontrolowana przez dostawcę TIK .",
-      "6. Wyświetlane języki można wybrać z&nbsp;zastosowaniem dostępu niewizualny.",
+      "4. Sygnałem mowy nie są nazwy własne, terminy techniczne, słowa w nieokreślonym języku ani słowa lub zwroty, które stały się częścią żargonu bezpośrednio otaczającego tekstu.",
+      "5. Treść nie jest generowana zewnętrznie i jest kontrolowana przez dostawcę TIK .",
+      "6. Wyświetlane języki można wybrać z zastosowaniem dostępu niewizualny.",
       "7. Użytkownik nie wybrał języka mowy, który jest inny niż język wyświetlanej treści."
     ],
     "procedure": [
-      "1. Sprawdź, czy wyjście mowy występuje w&nbsp;tym samym języku co dostarczona wyświetlana treść."
+      "1. Sprawdź, czy wyjście mowy występuje w tym samym języku co dostarczona wyświetlana treść."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -5343,7 +5342,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -5435,7 +5434,7 @@
       "1. TIK jest oprogramowaniem nieinternetowym, które udostępnia interfejs użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.11."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.11."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5459,7 +5458,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.3.3.4 Zapobieganie błędom (prawnym, finansowym, w&nbsp;danych)",
+      "legend": "Wybierz wynik dla C.11.3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)",
       "noteId": "notes-c-11-3-3-4"
     }
   },
@@ -5471,7 +5470,7 @@
       "2. Oprogramowanie zapewnia obsługę co najmniej jednej technologii wspomagającej."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.12."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.12."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5511,7 +5510,7 @@
       "2. Oprogramowanie zapewnia obsługę co najmniej jednej technologii wspomagającej."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w&nbsp;Tabeli 11.13."
+      "1. Sprawdź, czy oprogramowanie spełnia kryterium sukcesu zawarte w Tabeli 11.13."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5570,10 +5569,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.3 Komunikaty o&nbsp;stanie"
+          "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.3 Komunikaty o stanie"
         }
       ],
-      "legend": "Wybierz wynik dla C.11.4.1.3.1 Komunikaty o&nbsp;stanie (funkcjonalność otwarta)",
+      "legend": "Wybierz wynik dla C.11.4.1.3.1 Komunikaty o stanie (funkcjonalność otwarta)",
       "noteId": "notes-c-11-4-1-3-1"
     }
   },
@@ -5581,10 +5580,10 @@
     "id": "C.11.5.1",
     "title": "C.11.5.1 Funkcjonalność zamknięta",
     "preconditions": [
-      "1. W&nbsp;oprogramowaniu występuje funkcjonalność zamknięta."
+      "1. W oprogramowaniu występuje funkcjonalność zamknięta."
     ],
     "procedure": [
-      "1. Sprawdź, czy funkcjonalność zamknięta jest zgodna z&nbsp;Rozdziałem 5.1."
+      "1. Sprawdź, czy funkcjonalność zamknięta jest zgodna z Rozdziałem 5.1."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -5758,7 +5757,7 @@
     "id": "C.11.5.2.5",
     "title": "C.11.5.2.5 Informacje o obiekcie",
     "preconditions": [
-      "1. Oceniane jest oprogramowanie z&nbsp;interfejsem użytkownika."
+      "1. Oceniane jest oprogramowanie z interfejsem użytkownika."
     ],
     "procedure": [
       "1. Sprawdź, czy rola elementu interfejsu użytkownika jest możliwa do określenia programowo za pomocą technologii wspomagających.",
@@ -5778,7 +5777,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria 1, 2, 3, 4 i&nbsp;5: prawda"
+          "label": "Kryteria 1, 2, 3, 4 i 5: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -5789,7 +5788,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.5.2.5 Informacje o&nbsp;obiekcie",
+      "legend": "Wybierz wynik dla C.11.5.2.5 Informacje o obiekcie",
       "noteId": "notes-c-11-5-2-5"
     }
   },
@@ -5797,8 +5796,8 @@
     "id": "C.11.5.2.6",
     "title": "C.11.5.2.6 Wiersz, kolumna i nagłówki",
     "preconditions": [
-      "1. Oceniane jest oprogramowanie z&nbsp;interfejsem użytkownika.",
-      "2. W&nbsp;interfejsie użytkownika znajdują się tabele danych."
+      "1. Oceniane jest oprogramowanie z interfejsem użytkownika.",
+      "2. W interfejsie użytkownika znajdują się tabele danych."
     ],
     "procedure": [
       "1. Wybrać tabelę danych, na której należy wykonać testy.",
@@ -5814,7 +5813,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria 2, 3, 4 i&nbsp;5: prawda"
+          "label": "Kryteria 2, 3, 4 i 5: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -5825,7 +5824,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.5.2.6 Wiersz, kolumna i&nbsp;nagłówki",
+      "legend": "Wybierz wynik dla C.11.5.2.6 Wiersz, kolumna i nagłówki",
       "noteId": "notes-c-11-5-2-6"
     }
   },
@@ -6263,10 +6262,10 @@
     "id": "C.11.6.1",
     "title": "C.11.6.1 Kontrola funkcji dostępności przez użytkownika",
     "preconditions": [
-      "1. Istnieją funkcje platformy, które są zdefiniowane w&nbsp;dokumentacji platformy jako funkcje dostępności przeznaczone dla użytkowników."
+      "1. Istnieją funkcje platformy, które są zdefiniowane w dokumentacji platformy jako funkcje dostępności przeznaczone dla użytkowników."
     ],
     "procedure": [
-      "1. Sprawdź, czy istnieją odpowiednie tryby pracy, w&nbsp;których możliwa jest kontrola użytkowników nad funkcjami platformy zdefiniowanymi w&nbsp;dokumentacji platformy jako funkcje dostępności przeznaczone dla użytkowników."
+      "1. Sprawdź, czy istnieją odpowiednie tryby pracy, w których możliwa jest kontrola użytkowników nad funkcjami platformy zdefiniowanymi w dokumentacji platformy jako funkcje dostępności przeznaczone dla użytkowników."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -6298,10 +6297,10 @@
     "id": "C.11.6.2",
     "title": "C.11.6.2 Nieprzerwane działanie funkcji dostępności",
     "preconditions": [
-      "1. Istnieją funkcje platformy, które są zdefiniowane w&nbsp;dokumentacji platformy jako funkcje dostępności."
+      "1. Istnieją funkcje platformy, które są zdefiniowane w dokumentacji platformy jako funkcje dostępności."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie z&nbsp;interfejsem użytkownika przerywa normalne działanie funkcji dostępności platformy.",
+      "1. Sprawdź, czy oprogramowanie z interfejsem użytkownika przerywa normalne działanie funkcji dostępności platformy.",
       "2. Sprawdź, czy to przerwanie zostało wywołane lub zatwierdzone przez użytkownika."
     ],
     "evaluation": "Test",
@@ -6335,11 +6334,11 @@
     "title": "C.11.7 Preferencje użytkownika",
     "preconditions": [
       "1. Oprogramowanie posiada interfejs użytkownika.",
-      "2. Oprogramowanie zapewnia ustawienia języka, koloru, kontrastu, typu i&nbsp;rozmiaru czcionki oraz kursora fokusu, które odpowiadają ustawieniom platformy.",
+      "2. Oprogramowanie zapewnia ustawienia języka, koloru, kontrastu, typu i rozmiaru czcionki oraz kursora fokusu, które odpowiadają ustawieniom platformy.",
       "3. Oprogramowanie nie jest przeznaczone do odizolowania od platform, na których jest oparte."
     ],
     "procedure": [
-      "1. Sprawdź, czy oprogramowanie zapewnia tryb pracy zgodny z&nbsp;ustawieniami platformy."
+      "1. Sprawdź, czy oprogramowanie zapewnia tryb pracy zgodny z ustawieniami platformy."
     ],
     "evaluation": "Inspekcja i test",
     "checklist": [
@@ -6411,7 +6410,7 @@
       "1. Oprogramowanie jest narzędziem do tworzenia treści."
     ],
     "procedure": [
-      "1. Sprawdź, czy narzędzie do tworzenia treści ma cechy, które umożliwiają i&nbsp;wspomagają produkcję treści zgodnych z&nbsp;Rozdziałami 9 (Internet) i&nbsp;10 (Dokumenty nieinternetowe)."
+      "1. Sprawdź, czy narzędzie do tworzenia treści ma cechy, które umożliwiają i wspomagają produkcję treści zgodnych z Rozdziałami 9 (Internet) i 10 (Dokumenty nieinternetowe)."
     ],
     "evaluation": "Inspekcja i test",
     "checklist": [
@@ -6446,10 +6445,10 @@
       "2. Narzędzie do tworzenia treści zapewnia transformacje restrukturyzacyjne lub ponownie kodujące."
     ],
     "procedure": [
-      "1. W&nbsp;przypadku transformacji restrukturyzacyjnej sprawdzić, czy w&nbsp;danych wyjściowych są zachowane informacje o&nbsp;dostępności.",
-      "2. W&nbsp;przypadku transformacji restrukturyzacyjnej sprawdzić, czy technologia treści obsługuje informacje o&nbsp;dostępności dla restrukturyzowanej formy informacji.",
-      "3. W&nbsp;przypadku transformacji ponownie kodujących sprawdzić, czy w&nbsp;danych wyjściowych są zachowane informacje o&nbsp;dostępności.",
-      "4. W&nbsp;przypadku transformacji ponownie kodujących sprawdzić, czy informacje o&nbsp;dostępności są obsługiwane przez technologię ponownie zakodowanych danych wyjściowych."
+      "1. W przypadku transformacji restrukturyzacyjnej sprawdzić, czy w danych wyjściowych są zachowane informacje o dostępności.",
+      "2. W przypadku transformacji restrukturyzacyjnej sprawdzić, czy technologia treści obsługuje informacje o dostępności dla restrukturyzowanej formy informacji.",
+      "3. W przypadku transformacji ponownie kodujących sprawdzić, czy w danych wyjściowych są zachowane informacje o dostępności.",
+      "4. W przypadku transformacji ponownie kodujących sprawdzić, czy informacje o dostępności są obsługiwane przez technologię ponownie zakodowanych danych wyjściowych."
     ],
     "evaluation": "Inspekcja i test",
     "checklist": [
@@ -6461,7 +6460,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1: prawda lub kryteria 1 i&nbsp;2: fałsz lub kryterium 3: prawda lub kryteria 3 i&nbsp;4: fałsz"
+          "label": "Kryterium 1: prawda lub kryteria 1 i 2: fałsz lub kryterium 3: prawda lub kryteria 3 i 4: fałsz"
         },
         {
           "value": "Niezaliczone",
@@ -6472,7 +6471,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
       ],
-      "legend": "Wybierz wynik dla C.11.8.3 Zachowanie informacji o&nbsp;dostępności podczas transformacji",
+      "legend": "Wybierz wynik dla C.11.8.3 Zachowanie informacji o dostępności podczas transformacji",
       "noteId": "notes-c-11-8-3"
     }
   },
@@ -6481,7 +6480,7 @@
     "title": "C.11.8.4 Wspomaganie naprawy",
     "preconditions": [
       "1. Oprogramowanie jest narzędziem do tworzenia treści.",
-      "2. Funkcjonalność sprawdzania dostępności narzędzia do tworzenia treści może wykryć, że zawartość nie spełnia wymagań określonych w&nbsp;Rozdziałach 9 (Internet) lub 10 (Dokumenty nieinternetowe), w&nbsp;zależności od przypadku."
+      "2. Funkcjonalność sprawdzania dostępności narzędzia do tworzenia treści może wykryć, że zawartość nie spełnia wymagań określonych w Rozdziałach 9 (Internet) lub 10 (Dokumenty nieinternetowe), w zależności od przypadku."
     ],
     "procedure": [
       "1. Narzędzie do tworzenia treści proponuje sposób naprawy, jeśli zawartość nie spełnia wymagań Rozdziałów 9 lub 10 (w zależności od przypadku)."
@@ -6519,8 +6518,8 @@
       "2. Narzędzie do tworzenia treści udostępnia szablony."
     ],
     "procedure": [
-      "1. Sprawdź, czy narzędzie do tworzenia treści udostępnia co najmniej jeden szablon, który wspiera tworzenie treści zgodnych z&nbsp;wymaganiami Rozdziałów 9 (Internet) lub 10 (Dokumenty nieinternetowe), w&nbsp;zależności od przypadku.",
-      "2. Sprawdź, czy dostępny jest co najmniej jeden szablon określony w&nbsp;kroku 1 i&nbsp;czy jest on zgodny z&nbsp;Rozdziałami 9 lub 10 (w zależności od przypadku)."
+      "1. Sprawdź, czy narzędzie do tworzenia treści udostępnia co najmniej jeden szablon, który wspiera tworzenie treści zgodnych z wymaganiami Rozdziałów 9 (Internet) lub 10 (Dokumenty nieinternetowe), w zależności od przypadku.",
+      "2. Sprawdź, czy dostępny jest co najmniej jeden szablon określony w kroku 1 i czy jest on zgodny z Rozdziałami 9 lub 10 (w zależności od przypadku)."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6528,13 +6527,13 @@
       "<strong>Wybór szablonu:</strong> Spróbuj stworzyć nową treść używając szablonu; sprawdź czy wynikowa treść jest dostępna."
     ],
     "notes": [
-      "Identyfikacja zgodna z&nbsp;wymaganiami Rozdziałów 9 lub 10 (odpowiednio) opisanymi w&nbsp;kryterium 2 może być opisana słowami „Zgodna z&nbsp;WCAG 2.1” . Jeśli podczas identyfikacji nie można wyraźnie stwierdzić, że wszystkie wymagania określone w&nbsp;Rozdziałach 9 lub 10 (w zależności od przypadku) są spełnione, może być konieczne wykorzystanie szablonu do stworzenia strony internetowej lub dokumentu, a&nbsp;na- stępnie przetestowanie tej strony internetowej lub dokumentu zgodnie z&nbsp;wymaganiami Rozdziałów 9 lub 10 w&nbsp;celu uzyskania całkowitej pewności, że szablon zachowuje się tak, jak jest to wymagane. C.12 Dokumentacja i&nbsp;wsparcie techniczne"
+      "Identyfikacja zgodna z wymaganiami Rozdziałów 9 lub 10 (odpowiednio) opisanymi w kryterium 2 może być opisana słowami \"Zgodna z WCAG 2.1\" . Jeśli podczas identyfikacji nie można wyraźnie stwierdzić, że wszystkie wymagania określone w Rozdziałach 9 lub 10 (w zależności od przypadku) są spełnione, może być konieczne wykorzystanie szablonu do stworzenia strony internetowej lub dokumentu, a na- stępnie przetestowanie tej strony internetowej lub dokumentu zgodnie z wymaganiami Rozdziałów 9 lub 10 w celu uzyskania całkowitej pewności, że szablon zachowuje się tak, jak jest to wymagane. C.12 Dokumentacja i wsparcie techniczne"
     ],
     "form": {
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -6553,10 +6552,10 @@
     "id": "C.12.1.1",
     "title": "C.12.1.1 Funkcje dostępności i zgodności",
     "preconditions": [
-      "1. Dokumentacja produktu jest dostarczana razem z&nbsp;TIK ."
+      "1. Dokumentacja produktu jest dostarczana razem z TIK ."
     ],
     "procedure": [
-      "1. Sprawdź, czy w&nbsp;dokumentacji produktu dostarczonej razem z&nbsp;TIK znajduje się wykaz funkcji dostępności i&nbsp;kompatybilności TIK oraz objaśnienia dotyczące sposobu korzystania z&nbsp;nich."
+      "1. Sprawdź, czy w dokumentacji produktu dostarczonej razem z TIK znajduje się wykaz funkcji dostępności i kompatybilności TIK oraz objaśnienia dotyczące sposobu korzystania z nich."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6580,7 +6579,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.12.1.1 Funkcje dostępności i&nbsp;zgodności",
+      "legend": "Wybierz wynik dla C.12.1.1 Funkcje dostępności i zgodności",
       "noteId": "notes-c-12-1-1"
     }
   },
@@ -6588,10 +6587,10 @@
     "id": "C.12.1.2",
     "title": "C.12.1.2 Dostępność dokumentacji",
     "preconditions": [
-      "1. Dokumentacja produktu w&nbsp;formacie elektronicznym jest dostarczana razem z&nbsp;TIK ."
+      "1. Dokumentacja produktu w formacie elektronicznym jest dostarczana razem z TIK ."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokumentacja produktu w&nbsp;formacie elektronicznym dostarczona wraz z&nbsp;TIK jest odpowiednio zgodna z&nbsp;wymaganiami Rozdziałów 9 lub 10."
+      "1. Sprawdź, czy dokumentacja produktu w formacie elektronicznym dostarczona wraz z TIK jest odpowiednio zgodna z wymaganiami Rozdziałów 9 lub 10."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6623,10 +6622,10 @@
     "id": "C.12.2.2",
     "title": "C.12.2.2 Informacje o funkcjach dostępności i zgodności",
     "preconditions": [
-      "1. Świadczone są usługi wsparcia w&nbsp;zakresie TIK ."
+      "1. Świadczone są usługi wsparcia w zakresie TIK ."
     ],
     "procedure": [
-      "1. Sprawdź, czy usługi wsparcia w&nbsp;zakresie TIK dostarczają informacje o&nbsp;funkcjach dostępności i&nbsp;zgodności dostarczanych razem z&nbsp;dokumentacją produktu."
+      "1. Sprawdź, czy usługi wsparcia w zakresie TIK dostarczają informacje o funkcjach dostępności i zgodności dostarczanych razem z dokumentacją produktu."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6649,7 +6648,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.12.2.2 Informacje o&nbsp;funkcjach dostępności i&nbsp;zgodności",
+      "legend": "Wybierz wynik dla C.12.2.2 Informacje o funkcjach dostępności i zgodności",
       "noteId": "notes-c-12-2-2"
     }
   },
@@ -6657,10 +6656,10 @@
     "id": "C.12.2.3",
     "title": "C.12.2.3 Efektywna komunikacja",
     "preconditions": [
-      "1. Świadczone są usługi wsparcia w&nbsp;zakresie TIK ."
+      "1. Świadczone są usługi wsparcia w zakresie TIK ."
     ],
     "procedure": [
-      "1. Sprawdź, czy usługi wsparcia w&nbsp;zakresie TIK zaspokajają potrzeby komunikacyjne poszczególnych osób z&nbsp;niepełnosprawnościami w&nbsp;sposób bezpośredni lub poprzez punkt pośredni."
+      "1. Sprawdź, czy usługi wsparcia w zakresie TIK zaspokajają potrzeby komunikacyjne poszczególnych osób z niepełnosprawnościami w sposób bezpośredni lub poprzez punkt pośredni."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6668,7 +6667,7 @@
       "<strong>Dostosowanie:</strong> Czy wsparcie jest w stanie obsłużyć osoby o różnych potrzebach (np. osoby niesłyszące, niewidome) bezpośrednio lub przekierowując do odpowiedniej usługi (np. tłumacza migowego)."
     ],
     "notes": [
-      "Zapewnienie na dowolnym poziomie wsparcia dla potrzeb komunikacyjnych osób niepełnosprawnych stanowi podstawę tego wymagania. Dostawcy mogą chcieć dostarczyć dalsze informacje na temat pozio- mu wsparcia, który jest zapewniany, aby umożliwić ocenę adekwatności i&nbsp;jakości wsparcia."
+      "Zapewnienie na dowolnym poziomie wsparcia dla potrzeb komunikacyjnych osób niepełnosprawnych stanowi podstawę tego wymagania. Dostawcy mogą chcieć dostarczyć dalsze informacje na temat pozio- mu wsparcia, który jest zapewniany, aby umożliwić ocenę adekwatności i jakości wsparcia."
     ],
     "form": {
       "inputs": [
@@ -6696,7 +6695,7 @@
       "1. Dokumentacja jest dostarczana przez serwis obsługi TIK ."
     ],
     "procedure": [
-      "1. Sprawdź, czy dokumentacja produktu w&nbsp;formie elektronicznej dostarczona przez serwis obsługi TIK jest zgodna z&nbsp;wymaganiami odpowiednio Rozdziałów 9 lub 10."
+      "1. Sprawdź, czy dokumentacja produktu w formie elektronicznej dostarczona przez serwis obsługi TIK jest zgodna z wymaganiami odpowiednio Rozdziałów 9 lub 10."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6755,7 +6754,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.13.1.2 Usługi przekazu w&nbsp;trybie tekstowym",
+      "legend": "Wybierz wynik dla C.13.1.2 Usługi przekazu w trybie tekstowym",
       "noteId": "notes-c-13-1-2"
     }
   },
@@ -6766,7 +6765,7 @@
       "1. Usługa polega na przekazywaniu znaków migowych."
     ],
     "procedure": [
-      "1. Sprawdź, czy usługa umożliwia interakcję między użytkownikami języka migowego a&nbsp;użytkownikami mowy poprzez konwersję między tymi dwoma trybami komunikacji."
+      "1. Sprawdź, czy usługa umożliwia interakcję między użytkownikami języka migowego a użytkownikami mowy poprzez konwersję między tymi dwoma trybami komunikacji."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6789,7 +6788,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.13.1.3 Usługi przekazu w&nbsp;trybie języka migowego",
+      "legend": "Wybierz wynik dla C.13.1.3 Usługi przekazu w trybie języka migowego",
       "noteId": "notes-c-13-1-3"
     }
   },
@@ -6797,10 +6796,10 @@
     "id": "C.13.1.4",
     "title": "C.13.1.4 Usługi odczytu z ruchu warg",
     "preconditions": [
-      "1. Usługa polega na czytaniu z&nbsp;ruchu warg."
+      "1. Usługa polega na czytaniu z ruchu warg."
     ],
     "procedure": [
-      "1. Sprawdź, czy usługa umożliwia interakcję między użytkownikami czytającymi z&nbsp;ruchu warg a&nbsp;użytkownikami telefonu głosowego poprzez konwersję między tymi dwoma trybami komunikacji."
+      "1. Sprawdź, czy usługa umożliwia interakcję między użytkownikami czytającymi z ruchu warg a użytkownikami telefonu głosowego poprzez konwersję między tymi dwoma trybami komunikacji."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6823,7 +6822,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.13.1.4 Usługi odczytu z&nbsp;ruchu warg",
+      "legend": "Wybierz wynik dla C.13.1.4 Usługi odczytu z ruchu warg",
       "noteId": "notes-c-13-1-4"
     }
   },
@@ -6831,10 +6830,10 @@
     "id": "C.13.1.5",
     "title": "C.13.1.5 Usługi telefonii z napisami",
     "preconditions": [
-      "1. Usługa jest usługą telefonii z&nbsp;napisami."
+      "1. Usługa jest usługą telefonii z napisami."
     ],
     "procedure": [
-      "1. Sprawdź, czy usługa zapewnia użytkownikom niesłyszącym i&nbsp;słabosłyszącym korzystającym z&nbsp;telefonu możliwość aktywnego uczestniczenia w&nbsp;rozmowie dzięki wyświetlaniu napisów tekstowych tłumaczących przychodzącą część rozmowy."
+      "1. Sprawdź, czy usługa zapewnia użytkownikom niesłyszącym i słabosłyszącym korzystającym z telefonu możliwość aktywnego uczestniczenia w rozmowie dzięki wyświetlaniu napisów tekstowych tłumaczących przychodzącą część rozmowy."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6857,7 +6856,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.13.1.5 Usługi telefonii z&nbsp;napisami",
+      "legend": "Wybierz wynik dla C.13.1.5 Usługi telefonii z napisami",
       "noteId": "notes-c-13-1-5"
     }
   },
@@ -6868,7 +6867,7 @@
       "1. Usługa jest usługą przekazywania mowy na mowę."
     ],
     "procedure": [
-      "1. Sprawdź, czy usługa umożliwia użytkownikom telefonów z&nbsp;niepełnosprawnościami mowy lub z&nbsp;niepełnosprawnościami poznawczymi, językowymi i&nbsp;trudnościami w&nbsp;nauce oraz każdemu innemu użytkownikowi komunikowanie się, zapewniając wsparcie."
+      "1. Sprawdź, czy usługa umożliwia użytkownikom telefonów z niepełnosprawnościami mowy lub z niepełnosprawnościami poznawczymi, językowymi i trudnościami w nauce oraz każdemu innemu użytkownikowi komunikowanie się, zapewniając wsparcie."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6903,7 +6902,7 @@
       "2. Został określony zestaw usług przekazywania do obsługi komunikacji dwukierunkowej."
     ],
     "procedure": [
-      "1. Sprawdź, czy system nie uniemożliwia dostępu do tych usług przekazywania w&nbsp;odniesieniu do połączeń przychodzących i&nbsp;wychodzących."
+      "1. Sprawdź, czy system nie uniemożliwia dostępu do tych usług przekazywania w odniesieniu do połączeń przychodzących i wychodzących."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6938,7 +6937,7 @@
       "2. Został określony zestaw usług ratowniczych do obsługi komunikacji."
     ],
     "procedure": [
-      "1. Sprawdź, czy system nie uniemożliwia dostępu do tych usług ratowniczych w&nbsp;odniesieniu do połączeń przychodzących i&nbsp;wychodzących."
+      "1. Sprawdź, czy system nie uniemożliwia dostępu do tych usług ratowniczych w odniesieniu do połączeń przychodzących i wychodzących."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -6969,11 +6968,11 @@
     "id": "C.5.1.2.2",
     "title": "C.5.1.2.2 Technologia wspomagająca",
     "preconditions": [
-      "1. W&nbsp;TIK występują funkcjonalności zamknięte."
+      "1. W TIK występują funkcjonalności zamknięte."
     ],
     "procedure": [
-      "1. Określ w&nbsp;TIK funkcjonalności zamknięte.",
-      "2. Sprawdź, czy testy od C.5.1.3 do C.5.1.6 można przeprowadzić bez mocowania lub instalowania jakiejkolwiek technologii wspomagającej z&nbsp;wyjątkiem osobistych zestawów słuchawkowych lub pętli indukcyjnych."
+      "1. Określ w TIK funkcjonalności zamknięte.",
+      "2. Sprawdź, czy testy od C.5.1.3 do C.5.1.6 można przeprowadzić bez mocowania lub instalowania jakiejkolwiek technologii wspomagającej z wyjątkiem osobistych zestawów słuchawkowych lub pętli indukcyjnych."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -7006,11 +7005,11 @@
     "id": "C.5.1.3.1",
     "title": "C.5.1.3.1 Wyjście audio informacji wizualnych",
     "preconditions": [
-      "1. Informacje wizualne są wymagane, aby umożliwić korzystanie z&nbsp;tych funkcji TIK , które są zamknięte dla technologii wspomagających odczyt z&nbsp;ekranu."
+      "1. Informacje wizualne są wymagane, aby umożliwić korzystanie z tych funkcji TIK , które są zamknięte dla technologii wspomagających odczyt z ekranu."
     ],
     "procedure": [
-      "1. Określ w&nbsp;TIK funkcjonalności zamknięte na odczyt z&nbsp;ekranu.",
-      "2. Sprawdź, czy można je wykonać, korzystając z&nbsp;dostępu do wyjścia audio."
+      "1. Określ w TIK funkcjonalności zamknięte na odczyt z ekranu.",
+      "2. Sprawdź, czy można je wykonać, korzystając z dostępu do wyjścia audio."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -7049,7 +7048,7 @@
       "1. Sygnał dźwiękowy zapewnia niewizualny dostęp do funkcji zamkniętych."
     ],
     "procedure": [
-      "1. Sprawdź, czy sygnał dźwiękowy jest dostarczany za pomocą mechanizmu zawartego w&nbsp;TIK lub dostarczanego wraz z&nbsp;nią.",
+      "1. Sprawdź, czy sygnał dźwiękowy jest dostarczany za pomocą mechanizmu zawartego w TIK lub dostarczanego wraz z nią.",
       "2. Sprawdź, czy sygnał dźwiękowy jest dostarczany za pomocą osobistego zestawu słuchawkowego, który można podłączyć poprzez gniazdo audio 3,5 mm lub standardowe połączenie branżowe, bez konieczności korzystania ze wzroku."
     ],
     "evaluation": "Inspekcja",
@@ -7072,7 +7071,7 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2: fałsz"
+          "label": "Kryteria 1 i 2: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -7130,7 +7129,7 @@
       "1. Wyjście mowy zapewnia niewizualny dostęp do funkcji zamkniętych."
     ],
     "procedure": [
-      "1. Określ w&nbsp;TIK funkcjonalności zamknięte.",
+      "1. Określ w TIK funkcjonalności zamknięte.",
       "2. Sprawdź, czy wyjście mowy dla każdej pojedynczej funkcji jest przerywany na skutek działania użytkownika.",
       "3. Sprawdź, czy wyjście ł mowy dla każdej pojedynczej funkcji jest przerywany, gdy rozpoczyna się nowe wyjście mowy."
     ],
@@ -7148,7 +7147,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "kryteria 2 i&nbsp;3: prawda"
+          "label": "kryteria 2 i 3: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -7171,9 +7170,9 @@
     ],
     "procedure": [
       "1. Sprawdź, czy wyjście mowy jest zapewniane jako alternatywa dla treści nietekstowej.",
-      "2. Sprawdź, czy treść nietekstowa jest rzeczywiście istotna i&nbsp;potrzebna.",
+      "2. Sprawdź, czy treść nietekstowa jest rzeczywiście istotna i potrzebna.",
       "3. Sprawdź, czy treść nietekstowa nie jest wyłącznie używana do formatowania wizualnego.",
-      "4. Sprawdź, czy wyjście mowy jest zgodne z&nbsp;wytycznymi dotyczącymi „tekstu alternatywnego” opisanymi w&nbsp;kryterium sukcesu <a href=\"https://www.w3.org/Translations/WCAG21-pl/#non-text-content\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 dla wytycznej 1.1.1</a>."
+      "4. Sprawdź, czy wyjście mowy jest zgodne z&nbsp;wytycznymi dotyczącymi \"tekstu alternatywnego\" opisanymi w&nbsp;kryterium sukcesu <a href=\"https://www.w3.org/Translations/WCAG21-pl/#non-text-content\" target=\"_blank\" rel=\"noopener noreferrer\">WCAG 2.1 dla wytycznej 1.1.1</a>."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -7188,11 +7187,11 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria 1, 2, 3 i&nbsp;4: prawda; lub 1 i&nbsp;2: fałsz; lub 1 i&nbsp;3: fałsz"
+          "label": "Kryteria 1, 2, 3 i 4: prawda; lub 1 i 2: fałsz; lub 1 i 3: fałsz"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1: prawda i&nbsp;2: fałsz; lub 1: prawda i&nbsp;3: fałsz; lub 1, 2 i&nbsp;3: prawda oraz 4: fałsz"
+          "label": "Kryteria 1: prawda i 2: fałsz; lub 1: prawda i 3: fałsz; lub 1, 2 i 3: prawda oraz 4: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -7207,11 +7206,11 @@
     "id": "C.5.1.3.7",
     "title": "C.5.1.3.7 Wyjście mowy dla informacji wideo",
     "preconditions": [
-      "1. Nagrane materiały wideo są niezbędne, aby umożliwić korzystanie z&nbsp;zamkniętych funkcji TIK .",
-      "2. Wyjście mowy zapewnia niewizualny dostęp do treści nietekstowej w&nbsp;funkcjonalności zamkniętej."
+      "1. Nagrane materiały wideo są niezbędne, aby umożliwić korzystanie z zamkniętych funkcji TIK .",
+      "2. Wyjście mowy zapewnia niewizualny dostęp do treści nietekstowej w funkcjonalności zamkniętej."
     ],
     "procedure": [
-      "1. Sprawdź, czy wyjście mowy prezentuje informacje zgodne z&nbsp;napisami do nagranej treści wideo."
+      "1. Sprawdź, czy wyjście mowy prezentuje informacje zgodne z napisami do nagranej treści wideo."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -7248,7 +7247,7 @@
     "preconditions": [
       "1. Sygnał dźwiękowy zapewnia niewizualny dostęp do funkcji zamkniętych.",
       "2. Wyświetlane są znaki maskowane.",
-      "3. Nie aktywowano żadnej opcji umożliwiającej korzystanie z&nbsp;nieprywatnego sygnału dźwiękowego."
+      "3. Nie aktywowano żadnej opcji umożliwiającej korzystanie z nieprywatnego sygnału dźwiękowego."
     ],
     "procedure": [
       "1. Sprawdź, czy sygnał dźwiękowy nie jest mówioną wersją wprowadzonych znaków.",
@@ -7312,11 +7311,11 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria 1 i&nbsp;2 lub 3: prawda"
+          "label": "Kryteria 1 i 2 lub 3: prawda"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 lub 2 i&nbsp;3: fałsz"
+          "label": "Kryteria 1 lub 2 i 3: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -7428,7 +7427,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -7487,13 +7486,13 @@
     "title": "C.5.1.3.14 Języki mówione",
     "preconditions": [
       "1. Wyjście mowy zapewnia niewizualny dostęp do funkcji zamkniętych.",
-      "2. Sygnałem mowy nie są nazwy własne, terminy techniczne, słowa w&nbsp;nieokreślonym języku ani słowa lub zwroty, które stały się częścią żargonu bezpośrednio otaczającego tekstu.",
-      "3. Treść nie jest generowana zewnętrznie i&nbsp;jest kontrolowana przez dostawcę TIK .",
-      "4. Wyświetlane języki można wybrać z&nbsp;zastosowaniem dostępu niewizualny.",
+      "2. Sygnałem mowy nie są nazwy własne, terminy techniczne, słowa w nieokreślonym języku ani słowa lub zwroty, które stały się częścią żargonu bezpośrednio otaczającego tekstu.",
+      "3. Treść nie jest generowana zewnętrznie i jest kontrolowana przez dostawcę TIK .",
+      "4. Wyświetlane języki można wybrać z zastosowaniem dostępu niewizualny.",
       "5. Gdy użytkownik nie wybrał języka mowy, który jest inny niż język wyświetlanej treści."
     ],
     "procedure": [
-      "1. Sprawdź, czy wyjście mowy jest w&nbsp;tym samym języku co dostarczona wyświetlana treść."
+      "1. Sprawdź, czy wyjście mowy jest w tym samym języku co dostarczona wyświetlana treść."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -7547,7 +7546,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -7568,7 +7567,7 @@
     "preconditions": [
       "1. TIK jest zamknięta dla dostępu wizualnego.",
       "2. TIK dostarcza jako wynik transakcji samoobsługowej pokwitowania, bilet lub inne dane wyjściowe",
-      "3. Sprawdzane informacje nie są drukowanymi kopiami tras i&nbsp;map."
+      "3. Sprawdzane informacje nie są drukowanymi kopiami tras i map."
     ],
     "procedure": [
       "1. Sprawdź, czy dostarczane wyjście mowy zawiera wszystkie informacje niezbędne do zakończenia lub zweryfikowania transakcji."
@@ -7598,7 +7597,7 @@
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3"
         }
       ],
-      "legend": "Wybierz wynik dla C.5.1.3.16 Pokwitowania, bilety i&nbsp;dane wyjściowe transakcji",
+      "legend": "Wybierz wynik dla C.5.1.3.16 Pokwitowania, bilety i dane wyjściowe transakcji",
       "noteId": "notes-c-5-1-3-16"
     }
   },
@@ -7651,7 +7650,7 @@
     "id": "C.5.1.5",
     "title": "C.5.1.5 Wyjście wizualne dla informacji dźwiękowych",
     "preconditions": [
-      "1. Aby umożliwić korzystanie z&nbsp;funkcjonalności zamkniętych TIK , konieczne jest wcześniejsze przygotowanie nagrań sygnału dźwiękowego."
+      "1. Aby umożliwić korzystanie z funkcjonalności zamkniętych TIK , konieczne jest wcześniejsze przygotowanie nagrań sygnału dźwiękowego."
     ],
     "procedure": [
       "1. Sprawdź, czy informacje wizualne odpowiadają nagraniom sygnału dźwiękowego."
@@ -7689,7 +7688,7 @@
     "id": "C.5.1.6.1",
     "title": "C.5.1.6.1 Funkcjonalność zamknięta",
     "preconditions": [
-      "1. Funkcjonalność TIK jest zamknięta dla klawiatur i&nbsp;interfejsów klawiatury."
+      "1. Funkcjonalność TIK jest zamknięta dla klawiatur i interfejsów klawiatury."
     ],
     "procedure": [
       "1. Sprawdź, czy wszystkie funkcjonalności można obsługiwać bez użycia wzroku."
@@ -7726,11 +7725,11 @@
     "id": "C.5.1.6.2",
     "title": "C.5.1.6.2 Fokus",
     "preconditions": [
-      "1. Funkcjonalność TIK jest zamknięta dla klawiatur i&nbsp;interfejsów klawiatury.",
+      "1. Funkcjonalność TIK jest zamknięta dla klawiatur i interfejsów klawiatury.",
       "2. Fokus może być przeniesiony na element interfejsu użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy istnieje możliwość usunięcia fokusu z&nbsp;elementu za pomocą tego samego mechanizmu."
+      "1. Sprawdź, czy istnieje możliwość usunięcia fokusu z elementu za pomocą tego samego mechanizmu."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -7764,7 +7763,7 @@
     "id": "C.5.1.7",
     "title": "C.5.1.7 Dostęp bez użycia mowy",
     "preconditions": [
-      "1. Aby umożliwić korzystanie z&nbsp;funkcjonalności zamkniętych TIK , konieczna jest mowa."
+      "1. Aby umożliwić korzystanie z funkcjonalności zamkniętych TIK , konieczna jest mowa."
     ],
     "procedure": [
       "1. Sprawdź, czy zamknięte funkcje można aktywować za pomocą alternatywnego mechanizmu wprowadzania, który nie wymaga posługiwania się mową."
@@ -7804,7 +7803,7 @@
       "1. TIK zapewnia udokumentowane funkcje dostępności uwzględniające konkretne potrzeby."
     ],
     "procedure": [
-      "1. Sprawdź, czy można aktywować te funkcje dostępności, nie korzystając z&nbsp;metody, która nie uwzględnia tych potrzeb."
+      "1. Sprawdź, czy można aktywować te funkcje dostępności, nie korzystając z metody, która nie uwzględnia tych potrzeb."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -7879,11 +7878,11 @@
     "preconditions": [
       "1. Niezastrzeżone informacje dotyczące dostępności są udokumentowane.",
       "2. TIK konwertuje informacje lub komunikację.",
-      "3. Niezastrzeżone informacje dotyczące dostępności mogą być zawarte w&nbsp;formacie docelowym.",
+      "3. Niezastrzeżone informacje dotyczące dostępności mogą być zawarte w formacie docelowym.",
       "4. Niezastrzeżone informacje dotyczące dostępności mogą być obsługiwane przez format docelowy."
     ],
     "procedure": [
-      "1. Sprawdź, czy niezastrzeżone informacje dotyczące dostępności są zachowane po konwersji w&nbsp;TIK informacji lub komunikacji."
+      "1. Sprawdź, czy niezastrzeżone informacje dotyczące dostępności są zachowane po konwersji w TIK informacji lub komunikacji."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -7909,7 +7908,7 @@
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4"
         }
       ],
-      "legend": "Wybierz wynik dla C.5.4 Zachowanie informacji o&nbsp;dostępności podczas konwersji",
+      "legend": "Wybierz wynik dla C.5.4 Zachowanie informacji o dostępności podczas konwersji",
       "noteId": "notes-c-5-4"
     }
   },
@@ -7957,8 +7956,8 @@
       "1. TIK zawiera części obsługiwane."
     ],
     "procedure": [
-      "1. Określ, czy istnieje sposób na rozpoznanie każdej części, którą można obsługiwać w&nbsp;sposób niewizualny.",
-      "2. Sprawdź, czy działanie związane z&nbsp;częścią obsługiwaną nie zostało wykonane z&nbsp;użyciem środków do rozpoznania każdej części obsługiwanej w&nbsp;kroku 1."
+      "1. Określ, czy istnieje sposób na rozpoznanie każdej części, którą można obsługiwać w sposób niewizualny.",
+      "2. Sprawdź, czy działanie związane z częścią obsługiwaną nie zostało wykonane z użyciem środków do rozpoznania każdej części obsługiwanej w kroku 1."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -7974,7 +7973,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -7997,8 +7996,8 @@
       "2. Elementy sterujące blokujące lub przełączające są widoczne dla użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy istnieje przynajmniej jeden tryb działania, w&nbsp;którym stan wszystkich elementów sterujących blokujących lub przełączających można określić dotykowo, bez aktywowania elementu sterującego.",
-      "2. Sprawdź, czy istnieje przynajmniej jeden tryb działania, w&nbsp;którym stan wszystkich elementów sterujących blokujących lub przełączających można określić dźwiękiem, bez aktywowania elementu sterującego."
+      "1. Sprawdź, czy istnieje przynajmniej jeden tryb działania, w którym stan wszystkich elementów sterujących blokujących lub przełączających można określić dotykowo, bez aktywowania elementu sterującego.",
+      "2. Sprawdź, czy istnieje przynajmniej jeden tryb działania, w którym stan wszystkich elementów sterujących blokujących lub przełączających można określić dźwiękiem, bez aktywowania elementu sterującego."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8019,7 +8018,7 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2: fałsz"
+          "label": "Kryteria 1 i 2: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -8056,7 +8055,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -8095,7 +8094,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -8114,14 +8113,14 @@
     "id": "C.5.8",
     "title": "C.5.8 Akceptacja dwukrotnego kliknięcia klawisza",
     "preconditions": [
-      "1. TIK jest wyposażona w&nbsp;klawiaturę lub klawiaturę pomocniczą."
+      "1. TIK jest wyposażona w klawiaturę lub klawiaturę pomocniczą."
     ],
     "procedure": [
-      "1. Sprawdź, czy istnieje mechanizm umożliwiający regulację opóźnienia po każdym naciśnięciu klawisza, podczas którego dodatkowe naciśnięcie klawisza nie zostanie zaakceptowane, jeśli jest ono identyczne z&nbsp;poprzednim naciśnięciem klawisza.",
+      "1. Sprawdź, czy istnieje mechanizm umożliwiający regulację opóźnienia po każdym naciśnięciu klawisza, podczas którego dodatkowe naciśnięcie klawisza nie zostanie zaakceptowane, jeśli jest ono identyczne z poprzednim naciśnięciem klawisza.",
       "2. Ustawić mechanizm na maksymalną wartość.",
       "3. Nacisnąć dowolny klawisz.",
-      "4. Po 0,5 s nacisnąć ten sam klawisz co w&nbsp;kroku 3.",
-      "5. Sprawdź, czy naciśnięcie w&nbsp;kroku 4 zostało zaakceptowane."
+      "4. Po 0,5 s nacisnąć ten sam klawisz co w kroku 3.",
+      "5. Sprawdź, czy naciśnięcie w kroku 4 zostało zaakceptowane."
     ],
     "evaluation": "Test",
     "checklist": [
@@ -8159,7 +8158,7 @@
     ],
     "procedure": [
       "1. Sprawdź, czy istnieje tryb pracy, który nie wymaga jednoczesnych czynności użytkownika.",
-      "2. Określ w&nbsp;TIK wszystkie funkcje sterowane przez użytkowników.",
+      "2. Określ w TIK wszystkie funkcje sterowane przez użytkowników.",
       "3. Sprawdź, czy każda funkcja, którą można sterować, może być obsługiwana za pomocą pojedynczego działania użytkownika."
     ],
     "evaluation": "Inspekcja",
@@ -8197,7 +8196,7 @@
       "1. Testowana TIK udostępnia dwukierunkową komunikację głosową."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK może kodować i&nbsp;dekodować dźwięk w&nbsp;zakresie częstotliwości z&nbsp;górną granicą co najmniej 7 000 Hz."
+      "1. Sprawdź, czy TIK może kodować i dekodować dźwięk w zakresie częstotliwości z górną granicą co najmniej 7 000 Hz."
     ],
     "evaluation": "Pomiar",
     "checklist": [
@@ -8231,20 +8230,20 @@
     "preconditions": [
       "1. Testowany system TIK udostępnia dwukierunkową komunikację głosową.",
       "2. TIK pracuje w trybie umożliwiającym dwukierunkową komunikację głosową.",
-      "3. Dostępny jest „referencyjny terminal obsługujący komunikację RTT”."
+      "3. Dostępny jest \"referencyjny terminal obsługujący komunikację RTT\"."
     ],
     "procedure": [
-      "1. Sprawdź, czy system TIK umożliwia użytkownikowi komunikację RTT z&nbsp;innym „referencyjnym” TIK."
+      "1. Sprawdź, czy system TIK umożliwia użytkownikowi komunikację RTT z innym \"referencyjnym\" TIK."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
-      "<strong>Sprawdzenie dostępności RTT:</strong> Sprawdź, czy system TIK umożliwia użytkownikowi komunikację RTT z innym „referencyjnym” TIK.",
+      "<strong>Sprawdzenie dostępności RTT:</strong> Sprawdź, czy system TIK umożliwia użytkownikowi komunikację RTT z innym \"referencyjnym\" TIK.",
       "<strong>Uwaga 1:</strong> To wymaganie obejmuje produkty, które nie mają fizycznych możliwości wyświetlania lub wprowadzania tekstu, ale mają możliwość połączenia z urządzeniami, które takie możliwości posiadają. Obejmuje również pośrednie TIK między punktami końcowymi komunikacji.",
       "<strong>Uwaga 2:</strong> Nie ma wymagania dodawania: wyświetlacza sprzętowego, klawiatury sprzętowej lub sprzętu do obsługi możliwości połączenia z wyświetlaczem lub klawiaturą, przewodowo lub bezprzewodowo, jeśli taki sprzęt nie byłby normalnie dostarczany.",
       "<strong>Uwaga 3:</strong> Dla celów interoperacyjności szeroko stosuje się obsługę zalecenia ITU-T T.140 (1988): \"Recommendation ITU-T T.140 (1988): \"Protocol for multimedia application text conversation\"."
     ],
     "notes": [
-      "„Referencyjny terminal obsługujący komunikację RTT” to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w&nbsp;sposób potwierdzający ich funkcjonalność i&nbsp;interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym „referencyjnym terminalu obsługującym komunikację RTT”."
+      "\"Referencyjny terminal obsługujący komunikację RTT\" to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w sposób potwierdzający ich funkcjonalność i interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym \"referencyjnym terminalu obsługującym komunikację RTT\"."
     ],
     "form": {
       "inputs": [
@@ -8277,12 +8276,12 @@
       "2. TIK obsługuje dwukierunkową komunikację za pomocą RTT."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK umożliwia jednoczesne korzystanie z&nbsp;połączeń głosowych i&nbsp;RTT przez połączenie jednego użytkownika."
+      "1. Sprawdź, czy TIK umożliwia jednoczesne korzystanie z połączeń głosowych i RTT przez połączenie jednego użytkownika."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
       "<strong>Sprawdzenie równoczesności:</strong> Sprawdź, czy TIK umożliwia jednoczesne korzystanie z połączeń głosowych i RTT przez połączenie jednego użytkownika.",
-      "<strong>Uwaga 1:</strong> W przypadku komunikacji wielostronnej, takiej jak system konferencyjny, dopuszcza się (ale nie wymaga ani niekoniecznie zaleca), aby RTT był obsługiwany w pojedynczym polu wyświetlania i aby konieczne było „przejmowanie głosu”, aby uniknąć zamieszania (w taki sam sposób, jak przejście głosu jest wymagane dla tych, którzy prezentują/mówią głosem).",
+      "<strong>Uwaga 1:</strong> W przypadku komunikacji wielostronnej, takiej jak system konferencyjny, dopuszcza się (ale nie wymaga ani niekoniecznie zaleca), aby RTT był obsługiwany w pojedynczym polu wyświetlania i aby konieczne było \"przejmowanie głosu\", aby uniknąć zamieszania (w taki sam sposób, jak przejście głosu jest wymagane dla tych, którzy prezentują/mówią głosem).",
       "<strong>Uwaga 2:</strong> W przypadku komunikacji wielostronnej najlepszą praktyką jest obsługa podnoszenia ręki dla użytkowników głosowych i RTT w taki sam sposób, aby użytkownicy głosowi i RTT znajdowali się w tej samej kolejce.",
       "<strong>Uwaga 3:</strong> W systemie konferencji wielostronnej, który ma czat jako jedną z funkcji - RTT (jak głos) byłby zwykle oddzielony od czatu, aby użycie RTT nie zakłócało czatu (tj. ludzie mogą wysyłać wiadomości w polu czatu, podczas gdy osoba prezentuje/mówi z RTT - w taki sam sposób, jak ludzie wysyłają wiadomości za pomocą funkcji czatu, podczas gdy inni mówią głosem). Użytkownicy RTT używają wtedy RTT do prezentowania i używają funkcji Czat do wysyłania wiadomości, podczas gdy inni prezentują (za pośrednictwem Głosu lub RTT).",
       "<strong>Uwaga 4:</strong> Dostępność głosu i RTT działających jednocześnie (i oddzielnie od czatu) może również pozwolić polu RTT na obsługę napisów tekstowych, gdy ktoś mówi (i dlatego nie jest używany do RTT, ponieważ nie jest to kolej użytkownika RTT do mówienia).",
@@ -8304,7 +8303,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
       ],
-      "legend": "Wybierz wynik dla C.6.2.1.2 Równoczesna komunikacja głosowa i&nbsp;tekstowa",
+      "legend": "Wybierz wynik dla C.6.2.1.2 Równoczesna komunikacja głosowa i tekstowa",
       "noteId": "notes-c-6-2-1-2"
     }
   },
@@ -8312,16 +8311,16 @@
     "id": "C.6.2.2.1",
     "title": "C.6.2.2.1 Wyświetlacz umożliwiający rozróżnianie tekstu",
     "preconditions": [
-      "1. Testowana TIK zapewnia możliwość wysyłania i&nbsp;odbierania komunikacji RTT.",
+      "1. Testowana TIK zapewnia możliwość wysyłania i odbierania komunikacji RTT.",
       "2. TIK obsługuje mechanizmy RTT.",
-      "3. Dostępny jest „referencyjny terminal obsługujący komunikację RTT”."
+      "3. Dostępny jest \"referencyjny terminal obsługujący komunikację RTT\"."
     ],
     "procedure": [
-      "1. Testowana TIK jest podłączona do „referencyjnego terminala obsługującego RTT”.",
-      "2. Różne elementy TIK są w&nbsp;stanie działania (połączenie jest aktywne, a&nbsp;terminale we właściwym trybie RTT) i&nbsp;dwa terminale komunikują się ze sobą.",
+      "1. Testowana TIK jest podłączona do \"referencyjnego terminala obsługującego RTT\".",
+      "2. Różne elementy TIK są w stanie działania (połączenie jest aktywne, a terminale we właściwym trybie RTT) i dwa terminale komunikują się ze sobą.",
       "3. Testowany system TIK wysyła krótki tekst.",
-      "4. „Terminal referencyjny RTT” wysyła krótki tekst.",
-      "5. Sprawdź na testowanej TIK , czy wyświetlany nadawany tekst wizualnie różni się od otrzymanego tekstu i&nbsp;jest od niego oddzielony."
+      "4. \"Terminal referencyjny RTT\" wysyła krótki tekst.",
+      "5. Sprawdź na testowanej TIK , czy wyświetlany nadawany tekst wizualnie różni się od otrzymanego tekstu i jest od niego oddzielony."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8329,7 +8328,7 @@
       "<strong>Uwaga:</strong> Możliwość wyboru przez użytkownika wyświetlania tekstu wysyłanego i odbieranego w linii lub oddzielnie, z opcjami wyboru, pozwala użytkownikom wyświetlać RTT w formie, która najlepiej dla nich działa. Pozwoliłoby to użytkownikom Braille'a używać pojedynczego pola i przejmować głos oraz mieć tekst pojawiający się w sekwencyjny sposób, którego mogą potrzebować lub preferować."
     ],
     "notes": [
-      "„Referencyjny terminal obsługujący komunikację RTT” to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w&nbsp;sposób potwierdzający ich funkcjonalność i&nbsp;interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym „referencyjnym terminalu obsługującym komunikację RTT”."
+      "\"Referencyjny terminal obsługujący komunikację RTT\" to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w sposób potwierdzający ich funkcjonalność i interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym \"referencyjnym terminalu obsługującym komunikację RTT\"."
     ],
     "form": {
       "inputs": [
@@ -8358,15 +8357,15 @@
     "id": "C.6.2.2.2",
     "title": "C.6.2.2.2 Możliwe do określenia programowo kierunku nadawania i odbioru",
     "preconditions": [
-      "1. TIK zapewnia możliwość wysyłania i&nbsp;odbierania komunikacji RTT.",
+      "1. TIK zapewnia możliwość wysyłania i odbierania komunikacji RTT.",
       "2. RTT jest funkcjonalnością otwartą.",
-      "3. Dostępny jest „referencyjny terminal obsługujący komunikację RTT”."
+      "3. Dostępny jest \"referencyjny terminal obsługujący komunikację RTT\"."
     ],
     "procedure": [
-      "1. Testowana TIK jest podłączona do „referencyjnego terminala obsługującego RTT”.",
-      "2. Różne elementy TIK są w&nbsp;stanie działania (połączenie jest aktywne, a&nbsp;terminale we właściwym trybie RTT) i&nbsp;dwa terminale komunikują się ze sobą.",
+      "1. Testowana TIK jest podłączona do \"referencyjnego terminala obsługującego RTT\".",
+      "2. Różne elementy TIK są w stanie działania (połączenie jest aktywne, a terminale we właściwym trybie RTT) i dwa terminale komunikują się ze sobą.",
       "3. Testowany system TIK wysyła krótki tekst.",
-      "4. „Terminal referencyjny RTT” wysyła krótki tekst.",
+      "4. \"Terminal referencyjny RTT\" wysyła krótki tekst.",
       "5. Sprawdź, czy kierunek nadawania/odbioru przesyłanego tekstu jest możliwy do określenia programowo."
     ],
     "evaluation": "Inspekcja",
@@ -8375,7 +8374,7 @@
       "<strong>Uwaga:</strong> Umożliwia to czytnikom ekranu rozróżnienie między tekstem przychodzącym a wychodzącym podczas używania funkcjonalności RTT."
     ],
     "notes": [
-      "„Referencyjny terminal obsługujący komunikację RTT” to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w&nbsp;sposób potwierdzający ich funkcjonalność i&nbsp;interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym „referencyjnym terminalu obsługującym komunikację RTT”."
+      "\"Referencyjny terminal obsługujący komunikację RTT\" to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w sposób potwierdzający ich funkcjonalność i interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym \"referencyjnym terminalu obsługującym komunikację RTT\"."
     ],
     "form": {
       "inputs": [
@@ -8396,7 +8395,7 @@
           "label": "Nie spełniono warunku wstępnego 3"
         }
       ],
-      "legend": "Wybierz wynik dla C.6.2.2.2 Możliwe do określenia programowo kierunku nadawania i&nbsp;odbioru",
+      "legend": "Wybierz wynik dla C.6.2.2.2 Możliwe do określenia programowo kierunku nadawania i odbioru",
       "noteId": "notes-c-6-2-2-2"
     }
   },
@@ -8405,13 +8404,13 @@
     "title": "C.6.2.2.3 Identyfikacja mówcy",
     "preconditions": [
       "1. TIK obsługuje RTT.",
-      "2. TIK zapewnia identyfikację mówcy w&nbsp;przypadku komunikacji głosowej.",
-      "3. Dostępny jest „referencyjny terminal obsługujący komunikację RTT”."
+      "2. TIK zapewnia identyfikację mówcy w przypadku komunikacji głosowej.",
+      "3. Dostępny jest \"referencyjny terminal obsługujący komunikację RTT\"."
     ],
     "procedure": [
-      "1. Testowana TIK jest podłączona do „referencyjnego terminala obsługującego RTT”.",
-      "2. RTT jest wysyłana z&nbsp;„referencyjnego terminala”.",
-      "3. Sprawdź na podstawie obserwacji, czy testowana TIK umożliwia identyfikację mówcy dla tekstu przychodzącego w&nbsp;trybie RTT."
+      "1. Testowana TIK jest podłączona do \"referencyjnego terminala obsługującego RTT\".",
+      "2. RTT jest wysyłana z \"referencyjnego terminala\".",
+      "3. Sprawdź na podstawie obserwacji, czy testowana TIK umożliwia identyfikację mówcy dla tekstu przychodzącego w trybie RTT."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8419,7 +8418,7 @@
       "<strong>Uwaga:</strong> Jest to konieczne, aby zarówno uczestnicy głosowi, jak i RTT wiedzieli, kto obecnie komunikuje się, czy to w RTT, czy głosem."
     ],
     "notes": [
-      "„Referencyjny terminal obsługujący komunikację RTT” to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w&nbsp;sposób potwierdzający ich funkcjonalność i&nbsp;interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym „referencyjnym terminalu obsługującym komunikację RTT”."
+      "\"Referencyjny terminal obsługujący komunikację RTT\" to terminal specjalnie zaprojektowany do testowania urządzeń obsługujących komunikację RTT w sposób potwierdzający ich funkcjonalność i interoperacyjność. Takie terminale są zazwyczaj tworzone przez krajowe lub międzynarodowe instytucje normalizacyjne, tak aby wszystkie testy były przeprowadzane na spójnym \"referencyjnym terminalu obsługującym komunikację RTT\"."
     ],
     "form": {
       "inputs": [
@@ -8452,9 +8451,9 @@
       "2. TIK obsługuje RTT."
     ],
     "procedure": [
-      "1. Testowana TIK jest połączona z&nbsp;inną TIK zapewniającą dwukierunkową komunikację głosową, która jest zgodna z&nbsp;komunikacją głosową w&nbsp;testowanej TIK.",
+      "1. Testowana TIK jest połączona z inną TIK zapewniającą dwukierunkową komunikację głosową, która jest zgodna z komunikacją głosową w testowanej TIK.",
       "2. Osoba mówi do drugiej TIK.",
-      "3. Sprawdź na podstawie obserwacji, czy istnieje wizualny wskaźnik aktywności audio w&nbsp;czasie rzeczywistym."
+      "3. Sprawdź na podstawie obserwacji, czy istnieje wizualny wskaźnik aktywności audio w czasie rzeczywistym."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8463,7 +8462,7 @@
       "<strong>Uwaga 2:</strong> Bez tego wskazania osoba, która nie ma możliwości słyszenia, nie wie, kiedy ktoś mówi."
     ],
     "notes": [
-      "Zaleca się by wskaźnik migał w&nbsp;czasie rzeczywistym w&nbsp;sposób odzwierciedlający aktywność audio."
+      "Zaleca się by wskaźnik migał w czasie rzeczywistym w sposób odzwierciedlający aktywność audio."
     ],
     "form": {
       "inputs": [
@@ -8480,7 +8479,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
       ],
-      "legend": "Wybierz wynik dla C.6.2.2.4 Wizualny wskaźnik audio połączonego z&nbsp;RTT",
+      "legend": "Wybierz wynik dla C.6.2.2.4 Wizualny wskaźnik audio połączonego z RTT",
       "noteId": "notes-c-6-2-2-4"
     }
   },
@@ -8490,15 +8489,15 @@
     "preconditions": [
       "1. TIK obsługuje dwukierunkową komunikację głosową.",
       "2. TIK obsługuje dwukierunkową komunikację za pomocą RTT.",
-      "3. Dostępny jest „referencyjny terminal obsługujący komunikację RTT” korzystający z&nbsp;nowego standardu RTT."
+      "3. Dostępny jest \"referencyjny terminal obsługujący komunikację RTT\" korzystający z nowego standardu RTT."
     ],
     "procedure": [
-      "1. Sprawdź, czy testowana TIK współdziała z&nbsp;„referencyjnym terminalem obsługującym komunikację RTT” dla nowego standardu RTT , który został wprowadzony do użytku.",
-      "2. Sprawdź, czy nowy standard RTT jest obsługiwany przez wszystkie inne aktywne TIK , które obsługują komunikację głosową i&nbsp;RTT w&nbsp;tym samym środowisku."
+      "1. Sprawdź, czy testowana TIK współdziała z \"referencyjnym terminalem obsługującym komunikację RTT\" dla nowego standardu RTT , który został wprowadzony do użytku.",
+      "2. Sprawdź, czy nowy standard RTT jest obsługiwany przez wszystkie inne aktywne TIK , które obsługują komunikację głosową i RTT w tym samym środowisku."
     ],
     "evaluation": "Test",
     "checklist": [
-      "<strong>Wsparcie technologii RTT:</strong> Sprawdź, czy testowana TIK współdziała z&nbsp;„referencyjnym terminalem obsługującym komunikację RTT” dla nowego standardu RTT , który został wprowadzony do użytku.",
+      "<strong>Wsparcie technologii RTT:</strong> Sprawdź, czy testowana TIK współdziała z&nbsp;\"referencyjnym terminalem obsługującym komunikację RTT\" dla nowego standardu RTT , który został wprowadzony do użytku.",
       "<strong>Uwaga 1:</strong> W praktyce nowe standardy są wprowadzane jako alternatywny kodek/protokół, który jest obsługiwany obok istniejącego wspólnego standardu i używany, gdy wszystkie komponenty end-to-end go obsługują, podczas gdy rozwój technologii, w połączeniu z innymi przyczynami, w tym rozwojem społecznym i efektywnością kosztową, może sprawić, że inne staną się przestarzałe.",
       "<strong>Uwaga 2:</strong> Tam, gdzie do zapewnienia komunikacji głosowej używanych jest wiele technologii, może być potrzebnych wiele mechanizmów interoperacyjności, aby zapewnić, że wszyscy użytkownicy mogą korzystać z RTT.",
       "<strong>Przykład:</strong> System konferencyjny, który obsługuje komunikację głosową przez połączenie internetowe, może zapewniać RTT przez połączenie internetowe przy użyciu zastrzeżonej metody RTT (opcja c). Jednak niezależnie od tego, czy metoda RTT jest zastrzeżona czy nie zastrzeżona, jeśli system konferencyjny oferuje również komunikację telefoniczną, będzie również potrzebował obsługi opcji a lub b, aby zapewnić, że RTT jest obsługiwany przez połączenie telefoniczne."
@@ -8508,7 +8507,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -8580,7 +8579,7 @@
       "1. TIK udostępnia identyfikację dzwoniącego lub podobne funkcje."
     ],
     "procedure": [
-      "1. Sprawdź, czy informacje dostarczane przez każdą funkcję są dostępne w&nbsp;formie tekstowej.",
+      "1. Sprawdź, czy informacje dostarczane przez każdą funkcję są dostępne w formie tekstowej.",
       "2. Sprawdź, czy informacje dostarczane przez każdą funkcję są możliwe do określenia programowo"
     ],
     "evaluation": "Test",
@@ -8593,7 +8592,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1: prawda i&nbsp;albo kryterium 2: prawda, albo funkcjonalność jest zamknięta"
+          "label": "Kryterium 1: prawda i albo kryterium 2: prawda, albo funkcjonalność jest zamknięta"
         },
         {
           "value": "Niezaliczone",
@@ -8612,12 +8611,12 @@
     "id": "C.6.4",
     "title": "C.6.4 Alternatywy dla usług głosowych",
     "preconditions": [
-      "1. TIK zapewnia komunikację głosową w&nbsp;czasie rzeczywistym.",
+      "1. TIK zapewnia komunikację głosową w czasie rzeczywistym.",
       "2. TIK udostępnia pocztę głosową, automatyczną sekretarkę lub urządzenie udzielające interaktywnych odpowiedzi głosowych."
     ],
     "procedure": [
       "1. Sprawdź, czy TIK zapewnia użytkownikom środki dostępu do informacji bez używania słuchu czy mowy.",
-      "2. Sprawdź, czy użytkownik może wykonać zadania dostępne w&nbsp;systemie bez używania słuchu czy mowy."
+      "2. Sprawdź, czy użytkownik może wykonać zadania dostępne w systemie bez używania słuchu czy mowy."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8630,7 +8629,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda"
+          "label": "Kryterium 1 i 2: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -8650,7 +8649,7 @@
     "title": "C.6.5.2 Rozdzielczość",
     "preconditions": [
       "1. TIK udostępnia dwukierunkową komunikację głosową.",
-      "2. TIK udostępnia funkcjonalność wideo w&nbsp;czasie rzeczywistym."
+      "2. TIK udostępnia funkcjonalność wideo w czasie rzeczywistym."
     ],
     "procedure": [
       "1. Sprawdź, czy rozdzielczość komunikacji wideo jest rozdzielczością QVGA lub lepszą."
@@ -8685,7 +8684,7 @@
     "title": "C.6.5.3 Częstotliwość wyświetlania klatek",
     "preconditions": [
       "1. TIK udostępnia dwukierunkową komunikację głosową.",
-      "2. TIK udostępnia funkcjonalność wideo w&nbsp;czasie rzeczywistym."
+      "2. TIK udostępnia funkcjonalność wideo w czasie rzeczywistym."
     ],
     "procedure": [
       "1. Sprawdź, czy częstotliwość odświeżania obrazu komunikacji wideo wynosi co najmniej 20 klatek na sekundę."
@@ -8720,10 +8719,10 @@
     "title": "C.6.5.4 Synchronizacja dźwięku i obrazu",
     "preconditions": [
       "1. TIK udostępnia dwukierunkową komunikację głosową.",
-      "2. TIK udostępnia funkcjonalność wideo w&nbsp;czasie rzeczywistym."
+      "2. TIK udostępnia funkcjonalność wideo w czasie rzeczywistym."
     ],
     "procedure": [
-      "1. Sprawdź, czy różnica w&nbsp;czasie między prezentacją mowy i&nbsp;obrazu wideo dla użytkownika jest nie większa niż 100 ms."
+      "1. Sprawdź, czy różnica w czasie między prezentacją mowy i obrazu wideo dla użytkownika jest nie większa niż 100 ms."
     ],
     "evaluation": "Pomiar",
     "checklist": [
@@ -8746,7 +8745,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
       ],
-      "legend": "Wybierz wynik dla C.6.5.4 Synchronizacja dźwięku i&nbsp;obrazu",
+      "legend": "Wybierz wynik dla C.6.5.4 Synchronizacja dźwięku i obrazu",
       "noteId": "notes-c-6-5-4"
     }
   },
@@ -8755,12 +8754,12 @@
     "title": "C.6.5.5 Wizualny wskaźnik audio połączonego z wideo",
     "preconditions": [
       "1. TIK zapewnia dwukierunkową komunikację głosową.",
-      "2. TIK udostępnia funkcjonalność wideo w&nbsp;czasie rzeczywistym."
+      "2. TIK udostępnia funkcjonalność wideo w czasie rzeczywistym."
     ],
     "procedure": [
-      "1. Testowana TIK jest połączona z&nbsp;inną TIK zapewniającą dwukierunkową komunikację głosową, która jest zgodna z&nbsp;komunikacją głosową w&nbsp;testowanej TIK.",
+      "1. Testowana TIK jest połączona z inną TIK zapewniającą dwukierunkową komunikację głosową, która jest zgodna z komunikacją głosową w testowanej TIK.",
       "2. Osoba mówi do drugiej TIK.",
-      "3. Sprawdź na podstawie obserwacji, czy istnieje wizualny wskaźnik aktywności audio w&nbsp;czasie rzeczywistym."
+      "3. Sprawdź na podstawie obserwacji, czy istnieje wizualny wskaźnik aktywności audio w czasie rzeczywistym."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8769,7 +8768,7 @@
       "<strong>Uwaga 2:</strong> Bez tego wskazania osoba, która nie ma możliwości słyszenia, nie wie, kiedy ktoś mówi."
     ],
     "notes": [
-      "Zaleca się, by wskaźnik migał w&nbsp;czasie rzeczywistym w&nbsp;sposób odzwierciedlający aktywność audio."
+      "Zaleca się, by wskaźnik migał w czasie rzeczywistym w sposób odzwierciedlający aktywność audio."
     ],
     "form": {
       "inputs": [
@@ -8786,7 +8785,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
       ],
-      "legend": "Wybierz wynik dla C.6.5.5 Wizualny wskaźnik audio połączonego z&nbsp;wideo",
+      "legend": "Wybierz wynik dla C.6.5.5 Wizualny wskaźnik audio połączonego z wideo",
       "noteId": "notes-c-6-5-5"
     }
   },
@@ -8795,10 +8794,10 @@
     "title": "C.6.5.6 Identyfikacja mówcy podczas komunikacji za pomocą wideo (język migowy)",
     "preconditions": [
       "1. TIK udostępnia dwukierunkową komunikację głosową.",
-      "2. TIK obsługuje wideo w&nbsp;czasie rzeczywistym."
+      "2. TIK obsługuje wideo w czasie rzeczywistym."
     ],
     "procedure": [
-      "1. Testowana TIK jest podłączona do kompatybilnej TIK obsługującej wideo, a&nbsp;osoba komunikuje się w&nbsp;języku migowym.",
+      "1. Testowana TIK jest podłączona do kompatybilnej TIK obsługującej wideo, a osoba komunikuje się w języku migowym.",
       "2. Sprawdź na podstawie obserwacji, czy testowana TIK umożliwia użytkownikom języka migowego identyfikację mówcy."
     ],
     "evaluation": "Pomiar",
@@ -8831,7 +8830,7 @@
     "id": "C.7.1.1",
     "title": "C.7.1.1 Odtwarzanie napisów",
     "preconditions": [
-      "1. TIK wyświetla lub przetwarza wideo z&nbsp;synchronizowanym dźwiękiem.",
+      "1. TIK wyświetla lub przetwarza wideo z synchronizowanym dźwiękiem.",
       "2. Napisy są umieszczane na nagraniu wideo."
     ],
     "procedure": [
@@ -8867,7 +8866,7 @@
       "1. TIK udostępnia mechanizm wyświetlania napisów."
     ],
     "procedure": [
-      "1. Sprawdź, czy mechanizm wyświetlania napisów zachowuje synchronizację między dźwiękiem a&nbsp;odpowiednimi napisami w&nbsp;ciągu jednej dziesiątej sekundy od sygnatury czasowej napisu lub czy zapewnia dostępność napisu dla odtwarzacza w&nbsp;przypadku napisów na żywo."
+      "1. Sprawdź, czy mechanizm wyświetlania napisów zachowuje synchronizację między dźwiękiem a odpowiednimi napisami w ciągu jednej dziesiątej sekundy od sygnatury czasowej napisu lub czy zapewnia dostępność napisu dla odtwarzacza w przypadku napisów na żywo."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8898,10 +8897,10 @@
     "id": "C.7.1.3",
     "title": "C.7.1.3 Zachowanie zasad tworzenia napisów",
     "preconditions": [
-      "1. TIK konwertuje lub rejestruje wideo z&nbsp;synchronizowanym obrazem."
+      "1. TIK konwertuje lub rejestruje wideo z synchronizowanym obrazem."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK zachowuje dane dotyczące napisów w&nbsp;taki sposób, aby można je było wyświetlić zgodnie z&nbsp;Rozdziałami 7.1.1 i&nbsp;7.1.2."
+      "1. Sprawdź, czy TIK zachowuje dane dotyczące napisów w taki sposób, aby można je było wyświetlić zgodnie z Rozdziałami 7.1.1 i 7.1.2."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -8933,7 +8932,7 @@
     "title": "C.7.1.4 Cechy napisów",
     "preconditions": [
       "1. TIK wyświetla napisy.",
-      "2. Testowane napisy są wyświetlane w&nbsp;postaci modyfikowalnych znaków."
+      "2. Testowane napisy są wyświetlane w postaci modyfikowalnych znaków."
     ],
     "procedure": [
       "1. Sprawdź, czy TIK zapewnia użytkownikowi możliwość dostosowania wyświetlanych cech napisów do indywidualnych wymagań."
@@ -8968,11 +8967,11 @@
     "id": "C.7.1.5",
     "title": "C.7.1.5 Odczytywane napisy",
     "preconditions": [
-      "1. TIK wyświetla obraz wideo zsynchronizowany z&nbsp;dźwiękiem.",
+      "1. TIK wyświetla obraz wideo zsynchronizowany z dźwiękiem.",
       "2. Treść testowanych napisów możliwa do określenia programowo."
     ],
     "procedure": [
-      "1. Sprawdź, czy istnieje tryb pracy zapewniający przedstawianie dostępnych napisów w&nbsp;formie mówionej."
+      "1. Sprawdź, czy istnieje tryb pracy zapewniający przedstawianie dostępnych napisów w formie mówionej."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -9006,12 +9005,12 @@
     "id": "C.7.2.1",
     "title": "C.7.2.1 Odtwarzanie audiodeskrypcji",
     "preconditions": [
-      "1. TIK wyświetla obraz wideo zsynchronizowany z&nbsp;dźwiękiem."
+      "1. TIK wyświetla obraz wideo zsynchronizowany z dźwiękiem."
     ],
     "procedure": [
-      "1. Sprawdź, czy istnieje wyraźny i&nbsp;oddzielny mechanizm opisu dźwiękowego.",
-      "2. Sprawdź, czy istnieje mechanizm wyboru i&nbsp;odtwarzania audiodeskrypcji na domyślnym kanale audio.",
-      "3. Sprawdź, czy TIK umożliwia użytkownikowi wybór i&nbsp;odtwarzanie kilku ścieżek dźwiękowych."
+      "1. Sprawdź, czy istnieje wyraźny i oddzielny mechanizm opisu dźwiękowego.",
+      "2. Sprawdź, czy istnieje mechanizm wyboru i odtwarzania audiodeskrypcji na domyślnym kanale audio.",
+      "3. Sprawdź, czy TIK umożliwia użytkownikowi wybór i odtwarzanie kilku ścieżek dźwiękowych."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -9019,18 +9018,18 @@
       "<strong>Wybór audiodeskrypcji:</strong> Sprawdź, czy istnieje mechanizm wyboru i odtwarzania audiodeskrypcji na domyślnym kanale audio.",
       "<strong>Wiele ścieżek dźwiękowych:</strong> Sprawdź, czy TIK umożliwia użytkownikowi wybór i odtwarzanie kilku ścieżek dźwiękowych.",
       "<strong>Uwaga 1:</strong> W takich przypadkach zawartość wideo może zawierać audiodeskrypcję jako jedną z dostępnych ścieżek dźwiękowych.",
-      "<strong>Uwaga 2:</strong> Audiodeskrypcje w mediach cyfrowych czasami zawierają informacje pozwalające na opisy dłuższe niż przerwy między dialogami. Wsparcie w odtwarzaczach mediów cyfrowych dla tej funkcji „rozszerzonej audiodeskrypcji” jest przydatne, szczególnie dla mediów cyfrowych oglądanych osobiście."
+      "<strong>Uwaga 2:</strong> Audiodeskrypcje w mediach cyfrowych czasami zawierają informacje pozwalające na opisy dłuższe niż przerwy między dialogami. Wsparcie w odtwarzaczach mediów cyfrowych dla tej funkcji \"rozszerzonej audiodeskrypcji\" jest przydatne, szczególnie dla mediów cyfrowych oglądanych osobiście."
     ],
     "notes": [],
     "form": {
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 i&nbsp;2: prawda lub 1: fałsz i&nbsp;3: prawda"
+          "label": "Kryterium 1 i 2: prawda lub 1: fałsz i 3: prawda"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryterium 1: prawda i&nbsp;2: fałsz lub 1: fałsz i&nbsp;3: fałsz"
+          "label": "Kryterium 1: prawda i 2: fałsz lub 1: fałsz i 3: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -9048,7 +9047,7 @@
       "1. Jeśli TIK zawiera mechanizm odtwarzania audiodeskrypcji."
     ],
     "procedure": [
-      "1. Sprawdź, czy synchronizacja między treścią audio i&nbsp;wideo a&nbsp;odpowiadającą jej audiodeskrypcją jest zachowana."
+      "1. Sprawdź, czy synchronizacja między treścią audio i wideo a odpowiadającą jej audiodeskrypcją jest zachowana."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -9081,7 +9080,7 @@
       "1. TIK przesyła, przetwarza lub zapisuje wideo zsynchronizowane z&nbspdźwiękiem."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK zachowuje dane audiodeskrypcji w&nbsp;taki sposób, aby można je było odtwarzać zgodnie z&nbsp;Rozdziałami 7.2.1 i&nbsp;7.2.2."
+      "1. Sprawdź, czy TIK zachowuje dane audiodeskrypcji w taki sposób, aby można je było odtwarzać zgodnie z Rozdziałami 7.2.1 i 7.2.2."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -9111,10 +9110,10 @@
     "id": "C.7.3",
     "title": "C.7.3 Sterowanie napisami i audiodeskrypcją",
     "preconditions": [
-      "1. TIK przede wszystkim wyświetla materiały zawierające wideo z&nbsp;towarzyszącą treścią audio"
+      "1. TIK przede wszystkim wyświetla materiały zawierające wideo z towarzyszącą treścią audio"
     ],
     "procedure": [
-      "1. Sprawdź, czy elementy sterujące dla włączania napisów i&nbsp;audiodeskrypcji są udostępnione użytkownikowi na&nbsp;tym samym poziomie interakcji co&nbsp;podstawowe elementy sterujące multimediami."
+      "1. Sprawdź, czy elementy sterujące dla włączania napisów i audiodeskrypcji są udostępnione użytkownikowi na tym samym poziomie interakcji co podstawowe elementy sterujące multimediami."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -9139,7 +9138,7 @@
           "label": "Nie spełniono warunku wstępnego 1. C.8 Sprzęt"
         }
       ],
-      "legend": "Wybierz wynik dla C.7.3 Sterowanie napisami i&nbsp;audiodeskrypcją",
+      "legend": "Wybierz wynik dla C.7.3 Sterowanie napisami i audiodeskrypcją",
       "noteId": "notes-c-7-3"
     }
   },
@@ -9147,11 +9146,11 @@
     "id": "C.8.1.2",
     "title": "C.8.1.2 Standardowe połączenia",
     "preconditions": [
-      "1. TIK zapewnia punkty podłączania urządzeń wejściowych i&nbsp;wyjściowych użytkownika."
+      "1. TIK zapewnia punkty podłączania urządzeń wejściowych i wyjściowych użytkownika."
     ],
     "procedure": [
-      "1. Sprawdź, czy jeden typ połączenia jest zgodny z&nbsp;niezastrzeżonym standardem branżowym.",
-      "2. Sprawdź, czy jeden typ połączenia jest zgodny z&nbsp;niezastrzeżonym standardem branżowym po zastosowaniu adapterów dostępnych na rynku."
+      "1. Sprawdź, czy jeden typ połączenia jest zgodny z niezastrzeżonym standardem branżowym.",
+      "2. Sprawdź, czy jeden typ połączenia jest zgodny z niezastrzeżonym standardem branżowym po zastosowaniu adapterów dostępnych na rynku."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -9172,7 +9171,7 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2: fałsz"
+          "label": "Kryteria 1 i 2: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -9187,7 +9186,7 @@
     "id": "C.8.1.3",
     "title": "C.8.1.3 Kolor",
     "preconditions": [
-      "1. Elementy sprzętowe TIK przekazują informacje wizualne za&nbsp;pomocą kodowania kolorami jako środka do wskazania czynności, wywołania odpowiedzi lub wyróżnienia elementu wizualnego."
+      "1. Elementy sprzętowe TIK przekazują informacje wizualne za pomocą kodowania kolorami jako środka do wskazania czynności, wywołania odpowiedzi lub wyróżnienia elementu wizualnego."
     ],
     "procedure": [
       "1. Sprawdź, czy jest dostępna alternatywna forma kodowania wizualnego."
@@ -9225,10 +9224,10 @@
       "1. Sprzęt TIK ma wyjście mowy."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK ma certyfikat zgodności z&nbsp;ANSI/TIA-4965: \"Receive volume control requirements for digital and analogue wireline terminals\".",
+      "1. Sprawdź, czy TIK ma certyfikat zgodności z ANSI/TIA-4965: \"Receive volume control requirements for digital and analogue wireline terminals\".",
       "2. Zmierzyć poziom głośności (w dB) sygnału mowy przy najniższym ustawieniu głośności.",
       "3. Zmierzyć poziom głośności (w dB) sygnału mowy przy najwyższym ustawieniu głośności.",
-      "4. Sprawdź, czy zakres między wartościami 1 i&nbsp;2 jest równy 18 dB lub większy."
+      "4. Sprawdź, czy zakres między wartościami 1 i 2 jest równy 18 dB lub większy."
     ],
     "evaluation": "Inspekcja na podstawie danych pomiarowych",
     "checklist": [
@@ -9244,7 +9243,7 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;4: fałsz"
+          "label": "Kryteria 1 i 4: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -9264,7 +9263,7 @@
     ],
     "procedure": [
       "1. Zmierz poziom głośności (w dB) sygnału mowy przy najniższym ustawieniu głośności.",
-      "2. Sprawdź, czy jeden krok pośredni zapewnia poziom o&nbsp;12 dB wyższy od najniższego poziomu głośności zmierzonego w&nbsp;kroku 1."
+      "2. Sprawdź, czy jeden krok pośredni zapewnia poziom o 12 dB wyższy od najniższego poziomu głośności zmierzonego w kroku 1."
     ],
     "evaluation": "Inspekcja na podstawie danych pomiarowych",
     "checklist": [
@@ -9296,16 +9295,16 @@
     "id": "C.8.2.2.1",
     "title": "C.8.2.2.1 Urządzenia stacjonarne",
     "preconditions": [
-      "1. Sprzęt TIK to stacjonarne urządzenie komunikacyjne z&nbsp;wyjściem dźwięku, które zazwyczaj jest trzymane przy uchu."
+      "1. Sprzęt TIK to stacjonarne urządzenie komunikacyjne z wyjściem dźwięku, które zazwyczaj jest trzymane przy uchu."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK ma certyfikat zgodności z&nbsp;normą TIA-1083-A (2010): \"Telecommunications; Telephone Terminal equipment; Handset magnetic measurement procedures and performance requirements\".",
+      "1. Sprawdź, czy TIK ma certyfikat zgodności z normą TIA-1083-A (2010): \"Telecommunications; Telephone Terminal equipment; Handset magnetic measurement procedures and performance requirements\".",
       "2. Sprawdź, czy wykonano pomiary zgodnie z ETSI ES 200 381‑1, które potwierdzają spełnienie wymagań tej normy.",
-      "3. Sprawdź, czy TIK jest oznaczony symbolem „T” określonym w ETSI ETS 300 381."
+      "3. Sprawdź, czy TIK jest oznaczony symbolem \"T\" określonym w ETSI ETS 300 381."
     ],
     "evaluation": "Inspekcja na podstawie danych pomiarowych",
     "checklist": [
-      "<strong>Sprzężenie magnetyczne dla urządzeń stacjonarnych:</strong> Sprawdź, czy TIK zapewnia sprzężenie magnetyczne spełniające wymagania ETSI ES 200 381-1 i nosi symbol „T” określony w ETSI ETS 300 381.",
+      "<strong>Sprzężenie magnetyczne dla urządzeń stacjonarnych:</strong> Sprawdź, czy TIK zapewnia sprzężenie magnetyczne spełniające wymagania ETSI ES 200 381-1 i nosi symbol \"T\" określony w ETSI ETS 300 381.",
       "<strong>Uwaga 1:</strong> TIK spełniający wymagania TIA-1083-A (2010): \"Telecommunications; Telephone Terminal equipment; Handset magnetic measurement procedures and performance requirements\" jest uznawany za zgodny z wymaganiami tej klauzuli.",
       "<strong>Uwaga 2:</strong> Sprzężenie magnetyczne jest również znane jako sprzężenie indukcyjne dla cewki T."
     ],
@@ -9314,11 +9313,11 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryterium 1 lub 2: prawda i&nbsp;kryterium 3: prawda"
+          "label": "Kryterium 1 lub 2: prawda i kryterium 3: prawda"
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2: fałsz lub kryterium 3: fałsz"
+          "label": "Kryteria 1 i 2: fałsz lub kryterium 3: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -9333,11 +9332,11 @@
     "id": "C.8.2.2.2",
     "title": "C.8.2.2.2 Urządzenia do komunikacji bezprzewodowej",
     "preconditions": [
-      "1. Sprzęt TIK to bezprzewodowe urządzenie komunikacyjne, które zazwyczaj jest umieszczane w&nbsp;uchu."
+      "1. Sprzęt TIK to bezprzewodowe urządzenie komunikacyjne, które zazwyczaj jest umieszczane w uchu."
     ],
     "procedure": [
-      "1. Sprawdź, czy TIK ma certyfikat zgodności z&nbsp;ANSI/IEEE C63.19 (2011): \"American National Standard Method of Measurement of Compatibility between Wireless Communication Devices and Hearing Aids\".",
-      "2. Sprawdź, czy TIK zapewniają środki sprzężenia magnetycznego z&nbsp;technologiami wspomagającymi słyszenie, zgodnymi z normą ETSI ES 200 381-2"
+      "1. Sprawdź, czy TIK ma certyfikat zgodności z ANSI/IEEE C63.19 (2011): \"American National Standard Method of Measurement of Compatibility between Wireless Communication Devices and Hearing Aids\".",
+      "2. Sprawdź, czy TIK zapewniają środki sprzężenia magnetycznego z technologiami wspomagającymi słyszenie, zgodnymi z normą ETSI ES 200 381-2"
     ],
     "evaluation": "Inspekcja na podstawie danych pomiarowych",
     "checklist": [
@@ -9353,7 +9352,7 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2: fałsz"
+          "label": "Kryteria 1 i 2: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -9390,14 +9389,14 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2: fałsz"
+          "label": "Kryteria 1 i 2: fałsz"
         },
         {
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.8.3.1 Dostęp z&nbsp;przodu lub z&nbsp;boku",
+      "legend": "Wybierz wynik dla C.8.3.1 Dostęp z przodu lub z boku",
       "noteId": "notes-c-8-3-1"
     }
   },
@@ -9406,10 +9405,10 @@
     "title": "C.8.3.2.1 Nieograniczony dostęp z przodu, od góry",
     "preconditions": [
       "1. TIK jest urządzeniem stacjonarnym.",
-      "2. Żadna część stacjonarnej TIK nie utrudnia dostępu z&nbsp;przodu."
+      "2. Żadna część stacjonarnej TIK nie utrudnia dostępu z przodu."
     ],
     "procedure": [
-      "1. Sprawdź, czy co najmniej jedna z&nbsp;każdego rodzaju części obsługiwanych jest umieszczona nie wyżej niż 1 200 mm (48 cali) nad podłogą w&nbsp;przestrzeni dostępu."
+      "1. Sprawdź, czy co najmniej jedna z każdego rodzaju części obsługiwanych jest umieszczona nie wyżej niż 1 200 mm (48 cali) nad podłogą w przestrzeni dostępu."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9433,7 +9432,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
       ],
-      "legend": "Wybierz wynik dla C.8.3.2.1 Nieograniczony dostęp z&nbsp;przodu, od góry",
+      "legend": "Wybierz wynik dla C.8.3.2.1 Nieograniczony dostęp z przodu, od góry",
       "noteId": "notes-c-8-3-2-1"
     }
   },
@@ -9442,10 +9441,10 @@
     "title": "C.8.3.2.2 Nieograniczony dostęp z przodu, od dołu",
     "preconditions": [
       "1. TIK jest urządzeniem stacjonarnym.",
-      "2. Żadna część stacjonarnej TIK nie utrudnia dostępu z&nbsp;przodu."
+      "2. Żadna część stacjonarnej TIK nie utrudnia dostępu z przodu."
     ],
     "procedure": [
-      "1. Sprawdź, czy co najmniej jedna z&nbsp;każdego rodzaju części obsługiwanych jest umieszczona nie niżej niż 380 mm (15 cali) nad podłogą w&nbsp;przestrzeni dostępu."
+      "1. Sprawdź, czy co najmniej jedna z każdego rodzaju części obsługiwanych jest umieszczona nie niżej niż 380 mm (15 cali) nad podłogą w przestrzeni dostępu."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9468,7 +9467,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
       ],
-      "legend": "Wybierz wynik dla C.8.3.2.2 Nieograniczony dostęp z&nbsp;przodu, od dołu",
+      "legend": "Wybierz wynik dla C.8.3.2.2 Nieograniczony dostęp z przodu, od dołu",
       "noteId": "notes-c-8-3-2-2"
     }
   },
@@ -9485,7 +9484,7 @@
     "evaluation": "Inspekcja",
     "checklist": [
       "<strong>Wolna powierzchnia podłogi:</strong> Sprawdź czy TIK zapewnia wolną powierzchnię podłogi, która rozciąga się pod elementem utrudniającym dostęp na odległość nie mniejszą niż wymagana głębokość zasięgu nad przeszkodą.",
-      "<strong>Uwaga:</strong> Zapewnienie, że będzie nieutrudniony „dostęp do dowolnego rodzaju części obsługiwanych” gwarantuje, że użytkownik będzie mógł uzyskać dostęp do co najmniej jednej z każdego rodzaju części obsługiwanych."
+      "<strong>Uwaga:</strong> Zapewnienie, że będzie nieutrudniony \"dostęp do dowolnego rodzaju części obsługiwanych\" gwarantuje, że użytkownik będzie mógł uzyskać dostęp do co najmniej jednej z każdego rodzaju części obsługiwanych."
     ],
     "notes": [],
     "form": {
@@ -9692,10 +9691,10 @@
     "title": "C.8.3.3.1 Nieograniczony dostęp z boku, od góry",
     "preconditions": [
       "1. TIK jest urządzeniem stacjonarnym.",
-      "2. Dostęp z&nbsp;boku jest nieograniczony lub ograniczony przez element będący integralną częścią stacjonarnej TIK o&nbsp;szerokości mniejszej niż 510 mm (20 cali)."
+      "2. Dostęp z boku jest nieograniczony lub ograniczony przez element będący integralną częścią stacjonarnej TIK o szerokości mniejszej niż 510 mm (20 cali)."
     ],
     "procedure": [
-      "1. Sprawdź, czy dostęp z&nbsp;boku, od góry do co najmniej jednego z&nbsp;każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 1 220 mm (48 cali) nad podłogą w&nbsp;przestrzeni dostępu."
+      "1. Sprawdź, czy dostęp z boku, od góry do co najmniej jednego z każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 1 220 mm (48 cali) nad podłogą w przestrzeni dostępu."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9719,7 +9718,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
       ],
-      "legend": "Wybierz wynik dla C.8.3.3.1 Nieograniczony dostęp z&nbsp;boku, od góry",
+      "legend": "Wybierz wynik dla C.8.3.3.1 Nieograniczony dostęp z boku, od góry",
       "noteId": "notes-c-8-3-3-1"
     }
   },
@@ -9728,10 +9727,10 @@
     "title": "C.8.3.3.2 Nieograniczony dostęp z boku, od dołu",
     "preconditions": [
       "1. TIK jest urządzeniem stacjonarnym.",
-      "2. Dostęp z&nbsp;boku jest nieograniczony lub ograniczony przez element będący integralną częścią stacjonarnej TIK o&nbsp;szerokości mniejszej niż 510 mm (20 cali)."
+      "2. Dostęp z boku jest nieograniczony lub ograniczony przez element będący integralną częścią stacjonarnej TIK o szerokości mniejszej niż 510 mm (20 cali)."
     ],
     "procedure": [
-      "1. Sprawdź, czy dostęp z&nbsp;boku, od dołu do co najmniej jednego z&nbsp;każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 380 mm (15 cali) nad podłogą w&nbsp;przestrzeni dostępu."
+      "1. Sprawdź, czy dostęp z boku, od dołu do co najmniej jednego z każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 380 mm (15 cali) nad podłogą w przestrzeni dostępu."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9754,7 +9753,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
       ],
-      "legend": "Wybierz wynik dla C.8.3.3.2 Nieograniczony dostęp z&nbsp;boku, od dołu",
+      "legend": "Wybierz wynik dla C.8.3.3.2 Nieograniczony dostęp z boku, od dołu",
       "noteId": "notes-c-8-3-3-2"
     }
   },
@@ -9766,7 +9765,7 @@
       "2. Występuje przeszkoda o głębokości mniejszej lub równej 255 mm (10 cali), która stanowi integralną część TIK."
     ],
     "procedure": [
-      "1. Sprawdź, czy dostęp z&nbsp;boku, od góry do co najmniej jednego z&nbsp;każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 1 220 mm (48 cali) nad podłogą w&nbsp;przestrzeni dostępu."
+      "1. Sprawdź, czy dostęp z boku, od góry do co najmniej jednego z każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 1 220 mm (48 cali) nad podłogą w przestrzeni dostępu."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9799,10 +9798,10 @@
     "title": "C.8.3.3.3.2 Ograniczony (< 610 mm) dostęp z boku",
     "preconditions": [
       "1. TIK jest urządzeniem stacjonarnym.",
-      "2. Występuje przeszkoda większa niż 255 mm (10 cali) i&nbsp;o głębokości nie większej niż 610 mm (24 cale), stanowiąca integralną część TIK."
+      "2. Występuje przeszkoda większa niż 255 mm (10 cali) i o głębokości nie większej niż 610 mm (24 cale), stanowiąca integralną część TIK."
     ],
     "procedure": [
-      "1. Sprawdź, czy dostęp z&nbsp;boku, od góry do co najmniej jednego z&nbsp;każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 1 170 mm (46 cali) nad podłogą w&nbsp;przestrzeni dostępu."
+      "1. Sprawdź, czy dostęp z boku, od góry do co najmniej jednego z każdego rodzaju części obsługiwanych nie znajduje się wyżej niż 1 170 mm (46 cali) nad podłogą w przestrzeni dostępu."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9859,7 +9858,7 @@
         },
         {
           "value": "Niezaliczone",
-          "label": "Kryteria 1 i&nbsp;2 i&nbsp;3: fałsz"
+          "label": "Kryteria 1 i 2 i 3: fałsz"
         },
         {
           "value": "Nie dotyczy",
@@ -9878,7 +9877,7 @@
       "2. Obszar działania jest integralną częścią TIK"
     ],
     "procedure": [
-      "1. Sprawdź, czy powierzchnia podłogi ma wymiary wynoszące co najmniej 760 mm wzdłuż jednej krawędzi i&nbsp;1 220 mm wzdłuż drugiej."
+      "1. Sprawdź, czy powierzchnia podłogi ma wymiary wynoszące co najmniej 760 mm wzdłuż jednej krawędzi i 1 220 mm wzdłuż drugiej."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -9948,7 +9947,7 @@
       "1. TIK jest urządzeniem stacjonarnym, którego integralną część stanowi nisza.",
       "2. Obszar działania znajduje się wewnątrz niszy.",
       "3. Głębokość niszy jest większa niż 610 mm.",
-      "4. Dostęp z&nbsp;przodu jest niezbędny."
+      "4. Dostęp z przodu jest niezbędny."
     ],
     "procedure": [
       "1. Sprawdź, czy szerokość niszy jest większa niż 915 mm."
@@ -9974,7 +9973,7 @@
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4"
         }
       ],
-      "legend": "Wybierz wynik dla C.8.3.4.3.2 Podejście z&nbsp;przodu",
+      "legend": "Wybierz wynik dla C.8.3.4.3.2 Podejście z przodu",
       "noteId": "notes-c-8-3-4-3-2"
     }
   },
@@ -10023,7 +10022,7 @@
       "2. Do dyspozycji jest co najmniej jeden wyświetlacz."
     ],
     "procedure": [
-      "1. Sprawdź, czy co najmniej jeden wyświetlacz każdego typu jest umieszczony w&nbsp;taki sposób, aby informacje na nim były czytelne z&nbsp;punktu znajdującego się 1 015 mm (40 cali) nad środkiem podłogi w&nbsp;obszarze roboczym."
+      "1. Sprawdź, czy co najmniej jeden wyświetlacz każdego typu jest umieszczony w taki sposób, aby informacje na nim były czytelne z punktu znajdującego się 1 015 mm (40 cali) nad środkiem podłogi w obszarze roboczym."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -10058,8 +10057,8 @@
     ],
     "procedure": [
       "1. Sprawdź, czy dostępna jest instrukcja montażu.",
-      "2. Sprawdź, czy w&nbsp;instrukcji podano wskazówki dotyczące sposobu montażu TIK w&nbsp;sposób zapewniający zgodność wymiarów z&nbsp;wymaganiami zawartymi w&nbsp;Rozdziałach od 8.3.2 do 8.3.4.",
-      "3. Sprawdź, czy w&nbsp;instrukcji podano, że zaleca się aby osoby zajmujące się montażem również brały pod uwagę obowiązujące wymagania dotyczące dostępności środowiska zbudowanego, które mają zastosowanie podczas montażu TIK ."
+      "2. Sprawdź, czy w instrukcji podano wskazówki dotyczące sposobu montażu TIK w sposób zapewniający zgodność wymiarów z wymaganiami zawartymi w Rozdziałach od 8.3.2 do 8.3.4.",
+      "3. Sprawdź, czy w instrukcji podano, że zaleca się aby osoby zajmujące się montażem również brały pod uwagę obowiązujące wymagania dotyczące dostępności środowiska zbudowanego, które mają zastosowanie podczas montażu TIK ."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -10071,7 +10070,7 @@
       "inputs": [
         {
           "value": "Zaliczone",
-          "label": "Kryteria 1, 2 i&nbsp;3: prawda"
+          "label": "Kryteria 1, 2 i 3: prawda"
         },
         {
           "value": "Niezaliczone",
@@ -10090,10 +10089,10 @@
     "id": "C.8.4.1",
     "title": "C.8.4.1 Klawisze numeryczne",
     "preconditions": [
-      "1. TIK ma fizyczne klawisze numeryczne rozmieszczone w&nbsp;12-przyciskowym układzie klawiatury telefonicznej."
+      "1. TIK ma fizyczne klawisze numeryczne rozmieszczone w 12-przyciskowym układzie klawiatury telefonicznej."
     ],
     "procedure": [
-      "1. Sprawdź, czy klawisz z&nbsp;cyfrą 5 różni się w&nbsp;dotyku od pozostałych klawiszy."
+      "1. Sprawdź, czy klawisz z cyfrą 5 różni się w dotyku od pozostałych klawiszy."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -10197,7 +10196,7 @@
     "id": "C.8.4.3",
     "title": "C.8.4.3 Klucze, bilety i karty taryfowe",
     "preconditions": [
-      "1. TIK dostarcza klucze, bilety lub karty taryfowe, a&nbsp;ich orientacja jest ważna dla dalszego wykorzystania."
+      "1. TIK dostarcza klucze, bilety lub karty taryfowe, a ich orientacja jest ważna dla dalszego wykorzystania."
     ],
     "procedure": [
       "1. Sprawdź, czy orientację kluczy, biletów lub kart taryfowych można wyczuć dotykiem."
@@ -10223,7 +10222,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.8.4.3 Klucze, bilety i&nbsp;karty taryfowe",
+      "legend": "Wybierz wynik dla C.8.4.3 Klucze, bilety i karty taryfowe",
       "noteId": "notes-c-8-4-3"
     }
   },
@@ -10235,7 +10234,7 @@
       "2. Jest dostępne wyjście mowy."
     ],
     "procedure": [
-      "1. Sprawdź, czy jest dostępne wyczuwalne w&nbsp;dotyku wskazanie sposobu rozpoczęcia pracy w&nbsp;trybie mowy."
+      "1. Sprawdź, czy jest dostępne wyczuwalne w dotyku wskazanie sposobu rozpoczęcia pracy w trybie mowy."
     ],
     "evaluation": "Inspekcja i pomiar",
     "checklist": [
@@ -10260,7 +10259,7 @@
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
       ],
-      "legend": "Wybierz wynik dla C.8.5 Oznaczenia dotykowe w&nbsp;trybie mowy",
+      "legend": "Wybierz wynik dla C.8.5 Oznaczenia dotykowe w trybie mowy",
       "noteId": "notes-c-8-5"
     }
   },
@@ -10499,10 +10498,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.1 Informacje i&nbsp;relacje."
+          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.1 Informacje i relacje."
         }
       ],
-      "legend": "Wybierz wynik dla C.9.1.3.1 Informacje i&nbsp;relacje",
+      "legend": "Wybierz wynik dla C.9.1.3.1 Informacje i relacje",
       "noteId": "notes-c-9-1-3-1"
     }
   },
@@ -10901,10 +10900,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.12 Odstępy w&nbsp;tekście."
+          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.12 Odstępy w tekście."
         }
       ],
-      "legend": "Wybierz wynik dla C.9.1.4.12 Odstępy w&nbsp;tekście",
+      "legend": "Wybierz wynik dla C.9.1.4.12 Odstępy w tekście",
       "noteId": "notes-c-9-1-4-12"
     }
   },
@@ -11331,10 +11330,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.6 Nagłówki i&nbsp;etykiety."
+          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.6 Nagłówki i etykiety."
         }
       ],
-      "legend": "Wybierz wynik dla C.9.2.4.6 Nagłówki i&nbsp;etykiety",
+      "legend": "Wybierz wynik dla C.9.2.4.6 Nagłówki i etykiety",
       "noteId": "notes-c-9-2-4-6"
     }
   },
@@ -11463,10 +11462,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.3 Etykieta w&nbsp;nazwie."
+          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.3 Etykieta w nazwie."
         }
       ],
-      "legend": "Wybierz wynik dla C.9.2.5.3 Etykieta w&nbsp;nazwie",
+      "legend": "Wybierz wynik dla C.9.2.5.3 Etykieta w nazwie",
       "noteId": "notes-c-9-2-5-3"
     }
   },
@@ -11826,10 +11825,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.3.4 Zapobieganie błędom (prawnym, finansowym, w&nbsp;danych)."
+          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)."
         }
       ],
-      "legend": "Wybierz wynik dla C.9.3.3.4 Zapobieganie błędom (prawnym, finansowym, w&nbsp;danych)",
+      "legend": "Wybierz wynik dla C.9.3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)",
       "noteId": "notes-c-9-3-3-4"
     }
   },
@@ -11925,10 +11924,10 @@
         },
         {
           "value": "Nie dotyczy",
-          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.3 Komunikaty o&nbsp;stanie."
+          "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.3 Komunikaty o stanie."
         }
       ],
-      "legend": "Wybierz wynik dla C.9.4.1.3 Komunikaty o&nbsp;stanie",
+      "legend": "Wybierz wynik dla C.9.4.1.3 Komunikaty o stanie",
       "noteId": "notes-c-9-4-1-3"
     }
   },
