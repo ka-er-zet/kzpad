@@ -2180,6 +2180,8 @@ window.showClause = (id) => {
     }
     document.documentElement.classList.add('modal-is-open');
     modal.showModal();
+    // Reset scroll position to top
+    document.getElementById('modalBody').scrollTop = 0;
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
     }
