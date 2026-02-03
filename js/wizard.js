@@ -743,7 +743,7 @@ function generateDescriptiveSummary(isInitial = false) {
                 <header class="summary-header initial">
                     <h2>Podsumowanie kontroli</h2>
                     <button id="btn-generate-summary" class="primary" onclick="generateDescriptiveSummary()">
-                        <i data-lucide="file-text"></i> Generuj raport
+                        <i data-lucide="file-text"></i> Generuj podsumowanie
                     </button>
                 </header>
             </article>
