@@ -12,7 +12,7 @@
 **Wersja:** 1.0.0
 **Status:** Stabilna
 
-Aplikacja **KZ-PAD** służy do tworzenia arkuszy oceny dostępności cyfrowej produktów i usług zgodnie z **Polskim Aktem o Dostępności (PAD)** oraz normą **EN 301 549**. Narzędzie umożliwia przygotowanie formularza oceny, przeprowadzenie oceny (listy kontrolne) oraz wygenerowanie raportu.
+Aplikacja **Kontrola zgodności z Polskim Aktem o Dostępności (KZ-PAD)** służy do tworzenia arkuszy oceny dostępności produktów i usług zgodnie z Ustawą z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze (wraz z powiązanymi przepisami i normami). Narzędzie umożliwia przygotowanie formularza oceny, przeprowadzenie oceny (listy kontrolne) oraz wygenerowanie raportu.
 
 ---
 
@@ -82,6 +82,16 @@ Narzędzie oferuje kilka formatów eksportu kontroli:
 W menu nawigacyjnym dostępna jest "Przeglądarka wymagań".
 - Służy do szybkiego wyszukiwania treści klauzul technicznych (C.*) oraz wymagań Ustawy bez konieczności tworzenia nowej kontroli.
 - Pozwala sprawdzić dokładną treść procedur testowych z normy EN 301 549.
+
+---
+
+## 📚 Słownik pojęć (Glossary)
+W prawym górnym menu znajduje się ikona pomocy — `Słownik pojęć`. Kliknięcie otwiera modal z wyjaśnieniami używanych w aplikacji terminów (np. TIK, Klauzula, Procedura).
+
+- Jak używać: kliknij ikonę `?` w pasku nagłówka, lub zamknij modal klawiszem `Esc` / przyciskiem `Zamknij`.
+- Dostępność: modal ma właściwe `aria-label` i nagłówki (h2 → h3); zawartość jest czytelna dla czytników ekranu.
+- Gdzie edytować treści: definicje znajdują się w pliku `clauses_json/glossary.json` — dodaj / edytuj pary klucz → opis.
+- Utrzymanie: słownik jest niezależny od `clauses.json`; można rozszerzać go bez modyfikacji istniejących klauzul. W przyszłości można dodać automatyczne linkowanie terminów w opisach.
 
 ---
 
