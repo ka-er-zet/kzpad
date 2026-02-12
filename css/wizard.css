@@ -83,6 +83,10 @@ body {
     flex-direction: column;
 }
 
+hgroup p {
+    color: var(--h5-color);
+}
+
 /* Header styles (copied from audit.html, scoped for wizard) */
 .skip-link {
     position: absolute;
@@ -711,9 +715,35 @@ main {
 .requirement-row section { margin-bottom: 1.5rem; }
 
 /* Modal */
+#clauseModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clauseModal:not([open]) {
+    display: none !important;
+}
+
+#clauseModal[open] {
+    display: flex;
+}
+
 #clauseModal article {
     width: 90vw;
     max-width: 900px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow);
+    padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
 }
 
 #clauseModal header {
@@ -721,7 +751,7 @@ main {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 #clauseModal header #modalTitle {
@@ -846,6 +876,39 @@ main {
 #clauseModal #modalBody ol {
     margin: 0 0 1rem 1.25rem;
     padding: 0;
+}
+
+/* Glossary styles */
+#clauseModal #modalBody .glossary-intro {
+    margin: 0 0 2.5rem 0 !important;
+    display: block;
+}
+
+.glossary-item {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--card-border-color);
+}
+
+.glossary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.glossary-item h3 {
+    margin: 0 0 0.1rem 0;
+    padding: 0;
+    line-height: 1.2;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color);
+}
+
+.glossary-item p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--color);
 }
 
 /* Increase spacing after sections slightly so 'after criteria' gap feels consistent */
@@ -1902,5 +1965,10 @@ p.hero-card-title {
     .footer-logo {
         height: 1.1rem;
     }
+}
+
+/* Glossary button above modal */
+#btn-show-glossary {
+    z-index: 10001;
 }
 

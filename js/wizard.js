@@ -2,6 +2,7 @@ let matrixData = [];
 let dictionaryData = {};
 let productDictionary = {};
 let summaryTemplates = {};
+let glossaryData = {};
 let lastModalTrigger = null;
 
 // Wizard-scoped utility accessor. Evaluated at load time.
@@ -144,15 +145,17 @@ async function init() {
     try {
         // Force refresh of dictionary files on load to ensure latest data
         const ts = new Date().getTime();
-        const [dictResp, mappingResp, summaryResp] = await Promise.all([
+        const [dictResp, mappingResp, summaryResp, glossaryResp] = await Promise.all([
             fetch(`clauses_json/clauses.json?t=${ts}`),
             fetch(`clauses_json/mapping.json?t=${ts}`),
-            fetch(`clauses_json/summaries.json?t=${ts}`)
+            fetch(`clauses_json/summaries.json?t=${ts}`),
+            fetch(`clauses_json/glossary.json?t=${ts}`)
         ]);
         
         dictionaryData = await dictResp.json();
         const mapping = await mappingResp.json();
         summaryTemplates = await summaryResp.json();
+        glossaryData = await glossaryResp.json();
         
         matrixData = mapping.matrix;
         productDictionary = mapping.products;
@@ -1913,6 +1916,7 @@ function setupWizardSave() {
     const saveBtn = document.getElementById('btn-save-wizard');
     const loadBtn = document.getElementById('btn-load-wizard');
     const spreadsheetBtn = document.getElementById('btn-download-spreadsheet');
+    const glossaryBtn = document.getElementById('btn-show-glossary');
     const fileInput = document.getElementById('wizard-file-input');
 
     if (saveBtn) {
@@ -1946,6 +1950,12 @@ function setupWizardSave() {
             isDownloadingWizard = true;
             downloadWizardSpreadsheet(true);
             setTimeout(() => isDownloadingWizard = false, 1000);
+        });
+    }
+
+    if (glossaryBtn) {
+        glossaryBtn.addEventListener('click', () => {
+            showGlossary(glossaryBtn);
         });
     }
 
@@ -2347,6 +2357,10 @@ window.showClause = (id, triggerEl = null) => {
     const title = document.getElementById('modalTitle');
     const body = document.getElementById('modalBody');
 
+    // Reset accessibility attributes for clause details
+    title.textContent = 'Szczegóły klauzuli';
+    modal.setAttribute('aria-label', 'Szczegóły klauzuli');
+
     if (data) {
         const renderList = (arr, tag = 'ol') => {
             if (!arr || arr.length === 0) return '<p><i>Brak danych</i></p>';
@@ -2446,6 +2460,41 @@ document.getElementById('clauseModal').onclick = (e) => {
 document.getElementById('clauseModal').oncancel = (e) => {
     e.preventDefault(); // Prevent default close so we can use our handler
     handleCloseModal();
+};
+
+window.showGlossary = (triggerEl = null) => {
+    lastModalTrigger = triggerEl;
+    const modal = document.getElementById('clauseModal');
+    const title = document.getElementById('modalTitle');
+    const body = document.getElementById('modalBody');
+
+    const terms = Object.keys(glossaryData).sort();
+    const glossaryHtml = terms.map(term => `
+        <div class="glossary-item">
+            <h3>${term}</h3>
+            <p>${(W.fixOrphans || (s=>s))(glossaryData[term])}</p>
+        </div>
+    `).join('');
+
+    if (modal.open) {
+        modal.close();
+    }
+    title.textContent = 'Słownik pojęć';
+    modal.setAttribute('aria-label', 'Słownik pojęć');
+    body.innerHTML = `
+        <p class="glossary-intro">W tym słowniku znajdziesz wyjaśnienia kluczowych pojęć używanych w aplikacji KZ-PAD.</p>
+        ${glossaryHtml}
+    `;
+
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('modal-is-open');
+    modal.showModal();
+    // Reset scroll position to top
+    document.getElementById('modalBody').scrollTop = 0;
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
 };
 
 // --- Accessibility helpers for icon buttons (wizard-specific simplified version) ---

@@ -1,0 +1,13 @@
+{
+  "TIK": "Technologie informacyjno-komunikacyjne. Obejmują sprzęt komputerowy, systemy operacyjne, terminale informacyjne, a także oprogramowanie i usługi cyfrowe.",
+  "Klauzula": "Pojedynczy wymóg techniczny z normy lub ustawy (np. „Kontrast”).",
+  "Warunki wstępne": "Określają, w jakich sytuacjach dany wymóg ma zastosowanie. Jeśli produkt nie posiada danej funkcji (np. nie ma ekranu), warunek nie jest spełniony i wymóg można oznaczyć jako 'Nie dotyczy'.",
+  "Procedura": "Instrukcja krok po kroku opisująca, jak osoba kontrolująca ma sprawdzić daną funkcję.",
+  "Inspekcja": "Metoda oceny polegająca na oględzinach, sprawdzeniu dokumentacji lub prostym teście bez użycia specjalistycznego sprzętu.",
+  "Kontrola": "Proces weryfikacji zgodności produktu lub usługi z wymaganiami ustawy (PAD).",
+  "Biometria": "Rozpoznawanie cech fizycznych (np. odcisk palca, twarz) do identyfikacji użytkownika.",
+  "Interoperacyjność": "Współpraca (interoperacyjność) z narzędziami wspomagającymi, takimi jak czytniki ekranu czy syntezatory mowy.",
+  "WCAG": "Wytyczne dostępności treści internetowych (Web Content Accessibility Guidelines) – standardy dostępności dla stron internetowych.",
+  "EN 301 549": "Europejska norma określająca wymagania dostępności dla produktów i usług cyfrowych.",
+  "PAD": "Polski Akt o Dostępności – ustawa regulująca wymagania dostępności dla produktów i usług w Polsce."
+}

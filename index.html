@@ -45,6 +45,9 @@
             <button class="outline secondary icon-btn theme-toggle" id="btn-download-spreadsheet" aria-label="Pobierz arkusz kontroli w formacie Excel" title="Pobierz arkusz kontroli w formacie Excel">
                 <i data-lucide="file-spreadsheet" aria-hidden="true"></i>
             </button>
+            <button class="outline secondary icon-btn theme-toggle" id="btn-show-glossary" aria-label="Słownik pojęć i pomoc" data-icon-label="Słownik pojęć i pomoc" title="Słownik pojęć i pomoc">
+                <i data-lucide="help-circle" aria-hidden="true"></i>
+            </button>
             <button class="outline secondary icon-btn theme-toggle" onclick="window.utils && window.utils.toggleTheme()" aria-label="Zmień motyw">
                 <i id="theme-icon" data-lucide="moon" aria-hidden="true"></i>
             </button>
@@ -183,7 +186,10 @@
             <div id="resultsContent"></div>
         </section>
 
-        <!-- Modal for Clause Details -->
+        
+    </main>
+
+    <!-- Modal for Clause Details -->
         <dialog id="clauseModal" aria-modal="true" aria-label="Szczegóły klauzuli" hidden aria-hidden="true">
             <article>
                 <header>
@@ -200,7 +206,6 @@
                 </footer>
             </article>
         </dialog>
-    </main>
 
     <!-- Footer -->
     <footer class="app-footer">
