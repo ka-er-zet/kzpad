@@ -5,7 +5,7 @@
       "id": "full_compliance",
       "status": "ZGODNY",
       "title": "Podsumowanie kontroli dostępności",
-      "description": "Na podstawie przeprowadzonej weryfikacji stwierdza się, że {productName} jest w pełni zgodny/a z wymaganiami Ustawy z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze.\n\nWszystkie kryteria dostępności przewidziane dla tej kategorii zostały sprawdzone i ocenione jako spełnione. Produkt/usługa zapewnia pełny dostęp dla osób z niepełnosprawnościami zgodnie z obowiązującymi standardami.",
+      "description": "Na podstawie przeprowadzonej weryfikacji stwierdza się, że {productName} jest w pełni zgodny (lub zgodna) z wymaganiami Ustawy z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze.\n\nWszystkie kryteria dostępności przewidziane dla tej kategorii zostały sprawdzone i ocenione jako spełnione. Produkt/usługa zapewnia pełny dostęp dla osób z niepełnosprawnościami zgodnie z obowiązującymi standardami.",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",

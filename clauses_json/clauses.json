@@ -1,10 +1,10 @@
 {
   "U.7.1.1.a": {
     "id": "U.7.1.1.a",
-    "title": "U.7.1.1.a Więcej niż jeden kanał sensoryczny (Art. 7 ust. 1 pkt 1 lit. a)",
+    "title": "U.7.1.1.a Więcej niż jeden zmysł (kanał sensoryczny) (Art. 7 ust. 1 pkt 1 lit. a)",
     "preconditions": [],
     "procedure": [
-      "Zweryfikuj, czy wszystkie informacje, etykiety i ostrzeżenia umieszczone na produkcie są dostępne za pomocą więcej niż jednego kanału sensorycznego. Dotyczy to zarówno oznaczeń fizycznych (obudowa), jak i informacji systemowych wyświetlanych przez samo urządzenie (warstwa cyfrowa/ekran)."
+      "Zweryfikuj, czy wszystkie informacje, etykiety i ostrzeżenia umieszczone na produkcie są dostępne za pomocą więcej niż jednego zmysłu (kanału sensorycznego). Dotyczy to zarówno oznaczeń fizycznych (obudowa), jak i informacji systemowych wyświetlanych przez samo urządzenie (warstwa cyfrowa/ekran)."
     ],
     "evaluation": "Inspekcja i testy technologii asystujących",
     "checklist": [
@@ -126,22 +126,22 @@
   },
   "U.7.1.2.b-02": {
     "id": "U.7.1.2.b-02",
-    "title": "U.7.1.2.b-02 Opis interfejsu użytkownika produktu w instrukcjach (Art. 7 ust. 1 pkt 2 lit. b tiret 2)",
+    "title": "U.7.1.2.b-02 Opis sposobu obsługi (interfejsu) produktu w instrukcjach (Art. 7 ust. 1 pkt 2 lit. b tiret 2)",
     "preconditions": [
       "Instrukcje użytkowania są dostępne publicznie (np. na stronie internetowej) z informacją o ich dostępności zamieszczoną na produkcie lub opakowaniu",
-      "Produkt posiada interfejs użytkownika (przyciski, wyświetlacz, menu, kontrolki, itd.)"
+      "Produkt posiada sposób obsługi - przyciski, wyświetlacz, menu (interfejs użytkownika)"
     ],
     "procedure": [
       "1. Zapoznaj się z dostępnymi instrukcjami użytkowania produktu.",
-      "2. Sprawdź, czy instrukcje zawierają opis interfejsu użytkownika (opis przycisków, elementów sterowania, menu, ikon, wyświetlaczy, sygnałów zwrotnych).",
-      "3. Oceń, czy opis interfejsu jest kompletny i pozwala użytkownikowi zrozumieć sposób obsługi urządzenia."
+      "2. Sprawdź, czy instrukcje zawierają opis sposobu obsługi (opis przycisków, elementów sterowania, menu, ikon, wyświetlaczy, sygnałów zwrotnych).",
+      "3. Oceń, czy opis sposobu obsługi jest kompletny i pozwala użytkownikowi zrozumieć sposób obsługi urządzenia."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
-      "Czy instrukcje zawierają opis dostępnych przycisków, przełączników, kontrolek i innych elementów interfejsu?",
+      "Czy instrukcje zawierają opis dostępnych przycisków, przełączników, kontrolek i innych elementów obsługi?",
       "Czy opis wyjaśnia funkcję każdego przycisku, głównie tych kluczowych dla obsługi?",
       "Czy instrukcje opisują znaczenie sygnałów zwrotnych (diody LED, dźwięki, komunikaty na wyświetlaczu)?",
-      "Czy opis interfejsu jest zorganizowany w logiczny sposób (np. kolejność fizyczna, grupy funkcjonalne)?"
+      "Czy opis przycisków i menu jest zorganizowany w logiczny sposób (np. kolejność fizyczna, grupy funkcjonalne)?"
     ],
     "notes": [],
     "form": {
@@ -165,7 +165,7 @@
       "Czy instrukcje zawierają informacje o dostępności produktu lub jego dostępnych cechach?",
       "Czy wymienione są wymagania dostępności z art. 8-11 ustawy, do których produkt się zobowiązuje (w zakresie mającym zastosowanie do danego produktu)?",
       "Czy opisane są konkretne rozwiązania dostępnościowe (np. \"produkt obsługuje czytniki ekranu\", \"dostępna jest opcja dużej czcionki\", \"interfejs obsługuje nawigację klawiaturą\")?",
-      "Czy użytkownik wie, jak aktywować lub używać dostępne cechy (np. gdzie znaleźć opcje dostępności, jak włączyć obsługę technologii asystywnych)?",
+      "Czy użytkownik wie, jak aktywować lub używać dostępne cechy (np. gdzie znaleźć opcje dostępności, jak włączyć obsługę technologii asystujących)?",
       "Czy instrukcje zawierają kontakt do producenta lub procedurę zgłaszania problemów związanych z dostępnością?"
     ],
     "notes": [],
@@ -181,7 +181,7 @@
     ],
     "procedure": [
       "1. Wybierz udostępnione instrukcje (cyfrowe lub drukowane).",
-      "2. Zweryfikuj ich jakość zgodnie z wymogami Art. 7 ust. 1 pkt 1 (percepcja, zrozumiałość, forma prezentacji)."
+      "2. Zweryfikuj ich jakość zgodnie z wymogami Art. 7 ust. 1 pkt 1 (percepcja - sposób postrzegania, zrozumiałość, forma prezentacji)."
     ],
     "evaluation": "Inspekcja i Kontrola Dostępności Cyfrowej",
     "checklist": [
@@ -198,7 +198,7 @@
   },
   "U.7.1.2.c": {
     "id": "U.7.1.2.c",
-    "title": "U.7.1.2.c Formaty tekstowe instrukcji umożliwiające wspomóganą komunikację (Art. 7 ust. 1 pkt 2 lit. c)",
+    "title": "U.7.1.2.c Formaty tekstowe instrukcji umożliwiające wspomaganą komunikację (Art. 7 ust. 1 pkt 2 lit. c)",
     "preconditions": [
       "Instrukcje użytkowania są dostępne publicznie (np. na stronie internetowej) z informacją o ich dostępności zamieszczoną na produkcie lub opakowaniu"
     ],
@@ -206,7 +206,7 @@
       "1. Zapoznaj się z dostępnymi instrukcjami użytkowania produktu.",
       "2. Sprawdź, w jakich formatach zostały udostępnione instrukcje (np. PDF, HTML, TXT, DOCX, EPUB itp.).",
       "3. Zweryfikuj, czy wybrane formaty mogą być odczytane i przetwarzane przez oprogramowanie do alternatywnej i wspierającej komunikacji (czytniki ekranu, syntezatory mowy, programy tłumaczące).",
-      "4. Sprawdź, czy format pozwala na ekstrakcję tekstu i konwersję do innych formatów dostępnych dla użytkowników z różnymi potrzebami dostępności."
+      "4. Sprawdź, czy format pozwala na wyodrębnianie tekstu i konwersję do innych formatów dostępnych dla użytkowników z różnymi potrzebami dostępności."
     ],
     "evaluation": "Inspekcja i Kontrola Dostępności Cyfrowej",
     "checklist": [
@@ -223,23 +223,23 @@
   },
   "U.7.1.2.d": {
     "id": "U.7.1.2.d",
-    "title": "U.7.1.2.d Interoperacyjność instrukcji z narzędziami wspomagającymi (Art. 7 ust. 1 pkt 2 lit. d)",
+    "title": "U.7.1.2.d Współpraca (interoperacyjność) instrukcji z narzędziami wspomagającymi (Art. 7 ust. 1 pkt 2 lit. d)",
     "preconditions": [
       "Instrukcje użytkowania są dostępne publicznie (np. na stronie internetowej) z informacją o ich dostępności zamieszczoną na produkcie lub opakowaniu",
-      "Produkt umożliwia lub wspiera interoperacyjność z narzędziami wspomagającymi"
+      "Produkt umożliwia lub wspiera współpracę (interoperacyjność) z narzędziami wspomagającymi"
     ],
     "procedure": [
-      "1. Zapoznaj się z instrukcjami użytkowania produktu, szczególnie tymi opisującymi dostęp do funkcji, aktywację i interoperacyjność z narzędziami wspomagającymi.",
+      "1. Zapoznaj się z instrukcjami użytkowania produktu, szczególnie tymi opisującymi dostęp do funkcji, aktywację i współpracę (interoperacyjność) z narzędziami wspomagającymi.",
       "2. Sprawdź, czy instrukcje zawierają szczegółowy opis oprogramowania oraz cech sprzętu produktu, które umożliwiają łączenie się z narzędziami wspomagającymi (np. API, sterowniki, interfejsy komunikacyjne).",
       "3. Zweryfikuj, czy instrukcje zawierają kompletny wykaz narzędzi wspomagających (np. czytniki ekranu, syntezatory mowy, urządzenia wejścia alternatywne), które były faktycznie testowane razem z produktem, z informacją o wersji i zakresie kompatybilności.",
       "4. Sprawdź, czy wskazane narzędzia wspomagające rzeczywiście działają z produktem zgodnie z opisem w instrukcjach."
     ],
     "evaluation": "Inspekcja i Test Funkcjonalny",
     "checklist": [
-      "Czy instrukcje zawierają opis techniczny oprogramowania i sprzętu produktu umożliwiającego interoperacyjność z narzędziami wspomagającymi?",
+      "Czy instrukcje zawierają opis techniczny oprogramowania i sprzętu produktu umożliwiającego współpracę (interoperacyjność) z narzędziami wspomagającymi?",
       "Czy wymienione są konkretne interfejsy, API lub protokoły komunikacyjne wspierane przez produkt?",
       "Czy wymieniony jest kompletny i aktualny wykaz narzędzi wspomagających przetestowanych z produktem (wraz z wersjami)?",
-      "Czy dla każdego wymienionego narzęcia wspomagającego podano zakres funkcjonalności, które zostały przetestowane?",
+      "Czy dla każdego wymienionego narzędzia wspomagającego podano zakres funkcjonalności, które zostały przetestowane?",
       "Czy instrukcje zawierają informacje o ograniczeniach kompatybilności lub wymaganiach konfiguracyjnych dla narzędzi wspomagających?"
     ],
     "notes": [],
@@ -254,14 +254,14 @@
     "procedure": [
       "1. Zidentyfikuj instrukcje dotyczące instalacji, konserwacji, przechowywania i pozbywania się produktu, które nie zostały zamieszczone w lub na samym produkcie.",
       "2. Sprawdź, czy instrukcje są dostępne publicznie (np. na stronie WWW producenta) z informacją o miejscu ich udostępnienia zamieszczoną na produkcie lub opakowaniu.",
-      "3. Zweryfikuj, czy instrukcje spełniają wymogi dostępności z Art. 7 ust. 1 pkt 1 (kanały sensoryczne, zrozumiałość, percepcja).",
-      "4. Sprawdź, czy instrukcje obejmują alternatywną prezentację treści nietekstowych (pkt 2 lit. b tiret pierwszym) oraz są dostępne w formatach tekstowych umożliwiających wspomóganą komunikację (pkt 2 lit. c)."
+      "3. Zweryfikuj, czy instrukcje spełniają wymogi dostępności z Art. 7 ust. 1 pkt 1 (kanały sensoryczne, zrozumiałość, percepcja - sposób postrzegania).",
+      "4. Sprawdź, czy instrukcje obejmują alternatywną prezentację treści nietekstowych (pkt 2 lit. b tiret pierwszym) oraz są dostępne w formatach tekstowych umożliwiających wspomaganą komunikację (pkt 2 lit. c)."
     ],
     "evaluation": "Inspekcja i Kontrola Dostępności",
     "checklist": [
       "Czy instrukcje instalacji, konserwacji, przechowywania i pozbywania się produktu są dostępne publicznie?",
       "Czy na produkcie lub opakowaniu znajduje się informacja o miejscu udostępnienia instrukcji (np. adres URL, kod QR)?",
-      "Czy instrukcje spełniają wymogi percepcji i zrozumiałości (wielokanałowość, kontrast, typografia)?",
+      "Czy instrukcje spełniają wymogi percepcji (odbierania informacji) i zrozumiałości (wielokanałowość, kontrast, typografia)?",
       "Czy instrukcje zawierają opisy dla treści nietekstowych (zdjęcia, diagramy, schematy)?",
       "Czy instrukcje dostępne są w formacie tekstowym umożliwiającym odczyt przez technologie asystujące (czytnik ekranu, syntezator mowy)?"
     ],
@@ -278,7 +278,7 @@
       "1. Zidentyfikuj wszystkie informacje umieszczone na opakowaniu produktu (etykiety, instrukcje, ostrzeżenia, informacje o dostępności).",
       "2. Sprawdź, czy informacje są dostępne za pośrednictwem więcej niż jednego kanału sensorycznego (np. tekst + symbole, informacje dotykowe, drukowane + głosowe).",
       "3. Zweryfikuj zrozumiałość i postrzegalność informacji (prosty język, jasna struktura, odpowiedni kontrast i wielkość czcionki).",
-      "4. Oceń, czy informacje na opakowaniu spełniają wymogi z Art. 7 ust. 1 pkt 1 (wielokanałowość, zrozumiałość, percepcja)."
+      "4. Oceń, czy informacje na opakowaniu spełniają wymogi z Art. 7 ust. 1 pkt 1 (wielokanałowość, zrozumiałość, percepcja - sposób postrzegania)."
     ],
     "evaluation": "Inspekcja",
     "checklist": [
@@ -429,22 +429,22 @@
   },
   "U.8.0.1.g": {
     "id": "U.8.0.1.g",
-    "title": "U.8.0.1.g Sterowanie ręczne i motoryka mała (Art. 8 pkt 1 lit. g)",
+    "title": "U.8.0.1.g Sterowanie ręczne i precyzyjne ruchy (motoryka mała) (Art. 8 pkt 1 lit. g)",
     "preconditions": [
       "Produkt wymaga ręcznej obsługi i sterowania."
     ],
     "procedure": [
       "Przejdź do funkcji sterowania produktem i przetestuj możliwość sterowania sekwencyjnego (aktywacji funkcji jedna po drugiej, bez jednoczesnego używania wielu elementów sterujących.).",
-      "Sprawdź alternatywne rozwiązania dla motoryki małej, takie jak większe przyciski lub dotykowe interfejsy.",
+      "Sprawdź alternatywne rozwiązania wspierające precyzyjne ruchy (motorykę małą), takie jak większe przyciski lub dotykowe interfejsy.",
       "Przetestuj przełączniki, upewniając się, że nie wymagają jednoczesnego poruszania więcej niż jednym.",
-      "Dotknij przełączników i oceń możliwość ich rozróżnienia za pomocą dotyku."
+      "Dotknij przełączników i oceń możliwość ich rozróżnienia za pomocą dotyku (wyczuwalność pod palcem)."
     ],
     "evaluation": "Inspekcja i Testy funkcjonalne",
     "checklist": [
       "Czy produkt pozwala na sterowanie sekwencyjne?",
-      "Czy produkt zapewnia alternatywne rozwiązania dla motoryki małej?",
+      "Czy produkt zapewnia alternatywne rozwiązania dla precyzyjnych ruchów (motoryki małej)?",
       "Czy produkt unika konieczności jednoczesnego poruszania więcej niż jednym przełącznikiem?",
-      "Czy produkt pozwala na rozróżnienie przełączników za pomocą dotyku?"
+      "Czy produkt pozwala na rozróżnienie przełączników za pomocą dotyku (wyczuwalność pod palcem)?"
     ],
     "notes": [],
     "form": {
@@ -497,7 +497,7 @@
   },
   "U.8.0.3": {
     "id": "U.8.0.3",
-    "title": "U.8.0.3 Ograniczenie ataków padaczki fotogennej (Art. 8 pkt 3)",
+    "title": "U.8.0.3 Ograniczenie ataków padaczki wywołanych światłem (fotogennej) (Art. 8 pkt 3)",
     "preconditions": [
       "Produkt zawiera elementy wizualne migające lub zmieniające się."
     ],
@@ -1448,12 +1448,12 @@
     "title": "U.12.02.03 Kontrola dostępności (WCAG/EN) — postrzegalność, funkcjonalność, zrozumiałość i kompatybilność (Art. 12 ust. 2 pkt 3)",
     "preconditions": [],
     "procedure": [
-      "Przeprowadź kompleksowy Kontrola zgodności z WCAG/EN 301 549, obejmujący testy automatyczne, ręczne i testy z użytkownikami z niepełnosprawnościami.",
+      "Przeprowadź kompleksową kontrolę zgodności z WCAG/EN 301 549, obejmującą testy automatyczne, ręczne i testy z użytkownikami z niepełnosprawnościami.",
       "Oceń postrzegalność, funkcjonalność, zrozumiałość i kompatybilność zgodnie z kryteriami WCAG.",
       "Sprawdź współpracę z narzędziami wspomagającymi (czytniki ekranu, powiększalniki, urządzenia wejściowe, narzędzia AAC).",
       "Sporządź szczegółowy raport z niezgodnościami, zaleceniami naprawczymi i priorytetami dla deweloperów"
     ],
-    "evaluation": "Pełny raport Kontrolaowy zgodny z WCAG/EN, w tym lista niezgodności, priorytetów i rekomendacji oraz dowody testów (zrzuty, logi, transkrypcje testów użytkowników).",
+    "evaluation": "Pełny raport Kontrolny zgodny z WCAG/EN, w tym lista niezgodności, priorytetów i rekomendacji oraz dowody testów (zrzuty, logi, transkrypcje testów użytkowników).",
     "checklist": [
       "Zidentyfikowano i udokumentowano kryteria WCAG wymagające naprawy.",
       "Przeprowadzono testy z użytkownikami korzystającymi z narzędzi wspomagających i dowody zostały uwzględnione w raporcie.",
@@ -7835,22 +7835,22 @@
   },
   "C.5.3": {
     "id": "C.5.3",
-    "title": "C.5.3 Biometria",
+    "title": "C.5.3 Biometria (rozpoznawanie cech fizycznych)",
     "preconditions": [
-      "1. Do identyfikacji użytkownika TIK wykorzystuje charakterystyki biologiczne."
+      "1. Do identyfikacji użytkownika urządzenie lub system (TIK) wykorzystuje cechy fizyczne (np. odcisk palca, twarz)."
     ],
     "procedure": [
-      "1. Sprawdź, czy identyfikację użytkownika można przeprowadzić za pomocą więcej niż jednej metody."
+      "1. Sprawdź, czy rozpoznawanie użytkownika można przeprowadzić za pomocą więcej niż jednej metody (np. kod PIN zamiast odcisku palca)."
     ],
     "evaluation": "Test",
     "checklist": [
-      "<strong>Wymaganie alternatywy:</strong> Jeśli TIK używa cech biologicznych do identyfikacji, upewnij się, że nie polega wyłącznie na jednej charakterystyce.",
-      "<strong>Dokumentacja alternatywy:</strong> Udokumentuj alternatywę (biometryczna lub nie-biometryczna).",
-      "<strong>Sprawdzenie wymagań:</strong> Potwierdź, że alternatywna metoda spełnia te same wymagania bez wprowadzania barier.",
-      "<strong>Zachowanie przy awarii:</strong> Zanotuj zachowanie systemu, gdy podstawowa biometria zawodzi lub zostanie odrzucona.",
-      "<strong>Testowane cechy:</strong> Zanotuj, które cechy biometryczne zostały przetestowane i dlaczego wybrano daną alternatywę.",
-      "<strong>Uwaga 1:</strong> Alternatywne metody identyfikacji użytkownika lub kontroli TIK mogą być niebiometryczne lub biometryczne.",
-      "<strong>Uwaga 2:</strong> Metody biometryczne oparte na różnych cechach biologicznych zwiększają prawdopodobieństwo, że osoby z niepełnosprawnościami posiadają co najmniej jedną z określonych cech biologicznych. Przykłady różnych cech biologicznych to odciski palców, wzory siatkówki oka, głos i twarz."
+      "<strong>Wymaganie alternatywy:</strong> Jeśli urządzenie używa cech fizycznych (biometrii) do rozpoznawania użytkownika, upewnij się, że nie jest to jedyny sposób dostępu.",
+      "<strong>Dokumentacja alternatywy:</strong> Udokumentuj alternatywną metodę (inną cechę fizyczną lub np. kod/hasło).",
+      "<strong>Sprawdzenie wymagań:</strong> Potwierdź, że alternatywna metoda pozwala na pełną obsługę bez tworzenia barier.",
+      "<strong>Zachowanie przy awarii:</strong> Sprawdź, jak system się zachowuje, gdy rozpoznawanie cech fizycznych (biometria) nie zadziała (np. brudny palec).",
+      "<strong>Testowane cechy:</strong> Zanotuj, które cechy fizyczne zostały przetestowane i jaka alternatywa jest dostępna.",
+      "<strong>Uwaga 1:</strong> Alternatywne metody rozpoznawania użytkownika mogą polegać na innych cechach fizycznych lub na wpisaniu kodu.",
+      "<strong>Uwaga 2:</strong> Zapewnienie różnych metod (np. odciski palców, skan oka, głos, twarz) zwiększa szansę, że osoby z różnymi potrzebami będą mogły skorzystać z urządzenia."
     ],
     "notes": [],
     "form": {
@@ -7868,7 +7868,7 @@
           "label": "Nie spełniono warunku wstępnego 1."
         }
       ],
-      "legend": "Wybierz wynik dla C.5.3 Biometria",
+      "legend": "Wybierz wynik dla C.5.3 Biometria (rozpoznawanie cech fizycznych)",
       "noteId": "notes-c-5-3"
     }
   },

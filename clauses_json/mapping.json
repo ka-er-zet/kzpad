@@ -665,7 +665,7 @@
       "id": "A08-00-05-a",
       "article": "Art. 8 pkt 5 lit.a",
       "category": "Wymagania projektowe i interfejsu użytkownika (Art. 8)",
-      "requirement": "Zapewnia się rozwiązania alternatywne dla identyfikacji biometrycznej",
+      "requirement": "Zapewnia się rozwiązania alternatywne dla rozpoznawania użytkownika za pomocą cech fizycznych (np. odcisku palca, twarzy) – biometrii",
       "product_mappings": {
         "p01": "C.5.3; U.8.0.5.a",
         "p02": "",
