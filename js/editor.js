@@ -267,7 +267,14 @@ function renderMappingForm(id, data) {
             </div>
         </div>
 
-        <h3>Edycja mapowania artykułu: ${id}</h3>
+        <div style="display:flex;align-items:center;gap:0.5rem;justify-content:space-between;">
+            <h3 style="margin:0;">Edycja mapowania artykułu: ${id}</h3>
+            <div>
+                <button class="outline" ${'(currentData.matrix || []).findIndex(it => it.id === id) > 0 ? '' : 'disabled'} onclick="moveMatrixItem('${id}', -1)" title="Przesuń w górę">↑</button>
+                <button class="outline" ${'(currentData.matrix || []).findIndex(it => it.id === id) >= 0 && (currentData.matrix || []).findIndex(it => it.id === id) < ((currentData.matrix || []).length - 1) ? '' : 'disabled'} onclick="moveMatrixItem('${id}', 1)" title="Przesuń w dół">↓</button>
+            </div>
+        </div>
+
         <label>Artykuł
             <input type="text" id="edit-article" value="${data.article || ''}">
         </label>
@@ -301,6 +308,22 @@ window.toggleProductsEdit = () => {
 
 window.updateProductName = (pId, newName) => {
     currentData.products[pId] = newName;
+};
+
+// Move an item inside mapping.matrix up or down by delta (-1 = up, +1 = down)
+window.moveMatrixItem = (id, delta) => {
+    if (!currentData || !Array.isArray(currentData.matrix)) return;
+    const idx = currentData.matrix.findIndex(it => it.id === id);
+    if (idx === -1) return;
+    const newIndex = idx + delta;
+    if (newIndex < 0 || newIndex >= currentData.matrix.length) return;
+    // swap
+    const tmp = currentData.matrix[newIndex];
+    currentData.matrix[newIndex] = currentData.matrix[idx];
+    currentData.matrix[idx] = tmp;
+    // keep the same active item id and refresh UI
+    renderList(searchInput.value);
+    loadItem(id);
 };
 
 /**
