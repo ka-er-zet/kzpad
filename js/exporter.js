@@ -29,19 +29,27 @@
             <style:text-properties fo:language="pl" fo:country="PL" />
         </style:style>
         <style:style style:name="T1" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-top="0.6cm" fo:margin-bottom="0.4cm"/>
             <style:text-properties fo:font-size="24pt" fo:font-weight="bold" fo:language="pl" fo:country="PL" />
         </style:style>
         <style:style style:name="H1" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-top="0.6cm" fo:margin-bottom="0.4cm"/>
             <style:text-properties fo:font-size="18pt" fo:font-weight="bold" fo:language="pl" fo:country="PL" />
         </style:style>
         <style:style style:name="H2" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-top="0.5cm" fo:margin-bottom="0.3cm"/>
             <style:text-properties fo:font-size="16pt" fo:font-weight="bold" fo:language="pl" fo:country="PL" />
         </style:style>
         <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0.3cm"/>
             <style:text-properties fo:font-size="12pt" fo:language="pl" fo:country="PL" />
         </style:style>
         <style:style style:name="H3" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-top="0.4cm" fo:margin-bottom="0.2cm"/>
             <style:text-properties fo:font-size="12pt" fo:font-weight="bold" fo:language="pl" fo:country="PL" />
+        </style:style>
+        <style:style style:name="T_BOLD" style:family="text">
+            <style:text-properties fo:font-weight="bold"/>
         </style:style>
         <style:style style:name="FooterP" style:family="paragraph" style:parent-style-name="Standard">
             <style:paragraph-properties fo:text-align="center"/>
@@ -117,11 +125,7 @@
                 if (section.type === 'title') {
                     // Tytuły (H1, H2, H3)
                     const style = section.level === 1 ? 'H1' : (section.level === 2 ? 'H2' : 'H3');
-                    // Odstęp (pusta linia) przed nagłówkiem
-                    contentXml += `<text:p text:style-name="Standard"/>`;
                     contentXml += `<text:h text:style-name="${style}" text:outline-level="${section.level}">${window.utils.xmlEscape(section.text)}</text:h>`;
-                    // Odstęp (pusta linia) po nagłówku
-                    contentXml += `<text:p text:style-name="Standard"/>`;
                 } else if (section.type === 'KV') {
                     // Key-Value (Metadane) - np. "Data: 2024-01-01"
                     const val = section.value ? section.value : '';
@@ -143,7 +147,7 @@
                     });
                     contentXml += `</text:list>`;
                 } else if (section.type === 'separator') {
-                    contentXml += `<text:p text:style-name="Standard"/>`;
+                    // Pomijamy puste linie (separatory) na rzecz marginesów w stylach akapitów (WCAG)
                 }
             });
 
@@ -161,20 +165,18 @@
         } else {
             // === TRYB STANDARDOWY (SUMMARY.JS) ===
             contentXml += `<text:h text:style-name="H1" text:outline-level="1">Raport</text:h>
-            <text:h text:style-name="H2" text:outline-level="2">${window.utils.xmlEscape(state.product || 'Audyt Dostępności')}</text:h>
-            <text:p></text:p>
+            <text:h text:style-name="H2" text:outline-level="2">${window.utils.xmlEscape(state.product || 'Kontrola Dostępności')}</text:h>
             <text:p text:style-name="P1">Data: ${new Date().toLocaleString()}</text:p>`;
 
             if (state.auditor) {
-                contentXml += `<text:p text:style-name="P1">Audytor: ${window.utils.xmlEscape(state.auditor)}</text:p>`;
+                contentXml += `<text:p text:style-name="P1">Osoba kontrolująca: ${window.utils.xmlEscape(state.auditor)}</text:p>`;
             }
             if (state.productDesc) {
                 contentXml += `<text:p text:style-name="P1">Opis: ${window.utils.xmlEscape(state.productDesc)}</text:p>`;
             }
 
-            contentXml += `<text:p></text:p><text:h text:style-name="H2" text:outline-level="2">Audyt ${stats.verdictLabel.toLowerCase()}</text:h>
-            <text:p></text:p>
-            <text:h text:style-name="H3" text:outline-level="3">Komentarz audytora:</text:h>`;
+            contentXml += `<text:h text:style-name="H2" text:outline-level="2">Kontrola ${stats.verdictLabel.toLowerCase()}</text:h>
+            <text:h text:style-name="H3" text:outline-level="3">Komentarz osoby kontrolującej:</text:h>`;
             
              // Obsługa structuredSummary w trybie standard (wsteczna kompatybilność z poprzednią poprawką)
             if (state.structuredSummary) {
@@ -183,7 +185,6 @@
                  }
                  if (state.structuredSummary.sections && state.structuredSummary.sections.length > 0) {
                      state.structuredSummary.sections.forEach(sec => {
-                         contentXml += `<text:p></text:p>`;
                          contentXml += `<text:h text:style-name="H3" text:outline-level="4">${window.utils.xmlEscape(sec.title)}</text:h>`;
                          contentXml += `<text:list text:style-name="L1">`;
                          if (sec.list) {
@@ -201,15 +202,12 @@
             }
 
             contentXml += `
-            <text:p></text:p>
             <text:h text:style-name="H3" text:outline-level="3">Statystyki</text:h>
-            <text:p></text:p>
             <text:p text:style-name="P1"> - Zaliczone: ${stats.passed}</text:p>
             <text:p text:style-name="P1"> - Niezaliczone: ${stats.failed}</text:p>
             <text:p text:style-name="P1"> - Nie dotyczy: ${stats.na}</text:p>
             <text:p text:style-name="P1"> - Nietestowalne: ${stats.nt}</text:p>
-            <text:p text:style-name="P1"> - Do sprawdzenia: ${stats.toVerify}</text:p>
-            <text:p></text:p>`;
+            <text:p text:style-name="P1"> - Do sprawdzenia: ${stats.toVerify}</text:p>`;
         }
         
         // Cześć wspólna - TABELE (Generowanie tabel szczegółowych C.5 - C.13)
@@ -223,7 +221,6 @@
             if (clauseTests.length === 0) continue;
 
             contentXml += `<text:h text:style-name="H3" text:outline-level="3">Klauzula ${clause}</text:h>
-            <text:p></text:p>
             <table:table table:name="ReportTable${i}" table:style-name="Tbl1">
                 <table:table-column table:style-name="Tbl1.A"/>
                 <table:table-column table:style-name="Tbl1.B"/>
@@ -248,8 +245,7 @@
                 </table:table-row>`;
             });
 
-            contentXml += `</table:table>
-            <text:p></text:p>`;
+            contentXml += `</table:table>`;
         }
         }
 
@@ -287,13 +283,18 @@
     <manifest:file-entry manifest:full-path="settings.xml" manifest:media-type="text/xml"/>
 </manifest:manifest>`;
 
+        const productName = (state.product && state.product !== 'Nieokreślony' && state.product !== 'Profil nieokreślony') ? state.product : '';
+        const meshTitle = productName 
+            ? `Raport z kontroli zgodności ${productName} - podsumowanie`
+            : `Raport z kontroli zgodności - podsumowanie`;
+
         const metaXml = `<?xml version="1.0" encoding="UTF-8"?>
 <office:document-meta xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" office:version="1.2">
     <office:meta>
-        <meta:generator>Accessibility Wizard</meta:generator>
+        <meta:generator>Narzędzie KZ-PAD</meta:generator>
         <dc:language>pl-PL</dc:language>
         <meta:creation-date>${new Date().toISOString()}</meta:creation-date>
-        <dc:title>${window.utils.xmlEscape(state.product || 'Raport Dostępności')}</dc:title>
+        <dc:title>${window.utils.xmlEscape(meshTitle)}</dc:title>
     </office:meta>
 </office:document-meta>`;
 

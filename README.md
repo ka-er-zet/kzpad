@@ -53,7 +53,7 @@ Aplikacja jest przystosowana do instalacji jako natywna aplikacja na komputerze 
 
 ## 📖 Instrukcja Obsługi (End-User)
 
-Aplikacja wspiera pełny proces audytu – od konfiguracji po raportowanie.
+Aplikacja wspiera proces kontroli od konfiguracji po raportowanie.
 
 ### 1. Rozpoczęcie pracy
 - **Start**: Kliknij "Nowy arkusz kontroli" i wybierz kategorię produktu (np. "Systemy operacyjne", "Bankomaty"). Dostosuje to listę wymagań prawnych do specyfiki urządzenia/usługi.
@@ -69,7 +69,7 @@ Główny widok ("Formularz Oceny") zawiera listę wymagań prawnych (Artykuły).
 Narzędzie oferuje kilka formatów eksportu kontroli:
 1. **JSON**:
 - może być wygenerowany albo przy użyciu ikony z menu górnego, albo przycisku **Zapisz stan kontroli w formacie JSON** w sekcji **Podsumowanie kontroli**
-- zawiera pełny zrzut audytu (odpowiedzi + widoczność pól)
+- zawiera pełny zrzut kontroli (odpowiedzi + widoczność pól)
 - służy do archiwizacji w formacie pozwalającym na późniejszą edycję w narzędziu.
 2. **Excel**:
 -  może być wygenerowany albo przy użyciu ikony z menu górnego, albo przycisku **Pobierz podsumowanie w formacie Excel** w sekcji **Podsumowanie kontroli**
@@ -80,7 +80,7 @@ Narzędzie oferuje kilka formatów eksportu kontroli:
 
 ### 4. Przeglądarka Wymagań (Baza Wiedzy)
 W menu nawigacyjnym dostępna jest "Przeglądarka wymagań".
-- Służy do szybkiego wyszukiwania treści klauzul technicznych (C.*) oraz wymagań Ustawy bez konieczności tworzenia nowego audytu.
+- Służy do szybkiego wyszukiwania treści klauzul technicznych (C.*) oraz wymagań Ustawy bez konieczności tworzenia nowej kontroli.
 - Pozwala sprawdzić dokładną treść procedur testowych z normy EN 301 549.
 
 ---
@@ -100,7 +100,7 @@ Oznaczone prefiksem `C.`. Odpowiadają konkretnym punktom normy.
   "C.9.1.1.1": {
       "id": "C.9.1.1.1",
       "title": "Treść nietekstowa",
-      "procedure": ["Sprawdź czy każdy element nietekstowy..."], // Instrukcja dla audytora
+      "procedure": ["Sprawdź czy każdy element nietekstowy..."], // Instrukcja dla osoby przeprowadzającej kontrolę
       "checklist": ["Czy obrazki mają alt?", "Czy dekoracje są ukryte?"], // Lista pytań TAK/NIE
       "evaluation": "Zgodne / Niezgodne" // Metoda oceny
   }
@@ -134,7 +134,7 @@ Definiuje dostępne w kreatorze typy produktów.
 "p03": "Terminale płatnicze..."
 ```
 
-#### Sekcja `matrix` (Wiersze audytu)
+#### Sekcja `matrix` (Wiersze kontroli)
 Każdy obiekt w tablicy to jeden wiersz widoczny w sekcji "Wymagania Prawne".
 ```json
 {
@@ -151,7 +151,7 @@ Każdy obiekt w tablicy to jeden wiersz widoczny w sekcji "Wymagania Prawne".
 **Wskazówka:** Aby dodać nową klauzulę do produktu, dopisz jej ID w polu `product_mappings` (oddzielając średnikiem).
 
 ### 3. `summaries.json` – Logika Raportów
-Określa, jaki tekst pojawi się w podsumowaniu ("Executive Summary") w zależności od wyniku audytu.
+Określa, jaki tekst pojawi się w podsumowaniu ("Executive Summary") w zależności od wyniku kontroli.
 
 | Klucz (ID) | Kiedy jest używany? | Opis |
 |------------|---------------------|------|
@@ -177,4 +177,4 @@ Projekt wykorzystuje sprawdzone rozwiązania open-source. Wszystkie biblioteki z
 | **JSZip** | `js/jszip.min.js` | MIT/GPLv3 | Pakowanie plików, używane przez eksporter plików .odt. |
 | **Lucide** | `js/lucide.min.js` | ISC | Zestaw ikon wektorowych (SVG). |
 
-**Uwaga prawna**: Przed komercyjnym użyciem audytu jako usługi, zaleca się weryfikację aktualnych licencji w nagłówkach plików źródłowych.
+**Uwaga prawna**: Przed komercyjnym użyciem, zaleca się weryfikację aktualnych licencji w nagłówkach plików źródłowych.

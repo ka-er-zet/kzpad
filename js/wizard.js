@@ -1207,7 +1207,7 @@ async function downloadSummaryODT() {
     }
 
     const state = {
-        product: productName,
+        product: getFullProductNameWizard(),
         productDesc: productDesc,
         auditor: auditor,
         // Ustawiamy flagę, żeby exporter wiedział że ma renderować custom sections zamiast domyślnego układu
@@ -1279,6 +1279,21 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
 
     // Utwórz workbook
     const workbook = new ExcelJS.Workbook();
+    
+    // Ustaw metadane dokumentu (Dostępność)
+    const fullProductName = getFullProductNameWizard();
+    const meshTitle = (fullProductName && fullProductName !== 'Profil nieokreślony') 
+        ? `Raport z kontroli zgodności ${fullProductName} - podsumowanie`
+        : `Raport z kontroli zgodności - podsumowanie`;
+
+    workbook.creator = auditor || 'Narzędzie KZ-PAD';
+    workbook.lastModifiedBy = auditor || 'Narzędzie KZ-PAD';
+    workbook.created = new Date();
+    workbook.modified = new Date();
+    workbook.properties.date1904 = true;
+    workbook.title = meshTitle;
+    workbook.subject = 'Podsumowanie kontroli zgodności z Polskim Aktem Dostępności';
+    workbook.description = 'Dokument wygenerowany automatycznie przez Narzędzie KZ-PAD';
 
     // 4. Pobierz dane za pomocą nowej funkcji pomocniczej
     const summaryData = getAssessmentSummaryData();
@@ -1658,7 +1673,7 @@ function downloadWizardAssessment() {
             "@id": "_:compoundAssertor",
             "@type": "earl:Assertor",
             "earl:mainAssertor": { "@id": "_:humanAssertor" },
-            "dct:description": "Audyt przeprowadzony przez człowieka przy użyciu narzędzia"
+            "dct:description": "Kontrola przeprowadzona przez człowieka przy użyciu narzędzia"
         };
 
         graph.push(humanAssertor);

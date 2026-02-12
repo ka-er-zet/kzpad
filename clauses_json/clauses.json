@@ -68,7 +68,7 @@
       "2. Sprawdź zrozumiałość treści (prosty język, jasne sformułowanie, struktura krok po kroku).",
       "3. Oceń parametry typografii i kontrastu (rozmiar czcionki, krój pisma, odstępy między literami, kontrast tekstu względem tła)."
     ],
-    "evaluation": "Inspekcja i Audyt",
+    "evaluation": "Inspekcja i Kontrola",
     "checklist": [
       "Czy instrukcje są dostępne za pośrednictwem więcej niż jednego kanału sensorycznego?",
       "Czy treść instrukcji jest zrozumiała i zauważalna (prosty język, jasna struktura)?",
@@ -113,7 +113,7 @@
       "2. Sprawdź, czy każdy element ma opisową alternatywę tekst (w instrukcjach drukowanych: podpisy; w instrukcjach cyfrowych: atrybuty alt lub opisy w tekście).",
       "3. Oceń, czy alternatywy tekstowe są kompletne i pozwalają na pełne zrozumienie zawartych informacji."
     ],
-    "evaluation": "Inspekcja i Audyt",
+    "evaluation": "Inspekcja i Kontrola",
     "checklist": [
       "Czy każda grafika, zdjęcie lub diagram w instrukcjach ma odpowiedni opis tekstowy?",
       "Czy alternatywy tekstowe oddają istotę informacji przekazanej w treści nietekstowej?",
@@ -183,7 +183,7 @@
       "1. Wybierz udostępnione instrukcje (cyfrowe lub drukowane).",
       "2. Zweryfikuj ich jakość zgodnie z wymogami Art. 7 ust. 1 pkt 1 (percepcja, zrozumiałość, forma prezentacji)."
     ],
-    "evaluation": "Inspekcja i Audyt Dostępności Cyfrowej",
+    "evaluation": "Inspekcja i Kontrola Dostępności Cyfrowej",
     "checklist": [
       "Czy treść instrukcji jest przekazywana za pośrednictwem więcej niż jednego kanału sensorycznego (np. tekst + ilustracje, lub dokument tekstowy odczytywalny przez czytnik ekranu)?",
       "Czy treść jest przedstawiona w sposób zrozumiały (użycie prostego języka, jasna instrukcja krok po kroku)?",
@@ -208,7 +208,7 @@
       "3. Zweryfikuj, czy wybrane formaty mogą być odczytane i przetwarzane przez oprogramowanie do alternatywnej i wspierającej komunikacji (czytniki ekranu, syntezatory mowy, programy tłumaczące).",
       "4. Sprawdź, czy format pozwala na ekstrakcję tekstu i konwersję do innych formatów dostępnych dla użytkowników z różnymi potrzebami dostępności."
     ],
-    "evaluation": "Inspekcja i Audyt Dostępności Cyfrowej",
+    "evaluation": "Inspekcja i Kontrola Dostępności Cyfrowej",
     "checklist": [
       "Czy instrukcje dostępne są w formacie tekstowym (nie tylko graficznym)?",
       "Czy format umożliwia odczytanie przez narzędzia wspomagające (czytnik ekranu, syntezator mowy)?",
@@ -257,7 +257,7 @@
       "3. Zweryfikuj, czy instrukcje spełniają wymogi dostępności z Art. 7 ust. 1 pkt 1 (kanały sensoryczne, zrozumiałość, percepcja).",
       "4. Sprawdź, czy instrukcje obejmują alternatywną prezentację treści nietekstowych (pkt 2 lit. b tiret pierwszym) oraz są dostępne w formatach tekstowych umożliwiających wspomóganą komunikację (pkt 2 lit. c)."
     ],
-    "evaluation": "Inspekcja i Audyt Dostępności",
+    "evaluation": "Inspekcja i Kontrola Dostępności",
     "checklist": [
       "Czy instrukcje instalacji, konserwacji, przechowywania i pozbywania się produktu są dostępne publicznie?",
       "Czy na produkcie lub opakowaniu znajduje się informacja o miejscu udostępnienia instrukcji (np. adres URL, kod QR)?",
@@ -1445,15 +1445,15 @@
   },
   "U.12.02.03": {
     "id": "U.12.02.03",
-    "title": "U.12.02.03 Audyt dostępności (WCAG/EN) — postrzegalność, funkcjonalność, zrozumiałość i kompatybilność (Art. 12 ust. 2 pkt 3)",
+    "title": "U.12.02.03 Kontrola dostępności (WCAG/EN) — postrzegalność, funkcjonalność, zrozumiałość i kompatybilność (Art. 12 ust. 2 pkt 3)",
     "preconditions": [],
     "procedure": [
-      "Przeprowadź kompleksowy audyt zgodności z WCAG/EN 301 549, obejmujący testy automatyczne, ręczne i testy z użytkownikami z niepełnosprawnościami.",
+      "Przeprowadź kompleksowy Kontrola zgodności z WCAG/EN 301 549, obejmujący testy automatyczne, ręczne i testy z użytkownikami z niepełnosprawnościami.",
       "Oceń postrzegalność, funkcjonalność, zrozumiałość i kompatybilność zgodnie z kryteriami WCAG.",
       "Sprawdź współpracę z narzędziami wspomagającymi (czytniki ekranu, powiększalniki, urządzenia wejściowe, narzędzia AAC).",
       "Sporządź szczegółowy raport z niezgodnościami, zaleceniami naprawczymi i priorytetami dla deweloperów"
     ],
-    "evaluation": "Pełny raport audytowy zgodny z WCAG/EN, w tym lista niezgodności, priorytetów i rekomendacji oraz dowody testów (zrzuty, logi, transkrypcje testów użytkowników).",
+    "evaluation": "Pełny raport Kontrolaowy zgodny z WCAG/EN, w tym lista niezgodności, priorytetów i rekomendacji oraz dowody testów (zrzuty, logi, transkrypcje testów użytkowników).",
     "checklist": [
       "Zidentyfikowano i udokumentowano kryteria WCAG wymagające naprawy.",
       "Przeprowadzono testy z użytkownikami korzystającymi z narzędzi wspomagających i dowody zostały uwzględnione w raporcie.",
@@ -1666,7 +1666,7 @@
       "Potwierdź, że informacje o dostępnych formach wsparcia komunikacji (np. tłumacz języka migowego online lub na miejscu) oraz o instalacjach wspomagających słyszenie (pętle indukcyjne, systemy FM) zawierają instrukcję sposobu zamawiania i kontakt do rezerwacji.",
       "Sprawdź dostępność wersji alternatywnych informacji oraz datę ostatniej aktualizacji i dane kontaktowe do uzyskania pomocy."
     ],
-    "evaluation": "Przegląd i audyt materiałów informacyjnych, weryfikacja obecności alternatywnych formatów oraz potwierdzenie możliwości zamówienia wsparcia (kontakt, system rezerwacji).",
+    "evaluation": "Przegląd i Kontrola materiałów informacyjnych, weryfikacja obecności alternatywnych formatów oraz potwierdzenie możliwości zamówienia wsparcia (kontakt, system rezerwacji).",
     "checklist": [
       "Dostępne są opisane bariery poziome i pionowe oraz dostęp do pomieszczeń.",
       "Plany i oznakowanie dostępne w formatach wizualnych, dotykowych i głosowych.",
