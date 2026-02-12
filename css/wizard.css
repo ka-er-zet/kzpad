@@ -4,6 +4,9 @@
 
     /* Buttons */
     --btn-bg: #0A5B76; /* primary button background (dark) */
+
+    /* Search icon color (used to theme search input border) */
+    --search-icon-color: rgb(65,84,98); /* matches icon stroke in pico icons */
     --btn-bg-hover: #07465B;
     --btn-foreground: #ffffff;
 
@@ -68,6 +71,11 @@
     --skip-color: #ffffff;
 }
 
+/* Improve contrast for code elements */
+code {
+    --code-color: var(--color);
+}
+
 body { 
     background-color: var(--background-color); 
     min-height: 100vh;
@@ -78,24 +86,34 @@ body {
 /* Header styles (copied from audit.html, scoped for wizard) */
 .skip-link {
     position: absolute;
-    left: -999px;
-    top: auto;
+    top: 0;
+    left: 0;
     width: 1px;
     height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    z-index: 2000;
 }
 .skip-link:focus {
-    left: 0;
-    top: 0;
+    clip: auto;
     width: auto;
     height: auto;
+    margin: 0;
+    overflow: visible;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
     background: var(--skip-bg) !important;
     color: var(--skip-color) !important;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    z-index: 1000;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     font-weight: 600;
+    text-decoration: none;
 }
 
 /* Pico sets --text-decoration to none by default; restore underlines for ordinary
@@ -151,6 +169,14 @@ dialog#clauseModal a[target="_blank"]::after,
     height: 1em;
 }
 
+/* Prevent color change and make background more subtle for external links on hover/focus */
+a[target="_blank"]:hover,
+a[target="_blank"]:focus {
+    --color: var(--primary);
+    --background-color: rgba(10, 91, 118, 0.05);
+}
+
+/* Scroll-hide header behavior */
 .app-header {
     background-color: var(--card-background-color);
     border-bottom: 1px solid var(--muted-border-color);
@@ -158,10 +184,37 @@ dialog#clauseModal a[target="_blank"]::after,
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 10;
+    z-index: 100;
     position: sticky;
     top: 0;
+    transition: transform 0.3s ease-in-out;
 }
+
+.app-header.header-hidden {
+    transform: translateY(-100%);
+}
+
+/* Fix for 400% zoom and mobile layout - Reflow and Sticky Management */
+@media (max-width: 600px), (max-height: 500px) {
+    .app-header {
+        position: relative; /* Remove sticky on small heights/zoom for better space */
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+    .header-content {
+        margin-bottom: 0.5rem;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: space-around;
+        gap: 0.25rem;
+    }
+    .header-icon-container {
+        width: 32px;
+        height: 32px;
+    }
+}
+
 .header-content {
     display: flex;
     align-items: center;
@@ -339,16 +392,15 @@ dialog .icon-btn:focus-visible {
     cursor: default;
     z-index: 9999;
     transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+    transform: translateY(-5px);
     transform-origin: center top;
 }
 
-button:hover .icon-label,
-button:focus .icon-label,
-button:focus-within .icon-label,
-.icon-label:hover {
+/* Visibility handled via JS to satisfy WCAG 1.4.13 (Dismissible, Hoverable, Persistent) */
+.icon-label--visible {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) !important;
 }
 
 /* Dark mode: ensure high contrast for icon labels */
@@ -387,19 +439,34 @@ main {
     flex: 1;
 }
 .clause-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     width: auto;
     background: transparent;
-    padding: 2px 10px;
+    padding: 4px 10px;
     border-radius: var(--border-radius);
-    margin: 0 4px 8px 0;
-    font-size: 0.8em;
+    margin: 0 6px 8px 0;
+    font-size: 0.8rem;
     cursor: pointer;
     border: 1px solid var(--emphasis-color);
     transition: all 0.2s;
     color: var(--emphasis-color);
     line-height: 1.2;
     font-weight: 500;
+    gap: 8px;
+    text-align: left;
+    max-width: 100%;
+}
+.clause-tag-id {
+    font-weight: 700;
+    white-space: nowrap;
+}
+.clause-tag-title {
+    font-weight: 400;
+    border-left: 1px solid currentColor;
+    padding-left: 8px;
+    /* Allow wrapping for very long titles if needed, but usually keep it concise */
+    display: inline-block;
 }
 .clause-tag:hover { 
     background: var(--emphasis-color);
@@ -450,6 +517,48 @@ main {
 
 .art19-switch-label input[type="checkbox"][role="switch"] {
     margin: 0;
+}
+
+/* Improve contrast for unchecked switch in Art. 19 */
+.art19-switch-label input[type="checkbox"][role="switch"] {
+    --switch-width: 3rem !important;
+    --switch-height: 1.5rem !important;
+    position: relative;
+    border: 2px solid var(--primary) !important;
+    background-image: none !important; /* Remove Pico's default dot image */
+    background-color: transparent !important; /* Fix: Force transparent track by default */
+}
+
+.art19-switch-label input[type="checkbox"][role="switch"]:checked {
+    background-image: none !important; 
+    background-color: var(--primary) !important; /* Track background when checked */
+}
+
+.art19-switch-label input[type="checkbox"][role="switch"]::before {
+    display: none !important; /* Hide any extra pseudo-elements from Pico */
+}
+
+.art19-switch-label input[type="checkbox"][role="switch"]::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 0.85rem !important;
+    height: 0.85rem !important;
+    background-color: var(--primary) !important;
+    background-image: none !important;
+    border: 2px solid var(--primary) !important; /* Thicker border matching switch border */
+    border-radius: 50% !important;
+    transition: left 0.2s ease-in-out !important;
+    left: 0.1rem !important;
+    margin: 0 !important;
+    right: auto !important; /* Ensure right doesn't interfere */
+}
+
+.art19-switch-label input[type="checkbox"][role="switch"]:checked::after {
+    left: calc(100% - 0.1rem - 0.85rem) !important;
+    background-color: var(--primary-inverse) !important;
+    border-color: var(--primary) !important; /* Still match switch border when checked */
 }
 
 .art19-switch-label span {
@@ -1115,6 +1224,12 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
     line-height: 1.4;
 }
 
+/* Global rule: make radio control border color match the surrounding text color
+   This only changes the border color; it does NOT alter appearance or sizing. */
+input[type="radio"] {
+    border-color: currentColor !important;
+}
+
 #generateBtn {
     margin-top: 1.5rem;
     width: 100%;
@@ -1134,8 +1249,45 @@ fieldset {
     border-radius: 8px;
     transition: border 0.2s;
 }
+
+/* Improve contrast for form controls */
+input[type="text"], input[type="search"], input[type="number"], select, textarea {
+    border: 2px solid var(--form-element-border-color);
+    border-radius: 6px;
+    padding: 0.5rem;
+    background: var(--form-element-background-color);
+    color: var(--form-element-color);
+}
+
+/* Make browser search input border match the search icon color */
+#browser-search {
+    border-color: var(--search-icon-color);
+}
+#browser-search:focus-visible {
+    border-color: var(--search-icon-color);
+    outline: 3px solid rgba(65,84,98,0.15);
+    outline-offset: 2px;
+}
+
+/* Increase contrast for browser search placeholder */
+#browser-search::placeholder {
+    color: var(--color);
+}
+
+input[type="text"]:focus-visible, input[type="search"]:focus-visible, input[type="number"]:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-color: var(--primary);
+}
+
+/* Darken placeholder color slightly to improve legibility */
+input::placeholder, textarea::placeholder {
+    color: var(--form-element-placeholder-color);
+    opacity: 0.9;
+}
 fieldset[aria-invalid="true"] {
-    border: 2px solid var(--form-element-invalid-border-color);
+    border: 3px solid var(--form-element-invalid-border-color);
+    box-shadow: 0 0 12px rgba(255, 131, 131, 0.2);
 }
 
 /* Fix dla podwójnego scrolla gdy modal jest otwarty */
@@ -1180,8 +1332,10 @@ fieldset[aria-invalid="true"] {
     top: 5rem;
     right: 1rem;
     z-index: 10000;
-    max-width: 500px;
-    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
 }
 
 .toast {
@@ -1192,7 +1346,6 @@ fieldset[aria-invalid="true"] {
     padding: 0.75rem 1rem;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    pointer-events: auto;
     margin-bottom: 0.75rem;
     animation: slideIn 0.3s ease-out;
     font-size: 0.95rem;
@@ -1250,8 +1403,8 @@ fieldset[aria-invalid="true"] {
     border: none;
     padding: 0;
     cursor: pointer;
-    color: inherit;
-    opacity: 0.6;
+    color: var(--primary);
+    opacity: 1;
     line-height: 1;
     border-radius: 4px;
     transition: opacity 0.2s, background 0.2s;
@@ -1261,8 +1414,24 @@ fieldset[aria-invalid="true"] {
 }
 
 .toast-close:hover {
-    opacity: 1;
     background: var(--primary-focus);
+    filter: brightness(1.1);
+}
+
+.toast-close:focus {
+    opacity: 1;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.toast-close:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.toast-close:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 @keyframes slideIn {
@@ -1291,8 +1460,28 @@ fieldset[aria-invalid="true"] {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* RWD / Reflow for small mobile and high zoom levels */
+@media (max-width: 350px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hero-grid li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.hero-grid li::before {
+    content: none !important; /* Usuwa kropki w niektórych resetach CSS */
 }
 
 .hero-card {
@@ -1300,15 +1489,29 @@ fieldset[aria-invalid="true"] {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2rem 2rem;
+    padding: 2rem;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, border-color 0.2s;
     border: 2px solid transparent;
     background-color: var(--card-background-color);
-    margin: 0 !important; /* Wyzerowanie marginesów pico.css */
+    margin: 0 !important;
+    text-decoration: none !important; /* Wymuszenie braku podkreślenia dla elementu <a> */
+    
+    /* Reset stylów przycisku dla zachowania wyglądu karty */
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: inherit;
+    color: var(--color);
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .hero-card:hover, .hero-card:focus {
+    text-decoration: none !important;
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     background-color: var(--card-sectionning-background-color);
@@ -1316,6 +1519,7 @@ fieldset[aria-invalid="true"] {
 }
 
 .hero-card-icon {
+    display: block;
     font-size: 3rem;
     color: var(--primary);
     margin-bottom: 1.5rem;
@@ -1324,11 +1528,21 @@ fieldset[aria-invalid="true"] {
 .hero-card-icon svg {
     width: 64px;
     height: 64px;
+    display: block;
+    margin: 0 auto;
 }
 
-.hero-card-content .hero-card-title {
+.hero-card-content {
+    display: block;
+}
+
+.hero-card-content .hero-card-title,
+h2.hero-card-title {
     margin-bottom: 0.75rem;
     color: var(--primary);
+    font-size: 1.5rem;
+    border: none;
+    padding: 0;
 }
 
 .hero-card-content p {
@@ -1406,6 +1620,38 @@ fieldset[aria-invalid="true"] {
     margin-bottom: 0;
     white-space: nowrap;
     transition: all 0.2s ease;
+    border: 2px solid transparent !important;
+    position: relative;
+    background: transparent !important; /* Reset default backgound */
+}
+
+.view-switcher button[aria-checked="true"] {
+    background-color: var(--primary) !important;
+    color: var(--primary-inverse) !important;
+    border: 2px solid var(--primary) !important;
+    /* Usuwamy wszystkie outline i box-shadow, które powodowały artefakty tła pod tekstem */
+    outline: none !important;
+    box-shadow: 0 0 0 4px var(--card-background-color), 0 0 0 6px var(--primary) !important;
+    z-index: 2;
+}
+
+/* Fix for possible background ghosting on text/icons */
+.view-switcher button * {
+    background: none !important;
+    background-color: transparent !important;
+}
+
+@media (forced-colors: active) {
+    .view-switcher button {
+        border: 1px solid CanvasText !important;
+    }
+    .view-switcher button[aria-checked="true"] {
+        background-color: SelectedItem !important;
+        color: SelectedItemText !important;
+        border: 2px solid SelectedItem !important;
+        outline: 2px solid CanvasText !important;
+        outline-offset: 4px !important;
+    }
 }
 
 .browser-search-container {
@@ -1415,9 +1661,22 @@ fieldset[aria-invalid="true"] {
 
 .browser-category-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
     align-items: stretch;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.browser-category-grid li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.browser-category-grid li::before {
+    content: none !important;
 }
 
 @media (max-width: 900px) {
@@ -1445,8 +1704,20 @@ fieldset[aria-invalid="true"] {
     justify-content: flex-start;
     align-items: center;
     gap: 0.25rem;
-    height: auto;
+    height: 100%;
+    width: 100%;
     margin: 0 !important; /* Wyzerowanie marginesów pico.css */
+    text-decoration: none; /* Dla elementu <a> */
+
+    /* Reset link/button styles */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: inherit;
+    color: inherit;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .browser-category-card:hover, 
@@ -1454,6 +1725,7 @@ fieldset[aria-invalid="true"] {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     color: var(--primary);
+    text-decoration: none;
 }
 
 .browser-category-card .browser-category-name {
@@ -1493,8 +1765,14 @@ fieldset[aria-invalid="true"] {
 .browser-card {
     background: var(--card-background-color);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid var(--muted-border-color);
+}
+
+@media (max-width: 600px) {
+    .browser-card {
+        padding: 1rem;
+    }
 }
 
 .browser-card-header {
@@ -1581,6 +1859,7 @@ p.hero-card-title {
     margin-top: 0;
     margin-bottom: 0.75rem;
     color: var(--primary);
+    line-height: 1.2;
 }
 
 /* Footer styles - light background for logos */

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytor Bazy Danych - KZ-PAD</title>
+    <link rel="stylesheet" href="css/pico.min.css">
+    <link rel="stylesheet" href="css/wizard.css">
+    <style>
+        :root {
+            --editor-sidebar-width: 300px;
+        }
+        .editor-container {
+            display: flex;
+            gap: 20px;
+            height: calc(100vh - 250px);
+            min-height: 500px;
+        }
+        .editor-sidebar {
+            width: var(--editor-sidebar-width);
+            overflow-y: auto;
+            border-right: 1px solid var(--muted-border-color);
+            padding-right: 15px;
+        }
+        .editor-main {
+            flex: 1;
+            overflow-y: auto;
+            padding-left: 5px;
+        }
+        .list-item {
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .list-item:hover {
+            background: var(--secondary-hover);
+        }
+        .list-item.active {
+            background: var(--primary);
+            color: var(--primary-inverse);
+        }
+        .sticky-controls {
+            position: sticky;
+            top: 0;
+            background: var(--background-color);
+            padding: 10px 0;
+            z-index: 10;
+            border-bottom: 1px solid var(--muted-border-color);
+            margin-bottom: 20px;
+        }
+        .field-group {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid var(--muted-border-color);
+            border-radius: 8px;
+        }
+        .array-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .array-item input, .array-item textarea {
+            margin-bottom: 0;
+        }
+        .editor-nav {
+            margin-bottom: 2rem;
+        }
+        .hidden { display: none !important; }
+        
+        kbd { font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <hgroup>
+            <h1>Edytor JSON KZ-PAD</h1>
+            <p>Narzędzie do zarządzania bazą klauzul, mapowań i szablonów podsumowań.</p>
+        </hgroup>
+        
+        <nav class="editor-nav">
+            <ul id="file-type-selector">
+                <li><button class="secondary" data-type="clauses"><i data-lucide="book-open" style="width:18px; margin-right:8px;"></i> Klauzule</button></li>
+                <li><button class="secondary outline" data-type="mapping"><i data-lucide="map" style="width:18px; margin-right:8px;"></i> Mapowania</button></li>
+                <li><button class="secondary outline" data-type="summaries"><i data-lucide="file-text" style="width:18px; margin-right:8px;"></i> Podsumowania</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Sekcja ładowania plików -->
+        <section id="loader-section">
+            <div class="grid">
+                <article>
+                    <h5>Załaduj domyślne z serwera</h5>
+                    <p><small>Wczytaj pliki aktualnie używane przez aplikację w tej domenie.</small></p>
+                    <button id="btn-load-defaults" class="contrast">Wczytaj domyślne</button>
+                </article>
+                <article>
+                    <h5>Wczytaj własny plik</h5>
+                    <p><small>Wczytaj plik JSON z dysku lokalnego, aby go edytować.</small></p>
+                    <input type="file" id="file-input" accept=".json">
+                </article>
+            </div>
+        </section>
+
+        <!-- Obszar edycji (ukryty do czasu załadowania danych) -->
+        <section id="editor-workspace" class="hidden">
+            <div class="sticky-controls">
+                <div class="grid">
+                    <div>
+                        <mark id="current-file-info">Plik: niezaładowany</mark>
+                    </div>
+                    <div style="text-align: right;">
+                        <button id="btn-export-json" class="primary">Pobierz gotowy plik JSON</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="editor-container">
+                <aside class="editor-sidebar">
+                    <button id="btn-add-new" class="outline contrast" style="margin-bottom: 1rem; width: 100%;">+ Dodaj nowy wpis</button>
+                    <input type="search" id="sidebar-search" placeholder="Szukaj...">
+                    <div id="items-list">
+                        <!-- Lista elementów (klauzul/artykułów) -->
+                    </div>
+                </aside>
+                
+                <div class="editor-main">
+                    <div id="form-container">
+                        <p class="secondary">Wybierz element z listy po lewej, aby rozpocząć edycję.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <hr>
+        <p><small>Zapisywanie zmian odbywa się tylko w pamięci przeglądarki. Aby zapisać plik na stałe, użyj przycisku "Pobierania" i podmień plik w folderze <code>clauses_json/</code>.</small></p>
+    </footer>
+
+    <script src="js/lucide.min.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>

@@ -2,6 +2,7 @@ let matrixData = [];
 let dictionaryData = {};
 let productDictionary = {};
 let summaryTemplates = {};
+let lastModalTrigger = null;
 
 // Wizard-scoped utility accessor. Evaluated at load time.
 const W = window.utils || {};
@@ -27,8 +28,19 @@ function showToast(message, type = 'success', duration = 5000) {
 
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
-    toast.setAttribute('role', 'alert');
-    toast.setAttribute('aria-live', 'polite');
+
+    // 1. Create a hidden element ONLY for the automatic announcement (Live Region)
+    const announcement = document.createElement('div');
+    announcement.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    announcement.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
+    announcement.className = 'sr-only';
+    
+    // 2. Create the visual structure (Icon + Text)
+    const visualContent = document.createElement('div');
+    visualContent.style.display = 'flex';
+    visualContent.style.alignItems = 'center';
+    visualContent.style.flex = '1';
+    visualContent.setAttribute('aria-hidden', 'true'); // Hide from SR when focusing the button or container
 
     // Icon mapping
     const icons = {
@@ -42,27 +54,35 @@ function showToast(message, type = 'success', duration = 5000) {
     const icon = document.createElement('i');
     icon.setAttribute('data-lucide', iconName);
     icon.className = 'toast-icon';
-    icon.setAttribute('aria-hidden', 'true');
+    icon.style.marginRight = '0.75rem';
 
     // Create content span
-    const content = document.createElement('span');
-    content.className = 'toast-content';
-    content.textContent = message;
+    const textSpan = document.createElement('span');
+    textSpan.className = 'toast-content';
+    textSpan.textContent = message;
 
-    // Create close button (last, so it's on the right)
+    visualContent.appendChild(icon);
+    visualContent.appendChild(textSpan);
+
+    // 3. Create close button (this will be the only focusable/audible part during Tab navigation)
     const closeBtn = document.createElement('button');
     closeBtn.className = 'toast-close';
-    closeBtn.setAttribute('aria-label', 'Zamknij powiadomienie');
+    closeBtn.setAttribute('aria-label', `Zamknij powiadomienie: ${message}`); // Link context to button
     closeBtn.setAttribute('type', 'button');
     closeBtn.innerHTML = '<i data-lucide="x" style="width: 16px; height: 16px;" aria-hidden="true"></i>';
 
-    // Assemble toast: icon - content - close button
-    toast.appendChild(icon);
-    toast.appendChild(content);
+    // Assemble toast
+    toast.appendChild(announcement);
+    toast.appendChild(visualContent);
     toast.appendChild(closeBtn);
     
     container.appendChild(toast);
-    
+
+    // Trigger announcement
+    setTimeout(() => {
+        announcement.textContent = message;
+    }, 50);
+
     // Initialize Lucide icons in the toast
     if (window.lucide) {
         window.lucide.createIcons();
@@ -72,13 +92,6 @@ function showToast(message, type = 'success', duration = 5000) {
     closeBtn.addEventListener('click', () => {
         toast.remove();
     });
-
-    // Auto-remove after duration
-    if (duration > 0) {
-        setTimeout(() => {
-            toast.remove();
-        }, duration);
-    }
 }
 
 /**
@@ -98,6 +111,22 @@ const chapterNames = {
 };
 
 /**
+ * Strips technical numbering from clause titles (e.g. "9.2.1 Audio..." -> "Audio...")
+ */
+function stripNumbering(text) {
+    if (!text) return '';
+    return text.replace(/^((C|U)\.[A-Z0-9\.]+|[\d\.]+|[A-Z]\d+[\.\)]?)\s*/, '');
+}
+
+/**
+ * Fixes orphan characters in Polish text (e.g. "a ", "i ") by replacing space with &nbsp;
+ */
+function fixOrphans(text) {
+    if (!text) return '';
+    return text.replace(/(\s|^)([aiouwzAIOWZ])\s+/g, '$1$2\u00A0');
+}
+
+/**
  * Zwraca pełną nazwę produktu (Profil - Nazwa)
  */
 function getFullProductNameWizard() {
@@ -113,10 +142,12 @@ function getFullProductNameWizard() {
 
 async function init() {
     try {
+        // Force refresh of dictionary files on load to ensure latest data
+        const ts = new Date().getTime();
         const [dictResp, mappingResp, summaryResp] = await Promise.all([
-            fetch('clauses_json/clauses.json'),
-            fetch('clauses_json/mapping.json'),
-            fetch('clauses_json/summaries.json')
+            fetch(`clauses_json/clauses.json?t=${ts}`),
+            fetch(`clauses_json/mapping.json?t=${ts}`),
+            fetch(`clauses_json/summaries.json?t=${ts}`)
         ]);
         
         dictionaryData = await dictResp.json();
@@ -132,7 +163,8 @@ async function init() {
         
         // Set focus to H1 on load so the user starts at the top 
         // and the first Tab lands on the first radio button
-        document.querySelector('h1').focus();
+        // document.querySelector('h1').focus(); // REMOVED: causes header skipping issues
+        
         // Enhance icon buttons with visible labels and set ARIA state for theme toggles
         if (typeof updateThemeToggleButtonsWizard === 'function') updateThemeToggleButtonsWizard(document.documentElement.getAttribute('data-theme') || 'dark');
         // Ensure Lucide renders icons that may have been added dynamically (close button, etc.)
@@ -143,6 +175,7 @@ async function init() {
         setupSummaryButton();
         setupHero();
         initBrowser();
+        setupHeaderScrollHandler();
     } catch (err) {
         console.error("Błąd podczas inicjalizacji:", err);
     }
@@ -161,7 +194,8 @@ function setupHero() {
     const fileInput = document.getElementById('wizard-file-input');
 
     if (heroNew) {
-        heroNew.addEventListener('click', () => {
+        heroNew.addEventListener('click', (e) => {
+            e.preventDefault();
             // Ukryj inne sekcje jeśli otwarte
             if (browserSection) browserSection.classList.add('hidden');
             
@@ -178,32 +212,25 @@ function setupHero() {
                 // Przenieś fokus na główny tytuł arkusza
                 const setupTitle = document.getElementById('setup-title');
                 if (setupTitle) setupTitle.focus({ preventScroll: true });
+                
+                // Aktualizuj tytuł strony
+                if (typeof Browser !== 'undefined' && Browser.updateTitle) {
+                    Browser.updateTitle('Nowy arkusz kontroli');
+                }
             }, 100);
-        });
-
-        heroNew.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                heroNew.click();
-            }
         });
     }
 
     if (heroLoad) {
-        heroLoad.addEventListener('click', () => {
+        heroLoad.addEventListener('click', (e) => {
+            e.preventDefault();
             if (fileInput) fileInput.click();
-        });
-
-        heroLoad.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                heroLoad.click();
-            }
         });
     }
 
     if (heroBrowse) {
-        heroBrowse.addEventListener('click', () => {
+        heroBrowse.addEventListener('click', (e) => {
+            e.preventDefault();
             // Ukryj sekcję setup jeśli otwarta
             if (setupSection) setupSection.classList.add('hidden');
             
@@ -213,6 +240,14 @@ function setupHero() {
             // Inicjalizacja widoku jeśli pusta
             if (typeof Browser !== 'undefined' && !Browser.initialized) {
                 Browser.init();
+            }
+            
+            // Domyślny tytuł przeglądarki po wejściu z Hero
+            if (typeof Browser !== 'undefined' && Browser.updateTitle) {
+                const browserViewTitle = Browser.view === 'legal' ? 
+                    'Wymagania według Ustawy — Przeglądarka wymagań' : 
+                    'Wymagania według Normy EN 301 549 — Przeglądarka wymagań';
+                Browser.updateTitle(browserViewTitle);
             }
 
             // Przewiń
@@ -226,13 +261,6 @@ function setupHero() {
                 const browserTitle = document.getElementById('browser-title');
                 if (browserTitle) browserTitle.focus({ preventScroll: true });
             }, 100);
-        });
-
-        heroBrowse.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                heroBrowse.click();
-            }
         });
     }
 }
@@ -256,14 +284,43 @@ const Browser = {
         const btnLegal = document.getElementById('btn-view-legal');
         const btnTechnical = document.getElementById('btn-view-technical');
         const searchInput = document.getElementById('browser-search');
+        const switcher = document.querySelector('.view-switcher');
 
         btnLegal?.addEventListener('click', () => this.switchView('legal'));
         btnTechnical?.addEventListener('click', () => this.switchView('technical'));
         
+        switcher?.addEventListener('keydown', (e) => {
+            const buttons = [btnLegal, btnTechnical].filter(Boolean);
+            const currentIdx = buttons.findIndex(b => b.getAttribute('aria-checked') === 'true');
+            let nextIdx = -1;
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextIdx = (currentIdx + 1) % buttons.length;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                nextIdx = (currentIdx - 1 + buttons.length) % buttons.length;
+            }
+
+            if (nextIdx !== -1) {
+                e.preventDefault();
+                const nextBtn = buttons[nextIdx];
+                nextBtn.focus();
+                this.switchView(nextBtn.id === 'btn-view-legal' ? 'legal' : 'technical');
+            }
+        });
+
         searchInput?.addEventListener('input', (e) => {
             this.searchQuery = e.target.value.toLowerCase();
             this.search();
         });
+    },
+
+    updateTitle(pageDetail) {
+        const baseTitle = 'Kontrola zgodności z Polskim Aktem Dostępności';
+        if (pageDetail) {
+            document.title = `${pageDetail} — ${baseTitle}`;
+        } else {
+            document.title = baseTitle;
+        }
     },
 
     switchView(view) {
@@ -280,13 +337,19 @@ const Browser = {
         if (view === 'legal') {
             btnLegal.classList.replace('outline', 'primary');
             btnLegal.setAttribute('aria-checked', 'true');
+            btnLegal.setAttribute('tabindex', '0');
             btnTechnical.classList.replace('primary', 'outline');
             btnTechnical.setAttribute('aria-checked', 'false');
+            btnTechnical.setAttribute('tabindex', '-1');
+            this.updateTitle('Wymagania według Ustawy — Przeglądarka wymagań');
         } else {
             btnTechnical.classList.replace('outline', 'primary');
             btnTechnical.setAttribute('aria-checked', 'true');
+            btnTechnical.setAttribute('tabindex', '0');
             btnLegal.classList.replace('primary', 'outline');
             btnLegal.setAttribute('aria-checked', 'false');
+            btnLegal.setAttribute('tabindex', '-1');
+            this.updateTitle('Wymagania według Normy EN 301 549 — Przeglądarka wymagań');
         }
 
         this.renderCategories();
@@ -325,35 +388,57 @@ const Browser = {
             });
 
             chapters.forEach(id => {
-                categories.push({ id, name: chapterNames[id] || id, type: 'technical' });
+                categories.push({ id, name: `${id} ${chapterNames[id] || ''}`.trim(), type: 'technical' });
             });
         }
 
         categories.forEach(cat => {
-            const card = document.createElement('article');
+            const li = document.createElement('li');
+            const card = document.createElement('a');
+            card.href = '#';
             card.className = 'browser-category-card';
-            card.setAttribute('role', 'button');
-            card.tabIndex = 0;
+            card.setAttribute('aria-label', `Przejdź do kategorii: ${cat.name}`);
             
             card.innerHTML = `
-                <div class="browser-category-icon">
-                    <i data-lucide="${cat.type === 'legal' ? 'scale' : 'book-open'}"></i>
+                <div class="browser-category-icon" aria-hidden="true">
+                    <i data-lucide="${cat.type === 'legal' ? 'scale' : 'book-open'}" aria-hidden="true"></i>
                 </div>
-                <p class="browser-category-name">${cat.name}</p>
+                <span class="browser-category-name">${cat.name}</span>
             `;
 
-            card.addEventListener('click', () => this.selectCategory(cat.id));
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    card.click();
-                }
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.selectCategory(cat.id);
             });
 
-            grid.appendChild(card);
+            li.appendChild(card);
+            grid.appendChild(li);
         });
 
         if (typeof lucide !== 'undefined') lucide.createIcons();
+    },
+
+    transformLegalRequirement(m) {
+        // Szukamy kodu U.* w product_mappings (agregacja wszystkich wartości, aby znaleźć definicję prawną)
+        let uId = null;
+        if (m.product_mappings) {
+            const pmVals = Object.values(m.product_mappings).join(';').split(';').map(s => s.trim()).filter(Boolean);
+            uId = pmVals.find(id => id.startsWith('U.'));
+        }
+
+        const dictEntry = uId ? dictionaryData[uId] : null;
+
+        return {
+            id: dictEntry?.id || uId || m.id || m.article,
+            title: dictEntry?.title || m.requirement || m.article,
+            procedure: dictEntry?.procedure || [],
+            checklist: dictEntry?.checklist || [],
+            evaluation: dictEntry?.evaluation || '',
+
+            // info dla createRequirementCard (wyświetlany numer artykułu i tytuł z mappingu)
+            overrideId: m.article || (dictEntry && dictEntry.id) || (uId || m.id),
+            overrideTitle: (m.requirement || (dictEntry && dictEntry.title) || '').replace(/\s*\([^)]+\)$/, '').trim()
+        };
     },
 
     selectCategory(catId) {
@@ -371,19 +456,25 @@ const Browser = {
         breadcrumbs.classList.remove('hidden');
         list.innerHTML = '';
 
+        // Oznaczenie tytułu strony dla konkretnej wybranej kategorii
+        const categoryLabel = (this.view === 'legal' ? '' : this.currentCategory + ' ') + (chapterNames[this.currentCategory] || this.currentCategory);
+        this.updateTitle(`${categoryLabel} — Przeglądarka wymagań`);
+
         // Render breadcrumb
         breadcrumbs.innerHTML = `
-            <a href="#" id="browser-back-to-cats" class="browser-back-link">← Powrót do listy kategorii</a>
+            <a href="#" id="browser-back-to-cats" class="browser-back-link"><span aria-hidden="true">←</span> Powrót do listy kategorii</a>
         `;
 
         document.getElementById('browser-back-to-cats').addEventListener('click', (e) => {
             e.preventDefault();
             this.currentCategory = null;
             this.renderCategories();
+            // Przywróć tytuł widoku głównego przeglądarki
+            this.updateTitle(this.view === 'legal' ? 'Wymagania według Ustawy — Przeglądarka wymagań' : 'Wymagania według Normy EN 301 549 — Przeglądarka wymagań');
         });
 
         // Wstaw nagłówek H2 z nazwą bieżącej kategorii dla poprawnej hierarchii nagłówków
-        list.innerHTML = `<h2 id="browser-current-category" tabindex="-1" class="browser-current-category">${this.currentCategory}</h2>`;
+        list.innerHTML = '<h2 id="browser-current-category" tabindex="-1" class="browser-current-category">' + (this.currentCategory + ' ' + (chapterNames[this.currentCategory] || '')).trim() + '</h2>';
         // Ustaw focus na nagłówku, aby narzędzia dostępności widziały od razu aktualny kontekst
         const catHeading = document.getElementById('browser-current-category');
         if (catHeading) catHeading.focus();
@@ -393,33 +484,7 @@ const Browser = {
         if (this.view === 'legal') {
             // Budujemy listę bezpośrednio z mapping.json — mapping jest źródłem prawdy.
             const matrixItems = matrixData.filter(m => m.category === this.currentCategory);
-
-            reqs = matrixItems.map(m => {
-                // Szukamy kodu U.* w product_mappings (agregacja wszystkich wartości, aby znaleźć definicję prawną)
-                let uId = null;
-                if (m.product_mappings) {
-                    const pmVals = Object.values(m.product_mappings).join(';').split(';').map(s => s.trim()).filter(Boolean);
-                    uId = pmVals.find(id => id.startsWith('U.'));
-                }
-
-                const dictEntry = uId ? dictionaryData[uId] : null;
-
-                // Budujemy obiekt wymagania: priorytet na mapping (m.requirement, m.article), wzbogacamy gdy mamy dictEntry
-                const result = {
-                    id: dictEntry?.id || uId || m.id || m.article,
-                    title: dictEntry?.title || m.requirement || m.article,
-                    procedure: dictEntry?.procedure || [],
-                    checklist: dictEntry?.checklist || [],
-                    evaluation: dictEntry?.evaluation || '',
-
-                    // info dla createRequirementCard (wyświetlany numer artykułu i tytuł z mappingu)
-                    overrideId: m.article || (dictEntry && dictEntry.id) || (uId || m.id),
-                    overrideTitle: (m.requirement || (dictEntry && dictEntry.title) || '').replace(/\s*\([^)]+\)$/, '').trim()
-                };
-
-                return result;
-            });
-
+            reqs = matrixItems.map(m => this.transformLegalRequirement(m));
         } else {
             // Rozdziały techniczne (C.*)
             const chapterPrefix = this.currentCategory; // np. 'C.9'
@@ -561,11 +626,30 @@ const Browser = {
         breadcrumbs.classList.add('hidden');
         list.innerHTML = '';
 
-        const results = Object.values(dictionaryData).filter(req => {
-            if (!req || !req.id) return false;
-            const text = (req.id + ' ' + (req.title || '') + ' ' + (req.procedure || []).join(' ')).toLowerCase();
-            return text.includes(this.searchQuery);
-        });
+        let results = [];
+        if (this.view === 'legal') {
+            // Wyszukiwanie w wymaganiach prawnych (mapping.json)
+            // Uwzględniamy treść artykułu, wymagania oraz kody techniczne przypisane do produktów
+            results = matrixData
+                .filter(m => {
+                    let searchContent = (m.article + ' ' + (m.requirement || '') + ' ' + (m.category || '')).toLowerCase();
+                    
+                    // Dodaj kody techniczne z mapowania, aby można było znaleźć artykuł po kodzie EN
+                    if (m.product_mappings) {
+                        searchContent += ' ' + Object.values(m.product_mappings).join(' ');
+                    }
+
+                    return searchContent.includes(this.searchQuery);
+                })
+                .map(m => this.transformLegalRequirement(m));
+        } else {
+            // Wyszukiwanie w klauzulach technicznych (clauses.json)
+            results = Object.values(dictionaryData).filter(req => {
+                if (!req || !req.id) return false;
+                const text = (req.id + ' ' + (req.title || '') + ' ' + (req.procedure || []).join(' ')).toLowerCase();
+                return text.includes(this.searchQuery);
+            });
+        }
 
         if (searchStatus) {
             searchStatus.innerText = results.length > 0 
@@ -743,7 +827,7 @@ function generateDescriptiveSummary(isInitial = false) {
                 <header class="summary-header initial">
                     <h2>Podsumowanie kontroli</h2>
                     <button id="btn-generate-summary" class="primary" onclick="generateDescriptiveSummary()">
-                        <i data-lucide="file-text"></i> Generuj podsumowanie
+                        <i data-lucide="file-text" aria-hidden="true"></i> Generuj podsumowanie
                     </button>
                 </header>
             </article>
@@ -780,7 +864,7 @@ function generateDescriptiveSummary(isInitial = false) {
             <header class="summary-header">
                 <h2>Podsumowanie kontroli</h2>
                 <button id="btn-generate-summary" class="primary" onclick="generateDescriptiveSummary()">
-                    <i data-lucide="refresh-cw"></i> Aktualizuj podsumowanie
+                    <i data-lucide="refresh-cw" aria-hidden="true"></i> Aktualizuj podsumowanie
                 </button>
             </header>
 
@@ -875,13 +959,13 @@ function generateDescriptiveSummary(isInitial = false) {
         html += `
             <footer style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem;">
                 <button class="outline" onclick="downloadWizardSpreadsheet(true)">
-                    <i data-lucide="file-spreadsheet"></i> Pobierz podsumowanie w formacie Excel
+                    <i data-lucide="file-spreadsheet" aria-hidden="true"></i> Pobierz podsumowanie w formacie Excel
                 </button>
                 <button class="outline" onclick="downloadSummaryODT()">
-                    <i data-lucide="file-text"></i> Pobierz podsumowanie w formacie ODT
+                    <i data-lucide="file-text" aria-hidden="true"></i> Pobierz podsumowanie w formacie ODT
                 </button>
                 <button class="outline" onclick="downloadWizardAssessment()">
-                    <i data-lucide="save"></i> Zapisz stan kontroli w formacie JSON
+                    <i data-lucide="save" aria-hidden="true"></i> Zapisz stan kontroli w formacie JSON
                 </button>
             </footer>
         `;
@@ -1897,6 +1981,7 @@ function populateRadioList() {
             errorEl.classList.add('hidden');
             errorEl.style.display = 'none';
             productFieldset.removeAttribute('aria-invalid');
+            productFieldset.removeAttribute('aria-describedby');
         });
         
         const span = document.createElement('span');
@@ -1922,36 +2007,33 @@ document.getElementById('auditForm').onsubmit = (e) => {
     if (!selectedRadio) {
         resultsArea.classList.add('hidden');
         
-        // Hide first to trigger aria-live announcement again if already visible
-        errorEl.classList.add('hidden');
-        errorEl.style.display = 'none';
+        // Show the error message and highlight the group
+        errorEl.classList.remove('hidden');
+        errorEl.style.display = 'flex';
+        firstFieldset.setAttribute('aria-invalid', 'true');
+        firstFieldset.setAttribute('aria-describedby', 'product-selection-error');
         
-        // Force a small tick to allow the browser to register the change
-        setTimeout(() => {
-            errorEl.classList.remove('hidden');
-            errorEl.style.display = 'flex';
-            firstFieldset.setAttribute('aria-invalid', 'true');
-            
-            // Scroll the actual error element into view (account for sticky header) and focus it
-            const header = document.querySelector('.app-header');
-            const headerHeight = header ? header.getBoundingClientRect().height : 0;
-            const targetTop = window.pageYOffset + errorEl.getBoundingClientRect().top - headerHeight - 12;
-            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        // Scroll the actual error element into view (account for sticky header) and focus it
+        const header = document.querySelector('.app-header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const targetTop = window.pageYOffset + errorEl.getBoundingClientRect().top - headerHeight - 20;
+        
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
 
-            // Ensure the alert can receive focus and announce to SR users
-            errorEl.setAttribute('tabindex', '-1');
-            errorEl.focus();
+        // Ensure the error element can receive focus so it's announced once by SR
+        errorEl.setAttribute('tabindex', '-1');
+        errorEl.focus();
 
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        }, 50);
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         return;
     }
     
     errorEl.classList.add('hidden');
     errorEl.style.display = 'none';
     firstFieldset.removeAttribute('aria-invalid');
+    firstFieldset.removeAttribute('aria-describedby');
     
     const selectedProduct = selectedRadio.value;
     const productFullName = productDictionary[selectedProduct] || selectedProduct;
@@ -1967,6 +2049,11 @@ document.getElementById('auditForm').onsubmit = (e) => {
     
     resultsArea.classList.remove('hidden');
     resultsArea.setAttribute('data-selected-product', selectedProduct);
+
+    // Aktualizuj tytuł strony po odświeżeniu raportu
+    if (typeof Browser !== 'undefined' && Browser.updateTitle) {
+        Browser.updateTitle(`Arkusz kontroli: ${productFullName}`);
+    }
     resultsArea.setAttribute('data-product-name', productFullName);
     
     let currentCategory = '';
@@ -2003,16 +2090,16 @@ document.getElementById('auditForm').onsubmit = (e) => {
                         const switchId = `art19-switch-${Math.random().toString(36).substr(2, 9)}`;
                         const label = document.createElement('label');
                         label.className = 'art19-switch-label';
+                        label.setAttribute('for', switchId);
                         
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
                         checkbox.id = switchId;
                         checkbox.setAttribute('role', 'switch');
-                        checkbox.setAttribute('aria-checked', 'false');
+                        // Use native checked state; aria-checked is implicitly mapped from 'checked' for role="switch" on input type="checkbox"
                         
                         const labelText = document.createElement('span');
                         labelText.textContent = 'Skontroluj wymagania artykułu 19';
-                        labelText.setAttribute('for', switchId);
                         
                         label.appendChild(checkbox);
                         label.appendChild(labelText);
@@ -2047,7 +2134,6 @@ document.getElementById('auditForm').onsubmit = (e) => {
                                     container.style.display = 'none';
                                     status.textContent = 'Ukryto listę wymagań dla artykułu 19';
                                 }
-                                e.target.setAttribute('aria-checked', String(e.target.checked));
                             }
                         });
                     }
@@ -2066,6 +2152,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
 
             const article = document.createElement('article');
             article.className = 'requirement-row';
+            const safeArticleId = item.article.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
             
             if (isProductDefault && (!productClausesRaw || !productClausesRaw.trim())) {
                 // Agregacja wszystkich klauzul z product_mappings jako fallback
@@ -2130,7 +2217,10 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 const clauseTitle = clauseData && clauseData.title ? clauseData.title.replace(/&nbsp;|\u00A0/g, ' ') : '';
                 const cleanTitle = stripNumbering(clauseTitle);
                 const ariaLabelSafe = `Klauzula ${c}${cleanTitle ? ': ' + cleanTitle : ''}`.replace(/"/g, '&quot;');
-                return `<button class="clause-tag" data-clause-id="${c}" onclick="showClause('${c}')" aria-label="${ariaLabelSafe}">${c}</button>`;
+                return `<button class="clause-tag" data-clause-id="${c}" onclick="showClause('${c}', this)" aria-label="${ariaLabelSafe}">
+                    <span class="clause-tag-id">${c}</span>
+                    <span class="clause-tag-title">${cleanTitle}</span>
+                </button>`;
             }).join(' ')}
                 </section>
             `).join('');
@@ -2144,23 +2234,30 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 <p class="requirement-text">${item.requirement}</p>
                 
                 ${preconditionsHtml ? `
-                <aside class="interpretation-area">
-                    <h5 class="u-interpretation-header">Warunki wstępne</h5>
+                <div class="interpretation-area" role="region" aria-labelledby="preconditions-header-${safeArticleId}">
+                    <h5 class="u-interpretation-header" id="preconditions-header-${safeArticleId}">
+                        Warunki wstępne
+                        <span class="sr-only"> dla ${expandLegal(item.article)}</span>
+                    </h5>
                     <section class="u-interpretation">${preconditionsHtml}</section>
-                </aside>` : ''}
+                </div>` : ''}
                 
                 ${uHtml ? `
-                <aside class="interpretation-area">
-                    <h5 class="u-interpretation-header">Jak to sprawdzić?</h5>
+                <div class="interpretation-area" role="region" aria-labelledby="how-to-test-header-${safeArticleId}">
+                    <h5 class="u-interpretation-header" id="how-to-test-header-${safeArticleId}">
+                        Jak można to sprawdzić?
+                        <span class="sr-only"> dla ${expandLegal(item.article)}</span>
+                    </h5>
                     <section class="u-interpretation">${uHtml}</section>
-                </aside>` : ''}
+                </div>` : ''}
 
                 ${cHtml ? `
-                <section class="technical-area">
+                <section class="technical-area" aria-labelledby="technical-header-${safeArticleId}">
                     <details class="technical-details">
-                        <summary class="technical-summary" aria-label="Szczegółowe testy techniczne (EN 301 549) dla artykułu ${expandLegal(item.article).replace(/\"/g, '&quot;')}">
-                            <h5 class="technical-title">
+                        <summary class="technical-summary" aria-label="Szczegółowe testy techniczne (EN 301 549) dla ${expandLegal(item.article).replace(/\"/g, '&quot;')}">
+                            <h5 class="technical-title" id="technical-header-${safeArticleId}">
                                 Szczegółowe testy techniczne (EN 301 549)
+                                <span class="sr-only"> dla ${expandLegal(item.article)}</span>
                             </h5>
                         </summary>
                         <section class="technical-section">
@@ -2171,26 +2268,26 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 
                 <section class="assessment-section">
                     <fieldset>
-                        <legend>Ocena spełnienia wymagania</legend>
+                        <legend>Ocena spełnienia wymagania dla ${item.article}</legend>
                         
-                        <label for="status-compliant-${item.article}">
-                            <input type="radio" id="status-compliant-${item.article}" name="status-${item.article}" value="compliant">
+                        <label for="status-compliant-${safeArticleId}">
+                            <input type="radio" id="status-compliant-${safeArticleId}" name="status-${safeArticleId}" value="compliant">
                             Spełnione
                         </label>
                         
-                        <label for="status-non-compliant-${item.article}">
-                            <input type="radio" id="status-non-compliant-${item.article}" name="status-${item.article}" value="non-compliant">
+                        <label for="status-non-compliant-${safeArticleId}">
+                            <input type="radio" id="status-non-compliant-${safeArticleId}" name="status-${safeArticleId}" value="non-compliant">
                             Niespełnione
                         </label>
                         
-                        <label for="status-na-${item.article}">
-                            <input type="radio" id="status-na-${item.article}" name="status-${item.article}" value="not-applicable">
+                        <label for="status-na-${safeArticleId}">
+                            <input type="radio" id="status-na-${safeArticleId}" name="status-${safeArticleId}" value="not-applicable">
                             Nie dotyczy
                         </label>
                     </fieldset>
                     
-                    <label for="comment-${item.article}">Komentarz</label>
-                    <textarea id="comment-${item.article}" name="comment-${item.article}" placeholder="Dodaj komentarz (opcjonalnie)"></textarea>
+                    <label for="comment-${safeArticleId}">Komentarz</label>
+                    <textarea id="comment-${safeArticleId}" name="comment-${safeArticleId}"></textarea>
                 </section>
             `;
             
@@ -2228,7 +2325,8 @@ document.getElementById('auditForm').onsubmit = (e) => {
     }, 50);
 };
 
-window.showClause = (id) => {
+window.showClause = (id, triggerEl = null) => {
+    lastModalTrigger = triggerEl;
     const data = dictionaryData[id.trim()];
     const modal = document.getElementById('clauseModal');
     const title = document.getElementById('modalTitle');
@@ -2246,13 +2344,12 @@ window.showClause = (id) => {
         };
 
         const cleanTitle = stripNumbering(data.title.replace(/&nbsp;/g, ' '));
-        // Keep a generic modal header; show clause id and title inside the modal body instead
-        title.textContent = 'Szczegóły klauzuli';
+        // modalTitle is now an sr-only h2 for landmark naming
         
         body.innerHTML = `
             <div class="clause-body-title">
                 <div class="clause-id">${data.id}</div>
-                <h4 class="clause-title">${(W.fixOrphans || (s=>s))(cleanTitle)}</h4>
+                <h3 class="clause-title">${(W.fixOrphans || (s=>s))(cleanTitle)}</h3>
             </div>
 
             <section>
@@ -2294,9 +2391,12 @@ window.showClause = (id) => {
         // Add SR hint for links that open in a new tab inside the modal
         indicateNewTabLinks(body);
     } else {
-        title.textContent = "Błąd";
+        // modalTitle is now an sr-only h2
         body.textContent = "Nie odnaleziono szczegółów dla klauzuli: " + id;
     }
+    
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('modal-is-open');
     modal.showModal();
     // Reset scroll position to top
@@ -2304,23 +2404,33 @@ window.showClause = (id) => {
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
     }
-    // Move focus to close button for screen reader announcement
-    setTimeout(() => {
-        document.getElementById('closeModal').focus();
-    }, 100);
+    // We do NOT set focus manually on the title or close button to avoid double announcements.
+    // The browser's native dialog behavior will handle initial focus 
+    // (usually focusing the first interactive element, which is the close button).
 };
 
 const handleCloseModal = () => {
-    document.getElementById('clauseModal').close();
+    const modal = document.getElementById('clauseModal');
+    modal.close();
+    modal.setAttribute('hidden', '');
+    modal.setAttribute('aria-hidden', 'true');
     document.documentElement.classList.remove('modal-is-open');
+    if (lastModalTrigger) {
+        lastModalTrigger.focus();
+        lastModalTrigger = null;
+    }
 };
 
 document.getElementById('closeModal').onclick = handleCloseModal;
 document.getElementById('closeModalBtn').onclick = handleCloseModal;
 
-// Zamykanie modala przy kliknięciu w tło (backdrop)
+// Zamykanie modala przy kliknięciu w tło (backdrop) lub klawiszem ESC
 document.getElementById('clauseModal').onclick = (e) => {
     if (e.target.nodeName === 'DIALOG') handleCloseModal();
+};
+document.getElementById('clauseModal').oncancel = (e) => {
+    e.preventDefault(); // Prevent default close so we can use our handler
+    handleCloseModal();
 };
 
 // --- Accessibility helpers for icon buttons (wizard-specific simplified version) ---
@@ -2381,8 +2491,6 @@ function updateThemeToggleButtonsWizard(theme) {
         const modeTo = theme === 'dark' ? 'jasny' : 'ciemny';
         const actionText = (lang && lang.startsWith('pl')) ? `Przełącz motyw na ${modeTo}` : `Toggle theme to ${modeTo}`;
         document.querySelectorAll('button[onclick*="toggleTheme"]').forEach(el => {
-            el.setAttribute('role', 'switch');
-            el.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
             el.setAttribute('aria-label', actionText);
             const labelEl = el.querySelector('.icon-label');
             if (labelEl) {
@@ -2453,51 +2561,26 @@ function indicateNewTabLinks(container = document) {
 document.addEventListener('DOMContentLoaded', () => { indicateNewTabLinks(document); enhanceClauseTagsWizard(document); });
 
 
-// Enhance clause-tag buttons: add visible hover label and ensure screen reader label
+// Enhance clause-tag buttons: ensure screen reader label (visual labels are now inline)
 function enhanceClauseTagsWizard(container = document) {
+    // Labels are now generated inline in modern KZ-PAD version to satisfy WCAG 1.4.13
+    // and avoid flickering issues with multiple small tags.
     try {
         const els = (container && container.querySelectorAll) ? container.querySelectorAll('.clause-tag') : [];
         els.forEach(btn => {
             if (btn.dataset.enhancedClauseTag) return;
-            const clauseId = btn.dataset.clauseId ? btn.dataset.clauseId : btn.textContent.trim();
-
-            // Basic helpers (local copy since this function is outside generate scope)
-            const fixOrphansLocal = (text) => text ? text.replace(/(\s|^)([aiouwzAIOWZ])\s+/g, '$1$2&nbsp;') : '';
-            const stripNumberingLocal = (text) => text ? text.replace(/^((C|U)\.[A-Z0-9\.]+|[\d\.]+|[A-Z]\d+[\.\)]?)\s*/, '') : '';
-
+            const clauseId = btn.dataset.clauseId ? btn.dataset.clauseId : btn.textContent.split('\n')[0].trim();
+            
             const data = (window && window.dictionaryData && window.dictionaryData[clauseId]) ? window.dictionaryData[clauseId] : (dictionaryData && dictionaryData[clauseId] ? dictionaryData[clauseId] : null);
-            const titleWithOrphans = data && data.title ? fixOrphansLocal(stripNumberingLocal(data.title.replace(/&nbsp;|\u00A0/g, ' '))) : `Klauzula ${clauseId}`;
-            const titleClean = data && data.title ? stripNumberingLocal(data.title.replace(/&nbsp;|\u00A0/g, ' ')) : `Klauzula ${clauseId}`;
-
-            // Ensure aria-label contains the clause name for screen readers
-            const articleRef = btn.getAttribute('aria-label') || '';
-            if (!articleRef.includes(titleClean)) {
-                const newLabel = articleRef ? `${articleRef}: ${titleClean}` : `Klauzula ${clauseId}: ${titleClean}`;
-                btn.setAttribute('aria-label', newLabel);
-            }
-
-            // Append visible label like icon buttons
-            if (!btn.querySelector('.icon-label')) {
-                if (!getComputedStyle(btn).position || getComputedStyle(btn).position === 'static') {
-                    btn.style.position = 'relative';
+            if (data && data.title) {
+                const titleClean = stripNumbering(data.title.replace(/&nbsp;|\u00A0/g, ' '));
+                
+                // Ensure aria-label contains the clause name for screen readers
+                const articleRef = btn.getAttribute('aria-label') || '';
+                if (!articleRef.includes(titleClean)) {
+                    const newLabel = articleRef ? `${articleRef}: ${titleClean}` : `Klauzula ${clauseId}: ${titleClean}`;
+                    btn.setAttribute('aria-label', newLabel);
                 }
-                const span = document.createElement('span');
-                span.className = 'icon-label';
-                span.textContent = titleClean;
-                span.setAttribute('aria-hidden', 'true');
-                btn.appendChild(span);
-
-                // Position on hover/focus so labels are placed relative to current viewport (fixes off-screen placement)
-                const repositionAndShow = () => {
-                    placeIconLabelWizard(btn, span);
-                    showIconLabel(span);
-                };
-                btn.addEventListener('mouseenter', repositionAndShow);
-                btn.addEventListener('focus', repositionAndShow);
-                btn.addEventListener('mousemove', () => placeIconLabelWizard(btn, span)); // reposition only on move
-
-                // Also position now in case the button is visible
-                setTimeout(() => { try { placeIconLabelWizard(btn, span); } catch (e) { /* ignore */ } }, 0);
             }
 
             btn.dataset.enhancedClauseTag = '1';
@@ -2527,3 +2610,32 @@ document.getElementById('clauseModal').onclose = () => {
 
 // Initialize
 init();
+
+/**
+ * Obsługa automatycznego ukrywania/pokazywania belki przy przewijaniu (WCAG scroll-hide technique)
+ */
+function setupHeaderScrollHandler() {
+    let lastScrollY = window.pageYOffset;
+    const header = document.querySelector('.app-header');
+    if (!header) return;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.pageYOffset;
+        
+        // Nie ukrywaj na samej górze lub gdy przewijanie jest minimalne
+        if (currentScrollY < 100) {
+            header.classList.remove('header-hidden');
+            lastScrollY = currentScrollY;
+            return;
+        }
+
+        // Ukryj przy przewijaniu w dół, pokaż przy przewijaniu w górę
+        if (currentScrollY > lastScrollY && !header.classList.contains('header-hidden')) {
+            header.classList.add('header-hidden');
+        } else if (currentScrollY < lastScrollY && header.classList.contains('header-hidden')) {
+            header.classList.remove('header-hidden');
+        }
+        
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+}

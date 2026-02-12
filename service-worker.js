@@ -1,43 +1,43 @@
-const CACHE_NAME = 'eaa-audit-v14';
+const CACHE_NAME = 'eaa-audit-v15';
 const ASSETS_TO_CACHE = [
-    '/kzpad/',
-    '/kzpad/index.html',
-    '/kzpad/manifest.json',
-    '/kzpad/favicon.ico',
-    '/kzpad/favicon.svg',
-    '/kzpad/icon-180.png',
-    '/kzpad/icon-192.png',
-    '/kzpad/icon-256.png',
-    '/kzpad/icon-512.png',
-    '/kzpad/css/pico.min.css',
-    '/kzpad/css/wizard.css',
-    '/kzpad/js/lucide.min.js',
-    '/kzpad/js/exceljs.min.js',
-    '/kzpad/js/jszip.min.js',
-    '/kzpad/js/utils.js',
-    '/kzpad/js/exporter.js',
-    '/kzpad/js/wizard.js',
-    '/kzpad/clauses_json/clauses.json',
-    '/kzpad/clauses_json/mapping.json',
-    '/kzpad/clauses_json/summaries.json',
-    '/kzpad/img/eaa.svg',
-    '/kzpad/img/EU1.svg',
-    '/kzpad/img/EU2.svg',
-    '/kzpad/img/EU3.svg',
-    '/kzpad/img/pfron.svg',
-    '/kzpad/img/uke.svg',
-    '/kzpad/img/5_1_4.png',
-    '/kzpad/img/8_3_2_2.png',
-    '/kzpad/img/8_3_2_3_3.png',
-    '/kzpad/img/8_3_2_5.png',
-    '/kzpad/img/8_3_2_6.png',
-    '/kzpad/img/8_3_3_2.png',
-    '/kzpad/img/8_3_3_3_2.png',
-    '/kzpad/img/8_3_4_1a.png',
-    '/kzpad/img/8_3_4_1b.png',
-    '/kzpad/img/8_3_4_2.png',
-    '/kzpad/img/8_3_4_3_2.png',
-    '/kzpad/img/8_3_4_3_3.png'
+    './',
+    './index.html',
+    './manifest.json',
+    './favicon.ico',
+    './favicon.svg',
+    './icon-180.png',
+    './icon-192.png',
+    './icon-256.png',
+    './icon-512.png',
+    './css/pico.min.css',
+    './css/wizard.css',
+    './js/lucide.min.js',
+    './js/exceljs.min.js',
+    './js/jszip.min.js',
+    './js/utils.js',
+    './js/exporter.js',
+    './js/wizard.js',
+    './clauses_json/clauses.json',
+    './clauses_json/mapping.json',
+    './clauses_json/summaries.json',
+    './img/eaa.svg',
+    './img/EU1.svg',
+    './img/EU2.svg',
+    './img/EU3.svg',
+    './img/pfron.svg',
+    './img/uke.svg',
+    './img/5_1_4.png',
+    './img/8_3_2_2.png',
+    './img/8_3_2_3_3.png',
+    './img/8_3_2_5.png',
+    './img/8_3_2_6.png',
+    './img/8_3_3_2.png',
+    './img/8_3_3_3_2.png',
+    './img/8_3_4_1a.png',
+    './img/8_3_4_1b.png',
+    './img/8_3_4_2.png',
+    './img/8_3_4_3_2.png',
+    './img/8_3_4_3_3.png'
 ];
 
 // Install Event - Pre-cache critical assets
@@ -78,6 +78,11 @@ self.addEventListener('message', (event) => {
 
 // Fetch Event - Network First with Cache Fallback for JSON data, Cache First for assets
 self.addEventListener('fetch', (event) => {
+    // Skip service worker for the editor tool - it should not be part of the PWA
+    if (event.request.url.includes('editor.html') || event.request.url.includes('js/editor.js')) {
+        return;
+    }
+
     // For navigation requests (loading index.html), use Network First to always get latest version if available
     if (event.request.mode === 'navigate') {
         event.respondWith(

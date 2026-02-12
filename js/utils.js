@@ -69,7 +69,7 @@ function xmlEscape(str) {
 }
 
 // App version for cache-busting verification
-window.EAA_APP_VERSION = 'v13';
+window.EAA_APP_VERSION = 'v15';
 
 /**
  * Shows a prompt to refresh the page when a new version is available.
@@ -184,28 +184,18 @@ function placeIconLabel(buttonEl, labelEl) {
 // Global function to hide all icon labels
 function hideAllIconLabels() {
     document.querySelectorAll('.icon-label').forEach(label => {
-        label.style.opacity = '0';
-        label.style.visibility = 'hidden';
-        label.style.transform = 'translateY(-5px)'; // slight upward animation
+        label.classList.remove('icon-label--visible');
     });
 }
 
-// Global timeout for auto-hide
-let iconLabelTimeout = null;
-
 function showIconLabel(label) {
+    // If user dismissed this label via Escape, don't show it again until they move away and back
+    if (label.dataset.isDismissed === 'true') return;
+
     // Hide all others immediately
     hideAllIconLabels();
     // Show this one
-    label.style.opacity = '1';
-    label.style.visibility = 'visible';
-    label.style.transform = 'translateY(0)';
-    // Clear any existing timeout
-    if (iconLabelTimeout) clearTimeout(iconLabelTimeout);
-    // Set new timeout to hide after 4 seconds
-    iconLabelTimeout = setTimeout(() => {
-        hideAllIconLabels();
-    }, 4000);
+    label.classList.add('icon-label--visible');
 }
 
 /**
@@ -223,8 +213,8 @@ function enhanceIconButtons(){
             const isThemeToggle = el.matches('button[onclick*="toggleTheme"]') || el.classList.contains('theme-toggle');
             // Skip buttons that already have helper spans (but allow theme toggles)
             if (!isThemeToggle && el.querySelector('.nav-helper, .sr-only, .visually-hidden')) return;
-            // Prefer aria-label or title, fall back to data-i18n-title
-            const label = el.getAttribute('aria-label') || el.title || el.getAttribute('data-i18n-title');
+            // Prefer data-icon-label (for visual/phonetic split), then aria-label or title
+            const label = el.getAttribute('data-icon-label') || el.getAttribute('aria-label') || el.title || el.getAttribute('data-i18n-title');
             if (!label) return;
             // Avoid duplicating existing labels
             if (el.querySelector('.icon-label')) return;
@@ -248,13 +238,58 @@ function enhanceIconButtons(){
                 placeIconLabel(el, span);
                 showIconLabel(span);
             };
+            
             el.addEventListener('mouseenter', showAndPosition);
             el.addEventListener('focus', showAndPosition);
-            el.addEventListener('mousemove', () => placeIconLabel(el, span)); // reposition only
+            
+            el.addEventListener('mouseleave', (e) => {
+                // Only hide if we aren't moving into the label itself (WCAG 1.4.13 Hoverable)
+                if (e.relatedTarget !== span && !span.contains(e.relatedTarget)) {
+                    delete span.dataset.isDismissed;
+                    hideAllIconLabels();
+                }
+            });
+            
+            el.addEventListener('blur', (e) => {
+                // Only hide if focus didn't move to the label (though labels aren't usually focusable)
+                if (e.relatedTarget !== span) {
+                    delete span.dataset.isDismissed;
+                    hideAllIconLabels();
+                }
+            });
+            
+            el.addEventListener('mousemove', () => {
+                if (span.classList.contains('icon-label--visible')) {
+                    placeIconLabel(el, span);
+                }
+            });
+            
+            // Allow hovering on the label itself
+            span.addEventListener('mouseenter', () => showIconLabel(span));
+            span.addEventListener('mouseleave', (e) => {
+                // Hide if we aren't moving back to the button or one of its children
+                if (e.relatedTarget !== el && !el.contains(e.relatedTarget)) {
+                    delete span.dataset.isDismissed;
+                    hideAllIconLabels();
+                }
+            });
+
             try { setTimeout(() => { placeIconLabel(el, span); }, 0); } catch (e) { /* ignore */ }
         });
     });
 }
+
+/**
+ * Handle Escape key to hide all tooltips/labels (WCAG 1.4.13 Dismissible)
+ */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.icon-label--visible').forEach(label => {
+            label.dataset.isDismissed = 'true';
+            label.classList.remove('icon-label--visible');
+        });
+    }
+});
 
 // Reposition labels on resize to keep them inside viewport
 window.addEventListener('resize', () => {
@@ -273,10 +308,11 @@ document.addEventListener('click', (e) => {
 });
 
 /**
- * Update attributes and accessible labels for theme toggle buttons
- * - role="switch" and aria-checked reflect current state
- * - update or create a sr-only .theme-state element and aria-describedby
- * - update visible .icon-label if present to include current state
+ * Update accessible labels for theme toggle buttons.
+ * Theme toggle is treated as a button (action) rather than a switch (state)
+ * to better reflect its function and provide a clear action-oriented label.
+ * - update aria-label to reflect the action (toggle to the other mode)
+ * - update visible .icon-label if present to include action text
  */
 function updateThemeToggleButtons(theme) {
     try {
@@ -303,9 +339,6 @@ function updateThemeToggleButtons(theme) {
         const actionText = actionTemplate.replace('{mode}', oppositeText);
 
         document.querySelectorAll('button[onclick*="toggleTheme"]').forEach(el => {
-            el.setAttribute('role', 'switch');
-            el.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
-
             // Update aria-label to show the action (toggle to opposite)
             el.setAttribute('aria-label', actionText);
 
@@ -747,29 +780,6 @@ function getStatusLabel(status) {
     return status;
 }
 
-// Ensure skip links move focus programmatically for keyboard users
-document.addEventListener('click', function (e) {
-    const target = e.target;
-    if (target && target.classList && target.classList.contains('skip-link')) {
-        e.preventDefault();
-        const href = target.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-        const id = href.slice(1);
-        const el = document.getElementById(id);
-        if (el) {
-            // Ensure element can be focused
-            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
-            el.focus();
-            // Update location hash without scrolling if possible
-            if (history.replaceState) {
-                history.replaceState(null, '', '#' + id);
-            } else {
-                window.location.hash = id;
-            }
-        }
-    }
-}, false);
-
 /**
  * Generuje nazwę pliku dla raportu.
  * @param {string} product Nazwa produktu
@@ -1010,6 +1020,22 @@ function protectAssistiveHelpers(root = document) {
 
 // Initialize theme on load
 document.addEventListener('DOMContentLoaded', () => {
+    // Force refresh if version changed significantly - prevents PWA from getting stuck
+    const currentVersion = window.EAA_APP_VERSION;
+    const storedVersion = localStorage.getItem('eaa_app_version');
+    if (storedVersion && storedVersion !== currentVersion) {
+        localStorage.setItem('eaa_app_version', currentVersion);
+        // If we have caches, clear them to be safe
+        if ('caches' in window) {
+            caches.keys().then(names => Promise.all(names.map(n => caches.delete(n))))
+                .then(() => window.location.reload(true));
+        } else {
+            window.location.reload(true);
+        }
+        return; // Stop initialization as we are reloading
+    }
+    localStorage.setItem('eaa_app_version', currentVersion);
+
     initTheme();
 
     // Register Service Worker
