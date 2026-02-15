@@ -17,9 +17,7 @@
       "**Ważne**: Urządzenie posiadające ekran dotykowy, które nie jest wyposażone w fizyczne wyjście audio (gniazdo słuchawkowe) ani wbudowany głośnik z funkcją lektora, należy uznać za niezgodne z tym wymaganiem (brak alternatywnego kanału sensorycznego dla wzroku)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1"
-    }
+    "form": {}
   },
   "U.7.1.1.b-01": {
     "id": "U.7.1.1.b-01",
@@ -34,9 +32,7 @@
       "Weryfikacja interfejsu cyfrowego (Menu na ekranie):\n- **Test relacji (dla czytnika ekranu)**: Uruchom czytnik ekranu i nawiguj po menu. Sprawdź, czy po najechaniu na pole formularza lub przycisk, czytnik odczytuje jego etykietę (nazwę). Jeśli czytnik mówi tylko „przycisk” lub „pole edycji” bez nazwy, relacja nie jest zachowana.\n- **Test języka**: Sprawdź, czy syntezator mowy czyta komunikaty poprawnie w języku polskim. Jeśli czyta polski tekst z angielskim akcentem (lub literuje), oznacza to, że język interfejsu nie został określony programowo i jest to błąd.\n- **Test spójności**: Sprawdź, czy ta sama funkcja (np. „Pomoc” lub „Wstecz”) jest zawsze oznaczona tą samą ikoną i tym samym tekstem na każdym ekranie urządzenia."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-2"
-    }
+    "form": {}
   },
   "U.7.1.1.b-02": {
     "id": "U.7.1.1.b-02",
@@ -52,9 +48,7 @@
       "**Ważne**: Jeśli tekst na ekranie jest blady, ma niski kontrast lub jest bardzo drobny i nie da się go powiększyć – oznacz wynik jako NEGATYWNY."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-2-1"
-    }
+    "form": {}
   },
   "U.7.1.2": {
     "id": "U.7.1.2",
@@ -70,9 +64,7 @@
       "**Ważne**: Jeśli adres na opakowaniu prowadzi do instrukcji w formie skanu (obrazu) bez warstwy tekstowej, wymóg nie jest spełniony, ponieważ taka instrukcja jest nieczytelna dla osób niewidomych korzystających z syntezatorów mowy."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-3"
-    }
+    "form": {}
   },
   "U.7.1.2.a": {
     "id": "U.7.1.2.a",
@@ -92,9 +84,7 @@
       "**Ważne**: Sama obecność instrukcji w internecie nie wystarcza. Jeśli plik jest technicznie niedostępny (np. nieotagowany PDF, skan), podmiot nie spełnia tego wymogu."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1-2-a"
-    }
+    "form": {}
   },
   "U.7.1.2.b-01": {
     "id": "U.7.1.2.b-01",
@@ -113,9 +103,7 @@
       "Weryfikacja grafik złożonych\n- **Działanie**: Jeśli instrukcja zawiera skomplikowane schematy blokowe lub infografiki.\n- **Sprawdzenie**: Należy zweryfikować, czy w pobliżu grafiki znajduje się jej pełny opis tekstowy lub czy tekst alternatywny odsyła do miejsca w dokumencie, gdzie taki opis się znajduje. Sama krótka etykieta dla złożonego schematu jest niewystarczająca."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1-2-b-01"
-    }
+    "form": {}
   },
   "U.7.1.2.b-02": {
     "id": "U.7.1.2.b-02",
@@ -135,9 +123,7 @@
       "**Ważne**: Opis ten jest niezbędny dla osób niesłyszących (aby wiedziały, co oznacza migająca dioda) i niewidomych (aby wiedziały, co oznacza dźwięk)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1-2-b-02"
-    }
+    "form": {}
   },
   "U.7.1.2.b-03": {
     "id": "U.7.1.2.b-03",
@@ -157,9 +143,7 @@
       "Informacje o kompatybilności\n- Działanie: Jeśli produkt współpracuje z zewnętrznymi technologiami asystującymi (np. aparaty słuchowe, zewnętrzne czytniki ekranu), należy sprawdzić, czy instrukcja o tym informuje.\n- Sprawdzenie: Czy wymieniono standardy lub nazwy oprogramowania, z którymi produkt został przetestowany?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1-2-b-03"
-    }
+    "form": {}
   },
   "U.7.1.2.c": {
     "id": "U.7.1.2.c",
@@ -178,9 +162,7 @@
       "Weryfikacja dostępności formatu dla zewnętrznych narzędzi\n- **Działanie**: Należy sprawdzić, czy plik nie posiada zabezpieczeń DRM lub haseł blokujących „kopiowanie treści dla dostępności” (ang. content copying for accessibility).\n- **Sprawdzenie**: W ustawieniach zabezpieczeń pliku (np. PDF) należy zweryfikować, czy opcja kopiowania zawartości jest dozwolona.\n- **Interpretacja**: Zablokowanie możliwości kopiowania tekstu uniemożliwia oprogramowaniu wspomagającemu pobranie treści w celu jej przetworzenia (np. zamiany na symbole)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1-2-c"
-    }
+    "form": {}
   },
   "U.7.1.2.d": {
     "id": "U.7.1.2.d",
@@ -199,9 +181,7 @@
       "**Ważne**: Ogólne stwierdzenia typu \"Produkt jest zgodny z popularnymi czytnikami ekranu\" bez podania konkretnych nazw i wersji nie spełniają wymogu dostarczenia wykazu narzędzi, które były testowane razem z produktem."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-1-2-d"
-    }
+    "form": {}
   },
   "U.7.1.3": {
     "id": "U.7.1.3",
@@ -221,9 +201,7 @@
       "Weryfikacja dostępności pliku.\nNależy pobrać dokument i sprawdzić go pod kątem wymienionych w ustawie cech.\n- Test grafik (Alternatywa tekstowa):\n  - Należy sprawdzić, czy schematy instalacji i rysunki techniczne posiadają tekst alternatywny wyjaśniający, co przedstawiają.\n  - Błąd: Rysunek „Sposób podłączenia kabla” bez opisu tekstowego jest niewidoczny dla osoby niewidomej.\n- Test formatu tekstowego (AAC i Czytniki):\n   - Należy spróbować zaznaczyć i skopiować tekst instrukcji. Jeśli zaznacza się cała strona jako obrazek – dokument jest skanem i nie spełnia wymagań.\n  - Należy sprawdzić we właściwościach pliku, czy zdefiniowano język dokumentu (np. „Polski”). Jest to kluczowe dla poprawnej wymowy przez syntezatory.\n- Test czytelności (Kontrast i Typografia):\n  - Należy zweryfikować, czy tekst instrukcji ma wysoki kontrast względem tła (min. 4,5:1 dla małego tekstu).\n  - Należy sprawdzić, czy przy powiększeniu dokumentu do 200% tekst pozostaje ostry i czytelny."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-3"
-    }
+    "form": {}
   },
   "U.7.1.4": {
     "id": "U.7.1.4",
@@ -242,9 +220,7 @@
       "Weryfikacja informacji o dostępności\n- **Działanie**: Należy sprawdzić, czy na opakowaniu znajduje się informacja o cechach dostępności produktu (jeśli dotyczy).\n- **Sprawdzenie**: Czy zastosowano standardowe ikony lub proste komunikaty (np. „Produkt zgodny z aparatami słuchowymi”, „Menu głosowe”)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-7-4"
-    }
+    "form": {}
   },
   "U.8.0.1.a": {
     "id": "U.8.0.1.a",
@@ -263,9 +239,7 @@
       "Weryfikacja alternatywy dla dotyku:\n- **Test statusu**: Jeśli produkt posiada przyciski, których stan zmienia się pod wpływem dotyku (np. wciśnięty przycisk „Mute”), należy sprawdzić, czy informacja o tym stanie (Włączony/Wyłączony) jest dostępna nie tylko przez dotyk, ale także wizualnie lub dźwiękowo."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-a"
-    }
+    "form": {}
   },
   "U.8.0.1.b": {
     "id": "U.8.0.1.b",
@@ -283,9 +257,7 @@
       "Weryfikacja wprowadzania danych (Klawiatura)**\n- **Warunek:** Aplikacja zachęca do dyktowania treści (np. wyszukiwanie głosowe).\n- **Działanie:** Należy sprawdzić, czy zawsze dostępna jest opcja przełączenia na klawiaturę ekranową lub fizyczną.\n- **Ważne:** Jeśli jedynym sposobem wprowadzenia danych jest mikrofon (brak pola tekstowego), produkt **nie spełnia** wymagań."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-b"
-    }
+    "form": {}
   },
   "U.8.0.1.c": {
     "id": "U.8.0.1.c",
@@ -304,9 +276,7 @@
       "Nawigacja i Fokus\n- **Widoczny fokus:** Należy nawigować po interfejsie za pomocą klawiatury (Tab/Strzałki). Czy widać ramkę lub podświetlenie wskazujące, który element jest aktualnie wybrany?\n- **Logiczna kolejność:** Czy fokus przeskakuje po elementach w kolejności, która ma sens (np. od lewej do prawej, z góry na dół), czy skacze chaotycznie?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-c"
-    }
+    "form": {}
   },
   "U.8.0.1.d": {
     "id": "U.8.0.1.d",
@@ -324,9 +294,7 @@
       "Wyróżnianie elementów (Fokus i Zaznaczenie)\n- **Sprawdzenie:** Należy nawigować po elementach interfejsu (np. lista opcji). Czy element wybrany różni się od niewybranego tylko kolorem tła? Należy zweryfikować, czy zastosowano dodatkowy wskaźnik (np. obramowanie, pogrubienie tekstu, \"ptaszek\" zaznaczenia)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-d"
-    }
+    "form": {}
   },
   "U.8.0.1.e": {
     "id": "U.8.0.1.e",
@@ -345,9 +313,7 @@
       "Alternatywy dla usług głosowych\n- **Sprawdzenie**: Jeśli produkt posiada automatyczne menu głosowe (np. \"Aby połączyć się z serwisem, powiedz SERWIS\"), czy istnieje opcja wybrania tego samego na ekranie lub klawiaturze numerycznej, bez konieczności słuchania poleceń?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-e"
-    }
+    "form": {}
   },
   "U.8.0.1.f": {
     "id": "U.8.0.1.f",
@@ -365,9 +331,7 @@
       "Niezależna kontrola dźwięku (Dla oprogramowania)\n- **Sprawdzenie:** Jeśli aplikacja odtwarza dźwięk automatycznie przez ponad 3 sekundy, czy użytkownik ma mechanizm do jego zatrzymania lub niezależnej regulacji głośności (niezależnie od głośności systemu), aby nie zagłuszał on np. czytnika ekranu?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-f"
-    }
+    "form": {}
   },
   "U.8.0.1.g": {
     "id": "U.8.0.1.g",
@@ -385,9 +349,7 @@
       "Weryfikacja rozróżnialności dotykowej\n- **Działanie:** Należy zamknąć oczy i dotknąć panelu sterowania.\n- **Sprawdzenie:**\n    - Czy przyciski są wyczuwalne pod palcem (wypukłe/wklęsłe), czy jest to płaski panel dotykowy? Płaski panel bez oznaczeń dotykowych **nie spełnia** tego wymogu (chyba że jest udźwiękowiony).\n    - Czy na klawiaturze numerycznej (jeśli występuje) klawisz \"5\" ma wyczuwalną wypustkę?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-1-g"
-    }
+    "form": {}
   },
   "U.8.0.2": {
     "id": "U.8.0.2",
@@ -407,9 +369,7 @@
       "Weryfikacja orientacji ekranu (Dla oprogramowania)\n- **Działanie:** Należy uruchomić aplikację na tablecie lub smartfonie zamontowanym w uchwycie (symulacja montażu na wózku).\n- **Sprawdzenie:** Czy treść aplikacji dostosowuje się zarówno do orientacji pionowej, jak i poziomej?\n- **Błąd:** Jeśli aplikacja wymusza obrócenie urządzenia o 90 stopni, aby uzyskać dostęp do funkcji, narusza to wymóg unikania zbędnych ruchów fizycznych."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-2"
-    }
+    "form": {}
   },
   "U.8.0.3": {
     "id": "U.8.0.3",
@@ -425,9 +385,7 @@
       "Weryfikacja częstotliwości błysków:\n- **Działanie:** Należy zidentyfikować wszystkie elementy, które migają, pulsują lub zmieniają jasność w sposób gwałtowny (np. reklamy, powiadomienia o błędach, animacje ładowania, filmy).\n- **Sprawdzenie:** Czy element błyska częściej niż **3 razy w ciągu jednej sekundy**?\n- **Analiza szczegółowa:**\n    - Jeśli element błyska rzadziej (np. raz na 2 sekundy) – wynik **POZYTYWNY**.\n    - Jeśli element błyska szybko (efekt stroboskopowy) – wynik **NEGATYWNY**, chyba że spełnia wyjątki dotyczące małej powierzchni określone w WCAG (np. jest mniejszy niż 25% 10-stopniowego pola widzenia centralnego).\n- **Uwaga:** Szczególną uwagę należy zwrócić na błyski w kolorze czerwonym, które są najbardziej niebezpieczne dla układu nerwowego."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-3"
-    }
+    "form": {}
   },
   "U.8.0.4": {
     "id": "U.8.0.4",
@@ -446,9 +404,7 @@
       "Głośność odsłuchu prywatnego\n- **Działanie:** Podłączyć słuchawki.\n- **Sprawdzenie:** Czy istnieje możliwość regulacji głośności w słuchawkach? Jest to konieczne, aby zapobiec wyciekowi dźwięku."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-4"
-    }
+    "form": {}
   },
   "U.8.0.5.a": {
     "id": "U.8.0.5.a",
@@ -464,9 +420,7 @@
       "Weryfikacja alternatyw dla biometrii\n- **Działanie:** Należy zidentyfikować funkcję wymagającą biometrii (np. odblokowanie ekranu odciskiem palca).\n- **Sprawdzenie:** Czy istnieje sposób na wykonanie tej samej czynności bez użycia tej konkretnej cechy biologicznej?\n    - Czy system pozwala wpisać kod PIN lub hasło zamiast przykładać palec?\n    - Czy system pozwala użyć innej cechy (np. twarzy zamiast palca)?\n- **Interpretacja:** Jeśli jedynym sposobem dostępu jest konkretna cecha biometryczna (brak alternatywy), wynik testu jest **NEGATYWNY**."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-5-a"
-    }
+    "form": {}
   },
   "U.8.0.5.b": {
     "id": "U.8.0.5.b",
@@ -480,9 +434,7 @@
       "Weryfikacja ciągłości działania funkcji dostępności\n- **Warunki wstępne:** Produkt jest zainstalowany na platformie oferującej systemowe funkcje dostępności (np. smartfon, komputer, kiosk z systemem operacyjnym).\n- **Działanie:**\n    1.  Włącz w ustawieniach systemu wybraną funkcję dostępności (np. duży kontrast, odwrócenie kolorów, lupę ekranową lub czytnik ekranu).\n    2.  Uruchom weryfikowany produkt (aplikację/program).\n    3.  Rozpocznij korzystanie z głównych funkcji produktu.\n- **Sprawdzenie:**\n    *   Czy w momencie uruchomienia produktu funkcja systemowa została automatycznie wyłączona?\n    *   Czy produkt wyświetlił komunikat żądający wyłączenia funkcji dostępności (np. ze względów bezpieczeństwa)?\n  - Czy funkcja działa nieprzerwanie i stabilnie wewnątrz interfejsu produktu?\n- **Interpretacja:** Jeśli produkt przerywa działanie funkcji systemowej bez wyraźnego, świadomego żądania użytkownika (np. naciśnięcia przycisku \"Wyłącz dostępność\"), wynik testu jest **NEGATYWNY**. Produkt musi szanować ciągłość środowiska pracy użytkownika."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-5-b"
-    }
+    "form": {}
   },
   "U.8.0.5.c": {
     "id": "U.8.0.5.c",
@@ -500,9 +452,7 @@
       "Weryfikacja komunikatów znikających\n- **Działanie:** Należy wywołać komunikat systemowy (np. \"Zapisano zmiany\", \"Błąd połączenia\"), który znika automatycznie.\n- **Sprawdzenie:** Czy użytkownik ma czas na przeczytanie komunikatu? Czy istnieje sposób na zatrzymanie jego znikania lub przywołanie go w historii powiadomień? Zbyt szybkie znikanie treści narusza ten wymóg."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-5-c"
-    }
+    "form": {}
   },
   "U.8.0.5.d": {
     "id": "U.8.0.5.d",
@@ -519,9 +469,7 @@
       "Weryfikacja API Dostępności (Oprogramowanie)\n- **Działanie**: Należy uruchomić na urządzeniu popularne narzędzie wspomagające (np. czytnik ekranu NVDA na Windows, TalkBack na Androidzie, VoiceOver na iOS).\n- **Sprawdzenie**:\n  - Czy po uruchomieniu aplikacji produktu, czytnik ekranu potrafi odczytać nazwy przycisków i pól edycyjnych?\n  - Czy fokus (ramka zaznaczenia) podąża za elementami interfejsu?\n- **Interpretacja**: Jeśli czytnik ekranu milczy lub mówi tylko \"nieznany element\", oznacza to, że oprogramowanie nie udostępnia danych do API dostępności i nie spełnia wymogu łączenia się z narzędziami wspomagającymi."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-8-0-5-d"
-    }
+    "form": {}
   },
   "U.19.02.01.a-01": {
     "id": "U.19.02.01.a-01",
@@ -540,9 +488,7 @@
       "Weryfikacja obsługi bez myszy\n- **Działanie:** Spróbuj obsłużyć interfejs wyłącznie za pomocą klawiatury (Tab, Enter, Strzałki).\n- **Uzasadnienie:** Obsługa myszą wymaga koordynacji ręka-oko, co „angażuje wzrok”. Tryb niewizualny zazwyczaj opiera się na klawiaturze.\n- **Sprawdzenie:** Czy wszystkie funkcje są dostępne i możliwe do uruchomienia z klawiatury?.",
       "Dokumentacja i uruchomienie**\n- **Sprawdzenie:** Czy sposób uruchomienia trybu niewizualnego (np. „wciśnij przycisk z wypukłą kropką”) jest możliwy do odnalezienia bez użycia wzroku? (Klauzula 8.5)."
     ],
-    "form": {
-      "noteId": "notes-u-19-02-01-a-01"
-    },
+    "form": {},
     "notes": []
   },
   "U.19.02.01.a-02": {
@@ -562,9 +508,7 @@
       "Weryfikacja wielkości tekstu (Systemy zamknięte) Dla terminali samoobsługowych.\n- **Działanie**: Jeśli urządzenie nie ma funkcji zoom, zmierz fizyczną wysokość wielkich liter na ekranie oraz typową odległość oczu użytkownika od ekranu.\n- **Sprawdzenie**: Czy wielkość czcionki jest wystarczająco duża, aby być czytelna z tej odległości? (Dla typowej odległości obsługi terminala stojącego tekst powinien być znacząco większy niż standardowy druk gazetowy).",
       "Respektowanie ustawień systemowych Dla aplikacji mobilnych i desktopowych.\n- **Działanie**: Włącz w systemie operacyjnym (Windows/macOS/iOS/Android) tryb \"Wysoki Kontrast\" lub \"Odwrócone kolory\" oraz zwiększ systemową wielkość czcionki.\n- **Sprawdzenie**: Czy aplikacja przejęła te ustawienia? Czy interfejs jest czytelny, czy też aplikacja \"wymusza\" swoje własne kolory, ignorując preferencje użytkownika?"
     ],
-    "form": {
-      "noteId": "notes-u-19-02-01-a-02"
-    },
+    "form": {},
     "notes": []
   },
   "U.19.02.01.a-03": {
@@ -583,9 +527,7 @@
       "Weryfikacja sprzętowa (Diody i Przyciski)\n- Działanie: Obejrzyj fizyczne wskaźniki urządzenia.\n- Sprawdzenie:\n    - Czy dioda sygnalizująca np. „ładowanie” (pomarańczowa) i „naładowanie” (zielona) różni się czymś jeszcze (np. ikoną, pozycją, częstotliwością migania)? Jeśli jest to ta sama dioda zmieniająca tylko kolor – jest to błąd (chyba że stan można odczytać programowo np. przez aplikację).\n    - Czy przyciski funkcyjne (np. „Start” - zielony, „Stop” - czerwony) są opisane tekstem lub symbolami, czy polegają tylko na kolorze?",
       "Instrukcje i opisy\n- Działanie: Sprawdź komunikaty generowane przez system.\n- Sprawdzenie: Czy system wydaje polecenia typu „Naciśnij zielony przycisk” lub „Wybierz elementy zaznaczone na czerwono”? Taki język instrukcji narusza wymóg, jeśli nie podano alternatywnego opisu (np. „Naciśnij zielony przycisk Start”)."
     ],
-    "form": {
-      "noteId": "notes-u-19-02-01-a-03"
-    },
+    "form": {},
     "notes": []
   },
   "U.19.02.01.b": {
@@ -605,9 +547,7 @@
       "Treści odtwarzane automatycznie\n- **Działanie**: Otwórz stronę lub aplikację.\n- **Sprawdzenie**: Czy filmy lub animacje uruchamiają się same (autoplay)? Czy użytkownik może je natychmiast zatrzymać (np. klawiszem Spacji lub widocznym przyciskiem Pauzy)?\n    - **Zasada**: Automatycznie odtwarzane treści trwające dłużej niż 5 sekund muszą posiadać mechanizm wstrzymania lub ukrycia [i.830].",
       "Weryfikacja negatywnego wpływu (Safety Check)\n- **Analiza**: Czy wyłączenie migotania nie powoduje utraty kluczowych informacji?\n    - **Przykład**: Jeśli alarm pożarowy w systemie wizualizowany jest tylko przez szybkie miganie ekranu na czerwono, a w trybie „bez migotania” nie ma żadnego innego komunikatu (np. stałego napisu „ALARM”), to wyłączenie migotania wpływa negatywnie na bezpieczeństwo. Należy zapewnić alternatywę (np. stały, wyraźny komunikat tekstowy)."
     ],
-    "form": {
-      "noteId": "notes-u-19-02-01-b"
-    },
+    "form": {},
     "notes": []
   },
   "U.19.02.02.a": {
@@ -628,9 +568,7 @@
       "Alternatywa dla komunikacji głosowej Dotyczy klauzuli 6.4.\n- **Działanie**: Jeśli usługa wymaga kontaktu głosowego (np. przycisk „Pomoc” łączy z konsultantem głosowym).\n- **Sprawdzenie**: Czy istnieje alternatywa tekstowa (np. czat, wyświetlanie komunikatów tekstowych na ekranie sterowanych przez konsultanta)? Brak alternatywy dla interkomu głosowego jest naruszeniem wymogu."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-02-a"
-    }
+    "form": {}
   },
   "U.19.02.02.b": {
     "id": "U.19.02.02.b",
@@ -650,9 +588,7 @@
       "Jakość dźwięku (Test subiektywny lub pomiar)\n- **Sprawdzenie:** Czy w warunkach hałasu otoczenia (np. ulica) dźwięk z urządzenia jest słyszalny i czy nie jest zniekształcony? (Wymóg redukcji zakłóceń z Art. 8 pkt 1 lit. f)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-02-b"
-    }
+    "form": {}
   },
   "U.19.02.03": {
     "id": "U.19.02.03",
@@ -672,9 +608,7 @@
       "Dokumentacja i instrukcje\n- Sprawdzenie: Czy instrukcja opisuje, jak korzystać z produktu bez użycia mowy? Często alternatywne tryby są ukryte w menu dostępności."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-03"
-    }
+    "form": {}
   },
   "U.19.02.04.a": {
     "id": "U.19.02.04.a",
@@ -694,9 +628,7 @@
       "Alternatywa dla gestów złożonych (Ekrany dotykowe) Dotyczy klauzuli 11.2.5.1.\n- **Działanie**: Sprawdź mapę lub przeglądarkę zdjęć.\n- **Sprawdzenie**: Czy przybliżanie (zoom) wymaga gestu „szczypania” (multitouch), czy są też dostępne przyciski „+” i „-” (single touch)? Brak przycisków jest błędem"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-04-a"
-    }
+    "form": {}
   },
   "U.19.02.04.b": {
     "id": "U.19.02.04.b",
@@ -716,9 +648,7 @@
       "Układ interfejsu (Software)\n- **Działanie**: Sprawdź układ elementów na ekranie dotykowym.\n- **Analiza**: Czy kluczowe przyciski nawigacyjne (Menu, Wstecz, Pomoc) nie są umieszczone wyłącznie w górnym pasie ekranu, który w przypadku dużych monitorów może znaleźć się powyżej 1220 mm od podłoża? Preferowane jest umieszczenie sterowania w dolnej części ekranu lub zapewnienie trybu „obniżonego interfejsu” (tzw. reachability mode)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-04-b"
-    }
+    "form": {}
   },
   "U.19.02.05.a": {
     "id": "U.19.02.05.a",
@@ -739,9 +669,7 @@
       "Przestrzeń pod urządzeniem (Podjazd)\n- **Działanie**: Jeśli konstrukcja wymusza podjazd przodem (np. bankomat w ścianie), sprawdź, czy jest miejsce na kolana.\n- **Sprawdzenie**: Czy pod blatem/ekranem jest wolna przestrzeń o wysokości co najmniej 685 mm i głębokości min. 200 mm (dla stóp) / 280 mm (dla kolan)? Brak miejsca na nogi zmusza użytkownika wózka do podjazdu bokiem, co może znacznie utrudnić dosięgnięcie elementów (wymaga skrętu tułowia)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-05-a"
-    }
+    "form": {}
   },
   "U.19.02.05.b": {
     "id": "U.19.02.05.b",
@@ -761,9 +689,7 @@
       "Dostępność trybu uproszczonego (Opcjonalne, ale zalecane)\n- **Działanie**: Sprawdź w ustawieniach, czy istnieje opcja „Tryb prosty”, „Widok uproszczony” lub „Tryb czytania” (w przeglądarkach).\n- **Sprawdzenie**: Czy aktywacja tego trybu usuwa zbędne „rozpraszacze” (reklamy, ozdobniki, skomplikowane tła) i pozostawia samą treść w czytelnej formie?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-05-b"
-    }
+    "form": {}
   },
   "U.19.02.05.c": {
     "id": "U.19.02.05.c",
@@ -783,9 +709,7 @@
       "Opcje alternatywne dla głosu (Input)\n- **Sprawdzenie**: Jeśli autoryzacja wymaga podania danych głosowo (np. w aplikacji bankowej na smartfonie), czy istnieje opcja wpisania ich tekstem? Wypowiadanie danych w miejscu publicznym narusza prywatność."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-19-02-05-c"
-    }
+    "form": {}
   },
   "U.23.6.2": {
     "id": "U.23.6.2",
@@ -805,9 +729,7 @@
       "Test D: Dostępność dla osób niedowidzących (Dobra praktyka)\n- **Sprawdzenie:** Chociaż ustawa wprost tego nie nakazuje w Art. 23 ust. 6, dobrą praktyką zgodną z duchem ustawy o dostępności jest zapewnienie, aby znak CE był kontrastowy w stosunku do tła lub (idealnie) wyczuwalny dotykiem (grawer/tłoczenie), co ułatwia weryfikację osobom słabowidzącym."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-23-6-2"
-    }
+    "form": {}
   },
   "U.23.7.0": {
     "id": "U.23.7.0",
@@ -825,9 +747,7 @@
       "Test C: Jakość graficzna\n- **Sprawdzenie:** Czy znak CE na opakowaniu i w dokumentach jest czytelny? Czy nie został zniekształcony (zachowane proporcje okręgów)? Czy jest trwały (nie jest naklejką, która łatwo odpada z opakowania)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-23-7-0"
-    }
+    "form": {}
   },
   "U.23.6.1": {
     "id": "U.23.6.1",
@@ -845,9 +765,7 @@
       ""
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-23-6-1"
-    }
+    "form": {}
   },
   "U.24.1.0": {
     "id": "U.24.1.0",
@@ -867,9 +785,7 @@
       "Spójność (Pojedyncza deklaracja)\n- **Sprawdzenie:** Czy producent dostarczył jedną deklarację obejmującą wszystkie wymagania (np. RED + Dostępność + RoHS), czy też osobne dokumenty? Przepisy wymagają sporządzenia **pojedynczej deklaracji** (która może mieć formę dossier), odnoszącej się do wszystkich aktów prawnych."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-24-1-0"
-    }
+    "form": {}
   },
   "U.24.2.0": {
     "id": "U.24.2.0",
@@ -888,9 +804,7 @@
       "Weryfikacja innych specyfikacji (gdy brak norm)\n- **Działanie:** Jeśli na liście nie ma normy EN 301 549.\n- **Sprawdzenie:** Czy wskazano inną specyfikację techniczną, która pokrywa wymagania dostępności z Art. 7-11 ustawy? Jeśli pole jest puste lub zawiera tylko normy niezwiązane z dostępnością, wymóg z Art. 24 ust. 2 nie jest spełniony."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-24-2-0"
-    }
+    "form": {}
   },
   "U.24.3.0": {
     "id": "U.24.3.0",
@@ -909,9 +823,7 @@
       "Spójność z oceną (Weryfikacja krzyżowa - ocena pogłębiona)\n*Dotyczy sytuacji, gdy mamy dostęp do dokumentacji wewnętrznej (Art. 21 ust. 5).*\n- **Działanie:** Porównaj „Dokumentację przebiegu oceny nieproporcjonalnego obciążenia” z Deklaracją Zgodności.\n- **Sprawdzenie:** Czy wszystkie wymagania, które w ocenie wewnętrznej uznano za „zbyt obciążające”, zostały przepisane do Deklaracji Zgodności jako niespełnione? Zatajenie tych informacji w deklaracji publicznej jest naruszeniem Art. 24 ust. 3."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-24-3-0"
-    }
+    "form": {}
   },
   "U.26.1.0": {
     "id": "U.26.1.0",
@@ -929,9 +841,7 @@
       "Weryfikacja spójności (Linkowanie dokumentacji)\n- **Działanie:** Porównaj identyfikator z produktu z Deklaracją Zgodności.\n- **Sprawdzenie:** Czy identyfikator na produkcie (np. \"Type: X\") jest tożsamy z identyfikatorem w pkt 1 lub 4 Deklaracji Zgodności? Jeśli na produkcie jest \"Model A\", a w deklaracji \"Seria B\", identyfikowalność nie jest zapewniona."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-26-1-0"
-    }
+    "form": {}
   },
   "U.26.2.0": {
     "id": "U.26.2.0",
@@ -949,9 +859,7 @@
       "Lokalizacja (Uzasadnienie wyjątku)\n- **Działanie:** Jeśli danych nie ma na produkcie, lecz są na opakowaniu.\n- **Analiza:** Czy na produkcie faktycznie brakuje miejsca?\n    - Jeśli produktem jest np. duży telewizor lub laptop, a dane producenta są tylko na kartonie – jest to **naruszenie**. Producent ma obowiązek umieścić dane trwale na urządzeniu, ponieważ opakowanie jest często wyrzucane przez użytkownika."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-26-2-0"
-    }
+    "form": {}
   },
   "U.22.00.1-4": {
     "id": "U.22.00.1-4",
@@ -971,9 +879,7 @@
       "Usługi przekazu (Zgodność z Art. 13)\n*Dotyczy tylko podmiotów świadczących usługi konwersji (np. tłumacze online).*\n- **Sprawdzenie:** Czy usługa zapewnia synchronizację obrazu i dźwięku (w przypadku tłumacza PJM) oraz czy tekst w czasie rzeczywistym (jeśli jest oferowany) pojawia się płynnie, umożliwiając swobodną rozmowę? (Zgodnie z wymaganiami technicznymi dla RTT i Total Conversation)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u22-00-1-4"
-    }
+    "form": {}
   },
   "U.9.01.01": {
     "id": "U.9.01.01",
@@ -992,9 +898,7 @@
       "Zakres \"Mowy\" (Pokrycie interfejsu)\n- **Sprawdzenie:** Czy synteza mowy obejmuje cały interfejs niezbędny do obsługi? Jeśli terminal posiada ekran dotykowy, czy dotknięcie elementu powoduje jego odczytanie? (Brak odczytu dla któregokolwiek elementu sterującego narusza ten wymóg)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-9-01-01"
-    }
+    "form": {}
   },
   "U.9.01.02.a": {
     "id": "U.9.01.02.a",
@@ -1013,9 +917,7 @@
       "Regulacja głośności w słuchawkach\n- **Działanie:** Przy podłączonych słuchawkach spróbuj zmienić głośność za pomocą interfejsu (przycisków fizycznych lub ekranowych).\n- **Sprawdzenie:** Czy zmiana głośności wpływa na poziom dźwięku w słuchawkach?\n- **Wymóg:** Użytkownik musi mieć możliwość niezależnej regulacji głośności w trybie prywatnym."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-9-01-02-a"
-    }
+    "form": {}
   },
   "U.9.01.02.b": {
     "id": "U.9.01.02.b",
@@ -1034,9 +936,7 @@
       "Weryfikacja dostępności bez logowania\n- **Sprawdzenie:** Czy funkcje dostępności działają **przed** włożeniem karty płatniczej lub zalogowaniem się? Użytkownik musi mieć wsparcie (np. głosowe) już na etapie ekranu powitalnego, aby wiedzieć, gdzie włożyć kartę lub jak rozpocząć transakcję."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-9-01-02-b"
-    }
+    "form": {}
   },
   "U.9.02.00": {
     "id": "U.9.02.00",
@@ -1055,9 +955,7 @@
       "Weryfikacja klawisza \"5\"\n- **Działanie:** Znajdź dotykiem klawiaturę numeryczną.\n- **Sprawdzenie:** Czy na klawiszu z cyfrą \"5\" znajduje się wyraźna, wypukła kropka lub kreska? Brak tego znacznika na standardowej klawiaturze numerycznej (np. PIN padzie) jest niezgodnością z normą."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-9-02-00"
-    }
+    "form": {}
   },
   "U.9.03.00": {
     "id": "U.9.03.00",
@@ -1076,9 +974,7 @@
       "Metoda interakcji**\n-   **Sprawdzenie:** Czy wydłużenie czasu wymaga skomplikowanych gestów? Powinno być możliwe za pomocą prostego naciśnięcia fizycznego klawisza lub dotknięcia wyraźnego pola na ekranie (zgodnie z wymogami motorycznymi)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-9-03-00"
-    }
+    "form": {}
   },
   "U.9.04.00": {
     "id": "U.9.04.00",
@@ -1097,9 +993,7 @@
       "Weryfikacja zakłóceń**\n- **Działanie:** Przeprowadź próbę odsłuchową za pomocą aparatu słuchowego ustawionego w tryb \"T\" lub testera.\n- **Sprawdzenie:** Czy oprócz pożądanego sygnału audio słychać głośne buczenie, trzaski lub pisk pochodzący z elektroniki terminala (np. ekranu)? Czystość sygnału jest kluczowa dla kompatybilności."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-9-04-00"
-    }
+    "form": {}
   },
   "U.10.01.00": {
     "id": "U.10.01.00",
@@ -1118,9 +1012,7 @@
       "Prywatność i Głośność\n- **Działanie:** Podłącz słuchawki (przewodowe lub Bluetooth).\n- **Sprawdzenie:**\n    - Czy dźwięk syntezatora został przekierowany do słuchawek?\n    - Czy głośnik zewnętrzny został wyciszony? (Ochrona prywatności czytanej treści).\n    - Czy można regulować głośność i szybkość czytania?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-10-01-00"
-    }
+    "form": {}
   },
   "U.11.00.01.a-01": {
     "id": "U.11.00.01.a-01",
@@ -1139,9 +1031,7 @@
       "Interoperacyjność\n- **Sprawdzenie:** Czy RTT działa nie tylko wewnątrz własnego ekosystemu producenta (np. tylko między dwoma telefonami tej samej marki), ale korzysta ze standardów umożliwiających połączenie z innymi sieciami (np. po protokole SIP/IMS)?."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-11-00-01-a-01"
-    }
+    "form": {}
   },
   "U.11.00.01.a-02": {
     "id": "U.11.00.01.a-02",
@@ -1161,9 +1051,7 @@
       "Identyfikacja mówcy w wideo\n- **Sprawdzenie:** Czy w przypadku konferencji wieloosobowej urządzenie wskazuje wizualnie, która osoba (okno wideo) aktualnie nadaje dźwięk lub \"miga\"? Jest to niezbędne dla orientacji osoby niesłyszącej w dyskusji."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-11-00-01-a-02"
-    }
+    "form": {}
   },
   "U.11.00.01.b-01": {
     "id": "U.11.00.01.b-01",
@@ -1181,9 +1069,7 @@
       "Weryfikacja jakości dźwięku i braku zakłóceń\n- **Działanie:** Nawiąż połączenie głosowe przy użyciu podłączonego bezprzewodowo zestawu.\n- **Sprawdzenie:**\n    - Czy dźwięk w narzędziu wspomagającym jest czysty i zrozumiały?\n    - Czy występują istotne opóźnienia (latencja), które utrudniałyby prowadzenie rozmowy (desynchronizacja ruchu warg z dźwiękiem)?\n    - Czy występują zakłócenia elektromagnetyczne (buczenie, piski) wynikające z pracy anteny urządzenia? (Wymóg ten jest ściśle powiązany z *lit. c* tego samego artykułu ustawy, mówiącym o unikaniu zakłóceń)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-11-00-01-b-01"
-    }
+    "form": {}
   },
   "U.11.00.01.c-01": {
     "id": "U.11.00.01.c-01",
@@ -1203,9 +1089,7 @@
       "Mechanizmy redukcji zakłóceń (Oprogramowanie)**\n- **Działanie:** Sprawdź ustawienia dostępności w menu urządzenia.\n- **Sprawdzenie:** Czy istnieje opcja „Tryb aparatu słuchowego” (Hearing Aid Mode)?\n    - Włączenie tej opcji często zmienia parametry pracy nadajnika radiowego lub charakterystykę audio, aby zminimalizować interferencje. Obecność i skuteczność tej funkcji potwierdza spełnienie wymogu unikania zakłóceń."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-11-00-01-c-01"
-    }
+    "form": {}
   },
   "U.11.00.02": {
     "id": "U.11.00.02",
@@ -1226,9 +1110,7 @@
       "Współpraca z narzędziami wspomagającymi\n- **Sprawdzenie:** Czy menu wyboru udogodnień (napisów/języka) jest odczytywane przez wbudowany w urządzenie czytnik ekranu (Voice Guide/TalkBack itp.)? Jest to niezbędne, aby osoba niewidoma mogła samodzielnie uruchomić audiodeskrypcję."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-11-00-02"
-    }
+    "form": {}
   },
   "U.12.01": {
     "id": "U.12.01",
@@ -1245,9 +1127,7 @@
       "Analiza wyjątków (Data wdrożenia)\nJeśli produkt nie spełnia wymagań, sprawdź datę jego instalacji/uruchomienia.\n*   Jeśli terminal zainstalowano przed 28.06.2025 – sprawdź, czy mieści się w okresie ochronnym (do 20 lat użyteczności) zgodnie z art. 85 ust. 3."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-01"
-    }
+    "form": {}
   },
   "U.12.02.01.a": {
     "id": "U.12.02.01.a",
@@ -1266,9 +1146,7 @@
       "Weryfikacja kompletności treści\n- **Sprawdzenie:** Czy w udostępnianych materiałach (niezależnie od formatu) znajdują się wyraźne informacje o:\n    - Funkcjach dostępności sprzętu (np. \"To urządzenie wspiera technologię zamiany treści tekstowych na głos\")?\n    - Interoperacyjności (np. \"Możesz podłączyć własne słuchawki\")?\n    - *Błąd:* Brak informacji o tym, że urządzenie jest dostępne, jest naruszeniem tego przepisu, nawet jeśli samo urządzenie jest technicznie doskonałe. Użytkownik musi wiedzieć o dostępności, aby z niej skorzystać."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-01-a"
-    }
+    "form": {}
   },
   "U.12.02.01.b": {
     "id": "U.12.02.01.b",
@@ -1285,9 +1163,7 @@
       "Analiza prostoty i struktury (Inspekcja ekspercka)\n- **Działanie:** Przeanalizuj instrukcję obsługi terminala lub opis usługi.\n- **Sprawdzenie:**\n    - Czy zdania są krótkie i niezłożone wielokrotnie?\n    - Czy terminy specjalistyczne (np. „autoryzacja”, „uwierzytelnianie dwuskładnikowe”) są wyjaśnione w tekście lub słowniczku?\n    - Czy zastosowano podział na akapity, listy punktowane i nagłówki ułatwiające skanowanie tekstu?\n    - Czy instrukcje są sformułowane w trybie rozkazującym lub bezosobowym w sposób jednoznaczny (np. „Włóż kartę”, a nie „Zaleca się umieszczenie instrumentu płatniczego w odpowiednim slotcie”)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-01-b"
-    }
+    "form": {}
   },
   "U.12.02.01.c": {
     "id": "U.12.02.01.c",
@@ -1306,9 +1182,7 @@
       "Dostępność wielokanałowa**\n- **Sprawdzenie:** Czy ten sam plik tekstowy, bez modyfikacji dokonanych przez użytkownika, może być jednocześnie wyświetlony na ekranie i odczytany głosowo? (Wymóg ten jest spełniony domyślnie przez poprawny dokument cyfrowy)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-01-c"
-    }
+    "form": {}
   },
   "U.12.02.01.d": {
     "id": "U.12.02.01.d",
@@ -1326,9 +1200,7 @@
       "Krój czcionki (Inspekcja ekspercka)**\n-   **Sprawdzenie:** Czy zastosowano czcionkę bezszeryfową (np. Arial, Verdana, Tahoma) lub inną o prostym kroju? Unikanie czcionek ozdobnych, kursywy i pisania całych zdań wielkimi literami (all-caps) jest kluczowe dla „odpowiedniego kroju” wymaganego ustawą."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-01-d"
-    }
+    "form": {}
   },
   "U.12.02.01.e": {
     "id": "U.12.02.01.e",
@@ -1348,9 +1220,7 @@
       "Testy z użytkownikami (Weryfikacja funkcjonalna)\n- **Działanie:** Przeprowadź test z osobą niewidomą (korzystającą z czytnika ekranu).\n- **Cel:** Potwierdzenie, czy alternatywy tekstowe dla skomplikowanych wykresów lub schematów (np. schemat procesu reklamacji) są zrozumiałe i pozwalają na zbudowanie w wyobraźni poprawnego modelu informacji."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-01-e"
-    }
+    "form": {}
   },
   "U.12.02.02": {
     "id": "U.12.02.02",
@@ -1369,9 +1239,7 @@
       "Kompatybilność (Kod i Parsowanie)\n- **Działanie:** Użyj walidatora kodu (np. W3C Validator) oraz czytnika ekranu (NVDA/VoiceOver).\n- **Sprawdzenie:**\n    - Czy kod nie zawiera błędów składniowych (np. niezamknięte tagi, zduplikowane ID), które mogą zmylić technologię asystującą?\n    - Czy nazwy, role i wartości elementów interfejsu (np. przycisków, zakładek) są poprawnie komunikowane przez czytnik ekranu?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-02"
-    }
+    "form": {}
   },
   "U.12.02.03": {
     "id": "U.12.02.03",
@@ -1391,9 +1259,7 @@
       "Wynik końcowy (Raport):\nDokumentacja musi wskazywać konkretne niezgodności z kryteriami sukcesu WCAG (np. \"Niezgodność z 1.4.3 - Kontrast\"), określać ich priorytet (krytyczny/wysoki/średni) oraz zawierać rekomendacje naprawcze dla programistów."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-12-02-03"
-    }
+    "form": {}
   },
   "U.13": {
     "id": "U.13",
@@ -1412,9 +1278,7 @@
       "Jakość wideo dla języka migowego\n- **Sprawdzenie:** Czy usługa zapewnia przepustowość wystarczającą do utrzymania rozdzielczości min. QVGA (320x240) i płynności min. 20 klatek na sekundę?\n- **Interpretacja:** Jeśli usługa agresywnie kompresuje obraz przy słabszym zasięgu, czyniąc język migowy nieczytelnym (rozmycie dłoni), usługa nie spełnia wymogu obsługi \"pełnej konwersacji\" w rozumieniu ustawy."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-13"
-    }
+    "form": {}
   },
   "U.14.00.01": {
     "id": "U.14.00.01",
@@ -1435,9 +1299,7 @@
       "Test z technologią asystującą (TTS)\n- **Działanie:** Włącz funkcję lektora (Screen Reader) w urządzeniu (dekoderze/TV).\n- **Sprawdzenie:** Przejdź przez siatkę programów. Czy syntezator odczytuje poprawnie: Tytuł, Godzinę rozpoczęcia, Kanał? Czy zapowiedzi głosowe nie nakładają się na dźwięk bieżącego programu w sposób uniemożliwiający zrozumienie (audio ducking)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-14.01"
-    }
+    "form": {}
   },
   "U.14.00.02": {
     "id": "U.14.00.02",
@@ -1457,9 +1319,7 @@
       "Weryfikacja personalizacji (Jakość wyświetlania)\n- **Działanie:** Sprawdź ustawienia wyświetlania.\n- **Sprawdzenie:** Czy usługa umożliwia zmianę wielkości czcionki napisów? Jest to kluczowe dla „właściwego wyświetlania” dla osób słabowidzących. Brak możliwości powiększenia napisów w usłudze VOD/TV jest niezgodnością z normą."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-14.00.02"
-    }
+    "form": {}
   },
   "U.15.01.01.a": {
     "id": "U.15.01.01.a",
@@ -1480,9 +1340,7 @@
       "Alternatywne kanały kontaktu**\n*Dotyczy procedur asysty.*\n- **Sprawdzenie:** Czy w przypadku braku pewności co do stanu pojazdu, usługodawca podaje bezpośredni kontakt (telefon/czat) w celu weryfikacji dostępności konkretnego kursu dla osoby ze szczególnymi potrzebami?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15-01-01-a"
-    }
+    "form": {}
   },
   "U.15.01.01.b": {
     "id": "U.15.01.01.b",
@@ -1502,9 +1360,7 @@
       "Dostępność cyfrowa opisu\n- **Sprawdzenie:** Czy mapa dworca lub schemat otoczenia (otaczająca infrastruktura) są dostępne cyfrowo?\n    -   Jeśli jest to grafika (mapa), czy posiada opis alternatywny lub wersję tekstową opisującą drogę dojścia? (Zgodnie z Art. 12 ust. 2 pkt 1 lit. e)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15.01.01.b"
-    }
+    "form": {}
   },
   "U.15.01.02": {
     "id": "U.15.01.02",
@@ -1525,9 +1381,7 @@
       "Dostępność usług wsparcia (Zgodność z Art. 22 i EN 301 549 Rozdz. 12.2)\n- **Sprawdzenie:** Jeśli przewoźnik udostępnia infolinię do zamawiania asysty, czy zapewnia ona alternatywne metody komunikacji dla osób, które nie mogą mówić lub słyszeć (np. czat tekstowy, obsługa SMS, wideo z tłumaczem PJM)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15.01.02"
-    }
+    "form": {}
   },
   "U.15.01.03": {
     "id": "U.15.01.03",
@@ -1548,9 +1402,7 @@
       "Dostępność samej informacji**\n- **Sprawdzenie:** Czy instrukcja obsługi biletomatu (np. umieszczona w sieci jako PDF lub na obudowie urządzenia) spełnia wymogi Art. 12 ust. 2 pkt 1 (wielokanałowość, zrozumiałość, kontrast)? Informacja o systemie sprzedaży musi być dostępna dla osoby, która nie może jej zobaczyć."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15.01.03"
-    }
+    "form": {}
   },
   "U.15.01.04": {
     "id": "U.15.01.04",
@@ -1570,9 +1422,7 @@
       "Alternatywne kanały wsparcia\n- **Sprawdzenie:** Czy w przypadku awarii systemów cyfrowych wskazano kontakt (np. numer infolinii lub punkt obsługi), gdzie pasażer ze szczególnymi potrzebami może uzyskać te informacje werbalnie?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15.01.04"
-    }
+    "form": {}
   },
   "U.15.02.01": {
     "id": "U.15.02.01",
@@ -1593,9 +1443,7 @@
       "Weryfikacja informacji o psach asystujących\n- **Działanie:** Sprawdź regulamin lub zakładkę \"Dostępność\".\n- **Sprawdzenie:** Czy znajduje się tam wyraźna informacja o prawie wstępu z psem asystującym? (Jest to kluczowe dla upewnienia pasażera, że nie zostanie wyproszony przez ochronę)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15.02.01"
-    }
+    "form": {}
   },
   "U.15.02.02": {
     "id": "U.15.02.02",
@@ -1615,9 +1463,7 @@
       "Dostępność cyfrowa informacji\n- **Sprawdzenie:** Czy dokument zawierający te informacje (np. Plan Ewakuacji, Opis Dworca) jest dostępny cyfrowo? (zgodnie z Art. 12 ust. 2 i Art. 15 ust. 1). Częstym błędem jest publikowanie planów ewakuacyjnych jako skanów (obrazków) bez opisu tekstowego, co czyni informację o bezpieczeństwie niedostępną dla osób niewidomych."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-15.02.02"
-    }
+    "form": {}
   },
   "U.32.02.01.a": {
     "id": "U.32.02.01.a",
@@ -1636,9 +1482,7 @@
       "Zrozumiałość (Art. 12 ust. 2 pkt 1 lit. b)\n- **Sprawdzenie**: Czy regulamin jest napisany w sposób możliwie prosty i zrozumiały, czy też sformatowanie (np. ściana tekstu, brak akapitów, mała czcionka) utrudnia jego percepcję?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-32-02-01-a"
-    },
+    "form": {},
     "evaluation": "Inspekcja techniczna dokumentu"
   },
   "U.32.02.01.b": {
@@ -1656,9 +1500,7 @@
       "Weryfikacja dostępności instrukcji wideo (Jeśli dotyczy)\n- **Działanie:** Jeśli usługodawca udostępnia wideoporadniki (np. \"Jak kupić bilet w aplikacji\").\n- **Sprawdzenie:** Czy filmy te posiadają napisy dla niesłyszących (Art. 12 ust. 2 pkt 1 lit. a w zw. z EN 301 549 9.1.2.2)? Czy posiadają audiodeskrypcję lub transkrypcję dla niewidomych?."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-32-02-01-b"
-    },
+    "form": {},
     "evaluation": "Analiza dokumentów"
   },
   "U.32.02.01.c": {
@@ -1676,9 +1518,7 @@
       "Spójność z deklaracją (Cross-check)**\n*Jeśli dotyczy.*\n- **Sprawdzenie:** Czy informacje w regulaminie są spójne z informacjami w Deklaracji Dostępności (publikowanej na podstawie innej ustawy, jeśli dotyczy podmiotu publicznego) lub z informacjami w sklepach z aplikacjami (App Store/Google Play)? Rozbieżności mogą sugerować nierzetelność informacji."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-32-02-01-c"
-    },
+    "form": {},
     "evaluation": "Sprawdzenie zawartości merytorycznej oraz technicznej"
   },
   "U.32.02.02": {
@@ -1694,9 +1534,7 @@
       "Weryfikacja spójności (Dobra praktyka)\n- **Sprawdzenie:** Czy opis procesu (np. „Usługa dostępna 24/7”) jest zgodny z informacjami o ewentualnych przerwach technicznych (monitorowanie dostępności)? Informacja powinna być rzetelna."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-32-02-02"
-    },
+    "form": {},
     "evaluation": "Ocena treści oraz formy dokumentacji"
   },
   "U.33.01.01": {
@@ -1714,9 +1552,7 @@
       "Dostępność cyfrowa informacji (Art. 12)\n*Zgodnie z EN 301 549 Rozdział 9 (Web) lub 10 (Dokumenty).*\n- **Działanie:** Sprawdź technicznie tekst opisu (np. na stronie www).\n- **Sprawdzenie:**\n    - Czy opis jest czytelny dla czytnika ekranu (nie jest skanem ulotki)?\n    - Czy zastosowano odpowiedni kontrast tekstu?\n    - Czy język opisu jest zrozumiały (np. unikanie technicznego żargonu budowlanego typu \"przylga drzwiowa\", jeśli nie jest to konieczne)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-33-01-01"
-    },
+    "form": {},
     "evaluation": "Analiza treści"
   },
   "U.33.02": {
@@ -1735,9 +1571,7 @@
       "Precyzja i aktualność\n- **Sprawdzenie:** Czy informacja odnosi się do *konkretnych* lokalizacji świadczenia usługi (np. lista placówek z opisem), czy jest tylko ogólną deklaracją polityki firmy? Ustawa wymaga podania informacji o stanie pomieszczeń i budynków „wykorzystywanych do oferowania lub świadczenia usług”, co implikuje konkretność."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-33-02"
-    },
+    "form": {},
     "evaluation": "Szczegółowa analiza"
   },
   "U.16.00.01": {
@@ -1758,9 +1592,7 @@
       "Weryfikacja tokenów sprzętowych/mobilnych (Kompatybilność)**\n*Dotyczy klauzul 11.5.2 (Współpraca z technologią wspomagającą).*\n- **Sprawdzenie:** Jeśli do autoryzacji wymagane jest przepisanie kodu z aplikacji mobilnej (tokena), czy ten kod jest odczytywany przez czytnik ekranu (TalkBack/VoiceOver) w telefonie? Jeśli aplikacja tokena jest \"niema\", usługa płatnicza jest niedostępna."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-16.00.01"
-    }
+    "form": {}
   },
   "U.16.00.02": {
     "id": "U.16.00.02",
@@ -1780,9 +1612,7 @@
       "Dostępność cyfrowa wersji obcojęzycznych\n*Dotyczy Art. 12 ust. 2 pkt 1 lit. c (formaty tekstowe).*\n- **Sprawdzenie:** Czy dokumenty w języku obcym (np. PDF w j. angielskim) są dostępne cyfrowo (otagowane, z warstwą tekstową), tak jak ich polskie odpowiedniki? Częstym błędem jest dbanie o dostępność wersji polskich, a udostępnianie wersji obcojęzycznych jako niedostępnych skanów."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-16.00.02"
-    }
+    "form": {}
   },
   "U.17.00.01": {
     "id": "U.17.00.01",
@@ -1803,9 +1633,7 @@
       "Dostępność kontrolek synchronizacji\n- **Sprawdzenie:** Czy funkcje sterujące synchronizacją (włącz/wyłącz podświetlenie, pauza, prędkość czytania) są dostępne dla technologii asystujących (np. czy przyciski mają etykiety tekstowe dla czytnika ekranu)?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-17.00.01"
-    }
+    "form": {}
   },
   "U.17.00.02": {
     "id": "U.17.00.02",
@@ -1825,9 +1653,7 @@
       "Weryfikacja elementów interaktywnych (Interakcja)**\n*Dotyczy klauzuli 10.4.1.2.*\n- **Działanie:** Jeśli e-book zawiera testy, formularze lub aktywne przypisy.\n- **Sprawdzenie:** Użyj czytnika ekranu. Czy po najechaniu na element interaktywny słyszysz jego etykietę i rolę (np. \"Przycisk Sprawdź odpowiedź\")?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-17.00.02"
-    }
+    "form": {}
   },
   "U.17.00.03": {
     "id": "U.17.00.03",
@@ -1848,9 +1674,7 @@
       "**Uwaga dotycząca metadanych:** Choć weryfikacja metadanych o dostępności (np.`schema:accessMode`) jest technicznie możliwa na tym etapie, formalnie jest ona przedmiotem **Art. 17 ust. 6**. W ramach ust. 3 weryfikujemy metadane strukturalne (Tytuł, Język)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-17.00.03"
-    }
+    "form": {}
   },
   "U.17.00.04": {
     "id": "U.17.00.04",
@@ -1870,9 +1694,7 @@
       "Metadane i dokumentacja (Wsparcie informacyjne)**\n*Dotyczy Art. 17 ust. 6 oraz dobrej praktyki.*\n- **Sprawdzenie:** Czy metadane pliku lub opis produktu informują o dostępnych trybach prezentacji (np. \"Layout: reflowable\" vs \"fixed-layout\")? Użytkownik powinien wiedzieć przed zakupem, czy książka obsługuje dynamiczny układ."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-17.00.04"
-    }
+    "form": {}
   },
   "U.17.00.05": {
     "id": "U.17.00.05",
@@ -1892,9 +1714,7 @@
       "Brak utraty danych**\n- **Sprawdzenie:** Czy po przełączeniu na „tryb nocny” lub powiększeniu tekstu, elementy nawigacyjne (spis treści, zakładki) nadal działają poprawnie i prowadzą do właściwych miejsc w książce?"
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-17.05"
-    }
+    "form": {}
   },
   "U.17.00.06": {
     "id": "U.17.00.06",
@@ -1914,9 +1734,7 @@
       "Czytelność dla człowieka (Podsumowanie)**\n- **Sprawdzenie:** Czy pole`accessibilitySummary` (lub jego odpowiednik w opisie produktu na stronie sklepu) zawiera jasną informację o poziomie dostępności, zrozumiałą dla użytkownika nietechnicznego? (np. informacja o braku transkrypcji dla materiałów audio)."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-17.00.06"
-    }
+    "form": {}
   },
   "U.18.00.01": {
     "id": "U.18.00.01",
@@ -1937,9 +1755,7 @@
       "Metadane (Opcjonalnie - Dobra praktyka)\n- **Sprawdzenie:** Czy sklep wykorzystuje metadane (np. schema.org) do oznaczania produktów dostępnych, co pozwalałoby na filtrowanie wyników wyszukiwania (np. „Pokaż tylko telefony z dużą czcionką”)? Chociaż ustawa wprost tego nie nakazuje w Art. 18 (jak robi to w Art. 17 dla e-booków), norma wskazuje to jako metodę dostarczania informacji o produkcie."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-18.01"
-    }
+    "form": {}
   },
   "U.18.00.02": {
     "id": "U.18.00.02",
@@ -1960,9 +1776,7 @@
       "Komunikaty błędów w formularzach\n- **Działanie:** Wpisz błędne dane w formularzu płatności (np. niepoprawny format karty kredytowej).\n- **Sprawdzenie:** Czy komunikat o błędzie jest dostępny tekstowo (a nie tylko przez zmianę koloru ramki na czerwony – zgodnie z 9.1.4.1) i czy system sugeruje, jak poprawić błąd? [4, 14]."
     ],
     "notes": [],
-    "form": {
-      "noteId": "notes-u-18.00.02"
-    }
+    "form": {}
   },
   "C.10.1.1.1": {
     "id": "C.10.1.1.1",
@@ -2002,9 +1816,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.1.1 Treści nietekstowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.1.1 Treść nietekstowa",
-      "noteId": "notes-c-10-1-1-1"
+      ]
     }
   },
   "C.10.1.2.1": {
@@ -2037,9 +1849,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.1 Tylko audio lub tylko wideo (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.2.1 Tylko audio lub tylko wideo (nagranie)",
-      "noteId": "notes-c-10-1-2-1"
+      ]
     }
   },
   "C.10.1.2.2": {
@@ -2072,9 +1882,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.2.2 Napisy rozszerzone (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.2.2 Napisy rozszerzone (nagranie)",
-      "noteId": "notes-c-10-1-2-2"
+      ]
     }
   },
   "C.10.1.2.3": {
@@ -2107,9 +1915,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.3 Audiodeskrypcja lub alternatywa tekstowa dla mediów (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.2.3 Audiodeskrypcja lub alternatywa tekstowa dla mediów (nagranie)",
-      "noteId": "notes-c-10-1-2-3"
+      ]
     }
   },
   "C.10.1.2.4": {
@@ -2141,9 +1947,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.2.4 Napisy rozszerzone (na żywo)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.2.4 Napisy rozszerzone (na żywo)",
-      "noteId": "notes-c-10-1-2-4"
+      ]
     }
   },
   "C.10.1.2.5": {
@@ -2176,9 +1980,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.2.5 Audiodeskrypcja (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.2.5 Audiodeskrypcja (nagranie)",
-      "noteId": "notes-c-10-1-2-5"
+      ]
     }
   },
   "C.10.1.3.1": {
@@ -2212,9 +2014,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.3.1 Informacje i relacje."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.3.1 Informacje i relacje",
-      "noteId": "notes-c-10-1-3-1"
+      ]
     }
   },
   "C.10.1.3.2": {
@@ -2246,9 +2046,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.3.2 Zrozumiała kolejność."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.3.2 Zrozumiała kolejność",
-      "noteId": "notes-c-10-1-3-2"
+      ]
     }
   },
   "C.10.1.3.3": {
@@ -2279,9 +2077,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.3.3 Właściwości zmysłowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.3.3 Właściwości zmysłowe",
-      "noteId": "notes-c-10-1-3-3"
+      ]
     }
   },
   "C.10.1.3.4": {
@@ -2312,9 +2108,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.4 Orientacja."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.3.4 Orientacja",
-      "noteId": "notes-c-10-1-3-4"
+      ]
     }
   },
   "C.10.1.3.5": {
@@ -2345,9 +2139,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.5 Określenie pożądanej wartości."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.3.5 Określenie pożądanej wartości",
-      "noteId": "notes-c-10-1-3-5"
+      ]
     }
   },
   "C.10.1.4.1": {
@@ -2379,9 +2171,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.1 Użycie koloru."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.1 Użycie koloru",
-      "noteId": "notes-c-10-1-4-1"
+      ]
     }
   },
   "C.10.1.4.2": {
@@ -2414,9 +2204,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.2 Kontrola odtwarzania dźwięku",
-      "noteId": "notes-c-10-1-4-2"
+      ]
     }
   },
   "C.10.1.4.3": {
@@ -2447,9 +2235,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.3 Kontrast (minimum)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.3 Kontrast (minimum)",
-      "noteId": "notes-c-10-1-4-3"
+      ]
     }
   },
   "C.10.1.4.4": {
@@ -2484,9 +2270,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.4 Zmiana rozmiaru tekstu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.4 Zmiana rozmiaru tekstu",
-      "noteId": "notes-c-10-1-4-4"
+      ]
     }
   },
   "C.10.1.4.5": {
@@ -2517,9 +2301,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.5 Obrazy tekstu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.5 Obrazy tekstu",
-      "noteId": "notes-c-10-1-4-5"
+      ]
     }
   },
   "C.10.1.4.10": {
@@ -2555,9 +2337,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.10 Dopasowanie do ekranu",
-      "noteId": "notes-c-10-1-4-10"
+      ]
     }
   },
   "C.10.1.4.11": {
@@ -2588,9 +2368,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.11 Kontrast elementów nietekstowych."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.11 Kontrast elementów nietekstowych",
-      "noteId": "notes-c-10-1-4-11"
+      ]
     }
   },
   "C.10.1.4.12": {
@@ -2621,9 +2399,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.12 Odstępy w tekście."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.12 Odstępy w tekście",
-      "noteId": "notes-c-10-1-4-12"
+      ]
     }
   },
   "C.10.1.4.13": {
@@ -2654,9 +2430,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 1.4.13 Treść spod kursora lub fokusu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.1.4.13 Treść spod kursora lub fokusu",
-      "noteId": "notes-c-10-1-4-13"
+      ]
     }
   },
   "C.10.2.1.1": {
@@ -2688,9 +2462,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.1.1 Klawiatura."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.1.1 Klawiatura",
-      "noteId": "notes-c-10-2-1-1"
+      ]
     }
   },
   "C.10.2.1.2": {
@@ -2724,9 +2496,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.1.2 Bez pułapki na klawiaturę",
-      "noteId": "notes-c-10-2-1-2"
+      ]
     }
   },
   "C.10.2.1.4": {
@@ -2757,9 +2527,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.1.4 Jednoznakowe skróty klawiaturowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.1.4 Jednoznakowe skróty klawiaturowe",
-      "noteId": "notes-c-10-2-1-4"
+      ]
     }
   },
   "C.10.2.2.1": {
@@ -2792,9 +2560,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.2.1 Dostosowanie czasu",
-      "noteId": "notes-c-10-2-2-1"
+      ]
     }
   },
   "C.10.2.2.2": {
@@ -2830,9 +2596,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.2.2 Pauza, zatrzymanie, ukrycie",
-      "noteId": "notes-c-10-2-2-2"
+      ]
     }
   },
   "C.10.2.3.1": {
@@ -2865,9 +2629,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.3.1 Trzy błyski lub wartości poniżej progu",
-      "noteId": "notes-c-10-2-3-1"
+      ]
     }
   },
   "C.10.2.4.2": {
@@ -2901,9 +2663,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.4.2 Tytuł dokumentu",
-      "noteId": "notes-c-10-2-4-2"
+      ]
     }
   },
   "C.10.2.4.3": {
@@ -2935,9 +2695,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.4.3 Kolejność fokusu",
-      "noteId": "notes-c-10-2-4-3"
+      ]
     }
   },
   "C.10.2.4.4": {
@@ -2968,9 +2726,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.4.4 Cel łącza (w kontekście)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.4.4 Cel łącza (w kontekście)",
-      "noteId": "notes-c-10-2-4-4"
+      ]
     }
   },
   "C.10.2.4.6": {
@@ -3001,9 +2757,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.4.6 Nagłówki i etykiety."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.4.6 Nagłówki i etykiety",
-      "noteId": "notes-c-10-2-4-6"
+      ]
     }
   },
   "C.10.2.4.7": {
@@ -3034,9 +2788,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.4.7 Widoczny fokus."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.4.7 Widoczny fokus",
-      "noteId": "notes-c-10-2-4-7"
+      ]
     }
   },
   "C.10.2.5.1": {
@@ -3069,9 +2821,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.5.1 Gesty dotykowe",
-      "noteId": "notes-c-10-2-5-1"
+      ]
     }
   },
   "C.10.2.5.2": {
@@ -3104,9 +2854,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.5.2 Rezygnacja ze wskazania",
-      "noteId": "notes-c-10-2-5-2"
+      ]
     }
   },
   "C.10.2.5.3": {
@@ -3137,9 +2885,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.5.3 Etykieta w nazwie."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.5.3 Etykieta w nazwie",
-      "noteId": "notes-c-10-2-5-3"
+      ]
     }
   },
   "C.10.2.5.4": {
@@ -3170,9 +2916,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 2.5.4 Aktywowanie ruchem."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.2.5.4 Aktywowanie ruchem",
-      "noteId": "notes-c-10-2-5-4"
+      ]
     }
   },
   "C.10.3.1.1": {
@@ -3204,9 +2948,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.1.1 Język dokumentu",
-      "noteId": "notes-c-10-3-1-1"
+      ]
     }
   },
   "C.10.3.1.2": {
@@ -3240,9 +2982,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.1.2 Język części",
-      "noteId": "notes-c-10-3-1-2"
+      ]
     }
   },
   "C.10.3.2.1": {
@@ -3274,9 +3014,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.2.1 Po otrzymaniu fokusu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.2.1 Po otrzymaniu fokusu",
-      "noteId": "notes-c-10-3-2-1"
+      ]
     }
   },
   "C.10.3.2.2": {
@@ -3307,9 +3045,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.2.2 Podczas wprowadzania danych."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.2.2 Podczas wprowadzania danych",
-      "noteId": "notes-c-10-3-2-2"
+      ]
     }
   },
   "C.10.3.3.1": {
@@ -3340,9 +3076,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.3.1 Identyfikacja błędu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.3.1 Identyfikacja błędu",
-      "noteId": "notes-c-10-3-3-1"
+      ]
     }
   },
   "C.10.3.3.2": {
@@ -3373,9 +3107,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.3.2 Etykiety lub instrukcje."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.3.2 Etykiety lub instrukcje",
-      "noteId": "notes-c-10-3-3-2"
+      ]
     }
   },
   "C.10.3.3.3": {
@@ -3406,9 +3138,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.3.3 Sugestie korekty błędów."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.3.3 Sugestie korekty błędów",
-      "noteId": "notes-c-10-3-3-3"
+      ]
     }
   },
   "C.10.3.3.4": {
@@ -3440,9 +3170,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)",
-      "noteId": "notes-c-10-3-3-4"
+      ]
     }
   },
   "C.10.4.1.1": {
@@ -3477,9 +3205,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.4.1.1 Poprawność kodu",
-      "noteId": "notes-c-10-4-1-1"
+      ]
     }
   },
   "C.10.4.1.2": {
@@ -3514,9 +3240,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.4.1.2 Nazwa, rola, wartość",
-      "noteId": "notes-c-10-4-1-2"
+      ]
     }
   },
   "C.10.4.1.3": {
@@ -3549,9 +3273,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub dokument nieinternetowy nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 4.1.3 Komunikaty o stanie."
         }
-      ],
-      "legend": "Wybierz wynik dla C.10.4.1.3 Komunikaty o stanie",
-      "noteId": "notes-c-10-4-1-3"
+      ]
     }
   },
   "C.11.1.1.1.1": {
@@ -3586,8 +3308,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "noteId": "notes-c-11-1-1-1-1"
+      ]
     }
   },
   "C.11.1.1.1.2": {
@@ -3625,9 +3346,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.1.1.2 Treść nietekstowa (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-1-1-1-2"
+      ]
     }
   },
   "C.11.1.2.1.1": {
@@ -3662,9 +3381,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.1.1 Tylko audio lub tylko wideo (nagranie – funkcjonalność otwarta)",
-      "noteId": "notes-c-11-1-2-1-1"
+      ]
     }
   },
   "C.11.1.2.1.2.1": {
@@ -3698,9 +3415,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.1.2.1 Nagrane tylko audio (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-1-2-1-2-1"
+      ]
     }
   },
   "C.11.1.2.1.2.2": {
@@ -3734,9 +3449,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.1.2.2 Nagrane tylko wideo (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-1-2-1-2-2"
+      ]
     }
   },
   "C.11.1.2.2": {
@@ -3769,9 +3482,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.2 Napisy rozszerzone (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.2 Napisy rozszerzone (nagranie)",
-      "noteId": "notes-c-11-1-2-2"
+      ]
     }
   },
   "C.11.1.2.3.1": {
@@ -3806,9 +3517,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.3 Audiodeskrypcja lub alternatywa tekstowa dla mediów (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.3.1 Audiodeskrypcja lub alternatywa tekstowa dla mediów",
-      "noteId": "notes-c-11-1-2-3-1"
+      ]
     }
   },
   "C.11.1.2.3.2": {
@@ -3843,9 +3552,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.3.2 Audiodeskrypcja lub alternatywa tekstowa dla mediów (nagranie – funkcjonalność",
-      "noteId": "notes-c-11-1-2-3-2"
+      ]
     }
   },
   "C.11.1.2.4": {
@@ -3877,9 +3584,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.4 Napisy rozszerzone (na żywo)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.4 Napisy rozszerzone (na żywo)",
-      "noteId": "notes-c-11-1-2-4"
+      ]
     }
   },
   "C.11.1.2.5": {
@@ -3911,9 +3616,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.5 Audiodeskrypcja (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.2.5 Audiodeskrypcja (nagranie)",
-      "noteId": "notes-c-11-1-2-5"
+      ]
     }
   },
   "C.11.1.3.1.1": {
@@ -3946,9 +3649,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.3.1.1 Informacje i relacje (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-1-3-1-1"
+      ]
     }
   },
   "C.11.1.3.2.1": {
@@ -3982,9 +3683,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.3.2.1 Zrozumiała kolejność (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-1-3-2-1"
+      ]
     }
   },
   "C.11.1.3.3": {
@@ -4017,9 +3716,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.3 Właściwości zmysłowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.3.3 Właściwości zmysłowe",
-      "noteId": "notes-c-11-1-3-3"
+      ]
     }
   },
   "C.11.1.3.4": {
@@ -4052,9 +3749,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.4 Orientacja."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.3.4 Orientacja",
-      "noteId": "notes-c-11-1-3-4"
+      ]
     }
   },
   "C.11.1.3.5.1": {
@@ -4088,9 +3783,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.5 Określenie pożądanej wartości."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.3.5.1 Określenie pożądanej wartości (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-1-3-5-1"
+      ]
     }
   },
   "C.11.1.3.5.2": {
@@ -4127,9 +3820,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.3.5.2 Określenie pożądanej wartości (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-1-3-5-2"
+      ]
     }
   },
   "C.11.1.4.1": {
@@ -4163,9 +3854,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.1 Użycie koloru."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.1 Użycie koloru",
-      "noteId": "notes-c-11-1-4-1"
+      ]
     }
   },
   "C.11.1.4.2": {
@@ -4199,9 +3888,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.2 Kontrola odtwarzania dźwięku",
-      "noteId": "notes-c-11-1-4-2"
+      ]
     }
   },
   "C.11.1.4.3": {
@@ -4235,9 +3922,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.3 Kontrast (minimum)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.3 Kontrast (minimum)",
-      "noteId": "notes-c-11-1-4-3"
+      ]
     }
   },
   "C.11.1.4.4.1": {
@@ -4271,9 +3956,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.4 Zmiana rozmiaru tekstu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.4.1 Zmiana rozmiaru tekstu (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-1-4-4-1"
+      ]
     }
   },
   "C.11.1.4.4.2": {
@@ -4308,9 +3991,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.4.2 Zmiana rozmiaru tekstu (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-1-4-4-2"
+      ]
     }
   },
   "C.11.1.4.5.1": {
@@ -4345,9 +4026,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.5 Obrazy tekstu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.5.1 Obrazy tekstu (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-1-4-5-1"
+      ]
     }
   },
   "C.11.1.4.5.2": {
@@ -4386,9 +4065,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.5.2 Obrazy tekstu (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-1-4-5-2"
+      ]
     }
   },
   "C.11.1.4.10": {
@@ -4423,9 +4100,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.10 Dopasowanie do ekranu",
-      "noteId": "notes-c-11-1-4-10"
+      ]
     }
   },
   "C.11.1.4.11": {
@@ -4459,9 +4134,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.11 Kontrast elementów nietekstowych."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.11 Kontrast elementów nietekstowych",
-      "noteId": "notes-c-11-1-4-11"
+      ]
     }
   },
   "C.11.1.4.12": {
@@ -4495,9 +4168,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.12 Odstępy w tekście."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.12 Odstępy w tekście",
-      "noteId": "notes-c-11-1-4-12"
+      ]
     }
   },
   "C.11.1.4.13": {
@@ -4531,9 +4202,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.13 Treść spod kursora lub fokusu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.1.4.13 Treść spod kursora lub fokusu",
-      "noteId": "notes-c-11-1-4-13"
+      ]
     }
   },
   "C.11.2.1.1.1": {
@@ -4568,9 +4237,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.1.1 Klawiatura."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.1.1.1 Klawiatura (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-2-1-1-1"
+      ]
     }
   },
   "C.11.2.1.1.2": {
@@ -4604,9 +4271,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.1.1.2 Klawiatura (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-2-1-1-2"
+      ]
     }
   },
   "C.11.2.1.2": {
@@ -4641,9 +4306,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.1.2 Bez pułapki na klawiaturę",
-      "noteId": "notes-c-11-2-1-2"
+      ]
     }
   },
   "C.11.2.1.4.1": {
@@ -4678,9 +4341,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.1.4 Jednoznakowe skróty klawiaturowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.1.4.1 Jednoznakowe skróty klawiaturowe (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-2-1-4-1"
+      ]
     }
   },
   "C.11.2.1.4.2": {
@@ -4714,9 +4375,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.1.4.2 Jednoznakowe skróty klawiaturowe (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-2-1-4-2"
+      ]
     }
   },
   "C.11.2.2.1": {
@@ -4750,9 +4409,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.2.1 Dostosowanie czasu",
-      "noteId": "notes-c-11-2-2-1"
+      ]
     }
   },
   "C.11.2.2.2": {
@@ -4790,9 +4447,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.2.2 Pauza, zatrzymanie, ukrycie",
-      "noteId": "notes-c-11-2-2-2"
+      ]
     }
   },
   "C.11.2.3.1": {
@@ -4825,9 +4480,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.3.1 Trzy błyski lub wartości poniżej progu",
-      "noteId": "notes-c-11-2-3-1"
+      ]
     }
   },
   "C.11.2.4.3": {
@@ -4859,9 +4512,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.4.3 Kolejność fokusu",
-      "noteId": "notes-c-11-2-4-3"
+      ]
     }
   },
   "C.11.2.4.4": {
@@ -4895,9 +4546,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.4 Cel łącza (w kontekście)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.4.4 Cel łącza (w kontekście)",
-      "noteId": "notes-c-11-2-4-4"
+      ]
     }
   },
   "C.11.2.4.6": {
@@ -4930,9 +4579,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.6 Nagłówki i etykiety."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.4.6 Nagłówki i etykiety",
-      "noteId": "notes-c-11-2-4-6"
+      ]
     }
   },
   "C.11.2.4.7": {
@@ -4966,9 +4613,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.7 Widoczny fokus."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.4.7 Widoczny fokus",
-      "noteId": "notes-c-11-2-4-7"
+      ]
     }
   },
   "C.11.2.5.1": {
@@ -5002,9 +4647,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.5.1 Gesty dotykowe",
-      "noteId": "notes-c-11-2-5-1"
+      ]
     }
   },
   "C.11.2.5.2": {
@@ -5041,9 +4684,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.5.2 Rezygnacja ze wskazania",
-      "noteId": "notes-c-11-2-5-2"
+      ]
     }
   },
   "C.11.2.5.3.1": {
@@ -5077,9 +4718,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.3 Etykieta w nazwie."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.5.3.1 Etykieta w nazwie (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-2-5-3-1"
+      ]
     }
   },
   "C.11.2.5.4": {
@@ -5113,9 +4752,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.4 Aktywowanie ruchem."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.2.5.4 Aktywowanie ruchem",
-      "noteId": "notes-c-11-2-5-4"
+      ]
     }
   },
   "C.11.3.1.1.1": {
@@ -5150,9 +4787,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.1.1.1 Język oprogramowania (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-3-1-1-1"
+      ]
     }
   },
   "C.11.3.1.1.2": {
@@ -5189,9 +4824,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2, 3, 4, 5, 6, lub 7."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.1.1.2 Język oprogramowania (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-3-1-1-2"
+      ]
     }
   },
   "C.11.3.2.1": {
@@ -5225,9 +4858,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.2.1 Po otrzymaniu fokusu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.2.1 Po otrzymaniu fokusu",
-      "noteId": "notes-c-11-3-2-1"
+      ]
     }
   },
   "C.11.3.2.2": {
@@ -5260,9 +4891,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.2.2 Podczas wprowadzania danych."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.2.2 Podczas wprowadzania danych",
-      "noteId": "notes-c-11-3-2-2"
+      ]
     }
   },
   "C.11.3.3.1.1": {
@@ -5296,9 +4925,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.3.1 Identyfikacja błędu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.3.1.1 Identyfikacja błędu (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-3-3-1-1"
+      ]
     }
   },
   "C.11.3.3.1.2": {
@@ -5335,9 +4962,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.3.1.2 Identyfikacja błędu (funkcjonalność zamknięta)",
-      "noteId": "notes-c-11-3-3-1-2"
+      ]
     }
   },
   "C.11.3.3.2": {
@@ -5370,9 +4995,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.3.2 Etykiety lub instrukcje."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.3.2 Etykiety lub instrukcje",
-      "noteId": "notes-c-11-3-3-2"
+      ]
     }
   },
   "C.11.3.3.3": {
@@ -5405,9 +5028,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.3.3 Sugestie korekty błędów."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.3.3 Sugestie korekty błędów",
-      "noteId": "notes-c-11-3-3-3"
+      ]
     }
   },
   "C.11.3.3.4": {
@@ -5440,9 +5061,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)",
-      "noteId": "notes-c-11-3-3-4"
+      ]
     }
   },
   "C.11.4.1.1.1": {
@@ -5480,9 +5099,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.4.1.1.1 Poprawność kodu (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-4-1-1-1"
+      ]
     }
   },
   "C.11.4.1.2.1": {
@@ -5518,9 +5135,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.4.1.2.1 Nazwa, rola, wartość (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-4-1-2-1"
+      ]
     }
   },
   "C.11.4.1.3.1": {
@@ -5554,9 +5169,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2, lub oprogramowanie nieinternetowe nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.3 Komunikaty o stanie"
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.4.1.3.1 Komunikaty o stanie (funkcjonalność otwarta)",
-      "noteId": "notes-c-11-4-1-3-1"
+      ]
     }
   },
   "C.11.5.1": {
@@ -5589,9 +5202,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.1 Funkcjonalność zamknięta",
-      "noteId": "notes-c-11-5-1"
+      ]
     }
   },
   "C.11.5.2.1": {
@@ -5624,9 +5235,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.1 Platformowa usługa wsparcia dostępności dla oprogramowania, która udostępnia interfejs użytkownika",
-      "noteId": "notes-c-11-5-2-1"
+      ]
     }
   },
   "C.11.5.2.2": {
@@ -5659,9 +5268,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.2 Platformowa usługa wsparcia dostępności dla technologii wspomagających, która udostępnia interfejs użytkownika",
-      "noteId": "notes-c-11-5-2-2"
+      ]
     }
   },
   "C.11.5.2.3": {
@@ -5696,9 +5303,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.3 Korzystanie z usług dostępności",
-      "noteId": "notes-c-11-5-2-3"
+      ]
     }
   },
   "C.11.5.2.4": {
@@ -5731,9 +5336,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.4 Platformowa usługa wsparcia dostępności dla technologii wspomagających, które nie udostępniają interfejsu użytkownika",
-      "noteId": "notes-c-11-5-2-4"
+      ]
     }
   },
   "C.11.5.2.5": {
@@ -5770,9 +5373,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.5 Informacje o obiekcie",
-      "noteId": "notes-c-11-5-2-5"
+      ]
     }
   },
   "C.11.5.2.6": {
@@ -5806,9 +5407,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.6 Wiersz, kolumna i nagłówki",
-      "noteId": "notes-c-11-5-2-6"
+      ]
     }
   },
   "C.11.5.2.7": {
@@ -5845,9 +5444,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.7 Wartości",
-      "noteId": "notes-c-11-5-2-7"
+      ]
     }
   },
   "C.11.5.2.8": {
@@ -5883,9 +5480,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.8 Relacje etykiet",
-      "noteId": "notes-c-11-5-2-8"
+      ]
     }
   },
   "C.11.5.2.9": {
@@ -5925,9 +5520,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.9 Relacje rodzic-dziecko",
-      "noteId": "notes-c-11-5-2-9"
+      ]
     }
   },
   "C.11.5.2.10": {
@@ -5963,9 +5556,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.10 Tekst",
-      "noteId": "notes-c-11-5-2-10"
+      ]
     }
   },
   "C.11.5.2.11": {
@@ -6000,9 +5591,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.11 Lista dostępnych działań",
-      "noteId": "notes-c-11-5-2-11"
+      ]
     }
   },
   "C.11.5.2.12": {
@@ -6038,9 +5627,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.12 Wykonywanie dostępnych działań",
-      "noteId": "notes-c-11-5-2-12"
+      ]
     }
   },
   "C.11.5.2.13": {
@@ -6078,9 +5665,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.13 Śledzenie fokusu i atrybutów wyboru",
-      "noteId": "notes-c-11-5-2-13"
+      ]
     }
   },
   "C.11.5.2.14": {
@@ -6117,9 +5702,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.14 Modyfikacja fokusu i atrybutów wyboru",
-      "noteId": "notes-c-11-5-2-14"
+      ]
     }
   },
   "C.11.5.2.15": {
@@ -6160,9 +5743,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.15 Powiadomienia o zmianach",
-      "noteId": "notes-c-11-5-2-15"
+      ]
     }
   },
   "C.11.5.2.16": {
@@ -6198,9 +5779,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.16 Modyfikacje stanów i właściwości",
-      "noteId": "notes-c-11-5-2-16"
+      ]
     }
   },
   "C.11.5.2.17": {
@@ -6236,9 +5815,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.5.2.17 Modyfikacje wartości i tekstu",
-      "noteId": "notes-c-11-5-2-17"
+      ]
     }
   },
   "C.11.6.1": {
@@ -6271,9 +5848,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.6.1 Kontrola funkcji dostępności przez użytkownika",
-      "noteId": "notes-c-11-6-1"
+      ]
     }
   },
   "C.11.6.2": {
@@ -6307,9 +5882,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.6.2 Nieprzerwane działanie funkcji dostępności",
-      "noteId": "notes-c-11-6-2"
+      ]
     }
   },
   "C.11.7": {
@@ -6344,9 +5917,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.7 Preferencje użytkownika",
-      "noteId": "notes-c-11-7"
+      ]
     }
   },
   "C.11.8.1": {
@@ -6381,9 +5952,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.8.1 Technologia treści",
-      "noteId": "notes-c-11-8-1"
+      ]
     }
   },
   "C.11.8.2": {
@@ -6415,9 +5984,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.8.2 Tworzenie dostępnej treści",
-      "noteId": "notes-c-11-8-2"
+      ]
     }
   },
   "C.11.8.3": {
@@ -6453,9 +6020,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.8.3 Zachowanie informacji o dostępności podczas transformacji",
-      "noteId": "notes-c-11-8-3"
+      ]
     }
   },
   "C.11.8.4": {
@@ -6488,9 +6053,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.8.4 Wspomaganie naprawy",
-      "noteId": "notes-c-11-8-4"
+      ]
     }
   },
   "C.11.8.5": {
@@ -6526,9 +6089,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.11.8.5 Szablony",
-      "noteId": "notes-c-11-8-5"
+      ]
     }
   },
   "C.12.1.1": {
@@ -6561,9 +6122,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.12.1.1 Funkcje dostępności i zgodności",
-      "noteId": "notes-c-12-1-1"
+      ]
     }
   },
   "C.12.1.2": {
@@ -6596,9 +6155,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.12.1.2 Dostępność dokumentacji",
-      "noteId": "notes-c-12-1-2"
+      ]
     }
   },
   "C.12.2.2": {
@@ -6630,9 +6187,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.12.2.2 Informacje o funkcjach dostępności i zgodności",
-      "noteId": "notes-c-12-2-2"
+      ]
     }
   },
   "C.12.2.3": {
@@ -6666,9 +6221,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.12.2.3 Efektywna komunikacja",
-      "noteId": "notes-c-12-2-3"
+      ]
     }
   },
   "C.12.2.4": {
@@ -6702,9 +6255,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.12.2.4 Dostępność dokumentacji",
-      "noteId": "notes-c-12-2-4"
+      ]
     }
   },
   "C.13.1.2": {
@@ -6736,9 +6287,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.1.2 Usługi przekazu w trybie tekstowym",
-      "noteId": "notes-c-13-1-2"
+      ]
     }
   },
   "C.13.1.3": {
@@ -6770,9 +6319,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.1.3 Usługi przekazu w trybie języka migowego",
-      "noteId": "notes-c-13-1-3"
+      ]
     }
   },
   "C.13.1.4": {
@@ -6804,9 +6351,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.1.4 Usługi odczytu z ruchu warg",
-      "noteId": "notes-c-13-1-4"
+      ]
     }
   },
   "C.13.1.5": {
@@ -6838,9 +6383,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.1.5 Usługi telefonii z napisami",
-      "noteId": "notes-c-13-1-5"
+      ]
     }
   },
   "C.13.1.6": {
@@ -6872,9 +6415,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.1.6 Usługi przekazu mowy na mowę",
-      "noteId": "notes-c-13-1-6"
+      ]
     }
   },
   "C.13.2": {
@@ -6907,9 +6448,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.2 Dostęp do usług przekazu informacji",
-      "noteId": "notes-c-13-2"
+      ]
     }
   },
   "C.13.3": {
@@ -6942,9 +6481,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.13.3 Dostęp do usług awaryjnego przekazu informacji",
-      "noteId": "notes-c-13-3"
+      ]
     }
   },
   "C.5.1.2.2": {
@@ -6979,9 +6516,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.2.2 Technologia wspomagająca",
-      "noteId": "notes-c-5-1-2-2"
+      ]
     }
   },
   "C.5.1.3.1": {
@@ -7019,9 +6554,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.1 Wyjście audio informacji wizualnych",
-      "noteId": "notes-c-5-1-3-1"
+      ]
     }
   },
   "C.5.1.3.2": {
@@ -7060,9 +6593,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.2 Wyjściowy sygnał dźwiękowy zawierający mowę",
-      "noteId": "notes-c-5-1-3-2"
+      ]
     }
   },
   "C.5.1.3.4": {
@@ -7100,9 +6631,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.4 Sterowanie przez użytkownika wyjściem mowy",
-      "noteId": "notes-c-5-1-3-4"
+      ]
     }
   },
   "C.5.1.3.5": {
@@ -7140,9 +6669,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.5 Automatyczne przerwanie wyjścia mowy",
-      "noteId": "notes-c-5-1-3-5"
+      ]
     }
   },
   "C.5.1.3.6": {
@@ -7180,9 +6707,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.6 Wyjście mowy dla treści nietekstowej",
-      "noteId": "notes-c-5-1-3-6"
+      ]
     }
   },
   "C.5.1.3.7": {
@@ -7219,9 +6744,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.7 Wyjście mowy dla informacji wideo",
-      "noteId": "notes-c-5-1-3-7"
+      ]
     }
   },
   "C.5.1.3.8": {
@@ -7261,9 +6784,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.8 Wejście maskowane",
-      "noteId": "notes-c-5-1-3-8"
+      ]
     }
   },
   "C.5.1.3.9": {
@@ -7304,9 +6825,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.9 Prywatny dostęp do danych osobowych",
-      "noteId": "notes-c-5-1-3-9"
+      ]
     }
   },
   "C.5.1.3.10": {
@@ -7342,9 +6861,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.10 Wyjście audio bez zakłóceń",
-      "noteId": "notes-c-5-1-3-10"
+      ]
     }
   },
   "C.5.1.3.11": {
@@ -7380,9 +6897,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.11 Głośność odsłuchiwania treści prywatnych",
-      "noteId": "notes-c-5-1-3-11"
+      ]
     }
   },
   "C.5.1.3.12": {
@@ -7420,9 +6935,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.12 Głośność głośnika",
-      "noteId": "notes-c-5-1-3-12"
+      ]
     }
   },
   "C.5.1.3.13": {
@@ -7459,9 +6972,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.13 Przywracanie głośności",
-      "noteId": "notes-c-5-1-3-13"
+      ]
     }
   },
   "C.5.1.3.14": {
@@ -7500,9 +7011,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.14 Języki mówione",
-      "noteId": "notes-c-5-1-3-14"
+      ]
     }
   },
   "C.5.1.3.15": {
@@ -7539,9 +7048,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.15 Niewizualna identyfikacja błędu",
-      "noteId": "notes-c-5-1-3-15"
+      ]
     }
   },
   "C.5.1.3.16": {
@@ -7579,9 +7086,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.3.16 Pokwitowania, bilety i dane wyjściowe transakcji",
-      "noteId": "notes-c-5-1-3-16"
+      ]
     }
   },
   "C.5.1.4": {
@@ -7624,9 +7129,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.4 Funkcjonalności uniemożliwiające powiększanie tekstu",
-      "noteId": "notes-c-5-1-4"
+      ]
     }
   },
   "C.5.1.5": {
@@ -7662,9 +7165,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.5 Wyjście wizualne dla informacji dźwiękowych",
-      "noteId": "notes-c-5-1-5"
+      ]
     }
   },
   "C.5.1.6.1": {
@@ -7699,9 +7200,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.6.1 Funkcjonalność zamknięta",
-      "noteId": "notes-c-5-1-6-1"
+      ]
     }
   },
   "C.5.1.6.2": {
@@ -7737,9 +7236,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.6.2 Fokus",
-      "noteId": "notes-c-5-1-6-2"
+      ]
     }
   },
   "C.5.1.7": {
@@ -7774,9 +7271,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.1.7 Dostęp bez użycia mowy",
-      "noteId": "notes-c-5-1-7"
+      ]
     }
   },
   "C.5.2": {
@@ -7811,9 +7306,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.2 Aktywacja funkcji dostępności",
-      "noteId": "notes-c-5-2"
+      ]
     }
   },
   "C.5.3": {
@@ -7850,9 +7343,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.3 Biometria (rozpoznawanie cech fizycznych)",
-      "noteId": "notes-c-5-3"
+      ]
     }
   },
   "C.5.4": {
@@ -7890,9 +7381,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.4 Zachowanie informacji o dostępności podczas konwersji",
-      "noteId": "notes-c-5-4"
+      ]
     }
   },
   "C.5.5.1": {
@@ -7927,9 +7416,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.5.1 Środki obsługi",
-      "noteId": "notes-c-5-5-1"
+      ]
     }
   },
   "C.5.5.2": {
@@ -7966,9 +7453,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.5.2 Rozpoznawalność części obsługiwanych",
-      "noteId": "notes-c-5-5-2"
+      ]
     }
   },
   "C.5.6.1": {
@@ -8007,9 +7492,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.6.1 Status dotyku lub dźwięku",
-      "noteId": "notes-c-5-6-1"
+      ]
     }
   },
   "C.5.6.2": {
@@ -8048,9 +7531,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.6.2 Status wizualny",
-      "noteId": "notes-c-5-6-2"
+      ]
     }
   },
   "C.5.7": {
@@ -8087,9 +7568,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.7 Ponowne wciśnięcie klawisza",
-      "noteId": "notes-c-5-7"
+      ]
     }
   },
   "C.5.8": {
@@ -8128,9 +7607,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.8 Akceptacja dwukrotnego kliknięcia klawisza",
-      "noteId": "notes-c-5-8"
+      ]
     }
   },
   "C.5.9": {
@@ -8167,9 +7644,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.5.9 Jednoczesne czynności użytkownika",
-      "noteId": "notes-c-5-9"
+      ]
     }
   },
   "C.6.1": {
@@ -8202,9 +7677,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.1 Szerokość pasma sygnału mowy",
-      "noteId": "notes-c-6-1"
+      ]
     }
   },
   "C.6.2.1.1": {
@@ -8246,9 +7719,7 @@
           "value": "Nie do sprawdzenia",
           "label": "Nie spełniono warunku wstępnego 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.1.1 Komunikacja RTT",
-      "noteId": "notes-c-6-2-1-1"
+      ]
     }
   },
   "C.6.2.1.2": {
@@ -8285,9 +7756,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.1.2 Równoczesna komunikacja głosowa i tekstowa",
-      "noteId": "notes-c-6-2-1-2"
+      ]
     }
   },
   "C.6.2.2.1": {
@@ -8331,9 +7800,7 @@
           "value": "Nie do sprawdzenia",
           "label": "Nie spełniono warunku wstępnego 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.2.1 Wyświetlacz umożliwiający rozróżnianie tekstu",
-      "noteId": "notes-c-6-2-2-1"
+      ]
     }
   },
   "C.6.2.2.2": {
@@ -8377,9 +7844,7 @@
           "value": "Nie do sprawdzenia",
           "label": "Nie spełniono warunku wstępnego 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.2.2 Możliwe do określenia programowo kierunku nadawania i odbioru",
-      "noteId": "notes-c-6-2-2-2"
+      ]
     }
   },
   "C.6.2.2.3": {
@@ -8421,9 +7886,7 @@
           "value": "Nie do sprawdzenia",
           "label": "Nie spełniono warunku wstępnego 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.2.3 Identyfikacja mówcy",
-      "noteId": "notes-c-6-2-2-3"
+      ]
     }
   },
   "C.6.2.2.4": {
@@ -8461,9 +7924,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.2.4 Wizualny wskaźnik audio połączonego z RTT",
-      "noteId": "notes-c-6-2-2-4"
+      ]
     }
   },
   "C.6.2.3": {
@@ -8504,9 +7965,7 @@
           "value": "Nie do sprawdzenia",
           "label": "Nie spełniono warunku wstępnego 3."
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.3.d Interoperacyjność (d)",
-      "noteId": "notes-c-6-2-3-d"
+      ]
     }
   },
   "C.6.2.4": {
@@ -8550,9 +8009,7 @@
           "value": "Nie do sprawdzenia",
           "label": "Nie spełniono warunku wstępnego 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.2.4 Czas reakcji RTT",
-      "noteId": "notes-c-6-2-4"
+      ]
     }
   },
   "C.6.3": {
@@ -8585,9 +8042,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.3 ID dzwoniącego",
-      "noteId": "notes-c-6-3"
+      ]
     }
   },
   "C.6.4": {
@@ -8622,9 +8077,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.4 Alternatywy dla usług głosowych",
-      "noteId": "notes-c-6-4"
+      ]
     }
   },
   "C.6.5.2": {
@@ -8657,9 +8110,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.5.2 Rozdzielczość",
-      "noteId": "notes-c-6-5-2"
+      ]
     }
   },
   "C.6.5.3": {
@@ -8692,9 +8143,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.5.3 Częstotliwość wyświetlania klatek",
-      "noteId": "notes-c-6-5-3"
+      ]
     }
   },
   "C.6.5.4": {
@@ -8727,9 +8176,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.5.4 Synchronizacja dźwięku i obrazu",
-      "noteId": "notes-c-6-5-4"
+      ]
     }
   },
   "C.6.5.5": {
@@ -8767,9 +8214,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.5.5 Wizualny wskaźnik audio połączonego z wideo",
-      "noteId": "notes-c-6-5-5"
+      ]
     }
   },
   "C.6.5.6": {
@@ -8804,9 +8249,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.6.5.6 Identyfikacja mówcy podczas komunikacji za pomocą wideo",
-      "noteId": "notes-c-6-5-6"
+      ]
     }
   },
   "C.7.1.1": {
@@ -8837,9 +8280,7 @@
           "value": "Niezaliczone",
           "label": "Kryterium 1: fałsz"
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.1.1 Odtwarzanie napisów",
-      "noteId": "notes-c-7-1-1"
+      ]
     }
   },
   "C.7.1.2": {
@@ -8871,9 +8312,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.1.2 Synchronizacja napisów",
-      "noteId": "notes-c-7-1-2"
+      ]
     }
   },
   "C.7.1.3": {
@@ -8905,9 +8344,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.1.3 Zachowanie zasad tworzenia napisów",
-      "noteId": "notes-c-7-1-3"
+      ]
     }
   },
   "C.7.1.4": {
@@ -8941,9 +8378,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.1.4 Cechy napisów",
-      "noteId": "notes-c-7-1-4"
+      ]
     }
   },
   "C.7.1.5": {
@@ -8979,9 +8414,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.1.5 Odczytywane napisy",
-      "noteId": "notes-c-7-1-5"
+      ]
     }
   },
   "C.7.2.1": {
@@ -9018,9 +8451,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.2.1 Odtwarzanie audiodeskrypcji",
-      "noteId": "notes-c-7-2-1"
+      ]
     }
   },
   "C.7.2.2": {
@@ -9051,9 +8482,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.2.2 Synchronizacja audiodeskrypcji",
-      "noteId": "notes-c-7-2-2"
+      ]
     }
   },
   "C.7.2.3": {
@@ -9084,9 +8513,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.2.3 Zachowywanie audiodeskrypcji",
-      "noteId": "notes-c-7-2-3"
+      ]
     }
   },
   "C.7.3": {
@@ -9120,9 +8547,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1. C.8 Sprzęt"
         }
-      ],
-      "legend": "Wybierz wynik dla C.7.3 Sterowanie napisami i audiodeskrypcją",
-      "noteId": "notes-c-7-3"
+      ]
     }
   },
   "C.8.1.2": {
@@ -9160,9 +8585,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.1.2 Standardowe połączenia",
-      "noteId": "notes-c-8-1-2"
+      ]
     }
   },
   "C.8.1.3": {
@@ -9195,9 +8618,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.1.3 Kolor",
-      "noteId": "notes-c-8-1-3"
+      ]
     }
   },
   "C.8.2.1.1": {
@@ -9232,9 +8653,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.2.1.1 Zakres głośności mowy",
-      "noteId": "notes-c-8-2-1-1"
+      ]
     }
   },
   "C.8.2.1.2": {
@@ -9269,9 +8688,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.2.1.2 Stopniowa regulacja głośności",
-      "noteId": "notes-c-8-2-1-2"
+      ]
     }
   },
   "C.8.2.2.1": {
@@ -9306,9 +8723,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.2.2.1 Urządzenia stacjonarne",
-      "noteId": "notes-c-8-2-2-1"
+      ]
     }
   },
   "C.8.2.2.2": {
@@ -9341,9 +8756,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.2.2.2 Urządzenia do komunikacji bezprzewodowej",
-      "noteId": "notes-c-8-2-2-2"
+      ]
     }
   },
   "C.8.3.1": {
@@ -9378,9 +8791,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.1 Dostęp z przodu lub z boku",
-      "noteId": "notes-c-8-3-1"
+      ]
     }
   },
   "C.8.3.2.1": {
@@ -9414,9 +8825,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.1 Nieograniczony dostęp z przodu, od góry",
-      "noteId": "notes-c-8-3-2-1"
+      ]
     }
   },
   "C.8.3.2.2": {
@@ -9449,9 +8858,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.2 Nieograniczony dostęp z przodu, od dołu",
-      "noteId": "notes-c-8-3-2-2"
+      ]
     }
   },
   "C.8.3.2.3.1": {
@@ -9484,9 +8891,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.3.1 Wolna powierzchnia podłogi",
-      "noteId": "notes-c-8-3-2-3-1"
+      ]
     }
   },
   "C.8.3.2.3.2": {
@@ -9520,9 +8925,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.3.2 Ograniczony (< 510 mm) dostęp z przodu",
-      "noteId": "notes-c-8-3-2-3-2"
+      ]
     }
   },
   "C.8.3.2.3.3": {
@@ -9555,9 +8958,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.3.3 Ograniczony (< 635 mm) dostęp z przodu",
-      "noteId": "notes-c-8-3-2-3-3"
+      ]
     }
   },
   "C.8.3.2.4": {
@@ -9592,9 +8993,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.4 Szerokość przestrzeni na kolana i stopy",
-      "noteId": "notes-c-8-3-2-4"
+      ]
     }
   },
   "C.8.3.2.5": {
@@ -9628,9 +9027,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.5.c Przestrzeń na stopy (c)",
-      "noteId": "notes-c-8-3-2-5-c"
+      ]
     }
   },
   "C.8.3.2.6": {
@@ -9664,9 +9061,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2 lub 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.2.6.d Przestrzeń na kolana (d)",
-      "noteId": "notes-c-8-3-2-6-d"
+      ]
     }
   },
   "C.8.3.3.1": {
@@ -9700,9 +9095,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.3.1 Nieograniczony dostęp z boku, od góry",
-      "noteId": "notes-c-8-3-3-1"
+      ]
     }
   },
   "C.8.3.3.2": {
@@ -9735,9 +9128,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.3.2 Nieograniczony dostęp z boku, od dołu",
-      "noteId": "notes-c-8-3-3-2"
+      ]
     }
   },
   "C.8.3.3.3.1": {
@@ -9771,9 +9162,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.3.3.1 Ograniczony (< 255 mm) dostęp z boku",
-      "noteId": "notes-c-8-3-3-3-1"
+      ]
     }
   },
   "C.8.3.3.3.2": {
@@ -9806,9 +9195,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.3.3.2 Ograniczony (< 610 mm) dostęp z boku",
-      "noteId": "notes-c-8-3-3-3-2"
+      ]
     }
   },
   "C.8.3.4.1": {
@@ -9847,9 +9234,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2 lub 3"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.4.1 Zmiana poziomu",
-      "noteId": "notes-c-8-3-4-1"
+      ]
     }
   },
   "C.8.3.4.2": {
@@ -9882,9 +9267,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.4.2 Pusta podłoga lub powierzchnia podłoża",
-      "noteId": "notes-c-8-3-4-2"
+      ]
     }
   },
   "C.8.3.4.3.1": {
@@ -9918,9 +9301,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.4.3.1 Postanowienia ogólne",
-      "noteId": "notes-c-8-3-4-3-1"
+      ]
     }
   },
   "C.8.3.4.3.2": {
@@ -9955,9 +9336,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.4.3.2 Podejście z przodu",
-      "noteId": "notes-c-8-3-4-3-2"
+      ]
     }
   },
   "C.8.3.4.3.3": {
@@ -9992,9 +9371,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1, 2, 3 lub 4"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.4.3.3 Dostęp równoległy",
-      "noteId": "notes-c-8-3-4-3-3"
+      ]
     }
   },
   "C.8.3.5": {
@@ -10027,9 +9404,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2"
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.5 Widoczność",
-      "noteId": "notes-c-8-3-5"
+      ]
     }
   },
   "C.8.3.6": {
@@ -10063,9 +9438,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.3.6 Instrukcja montażu",
-      "noteId": "notes-c-8-3-6"
+      ]
     }
   },
   "C.8.4.1": {
@@ -10099,9 +9472,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.4.1 Klawisze numeryczne",
-      "noteId": "notes-c-8-4-1"
+      ]
     }
   },
   "C.8.4.2.1": {
@@ -10134,9 +9505,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.4.2.1 Środki obsługi części mechanicznych",
-      "noteId": "notes-c-8-4-2-1"
+      ]
     }
   },
   "C.8.4.2.2": {
@@ -10170,9 +9539,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.4.2.2 Siła wymagana do obsługi części mechanicznych",
-      "noteId": "notes-c-8-4-2-2"
+      ]
     }
   },
   "C.8.4.3": {
@@ -10204,9 +9571,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.4.3 Klucze, bilety i karty taryfowe",
-      "noteId": "notes-c-8-4-3"
+      ]
     }
   },
   "C.8.5": {
@@ -10241,9 +9606,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub 2."
         }
-      ],
-      "legend": "Wybierz wynik dla C.8.5 Oznaczenia dotykowe w trybie mowy",
-      "noteId": "notes-c-8-5"
+      ]
     }
   },
   "C.9.1.1.1": {
@@ -10279,9 +9642,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.1.1 Treść nietekstowa."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.1.1 Treść nietekstowa",
-      "noteId": "notes-c-9-1-1-1"
+      ]
     }
   },
   "C.9.1.2.1": {
@@ -10313,9 +9674,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.1 Tylko audio lub tylko wideo (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.2.1 Tylko audio lub tylko wideo (nagranie)",
-      "noteId": "notes-c-9-1-2-1"
+      ]
     }
   },
   "C.9.1.2.2": {
@@ -10347,9 +9706,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.2 Napisy rozszerzone (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.2.2 Napisy rozszerzone (nagranie)",
-      "noteId": "notes-c-9-1-2-2"
+      ]
     }
   },
   "C.9.1.2.3": {
@@ -10380,9 +9737,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.3 Audiodeskrypcja lub alternatywa tekstowa dla mediów (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.2.3 Audiodeskrypcja lub alternatywa tekstowa dla mediów (nagranie)",
-      "noteId": "notes-c-9-1-2-3"
+      ]
     }
   },
   "C.9.1.2.4": {
@@ -10413,9 +9768,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.4 Napisy rozszerzone (na żywo)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.2.4 Napisy rozszerzone (na żywo)",
-      "noteId": "notes-c-9-1-2-4"
+      ]
     }
   },
   "C.9.1.2.5": {
@@ -10446,9 +9799,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.2.5 Audiodeskrypcja (nagranie)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.2.5 Audiodeskrypcja (nagranie)",
-      "noteId": "notes-c-9-1-2-5"
+      ]
     }
   },
   "C.9.1.3.1": {
@@ -10483,9 +9834,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.1 Informacje i relacje."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.3.1 Informacje i relacje",
-      "noteId": "notes-c-9-1-3-1"
+      ]
     }
   },
   "C.9.1.3.2": {
@@ -10517,9 +9866,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.2 Zrozumiała kolejność."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.3.2 Zrozumiała kolejność",
-      "noteId": "notes-c-9-1-3-2"
+      ]
     }
   },
   "C.9.1.3.3": {
@@ -10550,9 +9897,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.3 Właściwości zmysłowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.3.3 Właściwości zmysłowe",
-      "noteId": "notes-c-9-1-3-3"
+      ]
     }
   },
   "C.9.1.3.4": {
@@ -10583,9 +9928,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.4 Orientacja."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.3.4 Orientacja",
-      "noteId": "notes-c-9-1-3-4"
+      ]
     }
   },
   "C.9.1.3.5": {
@@ -10616,9 +9959,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.3.5 Określenie pożądanej wartości."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.3.5 Określenie pożądanej wartości",
-      "noteId": "notes-c-9-1-3-5"
+      ]
     }
   },
   "C.9.1.4.1": {
@@ -10650,9 +9991,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.1 Użycie koloru."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.1 Użycie koloru",
-      "noteId": "notes-c-9-1-4-1"
+      ]
     }
   },
   "C.9.1.4.2": {
@@ -10683,9 +10022,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.2 Kontrola odtwarzania dźwięku."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.2 Kontrola odtwarzania dźwięku",
-      "noteId": "notes-c-9-1-4-2"
+      ]
     }
   },
   "C.9.1.4.3": {
@@ -10718,9 +10055,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.3 Kontrast (minimum)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.3 Kontrast (minimum)",
-      "noteId": "notes-c-9-1-4-3"
+      ]
     }
   },
   "C.9.1.4.4": {
@@ -10753,9 +10088,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.4 Zmiana rozmiaru tekstu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.4 Zmiana rozmiaru tekstu",
-      "noteId": "notes-c-9-1-4-4"
+      ]
     }
   },
   "C.9.1.4.5": {
@@ -10786,9 +10119,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.5 Obrazy tekstu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.5 Obrazy tekstu",
-      "noteId": "notes-c-9-1-4-5"
+      ]
     }
   },
   "C.9.1.4.10": {
@@ -10819,9 +10150,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.10 Dopasowanie do ekranu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.10 Dopasowanie do ekranu",
-      "noteId": "notes-c-9-1-4-10"
+      ]
     }
   },
   "C.9.1.4.11": {
@@ -10852,9 +10181,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.11 Kontrast elementów nietekstowych."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.11 Kontrast elementów nietekstowych",
-      "noteId": "notes-c-9-1-4-11"
+      ]
     }
   },
   "C.9.1.4.12": {
@@ -10885,9 +10212,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.12 Odstępy w tekście."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.12 Odstępy w tekście",
-      "noteId": "notes-c-9-1-4-12"
+      ]
     }
   },
   "C.9.1.4.13": {
@@ -10918,9 +10243,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 1.4.13 Treść spod kursora."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.1.4.13 Treść spod kursora lub fokusu",
-      "noteId": "notes-c-9-1-4-13"
+      ]
     }
   },
   "C.9.2.1.1": {
@@ -10952,9 +10275,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.1.1 Klawiatura."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.1.1 Klawiatura",
-      "noteId": "notes-c-9-2-1-1"
+      ]
     }
   },
   "C.9.2.1.2": {
@@ -10985,9 +10306,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.1.2 Bez pułapki na klawiaturę."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.1.2 Bez pułapki na klawiaturę",
-      "noteId": "notes-c-9-2-1-2"
+      ]
     }
   },
   "C.9.2.1.4": {
@@ -11018,9 +10337,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.1.4 Jednoznakowe skróty klawiaturowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.1.4 Jednoznakowe skróty klawiaturowe",
-      "noteId": "notes-c-9-2-1-4"
+      ]
     }
   },
   "C.9.2.2.1": {
@@ -11051,9 +10368,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.2.1 Dostosowanie czasu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.2.1 Dostosowanie czasu",
-      "noteId": "notes-c-9-2-2-1"
+      ]
     }
   },
   "C.9.2.2.2": {
@@ -11084,9 +10399,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.2.2 Pauza, zatrzymanie, ukrycie."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.2.2 Pauza, zatrzymanie, ukrycie",
-      "noteId": "notes-c-9-2-2-2"
+      ]
     }
   },
   "C.9.2.3.1": {
@@ -11117,9 +10430,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.3.1 Trzy błyski lub wartości poniżej progu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.3.1 Trzy błyski lub wartości poniżej progu",
-      "noteId": "notes-c-9-2-3-1"
+      ]
     }
   },
   "C.9.2.4.1": {
@@ -11150,9 +10461,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.1 Możliwość pominięcia bloków."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.1 Możliwość pominięcia bloków",
-      "noteId": "notes-c-9-2-4-1"
+      ]
     }
   },
   "C.9.2.4.2": {
@@ -11183,9 +10492,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.2 Tytuł strony."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.2 Tytuł strony",
-      "noteId": "notes-c-9-2-4-2"
+      ]
     }
   },
   "C.9.2.4.3": {
@@ -11216,9 +10523,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.3 Kolejność fokusu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.3 Kolejność fokusu",
-      "noteId": "notes-c-9-2-4-3"
+      ]
     }
   },
   "C.9.2.4.4": {
@@ -11249,9 +10554,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.4 Cel łącza (w kontekście)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.4 Cel łącza (w kontekście)",
-      "noteId": "notes-c-9-2-4-4"
+      ]
     }
   },
   "C.9.2.4.5": {
@@ -11282,9 +10585,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.5 Wiele dróg."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.5 Wiele dróg",
-      "noteId": "notes-c-9-2-4-5"
+      ]
     }
   },
   "C.9.2.4.6": {
@@ -11315,9 +10616,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.6 Nagłówki i etykiety."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.6 Nagłówki i etykiety",
-      "noteId": "notes-c-9-2-4-6"
+      ]
     }
   },
   "C.9.2.4.7": {
@@ -11348,9 +10647,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.4.7 Widoczny fokus."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.4.7 Widoczny fokus",
-      "noteId": "notes-c-9-2-4-7"
+      ]
     }
   },
   "C.9.2.5.1": {
@@ -11381,9 +10678,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.1 Gesty dotykowe."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.5.1 Gesty dotykowe",
-      "noteId": "notes-c-9-2-5-1"
+      ]
     }
   },
   "C.9.2.5.2": {
@@ -11414,9 +10709,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.2 Rezygnacja ze wskazania."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.5.2 Rezygnacja ze wskazania",
-      "noteId": "notes-c-9-2-5-2"
+      ]
     }
   },
   "C.9.2.5.3": {
@@ -11447,9 +10740,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.3 Etykieta w nazwie."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.5.3 Etykieta w nazwie",
-      "noteId": "notes-c-9-2-5-3"
+      ]
     }
   },
   "C.9.2.5.4": {
@@ -11480,9 +10771,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 2.5.4 Aktywowanie ruchem."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.2.5.4 Aktywowanie ruchem",
-      "noteId": "notes-c-9-2-5-4"
+      ]
     }
   },
   "C.9.3.1.1": {
@@ -11513,9 +10802,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.1.1 Język strony."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.1.1 Język strony",
-      "noteId": "notes-c-9-3-1-1"
+      ]
     }
   },
   "C.9.3.1.2": {
@@ -11546,9 +10833,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.1.2 Język części."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.1.2 Język części",
-      "noteId": "notes-c-9-3-1-2"
+      ]
     }
   },
   "C.9.3.2.1": {
@@ -11579,9 +10864,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.2.1 Po otrzymaniu fokusu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.2.1 Po otrzymaniu fokusu",
-      "noteId": "notes-c-9-3-2-1"
+      ]
     }
   },
   "C.9.3.2.2": {
@@ -11612,9 +10895,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.2.2 Podczas wprowadzania danych."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.2.2 Podczas wprowadzania danych",
-      "noteId": "notes-c-9-3-2-2"
+      ]
     }
   },
   "C.9.3.2.3": {
@@ -11645,9 +10926,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.2.3 Spójna nawigacja."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.2.3 Spójna nawigacja",
-      "noteId": "notes-c-9-3-2-3"
+      ]
     }
   },
   "C.9.3.2.4": {
@@ -11678,9 +10957,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.2.4 Spójna identyfikacja."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.2.4 Spójna identyfikacja",
-      "noteId": "notes-c-9-3-2-4"
+      ]
     }
   },
   "C.9.3.3.1": {
@@ -11711,9 +10988,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.3.1 Identyfikacja błędu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.3.1 Identyfikacja błędu",
-      "noteId": "notes-c-9-3-3-1"
+      ]
     }
   },
   "C.9.3.3.2": {
@@ -11744,9 +11019,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.3.2 Etykiety lub instrukcje."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.3.2 Etykiety lub instrukcje",
-      "noteId": "notes-c-9-3-3-2"
+      ]
     }
   },
   "C.9.3.3.3": {
@@ -11777,9 +11050,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 3.3.3 Sugestie korekty błędów."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.3.3 Sugestie korekty błędów",
-      "noteId": "notes-c-9-3-3-3"
+      ]
     }
   },
   "C.9.3.3.4": {
@@ -11810,9 +11081,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści istotnych dla WCAG 2.1 Kryterium sukcesu 3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.3.3.4 Zapobieganie błędom (prawnym, finansowym, w danych)",
-      "noteId": "notes-c-9-3-3-4"
+      ]
     }
   },
   "C.9.4.1.1": {
@@ -11843,9 +11112,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.1 Poprawność kodu."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.4.1.1 Poprawność kodu",
-      "noteId": "notes-c-9-4-1-1"
+      ]
     }
   },
   "C.9.4.1.2": {
@@ -11876,9 +11143,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.2 Nazwa, rola, wartość."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.4.1.2 Nazwa, rola, wartość",
-      "noteId": "notes-c-9-4-1-2"
+      ]
     }
   },
   "C.9.4.1.3": {
@@ -11909,9 +11174,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1 lub strona internetowa nie zawiera treści odpowiadającej kryterium sukcesu WCAG 2.1 – 4.1.3 Komunikaty o stanie."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.4.1.3 Komunikaty o stanie",
-      "noteId": "notes-c-9-4-1-3"
+      ]
     }
   },
   "C.9.6": {
@@ -11950,9 +11213,7 @@
           "value": "Nie dotyczy",
           "label": "Nie spełniono warunku wstępnego 1."
         }
-      ],
-      "legend": "Wybierz wynik dla C.9.6 Wymagania zgodności WCAG 2.1",
-      "noteId": "notes-c-9-6"
+      ]
     }
   }
 }

@@ -124,14 +124,16 @@
                         <button class="outline secondary small filter-btn" data-prefix="U." onclick="setPrefixFilter('U.')">Ustawa (U.)</button>
                         <button class="outline secondary small filter-btn active" data-prefix="" onclick="setPrefixFilter('')">Wszystkie</button>
                     </div>
-                    <div id="special-actions" style="margin-bottom: 0.5rem;"></div>
-                    <input type="search" id="sidebar-search" placeholder="Szukaj...">
-                    <button id="btn-add-new" class="primary small" style="margin-top: 0.5rem; margin-bottom: 1rem; width: auto;">+ Dodaj nowy wpis</button>
+                    <div id="special-actions" style="margin-bottom: 2rem;"></div>
+                    <input type="search" id="sidebar-search" placeholder="Szukaj..." aria-label="Wyszukaj na liście">
+                    <div id="add-item-actions" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+                        <button id="btn-add-new" class="primary small" style="width: auto;">+ Dodaj nowe mapowanie</button>
+                    </div>
                     <div id="items-list">
                         <!-- Lista elementów (klauzul/artykułów) -->
                     </div>
                     <div id="form-container">
-                        <p class="secondary">Wybierz element z listy po lewej, aby rozpocząć edycję.</p>
+                        <p class="secondary">Wybierz element z listy, aby rozpocząć edycję.</p>
                     </div>
                 </div>
             </div>
@@ -152,17 +154,13 @@
             </header>
             <div>
                 <p>Podaj identyfikator nowego elementu. Rekomendowane formaty:</p>
-                <ul style="font-size: 0.85rem; margin-bottom: 1rem;">
+                <ul id="modal-add-hints" style="font-size: 0.85rem; margin-bottom: 1rem;">
                     <li><strong>U.7.1.2.a-01</strong> - Ustawa (Art. 7 ust. 1 pkt 2 lit. a tiret 1)</li>
                     <li><strong>C.9.1.1.1</strong> - Norma EN (Rozdział 9.1.1.1)</li>
-                    <li><strong>A22-00-1-4</strong> - Art 22 i sekcje specjalne</li>
                 </ul>
                 <div class="field-group">
                     <label for="new-item-id">Identyfikator (ID)</label>
-                    <input type="text" id="new-item-id" placeholder="np. C.9.2.1.1" oninput="updateIdSuggestions()">
-                </div>
-                <div id="id-suggestions" style="min-height: 1.5rem; margin-top: -0.5rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--primary);">
-                    <!-- Sugestie pojawią się tutaj -->
+                    <input type="text" id="new-item-id" placeholder="np. C.9.2.1.1">
                 </div>
             </div>
             <footer>
@@ -181,7 +179,7 @@
             </header>
             <p id="modal-confirm-message">Czy na pewno chcesz wykonać tę akcję?</p>
             <footer>
-                <button class="secondary outline" onclick="closeConfirmModal(false)">Anuluj</button>
+                <button id="modal-confirm-cancel-btn" class="secondary outline" onclick="closeConfirmModal(false)">Anuluj</button>
                 <button id="modal-confirm-btn" class="primary" onclick="closeConfirmModal(true)">Potwierdź</button>
             </footer>
         </article>

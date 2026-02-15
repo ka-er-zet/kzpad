@@ -51,6 +51,41 @@ body {
     text-decoration: none;
 }
 
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* UI helper classes moved from inline styles */
+.product-mapping-row { margin-bottom: 1.25rem; border-bottom: 1px solid var(--muted-border-color); padding-bottom: 0.75rem; }
+.product-mapping-header { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; display:flex; align-items:center; gap:0.5rem; color:var(--h3-color); }
+.product-id-badge { background:var(--primary); color:#fff; padding:0.125rem 0.375rem; border-radius:var(--border-radius); font-family:monospace; font-weight:700; display:inline-block; }
+.product-mapping-grid { display:grid; align-items:center; gap:1.5rem; grid-template-columns: max-content 1fr max-content; margin-bottom:0; }
+.prod-mapping-label { margin-bottom:0; white-space:nowrap; display:flex; align-items:center; cursor:pointer; user-select:none; gap:0.75rem; }
+.prod-mapping-label input[type="checkbox"] { width:1.25rem; height:1.25rem; margin:0; }
+.prod-mapping-label-text { font-size:0.9rem; font-weight:500; }
+.prod-mapping-codes { display:flex; flex-direction:column; gap:0.125rem; }
+.prod-mapping-codes-label { margin-bottom:0; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.025em; color:var(--muted-color); }
+.prod-mapping-input { margin-bottom:0; padding:0.5rem 0.75rem; width:100%; box-sizing:border-box; }
+.picker-btn { margin-bottom:0; padding:0.25rem 1rem; font-size:0.85rem; min-width:8rem; }
+
+.product-row { display:grid; grid-template-columns: 5rem 1fr auto; gap:1rem; align-items:center; margin-bottom:1rem; border-bottom:1px solid var(--muted-border-color); padding-bottom:0.5rem; }
+.product-name-input { margin-bottom:0; padding:0.4rem 0.75rem; width:100%; box-sizing:border-box; }
+.product-remove-btn { margin:0; padding:0.25rem 0.5rem; }
+
+.clause-picker-search, .picker-search { margin-bottom:1rem; width:100%; padding:0.5rem 0.75rem; box-sizing:border-box; }
+.picker-search-label { font-size:0.85rem; font-weight:700; margin-bottom:0.25rem; display:block; }
+
+.product-name { color: var(--h3-color); }
+
 .app-header {
     background-color: var(--card-background-color);
     border-bottom: 1px solid var(--muted-border-color);
@@ -237,14 +272,14 @@ button.small {
 }
 
 .list-item {
-    cursor: move; /* Używamy move zamiast grab dla lepszej widoczności (czarny obrys na Windows) */
-    padding: 0.75rem 1rem;
+    cursor: move;
+    padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem; /* Increased gap for better clarity */
     justify-content: flex-start;
     width: 100%;
     background: var(--card-background-color);
@@ -252,6 +287,7 @@ button.small {
     text-align: left;
     transition: all 0.1s ease;
     user-select: none;
+    min-height: 3.5rem;
 }
 .list-item:active {
     cursor: move;
@@ -273,7 +309,8 @@ button.small {
     text-align: left;
     white-space: normal;
     word-break: break-word;
-    line-height: 1.4;
+    line-height: 1.3;
+    margin: 0;
 }
 .list-item:hover {
     background: var(--card-background-color);
@@ -291,18 +328,27 @@ button.small {
     background-color: transparent !important;
 }
 .list-controls {
-    display: inline-flex;
+    display: flex;
     gap: 0.25rem;
     align-items: center;
-    margin-right: 0.5rem;
-}
-.list-controls button {
-    padding: 0.125rem 0.375rem;
-    font-size: 0.85rem;
-    min-width: 1.875rem;
 }
 .list-item button {
     width: auto;
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    padding: 0 0.75rem;
+}
+
+.list-controls button {
+    padding: 0;
+    font-size: 0.85rem;
+    min-width: 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0 !important;
 }
 
 .sticky-controls {
@@ -327,9 +373,19 @@ button.small {
     display: flex;
     gap: 10px;
     margin-bottom: 8px;
+    align-items: flex-start; /* keep button aligned with top of textarea */
 }
-.array-item input, .array-item textarea {
+/* Ensure form controls in array rows use remaining space and don't force buttons to 100% width */
+.array-item input,
+.array-item textarea {
     margin-bottom: 0;
+    flex: 1 1 auto;       /* take available space */
+    min-width: 0;         /* allow shrinking inside flex container */
+}
+.array-item button {
+    width: auto;          /* override Pico's default 100% width */
+    flex: 0 0 auto;       /* don't grow/shrink unexpectedly */
+    align-self: center;   /* vertically center the small delete button */
 }
 
 #form-container textarea {
@@ -498,6 +554,93 @@ button.small {
     padding-top: 4rem;
     text-align: center;
 }
+
+/* Utility classes added to replace inline styles */
+.m-0 { margin: 0; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-1-5 { margin-bottom: 1.5rem; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.flex-between { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.mt-1 { margin-top: 1rem; }
+
+.icon-xs { width: 1.1rem; height: 1.1rem; }
+.icon-sm { width: 1rem; height: 1rem; }
+.icon-md { width: 1.2rem; height: 1.2rem; }
+.icon-lg { width: 1.75rem; height: 1.75rem; }
+.icon-left { width: 1rem; height: 1rem; vertical-align: middle; margin-right: 4px; }
+.icon-inline { width: 1rem; height: 1rem; vertical-align: middle; margin-right: 5px; }
+.icon-primary { color: var(--primary); }
+
+.btn-tight { margin: 0; padding: 0.25rem 0.5rem; }
+
+.section-header { display:flex; align-items:center; gap:0.5rem; margin-bottom: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+.form-header { display:flex; align-items:center; gap:0.5rem; justify-content:space-between; border-bottom: 2px solid var(--primary); margin-bottom: 2rem; padding-bottom: 1rem; }
+.section-border { border-bottom: 2px solid var(--primary); margin-bottom: 2rem; padding-bottom: 1rem; }
+.section-title-row { display:flex; align-items:center; gap:0.75rem; margin-bottom: 0.5rem; }
+
+.grid-1-3 { display: grid; grid-template-columns: 1fr 3fr; gap: 1rem; }
+
+/* 
+   Horizontal layout for "Success Criteria (Logic)" rows.
+   Targets both the header and the input rows to ensure they align.
+*/
+.table-header-compact,
+.grid-1-2-auto,
+#form-inputs-container > div {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr 2.5rem !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    align-items: end !important;
+}
+
+/* Header-specific styling */
+.table-header-compact {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: var(--muted-color) !important;
+    margin-bottom: 0.25rem !important;
+    border-bottom: 1px solid var(--muted-border-color);
+    padding-bottom: 0.25rem;
+}
+
+/* Ensure inputs/columns don't overflow */
+.grid-1-2-auto > div,
+#form-inputs-container input {
+    min-width: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Compact delete button in the third column */
+.grid-1-2-auto .btn-tight,
+#form-inputs-container .btn-tight {
+    width: auto !important;
+    padding: 0.25rem 0.5rem !important;
+    margin: 0 0 4px 0 !important; /* tiny bottom margin to align with input baseline better */
+    grid-column: 3;
+    justify-self: end;
+}
+
+.grid-1-maxcontent { grid-template-columns: 1fr max-content; gap: 0.5rem; margin-bottom: 0; }
+.col-stack { display:flex; flex-direction:column; gap:0.1rem; }
+.product-table-header { margin-bottom: 1.5rem; display: grid; grid-template-columns: 5rem 1fr 3rem; gap: 1rem; font-weight: bold; border-bottom: 2px solid var(--muted-border-color); padding-bottom: 0.5rem; }
+
+.editor-card { padding: 1.5rem; background: var(--card-background-color); border: 1px solid var(--muted-border-color); border-radius: var(--border-radius); }
+
+.form-actions { margin-top: 2rem; border-top: 2px solid var(--muted-border-color); padding-top: 1.5rem; display: flex; gap: 1rem; }
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+.dialog-article { max-width: 50rem; width: 95%; }
+.picker-action-btn { margin-bottom:0; padding: 0.25rem 1rem; font-size: 0.85rem; }
+.empty-list-msg { text-align:center; padding:1rem; opacity:0.6; }
+.chk-top { margin-top: 0.25rem; }
+.mono-primary { font-family: monospace; color: var(--primary); }
+.clause-desc { font-size:0.85rem; line-height:1.3; }
+.flex-1 { flex:1; }
+.muted-help { margin-top:0; font-size:0.9rem; opacity:0.8; }
+
 /* Toast Notification System */
 #toast-container {
     position: fixed;
