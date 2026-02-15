@@ -15,37 +15,141 @@ let lastToastTime = 0;
 /**
  * Confirmation Modal state
  */
-let confirmCallback = null;
+let confirmPromiseResolve = null;
 
-function showConfirm(title, message, callback) {
-    const modal = document.getElementById('modal-confirm');
-    if (!modal) {
-        // Fallback for safety, but we aim for 0 alerts
-        if (confirm(message)) callback();
-        return;
+/**
+ * Shows a confirmation dialog (modal or native fallback)
+ * @param {string} title - Modal title
+ * @param {string} message - Modal message
+ * @param {string|Function} confirmText - Label for confirm button or callback function
+ * @param {string} cancelText - Label for cancel button (optional)
+ * @param {string} type - 'default' or 'warning' (swaps button priority)
+ * @returns {Promise<boolean>} Resolves with true if confirmed, false otherwise
+ */
+function showConfirm(title, message, confirmText = 'Potwierdź', cancelText = 'Anuluj', type = 'default') {
+    // Legacy support for callback as 3rd parameter
+    let callback = null;
+    if (typeof confirmText === 'function') {
+        callback = confirmText;
+        confirmText = 'Potwierdź';
     }
-    
-    document.getElementById('modal-confirm-title').textContent = title;
-    document.getElementById('modal-confirm-message').textContent = message;
-    confirmCallback = callback;
-    
-    // Obsługa ESC i kliknięcia poza modalem (opcjonalnie)
-    modal.oncancel = () => {
-        confirmCallback = null;
-    };
 
-    modal.showModal();
+    return new Promise((resolve) => {
+        const modal = document.getElementById('modal-confirm');
+        
+        if (!modal) {
+            const confirmed = confirm(message);
+            if (confirmed && callback) callback();
+            resolve(confirmed);
+            return;
+        }
+
+        // Update content
+        document.getElementById('modal-confirm-title').textContent = title;
+        document.getElementById('modal-confirm-message').textContent = message;
+        
+        // Update button labels and styles
+        const confirmBtn = document.getElementById('modal-confirm-btn');
+        const cancelBtn = document.getElementById('modal-confirm-cancel-btn');
+
+        if (confirmBtn) confirmBtn.textContent = typeof confirmText === 'string' ? confirmText : 'Potwierdź';
+        if (cancelBtn) cancelBtn.textContent = typeof cancelText === 'string' ? cancelText : 'Anuluj';
+
+        // Swap styles based on type
+        if (type === 'warning') {
+            if (confirmBtn) confirmBtn.className = 'primary outline';
+            if (cancelBtn) cancelBtn.className = 'primary'; // Safe action is primary
+        } else {
+            if (confirmBtn) confirmBtn.className = 'primary'; // Intentional action is primary
+            if (cancelBtn) cancelBtn.className = 'secondary outline';
+        }
+
+        confirmPromiseResolve = (confirmed) => {
+            const currentResolve = confirmPromiseResolve;
+            confirmPromiseResolve = null; // Prevent double resolution
+            if (confirmed && callback) callback();
+            resolve(confirmed);
+        };
+
+        modal.oncancel = () => {
+            if (confirmPromiseResolve) confirmPromiseResolve(false);
+        };
+
+        modal.showModal();
+    });
 }
 
 window.closeConfirmModal = (confirmed) => {
     const modal = document.getElementById('modal-confirm');
     if (modal) modal.close();
     
-    if (confirmed && confirmCallback) {
-        confirmCallback();
+    if (confirmPromiseResolve) {
+        confirmPromiseResolve(confirmed);
+        confirmPromiseResolve = null;
     }
-    confirmCallback = null;
 };
+
+/**
+ * Generic prompt modal that returns a promise
+ */
+async function promptModal(message, title = 'Wprowadź dane', defaultValue = '') {
+    return new Promise((resolve) => {
+        let dialog = document.getElementById('app-prompt-dialog');
+        if (!dialog) {
+            dialog = document.createElement('dialog');
+            dialog.id = 'app-prompt-dialog';
+            dialog.setAttribute('aria-modal', 'true');
+            dialog.innerHTML = `
+                <article>
+                    <header>
+                        <a href="#close" aria-label="Zamknij" class="close" id="prompt-close"></a>
+                        <h3 id="prompt-dialog-title" class="m-0 dialog-title"></h3>
+                    </header>
+                    <p id="prompt-dialog-message" class="mb-1 dialog-message"></p>
+                    <label for="prompt-input" class="sr-only">Wprowadź dane</label>
+                    <input type="text" id="prompt-input" class="mb-1-5 dialog-input">
+                    <footer>
+                        <button id="prompt-cancel" class="outline secondary">Anuluj</button>
+                        <button id="prompt-ok" class="primary">OK</button>
+                    </footer>
+                </article>
+            `;
+            document.body.appendChild(dialog);
+        }
+
+        const titleEl = dialog.querySelector('#prompt-dialog-title');
+        const msgEl = dialog.querySelector('#prompt-dialog-message');
+        const inputEl = dialog.querySelector('#prompt-input');
+        const cancelBtn = dialog.querySelector('#prompt-cancel');
+        const okBtn = dialog.querySelector('#prompt-ok');
+        const closeBtn = dialog.querySelector('#prompt-close');
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        inputEl.value = defaultValue;
+
+        const close = (result) => {
+            dialog.close();
+            resolve(result);
+        };
+
+        okBtn.onclick = () => close(inputEl.value);
+        cancelBtn.onclick = () => close(null);
+        closeBtn.onclick = () => close(null);
+        
+        inputEl.onkeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                close(inputEl.value);
+            }
+        };
+
+        dialog.oncancel = () => resolve(null);
+
+        dialog.showModal();
+        setTimeout(() => inputEl.focus(), 50);
+    });
+}
 
 function showToast(message, type = 'success', duration = 0) {
     if (document.readyState === 'loading') {
@@ -119,7 +223,7 @@ function showToast(message, type = 'success', duration = 0) {
     closeBtn.className = 'toast-close';
     closeBtn.setAttribute('aria-label', `Zamknij`); // Simplified label
     closeBtn.setAttribute('type', 'button');
-    closeBtn.innerHTML = '<i data-lucide="x" style="width: 1rem; height: 1rem;" aria-hidden="true"></i>';
+    closeBtn.innerHTML = '<i data-lucide="x" class="icon-sm" aria-hidden="true"></i>'; 
 
     toast.appendChild(announcement);
     toast.appendChild(visualContent);
@@ -187,27 +291,22 @@ function init() {
     // Apply persisted theme (default: dark)
     applyTheme(localStorage.getItem('kzpad-theme') || 'dark');
 
-    // Prevent accidental data loss on refresh/close
-    window.addEventListener('beforeunload', (e) => {
-        const hasUnsavedChanges = Object.values(editorState).some(state => state.modified);
-        if (hasUnsavedChanges) {
-            e.preventDefault();
-            e.returnValue = ''; // Standard way to show exit confirmation
-        }
-    });
+    // Note: Removed beforeunload to use consistent UI (toasts/modals only)
+    // Users are warned when switching sections if form has unsaved changes
 
     // Tab switching — no preselection: user must choose type first
     // visually mark all as unpressed initially
     typeButtons.forEach(btn => { btn.setAttribute('aria-pressed', 'false'); });
     typeButtons.forEach(btn => {
         btn.addEventListener('click', async () => {
-            // Check if current view has unsaved changes before switching
-            if (isFormDirty || editorState[currentType].modified) {
+            // Check if current form has unsaved changes before switching
+            if (isFormDirty) {
                 const confirmSwitch = await showConfirm(
-                    `Niezapisane zmiany`,
-                    `Masz niezapisane zmiany w sekcji "${editorState[currentType].label}". Czy na pewno chcesz zmienić kategorię? Zmiany zostaną utracone, chyba że pobierzesz plik JSON.`,
+                    `Niezapisane zmiany w formularzu`,
+                    `Masz niezapisane zmiany w aktualnie edytowanym formularzu. Czy na pewno chcesz zmienić kategorię? Zmiany zostaną utracone.`,
                     "Zmień bez zapisywania",
-                    "Anuluj"
+                    "Anuluj",
+                    "warning"
                 );
                 if (!confirmSwitch) return;
             }
@@ -289,15 +388,13 @@ function init() {
             document.getElementById('editor-secondary-actions').classList.add('hidden');
         });
     }
-
-    // Add new button
-    document.getElementById('btn-add-new').addEventListener('click', addNewItem);
 }
 
 /**
  * Adds a new entry to the current data
+ * @param {string} forcedPrefix - opcjonalny prefiks (np. 'C.' lub 'U.')
  */
-function addNewItem() {
+function addNewItem(forcedPrefix) {
     if (!currentData) {
         showToast("Najpierw załaduj plik!", "warning");
         return;
@@ -310,23 +407,76 @@ function addNewItem() {
     
     const modal = document.getElementById('modal-add-item');
     const input = document.getElementById('new-item-id');
-    const suggestions = document.getElementById('id-suggestions');
+    const hintsList = document.getElementById('modal-add-hints');
     const title = modal ? modal.querySelector('h3') : null;
     
     if (modal && input) {
-        input.value = "";
-        suggestions.innerHTML = "";
+        input.value = (typeof forcedPrefix === 'string') ? forcedPrefix : "";
         
         if (title) {
-            title.textContent = currentType === 'glossary' ? 'Dodaj nowe pojęcie' : 'Dodaj nowy wpis';
+            if (currentType === 'clauses') {
+                if (forcedPrefix === 'C.') title.textContent = 'Nowa klauzula techniczna (C)';
+                else if (forcedPrefix === 'U.') title.textContent = 'Nowa klauzula prawna (U)';
+                else title.textContent = 'Dodaj nową klauzulę';
+            } else {
+                title.textContent = currentType === 'glossary' ? 'Dodaj nowe pojęcie' : 'Dodaj nowe mapowanie';
+            }
+        }
+
+        // Update hints based on current context
+        if (hintsList) {
+            if (currentType === 'mapping') {
+                hintsList.innerHTML = `
+                    <li><strong>A07-04-01-a</strong> - Format: [Art]-[Ust]-[Pkt]-[Lit]</li>
+                `;
+            } else if (currentType === 'clauses') {
+                if (forcedPrefix === 'C.') {
+                    hintsList.innerHTML = `
+                        <li>Format: <strong>C.[rozdział].[punkt]</strong> (np. C.9.2.1.1)</li>
+                        <li>Używaj numeracji zgodnej z rozdziałami normy <strong>EN 301 549</strong></li>
+                        <li>Kropki rozdzielają kolejne poziomy zagłębienia wymagań</li>
+                    `;
+                } else if (forcedPrefix === 'U.') {
+                    hintsList.innerHTML = `
+                        <li>Format: <strong>U.[art].[ust].[pkt].[lit]</strong> (np. U.7.1.1.a)</li>
+                        <li>Stosuj kropki jako separatory dla łatwiejszego wyszukiwania</li>
+                        <li>Opcjonalnie: dodaj tiret na końcu (np. U.7.1.1.a-01)</li>
+                    `;
+                } else {
+                    hintsList.innerHTML = `
+                        <li><strong>C.[Numer]</strong> dla klauzul technicznych (Norma EN)</li>
+                        <li><strong>U.[Numer]</strong> dla klauzul prawnych (Ustawa PAD)</li>
+                    `;
+                }
+            } else {
+                hintsList.innerHTML = ""; // No hints for glossary/summaries
+            }
         }
 
         if (currentType === 'glossary') {
             input.placeholder = "Np. Dostępność";
-        } else if (currentType === 'mapping') {
-            input.placeholder = "Np. A07-01";
+            // Customize modal text for glossary
+            const modal = document.getElementById('modal-add-item');
+            if (modal) {
+                const pElement = modal.querySelector('p');
+                if (pElement) pElement.textContent = 'Podaj nazwę wpisu';
+                const labelElement = modal.querySelector('label[for="new-item-id"]');
+                if (labelElement) labelElement.textContent = 'Hasło (ID/term)';
+            }
         } else {
-            input.placeholder = "Np. C.5.1 lub U.12.01";
+            // Reset to default for other types
+            const modal = document.getElementById('modal-add-item');
+            if (modal) {
+                const pElement = modal.querySelector('p');
+                if (pElement) pElement.textContent = 'Podaj identyfikator nowego elementu. Rekomendowane formaty:';
+                const labelElement = modal.querySelector('label[for="new-item-id"]');
+                if (labelElement) labelElement.textContent = 'Identyfikator (ID)';
+            }
+            if (currentType === 'mapping') {
+                input.placeholder = "Np. A07-01";
+            } else {
+                input.placeholder = "Np. C.5.1 lub U.12.01";
+            }
         }
 
         // Add Enter key listener
@@ -339,53 +489,6 @@ function addNewItem() {
 
         modal.showModal();
         
-        let keys = [];
-        if (currentType === 'clauses') keys = Object.keys(currentData);
-        else if (currentType === 'mapping') keys = currentData.matrix.map(m => m.id);
-        
-        if (keys.length > 0) {
-            // Natural sort for suggestions as well
-            keys.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
-            
-            const suggestForPrefix = (prefix) => {
-                const prefixedKeys = keys.filter(k => k.startsWith(prefix)).sort();
-                if (prefixedKeys.length === 0) return null;
-                const lastId = prefixedKeys[prefixedKeys.length - 1];
-                // Regex for incrementing last number
-                const match = lastId.match(/^(.*?)(\d+)$/);
-                if (match) {
-                    const prefixPart = match[1];
-                    const numPart = match[2];
-                    const nextNum = (parseInt(numPart) + 1).toString().padStart(numPart.length, '0');
-                    return prefixPart + nextNum;
-                }
-                return null;
-            };
-
-            let suggestionsList = [];
-            if (currentType === 'clauses') {
-                const suggC = suggestForPrefix('C.');
-                const suggU = suggestForPrefix('U.');
-                if (suggC) suggestionsList.push(suggC);
-                if (suggU) suggestionsList.push(suggU);
-                
-                // Defaults if nothing found
-                if (suggestionsList.length === 0) {
-                    suggestionsList.push('C.1.1', 'U.1.1');
-                }
-            } else if (currentType === 'mapping') {
-                const suggA = suggestForPrefix('A');
-                if (suggA) suggestionsList.push(suggA);
-                else suggestionsList.push('A01');
-            }
-
-            if (suggestionsList.length > 0) {
-                suggestions.innerHTML = 'Sugestia ID: ' + suggestionsList.map(s => 
-                    `<a href="#" onclick="document.getElementById('new-item-id').value='${s}'; return false;">${s}</a>`
-                ).join(', ');
-            }
-        }
-        
         setTimeout(() => input.focus(), 100);
     }
 }
@@ -393,23 +496,6 @@ function addNewItem() {
 window.closeAddItemModal = () => {
     const modal = document.getElementById('modal-add-item');
     if (modal) modal.close();
-};
-
-window.updateIdSuggestions = () => {
-    const input = document.getElementById('new-item-id');
-    const suggestions = document.getElementById('id-suggestions');
-    const val = input.value.trim();
-    
-    if (!val) return;
-    
-    // Proste sprawdzanie formatu i podpowiedzi
-    if (val.startsWith('U') && !val.includes('.')) {
-        suggestions.innerHTML = "Format ustawy: U.[Art].[Ust].[Pkt].[Lit]-[Tiret]";
-    } else if (val.startsWith('C') && !val.includes('.')) {
-        suggestions.innerHTML = "Format normy: C.[Rozdział].[Punkt]...";
-    } else {
-        suggestions.innerHTML = "";
-    }
 };
 
 window.confirmAddItem = () => {
@@ -420,7 +506,31 @@ window.confirmAddItem = () => {
 
     if (currentType === 'clauses') {
         if (currentData[newId]) { showToast("Element o tym ID już istnieje!", "error"); return; }
-        currentData[newId] = { title: "Nowa klauzula", evaluation: "", procedure: [], checklist: [], preconditions: [], notes: [] };
+        
+        // Domyślna struktura zależna od typu klauzuli
+        const baseStructure = { 
+            id: newId,
+            title: "", 
+            evaluation: "", 
+            procedure: [], 
+            checklist: [], 
+            preconditions: [], 
+            notes: [] 
+        };
+
+        if (newId.startsWith('C.')) {
+            // Struktura dla klauzuli Technicznej (C)
+            baseStructure.title = "";
+            baseStructure.form = {
+                inputs: []
+            };
+        } else {
+            // Struktura dla klauzuli Prawnej (U)
+            baseStructure.title = "";
+            baseStructure.form = {};
+        }
+        
+        currentData[newId] = baseStructure;
     } else if (currentType === 'glossary') {
         if (currentData[newId]) { showToast("To hasło już istnieje!", "error"); return; }
         currentData[newId] = ""; // New entry in glossary is just an empty definition string
@@ -429,8 +539,8 @@ window.confirmAddItem = () => {
         currentData.matrix.push({
             id: newId,
             legal_id: "",
-            article: newId,
-            category: "Nowa kategoria",
+            article: "",
+            category: "",
             requirement: "",
             product_mappings: Object.fromEntries(Object.keys(currentData.products || {}).map(p => [p, null]))
         });
@@ -480,7 +590,9 @@ window.deleteItem = (key) => {
             markAsModified();
             renderList(searchInput.value);
             showToast(`Usunięto element: ${key}. Pamiętaj o eksporcie uaktualnionego pliku JSON!`, "success");
-        }
+        },
+        "Anuluj",
+        "warning"
     );
 };
 
@@ -560,7 +672,7 @@ function resetEditorViewState() {
 
     workspaceSection.classList.add('hidden');
     itemsList.innerHTML = '';
-    formContainer.innerHTML = '<p class="secondary">Wybierz element z listy po lewej, aby rozpocząć edycję.</p>';
+    formContainer.innerHTML = '<p class="secondary">Wybierz element z listy, aby rozpocząć edycję.</p>';
     
     // Show list, hide form
     itemsList.style.display = 'block';
@@ -580,7 +692,8 @@ function resetEditorViewState() {
 async function loadDefaults() {
     const path = DEFAULT_PATHS[currentType];
     try {
-        const response = await fetch(path);
+        // Dodajemy timestamp, aby ominąć cache przeglądarki przy wczytywaniu z serwera
+        const response = await fetch(`${path}?t=${Date.now()}`, { cache: 'no-store' });
         if (!response.ok) throw new Error(`Błąd ładowania: ${response.statusText}`);
         const data = await response.json();
         editorState[currentType].data = data;
@@ -665,6 +778,39 @@ function renderList(searchTerm = '') {
     const term = (searchTerm || '').toLowerCase();
     itemsList.innerHTML = '';
     
+    // Obsługa dodawania nowych elementów (dynamiczne przyciski pod wyszukiwarką)
+    const addActions = document.getElementById('add-item-actions');
+    if (addActions) {
+        addActions.innerHTML = '';
+        if (currentType === 'clauses') {
+            const grid = document.createElement('div');
+            grid.style.display = 'grid';
+            grid.style.gridTemplateColumns = '1fr 1fr';
+            grid.style.gap = '0.5rem';
+            
+            const btnC = document.createElement('button');
+            btnC.className = 'primary small';
+            btnC.innerHTML = '<i data-lucide="plus" class="icon-left" aria-hidden="true"></i> Dodaj klauzulę C';
+            btnC.onclick = () => addNewItem('C.');
+            
+            const btnU = document.createElement('button');
+            btnU.className = 'primary small';
+            btnU.innerHTML = '<i data-lucide="plus" class="icon-left" aria-hidden="true"></i> Dodaj klauzulę U';
+            btnU.onclick = () => addNewItem('U.');
+            
+            grid.appendChild(btnC);
+            grid.appendChild(btnU);
+            addActions.appendChild(grid);
+        } else if (currentType !== 'summaries') {
+            const btn = document.createElement('button');
+            btn.className = 'primary small';
+            btn.style.width = 'auto';
+            btn.innerHTML = (currentType === 'mapping') ? '+ Dodaj nowe mapowanie' : '+ Dodaj nowy wpis';
+            btn.onclick = () => addNewItem();
+            addActions.appendChild(btn);
+        }
+    }
+
     // Obsługa akcji specjalnych (np. Zarządzaj produktami) nad listą
     const specialActions = document.getElementById('special-actions');
     if (specialActions) {
@@ -686,7 +832,7 @@ function renderList(searchTerm = '') {
                 user-select: none;
             `;
             productItem.innerHTML = `
-                <i data-lucide="package" style="width: 1.2rem; height: 1.2rem; margin-right: 0.5rem; color: var(--primary);"></i>
+                <i data-lucide="package" class="icon-md icon-primary" aria-hidden="true" style="margin-right: 0.25rem"></i>
                 <span>Zarządzaj produktami</span>
             `;
             productItem.onclick = () => loadItem('_products');
@@ -732,7 +878,19 @@ function renderList(searchTerm = '') {
             return (currentData[key].term || '').toLowerCase().includes(term) ||
                    (currentData[key].definition || '').toLowerCase().includes(term);
         } else if (currentType === 'summaries' && currentData.compliance_summaries && currentData.compliance_summaries[key]) {
-            return (currentData.compliance_summaries[key].title || '').toLowerCase().includes(term);
+            const s = currentData.compliance_summaries[key];
+            const friendly = {
+                'full_compliance': 'Zgodny (Pełny)',
+                'non_compliance_full': 'Niezgodny (Pełny)',
+                'partial_compliance_passed': 'Zgodny w zakresie (Częściowy)',
+                'partial_compliance_failed': 'Niezgodny (Częściowy)',
+                'no_assessment': 'Brak ocen',
+                'all_inapplicable': 'Brak wymagań (Pełny)',
+                'all_inapplicable_partial': 'Brak wymagań (Częściowy)'
+            };
+            return (s.title || '').toLowerCase().includes(term) || 
+                   (s.status || '').toLowerCase().includes(term) ||
+                   (friendly[key] || '').toLowerCase().includes(term);
         }
         return false;
     })
@@ -741,39 +899,45 @@ function renderList(searchTerm = '') {
             div.className = 'list-item' + (activeItemId === key ? ' active' : '');
             div.tabIndex = 0; // make focusable for keyboard support
 
-            // Drag and Drop support
-            div.draggable = true;
-            div.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', key);
-                // Używamy setTimeout(0), aby przeglądarka zrobiła "ghost image" 
-                // z pełną widocznością elementu zanim nałożymy klasę .dragging
-                setTimeout(() => div.classList.add('dragging'), 0);
-                e.dataTransfer.effectAllowed = 'move';
-            });
+            // Drag and Drop support — ENABLED only when reordering is allowed
+            if (currentType !== 'summaries') {
+                div.draggable = true;
 
-            div.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'move';
-                div.classList.add('drag-over');
-            });
+                div.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', key);
+                    // Używamy setTimeout(0), aby przeglądarka zrobiła "ghost image"
+                    // z pełną widocznością elementu zanim nałożymy klasę .dragging
+                    setTimeout(() => div.classList.add('dragging'), 0);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
 
-            div.addEventListener('dragleave', () => {
-                div.classList.remove('drag-over');
-            });
+                div.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    div.classList.add('drag-over');
+                });
 
-            div.addEventListener('drop', (e) => {
-                e.preventDefault();
-                div.classList.remove('drag-over');
-                const draggedKey = e.dataTransfer.getData('text/plain');
-                if (draggedKey && draggedKey !== key) {
-                    reorderTo(draggedKey, key);
-                }
-            });
+                div.addEventListener('dragleave', () => {
+                    div.classList.remove('drag-over');
+                });
 
-            div.addEventListener('dragend', () => {
-                div.classList.remove('dragging');
-                document.querySelectorAll('.list-item').forEach(i => i.classList.remove('drag-over'));
-            });
+                div.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    div.classList.remove('drag-over');
+                    const draggedKey = e.dataTransfer.getData('text/plain');
+                    if (draggedKey && draggedKey !== key) {
+                        reorderTo(draggedKey, key);
+                    }
+                });
+
+                div.addEventListener('dragend', () => {
+                    div.classList.remove('dragging');
+                    document.querySelectorAll('.list-item').forEach(i => i.classList.remove('drag-over'));
+                });
+            } else {
+                // Explicitly disable draggable for summaries
+                div.draggable = false;
+            }
 
             // Modification indicator (per-item)
             if (editorState[currentType].modifiedItems.has(key)) {
@@ -786,7 +950,7 @@ function renderList(searchTerm = '') {
             // Show Up/Down controls to allow manual reordering
             const controls = document.createElement('span');
             controls.className = 'list-controls';
-            controls.style.marginRight = '0.5rem';
+            // Inline style removed in favor of CSS gap
 
             let idx, length, moveFn;
             if (currentType === 'mapping') {
@@ -815,9 +979,12 @@ function renderList(searchTerm = '') {
             downBtn.disabled = idx === -1 || idx >= (length - 1);
             downBtn.addEventListener('click', (ev) => { ev.stopPropagation(); moveFn(key, 1); });
 
-            controls.appendChild(upBtn);
-            controls.appendChild(downBtn);
-            div.appendChild(controls);
+            // Do not show manual up/down arrows for Summaries (they are ordered by template config)
+            if (currentType !== 'summaries') {
+                controls.appendChild(upBtn);
+                controls.appendChild(downBtn);
+                div.appendChild(controls);
+            }
 
             const label = document.createElement('span');
             label.className = 'list-key';
@@ -837,13 +1004,21 @@ function renderList(searchTerm = '') {
                 } else {
                     displayText = key + ' | ' + term;
                 }
-            } else if (currentType === 'summaries' && currentData.compliance_summaries && currentData.compliance_summaries[key] && currentData.compliance_summaries[key].title) {
-                const title = currentData.compliance_summaries[key].title;
-                if (title.startsWith(key + ' ')) {
-                    displayText = title;
-                } else {
-                    displayText = key + ' | ' + title;
-                }
+            } else if (currentType === 'summaries' && currentData.compliance_summaries && currentData.compliance_summaries[key]) {
+                const s = currentData.compliance_summaries[key];
+                
+                // Mapowanie technicznych ID na czytelne nazwy dla edytora (nie zmieniając JSONa)
+                const templateNames = {
+                    'full_compliance': 'ZGODNY (Pełny zakres - wszystkie klauzule OK)',
+                    'non_compliance_full': 'NIEZGODNY (Pełny zakres - błędy w klauzulach)',
+                    'partial_compliance_passed': 'ZGODNY W ZAKRESIE (Częściowy zakres - sprawdzone OK)',
+                    'partial_compliance_failed': 'NIEZGODNY (Częściowy zakres - błędy w sprawdzonych)',
+                    'no_assessment': 'BŁĄD: BRAK OCEN (Nie wypełniono arkusza)',
+                    'all_inapplicable': 'BRAK WYMAGAŃ (Wszystkie klauzule: Nie dotyczy)',
+                    'all_inapplicable_partial': 'BRAK WYMAGAŃ (Częściowy zakres: Wszystkie "Nie dotyczy")'
+                };
+
+                displayText = templateNames[key] || s.status || key;
             } else if (currentType === 'mapping') {
                 const item = (currentData.matrix || []).find(it => it.id === key);
                 if (item) {
@@ -866,10 +1041,10 @@ function renderList(searchTerm = '') {
             if (currentType !== 'summaries') {
                 const delBtn = document.createElement('button');
                 delBtn.className = 'error outline small';
-                delBtn.innerHTML = '<i data-lucide="trash-2"></i>';
-                delBtn.style.padding = '0.25rem';
-                delBtn.style.minWidth = '2rem';
-                delBtn.title = 'Usuń';
+                delBtn.innerHTML = '<i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>'; 
+                // Inline styles removed in favor of CSS alignment
+                delBtn.style.margin = '0';
+                delBtn.setAttribute('aria-label', 'Usuń');
                 delBtn.onclick = (e) => { e.stopPropagation(); deleteItem(key); };
                 div.appendChild(delBtn);
             }
@@ -880,7 +1055,9 @@ function renderList(searchTerm = '') {
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadItem(key); return; }
                 
                 // Alt+ArrowUp / Alt+ArrowDown to reorder (accessibility)
+                // Disabled for summaries
                 if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+                    if (currentType === 'summaries') return; // ignore reorder keys for summaries
                     const delta = e.key === 'ArrowUp' ? -1 : 1;
                     if (currentType === 'mapping') {
                         e.preventDefault();
@@ -907,7 +1084,8 @@ async function showList(force = false) {
             "Nieopisane zmiany",
             "Masz niezapisane zmiany w formularzu. Jeśli teraz wrócisz do listy, te zmiany zostaną utracone.",
             "Wyjdź bez zapisywania",
-            "Zostań w edycji"
+            "Zostań w edycji",
+            "warning"
         );
         if (!confirmResult) return;
     }
@@ -917,10 +1095,15 @@ async function showList(force = false) {
     itemsList.style.display = 'block';
     formContainer.style.display = 'none';
     
-    // Show add button (except for summaries) and search
+    // Show add actions and search
+    const addActions = document.getElementById('add-item-actions');
     const isSummaries = currentType === 'summaries';
-    document.getElementById('btn-add-new').style.display = isSummaries ? 'none' : 'block';
+    if (addActions) addActions.style.display = isSummaries ? 'none' : 'block';
+    
     document.getElementById('sidebar-search').style.display = 'block';
+
+    const specialActions = document.getElementById('special-actions');
+    if (specialActions) specialActions.style.display = 'block';
 
     // Show quick filters only for clauses in list view
     const quickFilters = document.getElementById('quick-filters');
@@ -958,7 +1141,8 @@ async function loadItem(id, force = false) {
             "Zmiana edytowanej pozycji",
             "Masz niezapisane zmiany w aktualnie edytowanym formularzu. Jeśli przejdziesz do innej pozycji, te zmiany zostaną utracone.",
             "Przejdź bez zapisywania",
-            "Anuluj"
+            "Anuluj",
+            "warning"
         );
         if (!confirmResult) return;
     }
@@ -971,11 +1155,16 @@ async function loadItem(id, force = false) {
     itemsList.style.display = 'none';
     formContainer.style.display = 'block';
     
-    // Hide add button, search and quick filters
-    document.getElementById('btn-add-new').style.display = 'none';
+    // Hide add actions container instead of individual button
+    const addActions = document.getElementById('add-item-actions');
+    if (addActions) addActions.style.display = 'none';
+    
     document.getElementById('sidebar-search').style.display = 'none';
     const quickFilters = document.getElementById('quick-filters');
     if (quickFilters) quickFilters.classList.add('hidden');
+    
+    const specialActions = document.getElementById('special-actions');
+    if (specialActions) specialActions.style.display = 'none';
     
     let itemData = null;
     if (currentType === 'clauses') {
@@ -1019,99 +1208,157 @@ window.autoResize = (el) => {
  * EDITOR: Clauses
  */
 function renderClauseForm(id, data) {
+    const isLegal = id.startsWith('U.');
+    
     // Ensure all required arrays exist
     if (!data.preconditions) data.preconditions = [];
     if (!data.procedure) data.procedure = [];
     if (!data.checklist) data.checklist = [];
     if (!data.notes) data.notes = [];
+    if (!data.form) data.form = {};
+    if (!data.form.inputs && !isLegal) data.form.inputs = [];
 
     formContainer.innerHTML = `
-        <p style="text-align: left;"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
         
         <div class="field-group">
-            <h3>Edycja klauzuli</h3>
-            <label>Identyfikator klauzuli (ID)
-                <input type="text" id="edit-id" value="${id}">
-            </label>
-            <label>Tytuł klauzuli
-                <input type="text" id="edit-title" value="${data.title || ''}">
-            </label>
+            <div class="section-header">
+                <i data-lucide="${isLegal ? 'scale' : 'code'}" class="icon-md icon-primary"></i>
+                <h3 class="m-0">Edycja: ${isLegal ? 'Klauzula Prawna' : 'Klauzula Techniczna'}</h3>
+            </div>
+
+            <div class="grid-1-3">
+                <label>Identyfikator (ID)
+                    <input type="text" id="edit-id" value="${id}">
+                </label>
+                <label>Tytuł klauzuli
+                    <input type="text" id="edit-title" value="${data.title || ''}">
+                </label>
+            </div>
+            
             <label>Metoda oceny (Evaluation)
                 <input type="text" id="edit-evaluation" value="${data.evaluation || ''}">
             </label>
         </div>
-        
+
         <div class="field-group">
-            <h6>Wymagania wstępne (Warunki)</h6>
+            <h6>Wymagania wstępne (Preconditions)</h6>
             <div id="preconditions-container">
                 ${data.preconditions.map((item, idx) => renderArrayItem('preconditions', item, idx)).join('')}
             </div>
             <button class="outline contrast small" onclick="addArrayItem('preconditions')">+ Dodaj warunek</button>
         </div>
-        
+
         <div class="field-group">
-            <h6>${id.startsWith('U.') ? 'Jak to rozumieć?' : 'Procedura badania'}</h6>
+            <h6>${isLegal ? 'Jak to rozumieć?' : 'Procedura badania (Procedure)'}</h6>
             <div id="procedure-container">
                 ${data.procedure.map((item, idx) => renderArrayItem('procedure', item, idx)).join('')}
             </div>
-            <button class="outline contrast small" onclick="addArrayItem('procedure')">+ Dodaj krok</button>
+            <button class="outline contrast small" onclick="addArrayItem('procedure')">${isLegal ? '+ Dodaj punkt' : '+ Dodaj krok'}</button>
         </div>
 
+        ${!isLegal ? `
+        <!-- KRYTERIA SUKCESU (form) - Tylko dla technicznych -->
         <div class="field-group">
-            <h6>Checklista (punkty sprawdzenia)</h6>
+            <h6><i data-lucide="check-square" class="icon-inline" aria-hidden="true"></i> Kryteria sukcesu (Logic)</h6>
+            
+            <div class="mt-1">
+                <!-- Nagłówki dla dostępności i przejrzystości -->
+                <div class="table-header-compact">
+                    <div>Wynik (Wartość)</div>
+                    <div>Warunek / Kryterium wyboru</div>
+                    <div></div>
+                </div>
+
+                <div id="form-inputs-container">
+                    ${data.form.inputs.map((inp, idx) => `
+                        <div class="grid-1-2-auto">
+                            <div class="col-stack">
+                                <label for="form-val-${idx}" class="sr-only">Wynik (Wartość)</label>
+                                <input type="text" id="form-val-${idx}" value="${inp.value}" onchange="syncFormInput(${idx}, 'value', this.value)" placeholder="Np. Zaliczone">
+                            </div>
+                            <div class="col-stack">
+                                <label for="form-lab-${idx}" class="sr-only">Warunek / Kryterium wyboru</label>
+                                <input type="text" id="form-lab-${idx}" value="${inp.label}" onchange="syncFormInput(${idx}, 'label', this.value)" placeholder="Np. Wszystkie elementy mają opisy alternatywne">
+                            </div>
+                            <button class="outline error small btn-tight" onclick="removeFormInput(${idx})" aria-label="Usuń wiersz ${idx + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+                        </div>
+                    `).join('')}
+                </div>
+                <button class="outline contrast small" onclick="addFormInput()">+ Dodaj nową opcję</button>
+            </div>
+        </div>
+        ` : ''}
+        
+        <div class="field-group">
+            <h6>${isLegal ? 'Jak sprawdzić?' : 'Jak sprawdzić?'}</h6>
             <div id="checklist-container">
                 ${data.checklist.map((item, idx) => renderArrayItem('checklist', item, idx)).join('')}
             </div>
-            <button class="outline contrast small" onclick="addArrayItem('checklist')">+ Dodaj punkt</button>
+            <button class="outline contrast small" onclick="addArrayItem('checklist')">${isLegal ? '+ Dodaj krok' : '+ Dodaj punkt'}</button>
         </div>
 
         <div class="field-group">
-            <h6>Uwagi</h6>
+            <h6>Dodatkowe uwagi / Wyjątki (Notes)</h6>
             <div id="notes-container">
                 ${data.notes.map((item, idx) => renderArrayItem('notes', item, idx)).join('')}
             </div>
             <button class="outline contrast small" onclick="addArrayItem('notes')">+ Dodaj uwagę</button>
         </div>
 
-        <div style="margin-top: 2rem;">
-            <button class="primary" onclick="saveCurrent()">Zapisz zmiany w klauzuli</button>
+        <div class="form-actions">
+            <button class="primary flex-2" onclick="saveCurrent()">Zapisz zmiany w klauzuli</button>
+            <button class="outline secondary flex-1" onclick="showList()">Anuluj</button>
         </div>
     `;
+    if (window.lucide) window.lucide.createIcons();
 }
 
 /**
  * EDITOR: Products (Global)
  */
 function renderProductsForm() {
+    // Ensure we track this view correctly
+    activeItemId = '_products';
+    isFormDirty = false;
+
     formContainer.innerHTML = `
-        <p style="text-align: left;"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
         <div class="field-group">
-            <div style="border-bottom: 2px solid var(--primary); margin-bottom: 2rem; padding-bottom: 1rem;">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                    <i data-lucide="package" style="width: 1.75rem; height: 1.75rem; color: var(--primary);"></i>
-                    <h3 style="margin: 0;">Zarządzanie bazą produktów i usług</h3>
+            <div class="section-border">
+                <div class="section-title-row">
+                    <i data-lucide="package" class="icon-lg icon-primary" aria-hidden="true"></i>
+                    <h3 class="m-0">Zarządzanie bazą produktów i usług</h3>
                 </div>
                 <p class="muted">Zmieniaj nazwy produktów używanych w całej aplikacji. Zmiany są widoczne we wszystkich mapowaniach.</p>
             </div>
 
-            <div id="products-editor-main" style="padding: 1.5rem; background: var(--card-background-color); border: 1px solid var(--muted-border-color); border-radius: var(--border-radius);">
-                <div style="margin-bottom: 1.5rem; display: grid; grid-template-columns: 5rem 1fr 3rem; gap: 1rem; font-weight: bold; border-bottom: 2px solid var(--muted-border-color); padding-bottom: 0.5rem;">
+            <div id="products-editor-main" class="editor-card">
+                <div class="product-table-header">
                     <div>ID</div>
                     <div>Pełna nazwa produktu / usługi</div>
                     <div></div>
                 </div>
                 ${Object.entries(currentData.products || {}).map(([pId, pName]) => `
-                    <div style="display: grid; grid-template-columns: 5rem 1fr auto; gap: 1rem; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--muted-border-color); padding-bottom: 0.5rem;">
-                        <span style="font-family: monospace; font-weight: bold; color: var(--primary);">${pId}</span>
-                        <input type="text" value="${pName}" onchange="updateProductName('${pId}', this.value)" style="margin-bottom: 0; padding: 0.4rem 0.75rem;">
-                        <button class="outline secondary" onclick="removeProduct('${pId}')" title="Usuń produkt" style="margin-bottom: 0; padding: 0.25rem 0.75rem; border-color: transparent;">
-                            <i data-lucide="trash-2" style="width: 1.2rem; height: 1.2rem; color: var(--del-color);"></i>
+                    <div class="product-row">
+                        <span class="product-id-badge">${pId}</span>
+                        <div class="product-name-wrap">
+                            <label for="prod-name-${pId}" class="sr-only">Pełna nazwa produktu ${pId}</label>
+                            <input type="text" id="prod-name-${pId}" class="product-name-input" value="${pName}" oninput="updateProductName('${pId}', this.value)" placeholder="Wpisz nazwę produktu...">
+                        </div>
+                        <button class="outline error small product-remove-btn" onclick="removeProduct('${pId}')" aria-label="Usuń produkt">
+                            <i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>
                         </button>
                     </div>
                 `).join('')}
-                <div style="margin-top: 1.5rem; text-align: right;">
-                    <button class="primary" onclick="addProductPrompt()" style="width: auto;">+ Dodaj nowy produkt</button>
+                <div class="text-right">
+                    <button class="primary" onclick="addProductPrompt()">+ Dodaj nowy produkt</button>
                 </div>
+            </div>
+
+            <div class="form-actions">
+                <button class="primary flex-2" onclick="saveCurrent()">Zapisz zmiany w produktach</button>
+                <button class="outline secondary flex-1" onclick="showList()">Wróć do listy</button>
             </div>
         </div>
     `;
@@ -1123,17 +1370,20 @@ function renderProductsForm() {
  */
 function renderMappingForm(id, data) {
     formContainer.innerHTML = `
-        <p style="text-align: left;"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
         
-        <div style="display:flex;align-items:center;gap:0.5rem;justify-content:space-between; border-bottom: 2px solid var(--primary); margin-bottom: 2rem; padding-bottom: 1rem;">
-            <h3 style="margin:0;">Edycja mapowania artykułu</h3>
+        <div class="form-header">
+            <h3 class="m-0">Edycja mapowania artykułu</h3>
         </div>
 
         <label>Identyfikator (ID)
             <input type="text" id="edit-id" value="${id}">
         </label>
         <label>Identyfikator Klauzuli Ustawowej (U.*)
-            <input type="text" id="edit-legal-id" value="${data.legal_id || ''}" placeholder="Np. U.7.1.1.a">
+            <div class="grid grid-1-maxcontent">
+                <input type="text" id="edit-legal-id" value="${data.legal_id || ''}" placeholder="Np. U.7.1.1.a">
+                <button class="outline picker-action-btn" onclick="openLegalClausePicker()">Wybierz z listy</button>
+            </div>
         </label>
         <label>Artykuł
             <input type="text" id="edit-article" value="${data.article || ''}">
@@ -1149,22 +1399,25 @@ function renderMappingForm(id, data) {
             <h6>Powiązane produkty i klauzule techniczne</h6>
             <p><small>Zaznacz produkty objęte tym artykułem. Jeśli produkt wymaga specyficznych klauzul technicznych (C.*), wpisz je lub wybierz przyciskiem.</small></p>
             <div id="product-mappings-container">
-                ${Object.entries(data.product_mappings || {}).map(([pId, val]) => {
-                    const pName = currentData.products[pId] || pId;
-                    const isChecked = val !== null;
+                ${Object.entries(currentData.products || {}).map(([pId, pName]) => {
+                    const val = (data.product_mappings || {})[pId];
+                    const isChecked = val !== null && val !== undefined;
                     return `
-                        <div class="product-mapping-row" style="margin-bottom: 1.25rem; border-bottom: 1px solid var(--muted-border-color); padding-bottom: 0.75rem;">
-                            <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="background: var(--primary); color: white; padding: 0.125rem 0.375rem; border-radius: var(--border-radius); font-family: monospace;">${pId}</span>
-                                <span style="color: var(--h3-color);">${pName}</span>
+                        <div class="product-mapping-row">
+                            <div class="product-mapping-header">
+                                <span class="product-id-badge">${pId}</span>
+                                <span class="product-name">${pName}</span>
                             </div>
-                            <div class="grid" style="align-items:center; gap: 1.5rem; grid-template-columns: max-content 1fr max-content; margin-bottom: 0;">
-                                <label style="margin-bottom:0; white-space:nowrap; display:flex; align-items:center; cursor:pointer; user-select:none; gap: 0.75rem;">
-                                    <input type="checkbox" class="prod-mapping-check" data-pid="${pId}" ${isChecked ? 'checked' : ''} onchange="toggleMappingInput('${pId}', this.checked)" style="margin-bottom:0; width: 1.25rem; height: 1.25rem;">
-                                    <span style="font-size: 0.9rem; font-weight: 500;">Dotyczy</span>
+                            <div class="product-mapping-grid">
+                                <label class="prod-mapping-label">
+                                    <input type="checkbox" class="prod-mapping-check" data-pid="${pId}" ${isChecked ? 'checked' : ''} onchange="toggleMappingInput('${pId}', this.checked)">
+                                    <span class="prod-mapping-label-text">Dotyczy</span>
                                 </label>
-                                <input type="text" class="prod-mapping-input" id="input-${pId}" data-pid="${pId}" value="${val || ''}" ${!isChecked ? 'disabled' : ''} style="margin-bottom:0;" placeholder="Kody techniczne C.* (opcjonalnie)">
-                                <button class="outline" onclick="openClausePicker('${pId}')" style="margin-bottom:0; padding: 0.25rem 1rem; font-size: 0.85rem; min-width: 8rem;">Wybierz kody</button>
+                                <div class="prod-mapping-codes">
+                                    <label for="input-${pId}" class="prod-mapping-codes-label">Klauzule techniczne (C.*):</label>
+                                    <input type="text" class="prod-mapping-input" id="input-${pId}" data-pid="${pId}" value="${isChecked ? (val || '') : ''}" ${!isChecked ? 'disabled' : ''} placeholder="Np. C.9.1.1.1; C.9.1.1.2">
+                                </div>
+                                <button class="outline picker-btn" onclick="openClausePicker('${pId}')">Wybierz kody</button>
                             </div>
                         </div>
                     `;
@@ -1183,35 +1436,55 @@ window.updateProductName = (pId, newName) => {
 };
 
 // Add / remove products inline
-window.addProductPrompt = async () => {
+window.addProductPrompt = () => {
+    // 1. Ensure we are in mapping mode
+    if (currentType !== 'mapping' || !currentData) return;
+
+    // 2. Save current state of the list if any (though products use live-sync oninput)
     updateStateFromUI();
     
-    // Używamy nowej, dostępnej wersji promptModal
-    const id = await promptModal('Podaj identyfikator produktu/usługi (krótki, np. p1):', 'Dodaj nowy produkt');
-    if (!id) return;
-    
-    if (currentData.products && currentData.products[id]) { 
-        showToast("Produkt o tym ID już istnieje!", "error"); 
-        return; 
-    }
-    
-    const name = await promptModal(`Nazwa produktu/usługi dla ID: ${id}:`, 'Nazwa produktu', id);
-    if (!name) return; // Anulowanie na drugim etapie
-
+    // 3. Ensure products object exists
     if (!currentData.products) currentData.products = {};
-    currentData.products[id] = name;
     
-    // ensure mapping entry exists for this product in the current matrix item if editing one
-    if (currentType === 'mapping' && activeItemId) {
-        const item = currentData.matrix.find(it => it.id === activeItemId);
-        if (item) {
-            item.product_mappings = item.product_mappings || {};
-            item.product_mappings[id] = '';
+    // 4. Generate next ID (p1, p2, etc.)
+    const keys = Object.keys(currentData.products);
+    let maxNum = 0;
+    keys.forEach(k => {
+        const match = k.match(/^p(\d+)$/);
+        if (match) {
+            const num = parseInt(match[1]);
+            if (num > maxNum) maxNum = num;
         }
+    });
+    const newId = `p${maxNum + 1}`;
+    
+    // 5. Add empty product to the master list
+    currentData.products[newId] = "";
+
+    // 6. Explicitly ensure this product key exists in ALL matrix entries as null (not applicable)
+    // This solves the issue of the product not appearing in mappings until manually touched
+    if (currentData.matrix && Array.isArray(currentData.matrix)) {
+        currentData.matrix.forEach(item => {
+            if (!item.product_mappings) item.product_mappings = {};
+            if (!(newId in item.product_mappings)) {
+                item.product_mappings[newId] = null;
+            }
+        });
     }
-    markAsModified();
-    renderList();
-    renderProductsForm(); // Odśwież widok produktów
+    
+    // 7. Mark as modified and refresh UI
+    markAsModified('_products');
+    renderProductsForm();
+    
+    // 8. Focus the new input
+    setTimeout(() => {
+        const inputs = document.querySelectorAll('#products-editor-main input');
+        if (inputs.length > 0) {
+            const lastInput = inputs[inputs.length - 1];
+            lastInput.focus();
+            lastInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, 100);
 };
 
 window.removeProduct = (pId) => {
@@ -1226,7 +1499,9 @@ window.removeProduct = (pId) => {
             markAsModified();
             renderList();
             loadItem(activeItemId);
-        }
+        },
+        "Anuluj",
+        "warning"
     );
 };
 
@@ -1237,7 +1512,7 @@ window.openClausePicker = async (productId) => {
     // load clauses.json if needed
     if (!window._clausesCache) {
         try {
-            const resp = await fetch('clauses_json/clauses.json');
+            const resp = await fetch(`clauses_json/clauses.json?t=${Date.now()}`, { cache: 'no-store' });
             if (!resp.ok) throw new Error(resp.statusText);
             window._clausesCache = await resp.json();
         } catch (err) {
@@ -1252,18 +1527,19 @@ window.openClausePicker = async (productId) => {
     overlay.id = 'clause-picker-dialog';
     // Native <dialog> handles ESC by default when opened with showModal()
     overlay.innerHTML = `
-        <article style="max-width: 50rem; width: 95%;">
+        <article class="dialog-article">
             <header>
                 <a href="#close" aria-label="Zamknij" class="close" onclick="document.getElementById('clause-picker-dialog').close()"></a>
-                <h3 style="margin-bottom:0;">Wybierz klauzule techniczne</h3>
-                <p style="margin-top:0; font-size:0.9rem; opacity:0.8;">Dla produktu: <strong>${productId} — ${pName}</strong></p>
+                <h3 class="m-0">Wybierz klauzule techniczne</h3>
+                <p class="muted-help">Dla produktu: <strong>${productId} — ${pName}</strong></p>
             </header>
             
             <div class="field-group">
-                <input type="search" placeholder="Szukaj klauzuli (ID lub tytuł)..." class="clause-picker-search" style="margin-bottom:1rem;">
+                <label for="clause-picker-search-id" class="picker-search-label">Wyszukaj na liście:</label>
+                <input type="search" id="clause-picker-search-id" placeholder="Szukaj klauzuli (ID lub tytuł)..." class="clause-picker-search picker-search">
             </div>
             
-            <div class="clause-picker-list" style="max-height: 50vh; overflow-y: auto; border: 1px solid var(--muted-border-color); border-radius: var(--border-radius); padding: 0.5rem; background: var(--card-background-color);">
+            <div class="clause-picker-list">
                 <!-- Lista klauzul -->
             </div>
 
@@ -1305,7 +1581,7 @@ window.openClausePicker = async (productId) => {
         });
 
         if (entries.length === 0) {
-            listEl.innerHTML = '<p style="text-align:center; padding:1rem; opacity:0.6;">Brak pasujących klauzul.</p>';
+            listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul.</p>'; 
             return;
         }
 
@@ -1320,10 +1596,10 @@ window.openClausePicker = async (productId) => {
             
             const isChecked = selectedSet.has(k);
             row.innerHTML = `
-                <input type="checkbox" value="${k}" ${isChecked ? 'checked' : ''} style="margin-top: 0.25rem;">
-                <div style="flex:1;">
-                    <strong style="font-family:monospace; color:var(--primary);">${k}</strong>
-                    <div style="font-size:0.85rem; line-height:1.3;">${v.title || ''}</div>
+                <input type="checkbox" value="${k}" ${isChecked ? 'checked' : ''} class="chk-top">
+                <div class="flex-1">
+                    <strong class="mono-primary">${k}</strong>
+                    <div class="clause-desc">${v.title || ''}</div>
                 </div>
             `;
             listEl.appendChild(row);
@@ -1351,6 +1627,109 @@ window.openClausePicker = async (productId) => {
         }
 
         markAsModified();
+        overlay.remove();
+    });
+};
+
+window.openLegalClausePicker = async () => {
+    // load clauses.json if needed
+    if (!window._clausesCache) {
+        try {
+            const resp = await fetch(`clauses_json/clauses.json?t=${Date.now()}`, { cache: 'no-store' });
+            if (!resp.ok) throw new Error(resp.statusText);
+            window._clausesCache = await resp.json();
+        } catch (err) {
+            return showToast("Nie udało się załadować listy klauzul: " + err.message, "error");
+        }
+    }
+
+    // build overlay using Pico.css <dialog> style
+    const overlay = document.createElement('dialog');
+    overlay.id = 'legal-clause-picker-dialog';
+    overlay.innerHTML = `
+        <article class="dialog-article">
+            <header>
+                <a href="#close" aria-label="Zamknij" class="close" onclick="document.getElementById('legal-clause-picker-dialog').close()"></a>
+                <h3 class="m-0">Wybierz klazulę ustawową (U.*)</h3>
+                <p class="muted-help">Wybierz jedną klauzulę z listy poniżej.</p>
+            </header>
+            
+            <div class="field-group">
+                <label for="legal-picker-search-id" class="picker-search-label">Wyszukaj na liście:</label>
+                <input type="search" id="legal-picker-search-id" placeholder="Szukaj klauzuli (ID lub tytuł)..." class="clause-picker-search picker-search">
+            </div>
+            
+            <div class="clause-picker-list">
+                <!-- Lista klauzul -->
+            </div>
+
+            <footer>
+                <button class="secondary outline" onclick="document.getElementById('legal-clause-picker-dialog').close()">Anuluj</button>
+                <button class="primary save">Wybierz</button>
+            </footer>
+        </article>
+    `;
+    document.body.appendChild(overlay);
+    
+    // Cleanup on close
+    overlay.addEventListener('close', () => {
+        overlay.remove();
+        // Return focus to the trigger button
+        const trigger = document.querySelector('button[onclick="openLegalClausePicker()"]');
+        if (trigger) trigger.focus();
+    });
+
+    overlay.showModal();
+
+    const listEl = overlay.querySelector('.clause-picker-list');
+    const searchEl = overlay.querySelector('.clause-picker-search');
+    const editLegalId = document.getElementById('edit-legal-id');
+    const currentVal = editLegalId ? editLegalId.value.trim() : '';
+
+    const renderList = (filter='') => {
+        listEl.innerHTML = '';
+        const entries = Object.entries(window._clausesCache).filter(([k,v]) => {
+            if (!k.startsWith('U.')) return false; 
+            if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
+            return true;
+        });
+
+        if (entries.length === 0) {
+            listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul ustawowych.</p>';
+            return;
+        }
+
+        entries.forEach(([k,v]) => {
+            const row = document.createElement('label');
+            row.style.display = 'flex';
+            row.style.alignItems = 'start';
+            row.style.gap = '0.625rem';
+            row.style.padding = '0.25rem 0';
+            row.style.cursor = 'pointer';
+            row.style.borderBottom = '1px solid var(--muted-border-color)';
+            
+            const isChecked = (k === currentVal);
+            row.innerHTML = `
+                <input type="radio" name="legal-clause-radio" value="${k}" ${isChecked ? 'checked' : ''} class="chk-top">
+                <div class="flex-1">
+                    <strong class="mono-primary">${k}</strong>
+                    <div class="clause-desc">${v.title || ''}</div>
+                </div>
+            `;
+            listEl.appendChild(row);
+        });
+    };
+
+    renderList('');
+    setTimeout(() => searchEl.focus(), 50);
+    searchEl.addEventListener('input', (e)=> renderList(e.target.value.toLowerCase()));
+
+    overlay.querySelector('.save').addEventListener('click', ()=>{
+        const selected = listEl.querySelector('input[type=radio]:checked');
+        if (selected && editLegalId) {
+            editLegalId.value = selected.value;
+            markAsModified();
+        }
         overlay.remove();
     });
 };
@@ -1453,33 +1832,83 @@ window.reorderTo = (draggedKey, targetKey) => {
  * EDITOR: Summaries
  */
 function renderSummaryForm(id, data) {
-    formContainer.innerHTML = `
-        <p style="text-align: left;"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
-        <div class="field-group">
-            <h3>Edycja szablonu</h3>
-            <label>Identyfikator (ID)
-                <input type="text" id="edit-id" value="${id}">
-            </label>
-        <label>Status wizualny
-            <input type="text" id="edit-status" value="${data.status || ''}">
-        </label>
-        <label>Tytuł dokumentu
-            <input type="text" id="edit-title" value="${data.title || ''}">
-        </label>
-        <label>Opis / Treść główna
-            <textarea id="edit-description" rows="8" oninput="autoResize(this)">${data.description || ''}</textarea>
-        </label>
-        
-        <div class="field-group">
-            <h6>Etykiety sekcji</h6>
-            ${Object.entries(data.sections || {}).map(([sKey, sVal]) => `
-                <label>${sKey}
-                    <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}">
-                </label>
-            `).join('')}
-        </div>
+    const templateNames = {
+        'full_compliance': 'ZGODNY (Pełny zakres - wszystkie klauzule OK)',
+        'non_compliance_full': 'NIEZGODNY (Pełny zakres - błędy w klauzulach)',
+        'partial_compliance_passed': 'ZGODNY W ZAKRESIE (Częściowy zakres - sprawdzone OK)',
+        'partial_compliance_failed': 'NIEZGODNY (Częściowy zakres - błędy w sprawdzonych)',
+        'no_assessment': 'BŁĄD: BRAK OCEN (Nie wypełniono arkusza)',
+        'all_inapplicable': 'BRAK WYMAGAŃ (Wszystkie klauzule: Nie dotyczy)',
+        'all_inapplicable_partial': 'BRAK WYMAGAŃ (Częściowy zakres: Wszystkie "Nie dotyczy")'
+    };
 
-        <button onclick="saveCurrent()">Zatwierdź zmiany</button>
+    formContainer.innerHTML = `
+        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <div class="field-group">
+            <div class="section-header">
+                <i data-lucide="file-text" class="icon-md icon-primary"></i>
+                <h3 class="m-0">Edycja Szablonu: ${templateNames[id] || data.status || id}</h3>
+            </div>
+
+            <label>Tytuł dokumentu
+                <input type="text" id="edit-title" value="${data.title || ''}">
+            </label>
+
+            <label>Opis / Treść główna
+                <small class="mb-0-5" style="display: block;">
+                    <i data-lucide="info" class="icon-inline" aria-hidden="true" style="width: 14px; height: 14px; vertical-align: text-bottom;"></i>
+                    <strong>Wskazówka:</strong> Użyj klucza <code>{productName}</code> w treści, aby system automatycznie wstawił nazwę audytowanego produktu.
+                </small>
+                <textarea id="edit-description" rows="8" oninput="autoResize(this)" placeholder="Wprowadź treść podsumowania...">${data.description || ''}</textarea>
+            </label>
+            
+            <div class="field-group" style="margin-top: 2rem;">
+                <h6>Etykiety sekcji (Teksty nagłówków list w raporcie)</h6>
+                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                    ${Object.entries(data.sections || {}).map(([sKey, sVal]) => {
+                        const friendlyLabels = {
+                            failures_label: 'Nagłówek: Niezgodności',
+                            passed_label: 'Nagłówek: Spełnione',
+                            inapplicable_label: 'Nagłówek: Nie dotyczy',
+                            untested_label: 'Nagłówek: Niepoddane ocenie',
+                            conclusions_label: 'Nagłówek: Wnioski',
+                            conclusions_value: 'Treść wniosków (domyślna)',
+                            note_label: 'Nagłówek: Uwaga',
+                            note_value: 'Treść uwagi (domyślna)'
+                        };
+                        return `
+                            <label>${friendlyLabels[sKey] || sKey}
+                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}">
+                            </label>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+
+            ${data.meta ? `
+            <div class="field-group" style="margin-top: 2rem;">
+                <h6>Metadane (Etykiety danych dodatkowych)</h6>
+                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                    ${Object.entries(data.meta || {}).map(([mKey, mVal]) => {
+                        const friendlyMeta = {
+                            date_label: 'Etykieta: Data kontroli',
+                            scope_label: 'Etykieta: Zakres kontroli',
+                            scope_value: 'Wartość: Zakres (np. Pełny)'
+                        };
+                        return `
+                            <label>${friendlyMeta[mKey] || mKey}
+                                <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}">
+                            </label>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+            ` : ''}
+
+            <div class="form-actions">
+                <button class="primary flex-2" onclick="saveCurrent()">Zatwierdź zmiany</button>
+                <button class="outline secondary flex-1" onclick="showList()">Anuluj</button>
+            </div>
         </div>
     `;
 }
@@ -1490,10 +1919,10 @@ function renderSummaryForm(id, data) {
 function renderGlossaryForm(id, data) {
     // data is the definition string from glossary.json
     formContainer.innerHTML = `
-        <p style="text-align: left;"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
         <div class="field-group">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
-                <h3 style="margin:0;">Słownik</h3>
+            <div class="flex-between">
+                <h3 class="m-0">Słownik</h3>
             </div>
             <label>Hasło (ID/term)
                 <input type="text" id="edit-id" value="${id.replace(/"/g, '&quot;')}">
@@ -1518,8 +1947,9 @@ window.toggleGlossaryEdit = () => {
 function renderArrayItem(type, value, index) {
     return `
         <div class="array-item" data-type="${type}" data-index="${index}">
-            <textarea rows="2" oninput="syncArrayValue('${type}', ${index}, this.value); autoResize(this)">${value}</textarea>
-            <button class="outline error" style="width: auto;" onclick="removeArrayItem('${type}', ${index})">Usuń</button>
+            <label class="sr-only" for="arr-${type}-${index}">Element listy ${index + 1}</label>
+            <textarea id="arr-${type}-${index}" rows="2" oninput="syncArrayValue('${type}', ${index}, this.value); autoResize(this)">${value}</textarea>
+            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
         </div>
     `;
 }
@@ -1531,7 +1961,7 @@ function renderArrayItem(type, value, index) {
  */
 function updateStateFromUI() {
     if (!activeItemId || !currentData) return true;
-    if (activeItemId === '_products') return true; // Produkty zapisują się automatycznie na onchange
+    if (activeItemId === '_products') return true;
 
     if (currentType === 'clauses') {
         const idInput = document.getElementById('edit-id');
@@ -1557,6 +1987,7 @@ function updateStateFromUI() {
         if (titleInput) item.title = titleInput.value;
         if (evalInput) item.evaluation = evalInput.value;
 
+        // Note: form.legend and form.noteId are no longer used/saved from UI
     } else if (currentType === 'mapping') {
         const idInput = document.getElementById('edit-id');
         const newId = idInput ? idInput.value.trim() : activeItemId;
@@ -1621,6 +2052,11 @@ function updateStateFromUI() {
             document.querySelectorAll('.section-label-input').forEach(input => {
                 item.sections[input.dataset.skey] = input.value;
             });
+
+            document.querySelectorAll('.meta-label-input').forEach(input => {
+                if (!item.meta) item.meta = {};
+                item.meta[input.dataset.mkey] = input.value;
+            });
         }
     } else if (currentType === 'glossary') {
         const idInput = document.getElementById('edit-id');
@@ -1667,10 +2103,44 @@ window.removeArrayItem = (type, index) => {
     loadItem(activeItemId, true);
 };
 
+// Funkcje do obsługi formularza (inputs w klauzulach C)
+window.syncFormInput = (index, field, value) => {
+    if (currentType === 'clauses') {
+        if (!currentData[activeItemId].form) currentData[activeItemId].form = {};
+        if (!currentData[activeItemId].form.inputs) currentData[activeItemId].form.inputs = [];
+        currentData[activeItemId].form.inputs[index][field] = value;
+        markAsModified();
+    }
+};
+
+window.addFormInput = () => {
+    updateStateFromUI();
+    if (!currentData[activeItemId].form) currentData[activeItemId].form = {};
+    if (!currentData[activeItemId].form.inputs) currentData[activeItemId].form.inputs = [];
+    currentData[activeItemId].form.inputs.push({ value: "", label: "" });
+    markAsModified();
+    loadItem(activeItemId, true);
+};
+
+window.removeFormInput = (index) => {
+    updateStateFromUI();
+    currentData[activeItemId].form.inputs.splice(index, 1);
+    markAsModified();
+    loadItem(activeItemId, true);
+};
+
 /**
  * Save current form values back to currentData
  */
 window.saveCurrent = () => {
+    // If we are in products mode, we skip ID validation as it's a bulk edit
+    if (activeItemId === '_products') {
+        isFormDirty = false;
+        renderList(searchInput.value);
+        showToast(`Zmiany w liście produktów zostały zapisane lokalnie. Pamiętaj o eksporcie pliku JSON.`, "success");
+        return;
+    }
+
     // Collect specific error for the toast
     let error = null;
     const idInput = document.getElementById('edit-id');

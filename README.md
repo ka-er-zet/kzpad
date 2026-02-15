@@ -9,181 +9,239 @@
   <img src="img/uke.svg" alt="UKE" height="50">
 </div>
 
-**Wersja:** 1.0.0
-**Status:** Stabilna
+**Wersja:** 1.2.0 (Luty 2026)  
+**Status:** Stabilna / Rozszerzona o Moduł Edycji Danych
 
-Aplikacja **Kontrola zgodności z Polskim Aktem o Dostępności (KZ-PAD)** służy do tworzenia arkuszy oceny dostępności produktów i usług zgodnie z Ustawą z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze (wraz z powiązanymi przepisami i normami). Narzędzie umożliwia przygotowanie formularza oceny, przeprowadzenie oceny (listy kontrolne) oraz wygenerowanie raportu.
+Aplikacja **KZ-PAD (Kontrola zgodności z Polskim Aktem o Dostępności)** służy do przygotowywania arkuszy oceny dostępności produktów i usług zgodnie z Ustawą z dnia 26 kwietnia 2024 r. (PAD), normą EN 301 549 i powiązanymi przepisami prawnymi.
+
+System składa się z dwóch powiązanych modułów:
+1.  **Przeprowadzania kontroli (index.html)**: Interfejs operacyjny do przeprowadzania kontroli i generowania raportów.
+2.  **Edycji danych (editor.html)**: Interfejs administracyjny do zarządzania bazą klauzul, mapowaniami produktów oraz słownikiem.
 
 ---
 
 ## 🚀 Uruchamianie (Lokalne i Online)
 
-Aplikacja jest statyczną stroną internetową (Single Page Application) i nie wymaga backendu (PHP, Node.js itp.), ale do poprawnego działania wymaga serwowania przez protokół HTTP/HTTPS.
+Aplikacja ma charakter statyczny (Single Page Application) i nie wymaga serwera bazodanowego. Jednak do poprawnego działania wymaga uruchomienie prostego serwera HTTP/HTTPS.
 
 ### Wymagania lokalne
-Uruchomienie pliku `index.html` bezpośrednio z dysku (przez dwuklik, protokół `file://`) **nie zadziała** poprawnie ze względu na zabezpieczenia przeglądarek (CORS), które blokują wczytywanie plików JSON z konfiguracją.
-
-#### Jak uruchomić lokalnie:
-Masz kilka opcji:
-1. **Python** (jeśli masz zainstalowany):
-   ```bash
-   # W folderze projektu uruchom:
-   python -m http.server 8000
-   # W przeglądarce wejdź na: http://localhost:8000
-   ```
-2. **VS Code**: Zainstaluj rozszerzenie "Live Server" i kliknij "Go Live" w dolnym pasku.
-3. **Node.js**: `npx http-server -p 8080`.
-
-### Wymagania serwera (Online)
-Aby udostępnić aplikację w sieci:
-1. Wgraj zawartość folderu na dowolny serwer statyczny (Apache, Nginx, GitHub Pages, Netlify).
-2. **Wymagane HTTPS**: Aplikacja korzysta z Service Workers (PWA), które działają tylko na bezpiecznym połączeniu (HTTPS) lub `localhost`.
-3. Serwer musi poprawnie serwować pliki JSON (MIME type: `application/json`) oraz manifest PWA (`application/manifest+json`).
+Uruchomienie pliku `index.html` bezpośrednio przez protokół `file://` nie pozwoli na pobranie konfiguracji. Zalecane metody:
+1. **Python**: `python -m http.server 8000`
+2. **VS Code**: Rozszerzenie "Live Server".
+3. **Node.js**: `npx http-server`.
 
 ---
 
-## 📱 PWA (Progressive Web App)
+## 📱 Moduł kontroli (index.html)
 
-Aplikacja jest przystosowana do instalacji jako natywna aplikacja na komputerze lub urządzeniu mobilnym.
+Interfejs przeznaczony dla osób przeprowadzających weryfikację dostępności.
 
-- **Instalacja**: Wejdź na stronę w przeglądarce (Chrome/Edge/Safari). W pasku adresu pojawi się ikona instalacji (ikona monitora ze strzałką lub "zainstaluj").
-- **Offline**: Po pierwszym załadowaniu, aplikacja działa w pełni offline. Wszystkie dane konfiguracyjne oraz logika są zapisywane w pamięci podręcznej przeglądarki.
+### Proces operacyjny:
 
----
+#### 1. Inicjalizacja (Kreator)
+Wybór kategorii produktu powoduje wygenerowanie spersonalizowanego arkusza wymagań, ograniczając treść kontroli do punktów mających zastosowanie prawne dla danego urządzenia lub usługi.
 
-## 📖 Instrukcja Obsługi (End-User)
+#### 2. Rejestracja wyników (Formularz)
+System prezentuje wymagania prawne oraz powiązane z nimi szczegółowe instrukcje techniczne. Użytkownik przypisuje jeden z trzech stanów: `Spełnione`, `Niespełnione` lub `Nie dotyczy`.
 
-Aplikacja wspiera proces kontroli od konfiguracji po raportowanie.
+#### 3. Zapisywanie pracy
+W każdej chwili osoba kontrolująca może zapisać swoją pracę poprzez użycie ikony w górnym menu (po prawej stronie) albo użycie skrótu klawiszowego ctrl+s (na urządzeniach Apple cmd+s). Zostanie zapisany plik JSON, który można następnie wczytać używając odpowiedniej opcji z menu głównego aplikacji. 
 
-### 1. Rozpoczęcie pracy
-- **Start**: Kliknij "Nowy arkusz kontroli" i wybierz kategorię produktu (np. "Systemy operacyjne", "Bankomaty"). Dostosuje to listę wymagań prawnych do specyfiki urządzenia/usługi.
-- **Wczytaj stan**: Jeśli masz plik JSON z poprzedniej sesji, użyj opcji "Wczytaj zapisany stan" (z sekcji głównej, lub nawigacji górnej), aby kontynuować pracę dokładnie w miejscu, w którym została przerwana.
+#### 4. Eksport danych
+Narzędzie pozwala na eksport dokumentacji:
 
-### 2. Praca z Arkuszem (Ocena)
-Główny widok ("Formularz Oceny") zawiera listę wymagań prawnych (Artykuły). Każde wymaganie rozwija się w szczegółową listę kontrolną.
-- **Akcje**: Dla każdego punktu zaznacz: `Spełnione`, `Niespełnione` lub `Nie dotyczy`.
-- **Komentarze**: Dodaj notatki (ikona dymku), szczególnie przy błędach. Będą one widoczne w raporcie końcowym.
-- **Zapisywanie w trakcie**: W dowolnym momencie kliknij przycisk "Zapisz wersję roboczą kontroli (JSON)" w menu górnym lub użyj kombinacji ctrl(cmd)+s. Pobrany plik to Twoja kopia bezpieczeństwa.
+##### Po utworzeniu arkusza kontrolnego
+Czysty arkusz można wyeksportować w formacie XLSX za pomocą ikony w menu górnym
 
-### 3. Eksport i Raporty
-Narzędzie oferuje kilka formatów eksportu kontroli:
-1. **JSON**:
-- może być wygenerowany albo przy użyciu ikony z menu górnego, albo przycisku **Zapisz stan kontroli w formacie JSON** w sekcji **Podsumowanie kontroli**
-- zawiera pełny zrzut kontroli (odpowiedzi + widoczność pól)
-- służy do archiwizacji w formacie pozwalającym na późniejszą edycję w narzędziu.
-2. **Excel**:
--  może być wygenerowany albo przy użyciu ikony z menu górnego, albo przycisku **Pobierz podsumowanie w formacie Excel** w sekcji **Podsumowanie kontroli**
-- jeśli generowany jest zaraz po stworeniu arkusza oceny zawiera jego kopię w formacie excel, wraz z wypełnianiem arkusza, zawiera też ocenę zgodności oraz komentarze
-- wygenrowany z sekcji **Podsumowanie kontroli** zawiera też podsumowanie kontroli
-3. **ODT**
-- dokument tekstowy (OpenDocument) z podsumowaniem oceny i szczegółami, gotowy do dalszej edykcji i przygotowania raportu na potrzeby kontaktów z podmiotami rynku
+##### Po wygenerowaniu wyniku audytu
 
-### 4. Przeglądarka Wymagań (Baza Wiedzy)
-W menu nawigacyjnym dostępna jest "Przeglądarka wymagań".
-- Służy do szybkiego wyszukiwania treści klauzul technicznych (C.*) oraz wymagań Ustawy bez konieczności tworzenia nowej kontroli.
-- Pozwala sprawdzić dokładną treść procedur testowych z normy EN 301 549.
+*   **Plik Excel (.xlsx)** (również poprzez ikonę w menu górnym)
+*   **Plik tekstowy (.odt)**: Podsumowanie opisowe generowane na podstawie oceny zgodności
+*   **Plik techniczny (.json)**: pozwalający na późniejsze wczytanie audytu w narzędziu i edytowanie odpowiedzi i komentarzy.
 
 ---
 
-## 📚 Słownik pojęć (Glossary)
-W prawym górnym menu znajduje się ikona pomocy — `Słownik pojęć`. Kliknięcie otwiera modal z wyjaśnieniami używanych w aplikacji terminów (np. TIK, Klauzula, Procedura).
+### Słownik
 
-- Jak używać: kliknij ikonę `?` w pasku nagłówka, lub zamknij modal klawiszem `Esc` / przyciskiem `Zamknij`.
-- Gdzie edytować treści: definicje znajdują się w pliku `clauses_json/glossary.json` — dodaj / edytuj pary klucz → opis.
-- Utrzymanie: słownik jest niezależny od `clauses.json`; można rozszerzać go bez modyfikacji istniejących klauzul. W przyszłości można dodać automatyczne linkowanie terminów w opisach.
+Wykorzystując ikonę pomocy z menu górnego, użytkownik może w każdej chwili zapoznać się ze słownikiem pojęć zastosowanych w narzędziu i opisach wymagań. 
 
 ---
 
-## 🛠 Przewodnik Administratora: Struktura Danych (JSON)
+## 🛠 Moduł Edytora (editor.html)
 
-Logika aplikacji opiera się na plikach w folderze `clauses_json/`. Zrozumienie ich struktury jest kluczowe dla modyfikacji treści.
+Moduł przeznaczony do utrzymania spójności merytorycznej bazy danych bez konieczności bezpośredniej edycji plików źródłowych JSON.
 
-### 1. `clauses.json` – Baza Definicji
-Plik ten to "słownik" wszystkich dostępnych weryfikacji. Zawiera dwa typy wpisów:
+### Funkcjonalności administracyjne:
 
-#### A. Klauzule Techniczne (Norma EN 301 549)
-Oznaczone prefiksem `C.`. Odpowiadają konkretnym punktom normy.
-- **Identyfikator**: np. `C.9.1.1.1` (Rozdział 9, punkt 1.1.1).
-- **Struktura**:
-  ```json
-  "C.9.1.1.1": {
-      "id": "C.9.1.1.1",
-      "title": "Treść nietekstowa",
-      "procedure": ["Sprawdź czy każdy element nietekstowy..."], // Instrukcja dla osoby przeprowadzającej kontrolę
-      "checklist": ["Czy obrazki mają alt?", "Czy dekoracje są ukryte?"], // Lista pytań TAK/NIE
-      "evaluation": "Zgodne / Niezgodne" // Metoda oceny
-  }
-  ```
+**Dobra praktyka** - najpierw twórz/edytuj plik klauzul, a później edytuj/dodawaj mapowanie na przepisy prawne.
 
-#### B. Wymagania Ustawowe (Ustawa o Dostępności - PAD)
-Oznaczone prefiksem `U.`. Są to klauzule stworzone na potrzeby mapowania ogólnych zapisów ustawy na konkretne instrukcje sprawdzające.
-- **Konwencja numeracji**: `U.[Art].[Ust].[Pkt].[Lit]`
-  - np. `U.7.1.1.a` -> Art. 7, ust. 1, pkt 1, lit. a.
-  - Jeśli jeden artykuł wymaga kilku osobnych testów, dodajemy sufiks liczbowy, np. `U.7.1.1.b-01`, `U.7.1.1.b-02`.
-- **Struktura**:
-  ```json
-  "U.7.1.1.a": {
-      "id": "U.7.1.1.a",
-      "title": "U.7.1.1.a Więcej niż jeden kanał sensoryczny...", // Pełna nazwa z odniesieniem do Art.
-      "procedure": ["Zweryfikuj, czy wszystkie informacje..."], // Główna instrukcja weryfikacji (z Ustawy)
-      "evaluation": "Inspekcja i testy technologii asystujących", // Metodologia badania
-      "checklist": [ // Szczegółowe pytania pomocnicze
-          "Czy kluczowe oznaczenia fizyczne są wyczuwalne?",
-          "Czy informacje cyfrowe są odczytywane przez czytnik?"
-      ]
-  }
-  ```
+#### 1. Zakładka Klauzule (Baza Wiedzy)
+Pozwala tworzyć i edytować wpisy dotyczące wymagań technicznych (**Klauzule C.**) i ustawowych (**Klauzule U.**).
 
-### 2. `mapping.json` – Logika Biznesowa (Relacje)
-Mapuje wymagania prawne na techniczne. To tutaj decydujesz, jakie testy wyświetlą się dla "Bankomatu".
+Moduł umożliwia wczytanie pliku z domeny, w której został uruchomiony (czyli pliku, na którym aktualnie pracuje moduł kontroli) lub innego pliku z lokalnego dysku. 
 
-#### Sekcja `products` (Słownik produktów)
-Definiuje dostępne w kreatorze typy produktów.
-```json
-"p03": "Terminale płatnicze..."
-```
+Użytkownik ma możliwość filtrowania listy klauzul poprzez ich typ (techniczne/ustawowe) oraz poprzez wyszukiwarkę tekstową. 
 
-#### Sekcja `matrix` (Wiersze kontroli)
-Każdy obiekt w tablicy to jeden wiersz widoczny w sekcji "Wymagania Prawne".
-```json
-{
-  "id": "A07-01-01-a",        // ID systemowe (Art 7-01-01-a)
-  "article": "Art. 7 ust. 1...", // Etykieta w interfejsie
-  "product_mappings": {
-     // Co sprawdzamy dla produktu p03?
-     // Łączymy wymaganie ustawowe (U...) oraz techniczne (C...)
-     "p03": "C.12.1.2; C.5.1.3.1; U.7.1.1.a", 
-     "default": "C.9.1.1.1"
-   }
-}
-```
-**Wskazówka:** Aby dodać nową klauzulę do produktu, dopisz jej ID w polu `product_mappings` (oddzielając średnikiem).
+Klauzule mogą być przesuwane na liście przy pomocy strzałek lub poprzez ich "złapanie" karty i przeciągnięcie (drag and drop). Kolejność klauzul nie wpływa na ich kolejność w module kontroli. Po prostu pomaga w ich przeglądaniu. 
 
-### 3. `summaries.json` – Logika Raportów
-Określa, jaki tekst pojawi się w podsumowaniu ("Executive Summary") w zależności od wyniku kontroli.
+Do dodawania nowych klauzul służą przyciski:
+- Dodaj klauzulę C (dodawania klauzuli technicznej)
+- Dodaj klauzulę U (dodawanie klauzuli prawnej)
 
-| Klucz (ID) | Kiedy jest używany? | Opis |
-|------------|---------------------|------|
-| `full_compliance` | Wynik: 100% Zgodności | Wszystkie sprawdzone kryteria są "Spełnione". |
-| `non_compliance_full` | Wynik: <100% (Znaleziono błędy) | Kontrola była kompletna, ale wykryto co najmniej jedną niezgodność. |
-| `partial_compliance_passed` | Częściowa kontrola (Zaliczone) | Użytkownik pominął niektóre pytania ("Nieocenione"), ale w sprawdzonych nie było błędów. |
-| `partial_compliance_failed` | Częściowa kontrola (Błędy) | Użytkownik pominął pytania, a w sprawdzonych znaleziono błędy. |
-| `no_assessment` | Brak Oceny | Użytkownik nie wypełnił żadnego pola w arkuszu. |
-| `all_inapplicable` | Brak Zastosowania (Pełny) | Oceniono wszystkie kryteria jako "Nie dotyczy". |
-| `all_inapplicable_partial` | Brak Zastosowania (Częściowy) | Te kryteria, które sprawdzono, oceniono jako "Nie dotyczy", ale nie sprawdzono wszystkiego. |
-Możesz dowolnie edytować pola `description` w tym pliku, używając zmiennej `{productName}`, która zostanie podmieniona na nazwę wpisaną przez użytkownika.
+**Formatowanie**: Aplikacja obsługuje podstawowe znaczniki składni Markdown w polach procedur i checklist. [Więcej o Markdown](https://mmcschool.pl/frontend/markdown-kompletny-poradnik-dla-poczatkujacych/9348/)
+
+**Zapisywanie wyników pracy**
+
+Edycja/utworzenie każdej klauzuli, wpisu mapowania, wpisu podsumowania i wpisu słownika musi być zatwierdzona przyciskiem zapisywania zmian. 
+
+Aby używać nowych zapisów w module do kontroli, należy pobrać nowe pliki JSON (ikona w prawej części górnego menu). Pobrane pliki będą miały nazwy: clauses-modified, mapping-modified, glossary-modified i summaries-modified. Przed ich użyciem w aplikacji należy usunąć suffix "-modified" a następnie podmienić nimi pliki w folderze clauses_json. 
+
+**Dobra praktyka**: przed podmianą plików dobrze jest zarchiwizować ich poprzednią wersję. 
+
+Po ponownym załadowaniu modułu kontroli, będzie on korzystał z nowych plików. 
+
+##### Wpis klauzuli technicznej
+
+Wpis zawiera następujące informacje:
+
+**Identyfikator wpisu** - powinien zostać stworzony w oparciu o miejsce klauzuli w zapisach normy, np. C.9.1.1.1 - Norma EN (Rozdział 9.1.1.1)
+
+**Tytuł klauzuli** - krótki tytuł pozwalający zrozumieć czego dotyczy klauzula. 
+
+###### Informacje będące dosłownym cytowaniem zapisów normy
+
+**Metoda oceny (Evaluation)**
+Krótka informacja o tym, jak ocenia się spełnianie warunków klauzuli. Np. *Inspekcja i testy technologii asystujących*
+
+**Wymagania wstępne (Preconditions)**
+Miejsce do opisania wymagań, które muszą być spełnione, by ocena zgodności z zapisami klauzuli miała sens.
+
+**Procedura badania (Procedure)**
+Kroki procedury badania
+
+**Kryteria sukcesu (Logic)**
+Składające się z dwóch powiązanych pól:
+- Wynik (Wartość) (np. Zaliczone)
+- Warunek / Kryterium wyboru (na jakiej zasadzie powinien zostać wybrany ten wynik. Np. Kryterium 5: prawda)
+
+###### Informacje dodatkowe
+**Jak sprawdzić?**
+Opis pomagający osobie kontrolującej dokonać oceny zgodności z klauzulą
+
+**Dodatkowe uwagi / Wyjątki (Notes)**
+Miejsce na dopisanie dodatkowych uwag, wyjątków itp. 
+
+##### Wpis klauzuli prawnej
+
+**Identyfikator wpisu** - powinien zostać stworzony w oparciu o miejsce klauzuli w przepisach prawnych, np. U.7.1.1.a (czyli Art. 7 ust. 1 pkt 1 lit. a)
+
+**Tytuł klauzuli** - krótki tytuł pozwalający zrozumieć czego dotyczy klauzula. (np. U.7.1.1.a Więcej niż jeden zmysł (kanał sensoryczny))
+
+**Metoda oceny (Evaluation)**
+Krótka informacja o tym, jak ocenia się spełnianie warunków klauzuli. Np. *Inspekcja i testy technologii asystujących*
+
+**Wymagania wstępne (Preconditions)**
+Miejsce do opisania wymagań, które muszą być spełnione, by ocena zgodności z zapisami klauzuli miała sens.
+
+**Jak to rozumieć**
+Interpretacja przepisów prawa wyjaśniająca jakie mają one przeniesienie na rzeczywistość produktów i usług.
+
+**Jak sprawdzić?**
+Opis pomagający osobie kontrolującej dokonać oceny zgodności z klauzulą
+
+**Dodatkowe uwagi / Wyjątki (Notes)**
+Miejsce na dopisanie dodatkowych uwag, wyjątków itp. 
+
+#### 2. Zakładka Mapowanie (Konfiguracja relacji pomiędzy przepisami prawa, produktami/usługami i klauzulami technicznymi)
+
+W tej zakładce można zdefiniować relacje pomiędzy elemantami systemu oraz zarządzać profilami produktów/usług.
+
+Po wczytaniu domyślnego pliku z mapowaniem, lub pliku z dysku można dodać nowy wpis lub edytować istniejące. 
+
+Podobnie, jak w sekcji Klauzul, można zmieniać kolejność wpisów. Tutaj jednak będzie ona miała wpływ na kolejność ich pojawiania się na arkuszu kontrolnym. 
+
+Przycisk zarządzania produktami pozwala na edycję listy zdefiniowanych profilów produktów/usług. A przycisk **Dodaj nowe mapowanie** pozwala na utworzenie nowego wpisu z mapowaniem przepisu prawnego
+
+##### Wpis produktu/usługi
+
+Każdy wpis składa się z kolejnego id (nadawanego automatycznie) - np. p13, oraz wpisywanej ręcznie nazwy, np. Terminale płatnicze w fizycznych punktach sprzedaży.
+
+##### Wpis mapowania przepisu ustawy
+
+Każdy wpis mapowania zawiera następujące informacje:
+**Identyfikator** - powinien on odzwierciedlać położenie przepisu w ustawie, np. A07-04-01-a-01 - Format: Art-Ust-Pkt-Lit-Tiret
+
+**Dobra praktyka** - jest to ten sam format, co w wypadku klauzul prawnych (U.). Jedyna różnica to litera A zamiast U na początku identyfikatora. Dlatego warto zadbać o odpowiednie nadawanie id, by łatwiej wiązać ze sobą klauzule i zapisy prawne.
+
+**Identyfikator Klauzuli Ustawowej (U.*)** - pole pozwalające na wpisanie powiazanej z przepisem ustawy klauzuli prawnej. MOżna też wybrać ją z listy. Z danym przepisem ustawy może być powiązana jedna klauzula prawna.
+
+**Artykuł** - Opis położenia przepisu w akcie prawnym, np. Art. 7 ust. 1 pkt 1 lit. a.
+
+**Kategoria** - krótki opis kategorii (zazwyczaj artykułu) w której znajduje się ten przepis. Kategoria jest też elementem grupującym wpisy w przeglądarce wymagań. Np. Informacje o produkcie (Art. 7)
+
+**Wymaganie (treść)** - dosłowna treść przepisu z aktu prawnego. Np. Instrukcje, etykiety i ostrzeżenia dotyczące użytkowania produktu, które zostały zamieszczone w lub na produkcie są udostępniane za pomocą więcej niż jednego kanału sensorycznego
+
+**Powiązane produkty i klauzule techniczne** - lista zdefiniowanych produktów/usług. Aby powiązać je z danym przepisem wystarczy zaznaczyć pole wyboru **Dotyczy**. Dzięki temu dany przepis i jego klauzula prawna będą pojawiała się jako wymaganie na arkuszy kontroli tego przepisu. 
+
+Pole **Kody techniczne C** pozwala na powiązanie z konkretnym pruktem/usługą klauzul technicznych z aneksu C normy EN 301 549. Można je dodawać ręcznie, albo poprzez listę wywoływaną przyciskiem **Wybierz kody**.
+
+#### 3. Zakładka Podsumowania
+
+Służy do definiowania opisów wykorzystywanych w generowaniu raportu z kontroli. 
+
+##### Szablony
+
+Szablony podsumowań to predefiniowane struktury tekstowe, które automatycznie dopasowują się do wyników audytu. Są wybierane na podstawie analizy ocenionych kryteriów (spełnione/nie spełnione/nie dotyczy). Każdy szablon odpowiada innemu scenariuszowi wyników kontroli.
+
+- **ZGODNY (Pełny zakres - wszystkie klauzule OK)**: Produkt/usługa spełnia wszystkie wymagania ustawowe w pełnym zakresie i wszystkie wymagania zostały sprawdzone.
+**NIEZGODNY (Pełny zakres - błędy w klauzulach)**: Produkt/usługa nie spełnia wymagań ustawowych, zidentyfikowano błędy wymagające naprawy. Wszystkie wymagania zostały sprawdzone.
+**ZGODNY W ZAKRESIE (Częściowy zakres - sprawdzone OK)**: W sprawdzonym zakresie nie ma uchybień, ale kontrola nie była pełna.
+**NIEZGODNY (Częściowy zakres - błędy w sprawdzonych)**: Nawet w częściowej kontroli wykryto niezgodności.
+**BŁĄD: BRAK OCEN (Nie wypełniono arkusza)**: Brak jakichkolwiek ocen kryteriów - błąd generowania podsumowania.
+**BRAK WYMAGAŃ (Wszystkie klauzule: Nie dotyczy)**: Wszystkie wymagania zostały ocenione jako "Nie dotyczy"
+**BRAK WYMAGAŃ (Częściowy zakres: Wszystkie "Nie dotyczy")**: W sprawdzonym zakresie brak zastosowania wymagań. Nie wszystkie wymagania zostały sprawdzone.
+
+##### Możliwe do edycji pola w szablonach
+Część pól jest właściwa dla danego typu szablonu.
+
+- **Tytuł dokumentu**: Tytuł podsumowania (np. "Podsumowanie kontroli dostępności"). Pojawia się na początku i w nazwie generowanego dokumentu.
+- **Opis / Treść główna**: Główny opis podsumowania. Zawiera tekst wyjaśniający wyniki audytu, z placeholderem {productName} (zastępowanym nazwą audytowanego produktu/usługi). To kluczowa część dokumentu, opisująca wnioski z kontroli.
+- **Etykiety sekcji (Teksty nagłówków list w raporcie)**: Etykiety sekcji w raporcie. Sekcje te opisują kategorie wyników w raporcie (np. lista niezgodności, spełnionych kryteriów itp.).
+- **Metadane (Etykiety danych dodatkowych)** (opcjonalne): Słownik z etykietami i wartościami domyślnymi (np. "Data zakończenia kontroli", "Zakres kontroli"). Używane do dodania informacji kontekstowych, takich jak data czy zakres kontroli.
+
+#### 4. Zakładka Słownik
+
+Pozwala na edycję/dodawanie definicji terminów technicznych i prawnych dostępnych w module kontroli pod ikoną pomocy.
+
+---
+
+## 🔐 Ochrona danych i stabilność pracy
+
+*   **Powiadomienia o zmianach**: System blokuje nawigację w przypadku wykrycia niezapisanych modyfikacji w formularzu.
+*   **Przetwarzanie lokalne**: Dane nie są przesyłane do systemów zewnętrznych; cała logika i zapisywanie stanu odbywa się w pamięci lokalnej przeglądarki użytkownika.
+*   **Tryb offline**: Dzięki Service Workers aplikacja pozostaje w pełni funkcjonalna bez połączenia sieciowego.
+
+---
+
+## 📂 Struktura Danych (JSON)
+
+Pliki w katalogu `clauses_json/` definiują logikę systemu:
+*   `clauses.json`: Definicje klauzul i procedur testowych.
+*   `mapping.json`: Macierz powiązań Artykuł <-> Produkt <-> Wytyczne techniczne.
+*   `glossary.json`: Definicje słownikowe.
+*   `summaries.json`: Szablony podsumowań dla raportów.
 
 ---
 
 ## 📚 Biblioteki Zewnętrzne i Licencje
 
-Projekt wykorzystuje sprawdzone rozwiązania open-source. Wszystkie biblioteki znajdują się w repozytorium (brak konieczności `npm install`).
-
 | Biblioteka | Plik | Licencja | Zastosowanie |
 |------------|------|----------|--------------|
-| **Pico.css** | `css/pico.min.css` | MIT | Lekki framework CSS odpowiadający za wygląd interfejsu (tryb ciemny/jasny). |
-| **ExcelJS** | `js/exceljs.min.js` | MIT | Generowanie raportów w formacie .xlsx (Excel) bezpośrednio w przeglądarce. |
-| **JSZip** | `js/jszip.min.js` | MIT/GPLv3 | Pakowanie plików, używane przez eksporter plików .odt. |
-| **Lucide** | `js/lucide.min.js` | ISC | Zestaw ikon wektorowych (SVG). |
+| **Pico.css** | `css/pico.min.css` | MIT | Struktura wizualna i system styli (RWD). |
+| **ExcelJS** | `js/exceljs.min.js` | MIT | Generowanie arkuszy kalkulacyjnych .xlsx. |
+| **JSZip** | `js/jszip.min.js` | MIT/GPLv3 | Obsługa kompresji dla formatu .odt. |
+| **Lucide** | `js/lucide.min.js` | ISC | System ikon wektorowych. |
 
-**Uwaga prawna**: Przed komercyjnym użyciem, zaleca się weryfikację aktualnych licencji w nagłówkach plików źródłowych.
+---
+
+© 2026 KZ-PAD Project. Rozwiązanie oparte na otwartoźródłowych technologiach webowych.
