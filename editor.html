@@ -5,132 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edytor Bazy Danych - KZ-PAD</title>
     <link rel="stylesheet" href="css/pico.min.css">
-    <link rel="stylesheet" href="css/wizard.css">
-    <style>
-        :root {
-            --editor-sidebar-width: 300px;
-        }
-        .editor-container {
-            display: flex;
-            gap: 20px;
-            height: calc(100vh - 250px);
-            min-height: 500px;
-        }
-        .editor-sidebar {
-            width: var(--editor-sidebar-width);
-            overflow-y: auto;
-            border-right: 1px solid var(--muted-border-color);
-            padding-right: 15px;
-        }
-        .editor-main {
-            flex: 1;
-            overflow-y: auto;
-            padding-left: 5px;
-        }
-        .list-item {
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 4px;
-            margin-bottom: 4px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .list-item:hover {
-            background: var(--secondary-hover);
-        }
-        .list-item.active {
-            background: var(--primary);
-            color: var(--primary-inverse);
-        }
-        .sticky-controls {
-            position: sticky;
-            top: 0;
-            background: var(--background-color);
-            padding: 10px 0;
-            z-index: 10;
-            border-bottom: 1px solid var(--muted-border-color);
-            margin-bottom: 20px;
-        }
-        .field-group {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            border: 1px solid var(--muted-border-color);
-            border-radius: 8px;
-        }
-        .array-item {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-        .array-item input, .array-item textarea {
-            margin-bottom: 0;
-        }
-        .editor-nav {
-            margin-bottom: 2rem;
-        }
-        .hidden { display: none !important; }
-        
-        kbd { font-size: 0.7rem; }
-    </style>
+    <link rel="stylesheet" href="css/editor.css">
 </head>
 <body>
-    <header class="container">
-        <hgroup>
-            <h1>Edytor JSON KZ-PAD</h1>
-            <p>Narzędzie do zarządzania bazą klauzul, mapowań i szablonów podsumowań.</p>
-        </hgroup>
-        
-        <nav class="editor-nav">
-            <ul id="file-type-selector">
-                <li><button class="secondary" data-type="clauses"><i data-lucide="book-open" style="width:18px; margin-right:8px;"></i> Klauzule</button></li>
-                <li><button class="secondary outline" data-type="mapping"><i data-lucide="map" style="width:18px; margin-right:8px;"></i> Mapowania</button></li>
-                <li><button class="secondary outline" data-type="summaries"><i data-lucide="file-text" style="width:18px; margin-right:8px;"></i> Podsumowania</button></li>
-            </ul>
+    <header class="app-header">
+        <a href="#main-content" class="skip-link" aria-label="Pomiń nawigację do treści głównej">Pomiń nawigację</a>
+        <div id="toast-container"></div>
+        <div class="header-content">
+            <a href="editor.html" id="app-logo" class="header-icon-container" aria-label="Edytor KZ-PAD">
+                <img src="img/eaa.svg" class="app-logo-svg" alt="" aria-hidden="true" />
+            </a>
+            <div>
+                <strong class="header-title">Edytor KZ-PAD</strong>
+                <div class="muted" style="font-size:0.85rem">Zarządzanie bazą klauzul i mapowań</div>
+            </div>
+        </div>
+
+        <nav class="header-actions" aria-label="Menu edytora">
+            <button id="btn-download-json-nav" class="outline secondary icon-btn" aria-label="Pobierz JSON" title="Pobierz JSON">
+                <i data-lucide="download-cloud" aria-hidden="true"></i>
+            </button>
+
+            <button id="btn-theme-toggle" class="outline secondary icon-btn theme-toggle" aria-label="Zmień motyw" title="Zmień motyw">
+                <i id="theme-icon" data-lucide="moon" aria-hidden="true"></i>
+            </button>
         </nav>
     </header>
 
     <main class="container">
-        <!-- Sekcja ładowania plików -->
-        <section id="loader-section">
-            <div class="grid">
-                <article>
-                    <h5>Załaduj domyślne z serwera</h5>
-                    <p><small>Wczytaj pliki aktualnie używane przez aplikację w tej domenie.</small></p>
-                    <button id="btn-load-defaults" class="contrast">Wczytaj domyślne</button>
-                </article>
-                <article>
-                    <h5>Wczytaj własny plik</h5>
-                    <p><small>Wczytaj plik JSON z dysku lokalnego, aby go edytować.</small></p>
-                    <input type="file" id="file-input" accept=".json">
-                </article>
+        <!-- Wybierz kategorię do edycji (hero-style) -->
+        <header style="margin-bottom:1rem; text-align:center;">
+            <h1 style="margin-bottom:0.75rem;">Wybierz kategorię do edycji</h1>
+            <p class="muted" style="margin-top:0; margin-bottom:0.5rem;">Najpierw wybierz typ danych, potem wczytaj plik i przejdź do edycji.</p>
+        </header>
+
+        <nav class="editor-nav" id="file-type-selector" style="margin-bottom:1rem;">
+            <ul class="editor-hero-grid" role="list">
+                <li>
+                    <button class="hero-card" data-type="clauses" aria-pressed="false">
+                        <span class="hero-card-icon" aria-hidden="true"><i data-lucide="book-open"></i></span>
+                        <span class="hero-card-content"><p class="hero-card-title">Klauzule</p><p class="hero-card-desc muted">Edytuj bazę klauzul</p></span>
+                    </button>
+                </li>
+
+                <li>
+                    <button class="hero-card" data-type="mapping" aria-pressed="false">
+                        <span class="hero-card-icon" aria-hidden="true"><i data-lucide="map"></i></span>
+                        <span class="hero-card-content"><p class="hero-card-title">Mapowania</p><p class="hero-card-desc muted">Przypisz klauzule do produktów</p></span>
+                    </button>
+                </li>
+
+                <li>
+                    <button class="hero-card" data-type="summaries" aria-pressed="false">
+                        <span class="hero-card-icon" aria-hidden="true"><i data-lucide="file-text"></i></span>
+                        <span class="hero-card-content"><p class="hero-card-title">Podsumowania</p><p class="hero-card-desc muted">Szablony podsumowań</p></span>
+                    </button>
+                </li>
+
+                <li>
+                    <button class="hero-card" data-type="glossary" aria-pressed="false">
+                        <span class="hero-card-icon" aria-hidden="true"><i data-lucide="book"></i></span>
+                        <span class="hero-card-content"><p class="hero-card-title">Słownik</p><p class="hero-card-desc muted">Definicje i pojęcia</p></span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Sekcja ładowania plików (pokazywana po wybraniu typu) - kompaktowy widok -->
+        <section id="loader-section" class="hidden" aria-labelledby="loader-title">
+            <h2 id="loader-title" class="loader-title" tabindex="-1">Wczytaj pliki</h2>
+            <div class="loader-compact">
+                <div class="loader-card">
+                    <div class="loader-icon"><i data-lucide="download-cloud" aria-hidden="true"></i></div>
+                    <div class="loader-body">
+                        <div class="loader-title">Załaduj domyślne</div>
+                        <div class="loader-desc"><small>Użyj plików z repozytorium aplikacji</small></div>
+                    </div>
+                    <div class="loader-action">
+                        <button id="btn-load-defaults" class="primary small">Wczytaj</button>
+                    </div>
+                </div>
+
+                <div class="loader-card">
+                    <div class="loader-icon"><i data-lucide="upload-cloud" aria-hidden="true"></i></div>
+                    <div class="loader-body">
+                        <div class="loader-title">Wczytaj plik</div>
+                        <div class="loader-desc"><small>Załaduj lokalny plik JSON</small></div>
+                    </div>
+                    <div class="loader-action">
+                        <input type="file" id="file-input" accept=".json" style="display:none">
+                        <label for="file-input" class="primary small" role="button">Wybierz plik</label>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Obszar edycji (ukryty do czasu załadowania danych) -->
-        <section id="editor-workspace" class="hidden">
+        <div class="editor-title-container hidden">
+            <h2 id="editor-title" class="editor-title" style="margin-top: 1.5rem; margin-bottom: 0;" tabindex="-1">
+                Edycja: <span id="editor-category-name">(brak)</span>
+            </h2>
+        </div>
+        <div id="editor-secondary-actions" class="hidden" style="margin-bottom: 1.5rem;">
+            <button id="btn-show-loader" class="primary outline small" style="width: auto;">Wczytaj inny plik</button>
+        </div>
+        <section id="editor-workspace" class="hidden" aria-labelledby="editor-title">
+
             <div class="sticky-controls">
-                <div class="grid">
-                    <div>
-                        <mark id="current-file-info">Plik: niezaładowany</mark>
-                    </div>
-                    <div style="text-align: right;">
-                        <button id="btn-export-json" class="primary">Pobierz gotowy plik JSON</button>
-                    </div>
-                </div>
             </div>
 
             <div class="editor-container">
                 <aside class="editor-sidebar">
-                    <button id="btn-add-new" class="outline contrast" style="margin-bottom: 1rem; width: 100%;">+ Dodaj nowy wpis</button>
-                    <input type="search" id="sidebar-search" placeholder="Szukaj...">
-                    <div id="items-list">
-                        <!-- Lista elementów (klauzul/artykułów) -->
-                    </div>
                 </aside>
                 
                 <div class="editor-main">
+                    <div id="quick-filters" class="hidden">
+                        <button class="outline secondary small filter-btn" data-prefix="C." onclick="setPrefixFilter('C.')">EN 301 549 (C.)</button>
+                        <button class="outline secondary small filter-btn" data-prefix="U." onclick="setPrefixFilter('U.')">Ustawa (U.)</button>
+                        <button class="outline secondary small filter-btn active" data-prefix="" onclick="setPrefixFilter('')">Wszystkie</button>
+                    </div>
+                    <div id="special-actions" style="margin-bottom: 0.5rem;"></div>
+                    <input type="search" id="sidebar-search" placeholder="Szukaj...">
+                    <button id="btn-add-new" class="primary small" style="margin-top: 0.5rem; margin-bottom: 1rem; width: auto;">+ Dodaj nowy wpis</button>
+                    <div id="items-list">
+                        <!-- Lista elementów (klauzul/artykułów) -->
+                    </div>
                     <div id="form-container">
                         <p class="secondary">Wybierz element z listy po lewej, aby rozpocząć edycję.</p>
                     </div>
@@ -139,10 +138,54 @@
         </section>
     </main>
 
-    <footer class="container">
+    <footer class="container" style="text-align: center; margin-top: 2rem; padding-bottom: 2rem;">
         <hr>
-        <p><small>Zapisywanie zmian odbywa się tylko w pamięci przeglądarki. Aby zapisać plik na stałe, użyj przycisku "Pobierania" i podmień plik w folderze <code>clauses_json/</code>.</small></p>
+        <p class="muted" style="font-size: 0.85rem;">&copy; 2026 KZ-PAD Editor. Narzędzie do zarządzania bazą danych treści.</p>
     </footer>
+
+    <!-- Modal for adding new item -->
+    <dialog id="modal-add-item" aria-labelledby="modal-add-title">
+        <article>
+            <header>
+                <a href="#close" aria-label="Zamknij" class="close" onclick="closeAddItemModal()"></a>
+                <h2 id="modal-add-title">Dodaj nowy element</h2>
+            </header>
+            <div>
+                <p>Podaj identyfikator nowego elementu. Rekomendowane formaty:</p>
+                <ul style="font-size: 0.85rem; margin-bottom: 1rem;">
+                    <li><strong>U.7.1.2.a-01</strong> - Ustawa (Art. 7 ust. 1 pkt 2 lit. a tiret 1)</li>
+                    <li><strong>C.9.1.1.1</strong> - Norma EN (Rozdział 9.1.1.1)</li>
+                    <li><strong>A22-00-1-4</strong> - Art 22 i sekcje specjalne</li>
+                </ul>
+                <div class="field-group">
+                    <label for="new-item-id">Identyfikator (ID)</label>
+                    <input type="text" id="new-item-id" placeholder="np. C.9.2.1.1" oninput="updateIdSuggestions()">
+                </div>
+                <div id="id-suggestions" style="min-height: 1.5rem; margin-top: -0.5rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--primary);">
+                    <!-- Sugestie pojawią się tutaj -->
+                </div>
+            </div>
+            <footer>
+                <button class="secondary outline" onclick="closeAddItemModal()">Anuluj</button>
+                <button id="btn-confirm-add" onclick="confirmAddItem()">Dodaj element</button>
+            </footer>
+        </article>
+    </dialog>
+
+    <!-- Modal for generic confirmation -->
+    <dialog id="modal-confirm">
+        <article>
+            <header>
+                <a href="#close" aria-label="Anuluj" class="close" onclick="closeConfirmModal(false)"></a>
+                <h2 id="modal-confirm-title">Potwierdzenie</h2>
+            </header>
+            <p id="modal-confirm-message">Czy na pewno chcesz wykonać tę akcję?</p>
+            <footer>
+                <button class="secondary outline" onclick="closeConfirmModal(false)">Anuluj</button>
+                <button id="modal-confirm-btn" class="primary" onclick="closeConfirmModal(true)">Potwierdź</button>
+            </footer>
+        </article>
+    </dialog>
 
     <script src="js/lucide.min.js"></script>
     <script src="js/editor.js"></script>

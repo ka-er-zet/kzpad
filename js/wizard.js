@@ -27,8 +27,22 @@ function showToast(message, type = 'success', duration = 5000) {
         return;
     }
 
+    // Check if this exact message is already being displayed
+    const existingToasts = container.querySelectorAll('.toast-content');
+    for (const t of existingToasts) {
+        if (t.textContent === message) {
+            // Pulse the existing toast
+            const parent = t.closest('.toast');
+            parent.style.animation = 'none';
+            parent.offsetHeight; /* trigger reflow */
+            parent.style.animation = 'pulse 0.3s ease-in-out';
+            return;
+        }
+    }
+
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
+    toast.setAttribute('role', 'none');
 
     // 1. Create a hidden element ONLY for the automatic announcement (Live Region)
     const announcement = document.createElement('div');
@@ -159,6 +173,35 @@ async function init() {
         
         matrixData = mapping.matrix;
         productDictionary = mapping.products;
+
+        // Store original index to preserve JSON order within the same article/category groups
+        if (Array.isArray(matrixData)) {
+            matrixData.forEach((item, index) => {
+                item._originalIndex = index;
+            });
+
+            matrixData.sort((a, b) => {
+                const isArt19A = (a.article || "").includes("Art. 19");
+                const isArt19B = (b.article || "").includes("Art. 19");
+                
+                if (isArt19A && !isArt19B) return 1;  // A after B
+                if (!isArt19A && isArt19B) return -1; // A before B
+                
+                // First try to sort by category (using any article numbers found in them)
+                const artA = (a.category || "").match(/Art\.\s*(\d+)/);
+                const artB = (b.category || "").match(/Art\.\s*(\d+)/);
+                
+                if (artA && artB) {
+                    const numA = parseInt(artA[1], 10);
+                    const numB = parseInt(artB[1], 10);
+                    if (numA !== numB) return numA - numB;
+                }
+                
+                // If same category or no art in category, fallback to original JSON order
+                // to avoid issues with alphabetical sorting of words like "pierwsze" vs "drugie"
+                return (a._originalIndex || 0) - (b._originalIndex || 0);
+            });
+        }
 
         populateRadioList();
         // Button is always enabled to allow validation feedback
@@ -370,8 +413,13 @@ const Browser = {
 
         let categories = [];
         if (this.view === 'legal') {
-            // Po prostu bierzemy kategorie z mapping.json
-            const uniqueCats = [...new Set(matrixData.map(item => item.category))].filter(Boolean);
+            // Kategorie ustawowe wyświetlamy w kolejności numerycznej (sortowanie odbywa się globalnie w init())
+            const uniqueCats = [];
+            matrixData.forEach(item => {
+                if (item.category && !uniqueCats.includes(item.category)) {
+                    uniqueCats.push(item.category);
+                }
+            });
             categories = uniqueCats.map(cat => ({ id: cat, name: cat, type: 'legal' }));
         } else {
             // Rozdziały normy EN — dynamicznie z `clauses.json` (dictionaryData)
@@ -383,12 +431,7 @@ const Browser = {
                 chapterSet.add(chapter);
             });
 
-            const chapters = Array.from(chapterSet).sort((a,b) => {
-                // sort numerically by the part after 'C.' (works for C.5, C.10, C.11 etc.)
-                const numa = parseInt(a.split('.')[1] || 0, 10);
-                const numb = parseInt(b.split('.')[1] || 0, 10);
-                return numa - numb;
-            });
+            const chapters = Array.from(chapterSet).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
             chapters.forEach(id => {
                 categories.push({ id, name: `${id} ${chapterNames[id] || ''}`.trim(), type: 'technical' });
@@ -422,14 +465,10 @@ const Browser = {
     },
 
     transformLegalRequirement(m) {
-        // Szukamy kodu U.* w product_mappings (agregacja wszystkich wartości, aby znaleźć definicję prawną)
-        let uId = null;
-        if (m.product_mappings) {
-            const pmVals = Object.values(m.product_mappings).join(';').split(';').map(s => s.trim()).filter(Boolean);
-            uId = pmVals.find(id => id.startsWith('U.'));
-        }
+        // Główny kod klauzuli prawnej przypisany do artykułu
+        const uId = m.legal_id;
 
-        const dictEntry = uId ? dictionaryData[uId] : null;
+        const dictEntry = (uId ? dictionaryData[uId] : null) || (m.id ? dictionaryData[m.id] : null);
 
         return {
             id: dictEntry?.id || uId || m.id || m.article,
@@ -437,6 +476,9 @@ const Browser = {
             procedure: dictEntry?.procedure || [],
             checklist: dictEntry?.checklist || [],
             evaluation: dictEntry?.evaluation || '',
+            preconditions: dictEntry?.preconditions || [],
+            form: dictEntry?.form || null,
+            notes: dictEntry?.notes || [],
 
             // info dla createRequirementCard (wyświetlany numer artykułu i tytuł z mappingu)
             overrideId: m.article || (dictEntry && dictEntry.id) || (uId || m.id),
@@ -485,7 +527,7 @@ const Browser = {
         // Filter dictionary by category
         let reqs = [];
         if (this.view === 'legal') {
-            // Budujemy listę bezpośrednio z mapping.json — mapping jest źródłem prawdy.
+            // Budujemy listę bezpośrednio z matrixData (posortowanej numerycznie po artykułach w init())
             const matrixItems = matrixData.filter(m => m.category === this.currentCategory);
             reqs = matrixItems.map(m => this.transformLegalRequirement(m));
         } else {
@@ -507,18 +549,25 @@ const Browser = {
                 });
             });
 
-            const allCodes = Array.from(new Set([...dictCodes, ...mappingCodes])).filter(Boolean).sort();
+            const allCodes = Array.from(new Set([...dictCodes, ...mappingCodes]))
+                .filter(Boolean)
+                .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
-            reqs = allCodes.map(code => {
-                const dictEntry = dictionaryData[code] || {};
-                return {
-                    id: dictEntry.id || code,
-                    title: dictEntry.title || code,
-                    procedure: dictEntry.procedure || [],
-                    checklist: dictEntry.checklist || [],
-                    evaluation: dictEntry.evaluation || ''
-                };
-            });
+            reqs = allCodes
+                .filter(code => dictionaryData[code]) // Filtrujemy kody, których nie ma w słowniku (np. nagłówki sekcji z mapping.json)
+                .map(code => {
+                    const dictEntry = dictionaryData[code];
+                    return {
+                        id: dictEntry.id || code,
+                        title: dictEntry.title || code,
+                        procedure: dictEntry.procedure || [],
+                        checklist: dictEntry.checklist || [],
+                        evaluation: dictEntry.evaluation || '',
+                        preconditions: dictEntry.preconditions || [],
+                        form: dictEntry.form || null,
+                        notes: dictEntry.notes || []
+                    };
+                });
         }
 
         reqs.forEach(req => {
@@ -538,6 +587,34 @@ const Browser = {
         const div = document.createElement('div');
         div.className = 'browser-card';
         
+        // Helper function for rendering elements with standard utilities
+        const clean = (text) => {
+            if (!text) return '';
+            let t = text;
+            if (W.stripNumbering) t = W.stripNumbering(t);
+            if (W.fixOrphans) t = W.fixOrphans(t);
+            // Apply markdown parsing
+            if (window.utils && window.utils.parseMarkdown) {
+                t = window.utils.parseMarkdown(t);
+            }
+            return t;
+        };
+
+        const renderListContent = (arr) => {
+            if (!arr || arr.length === 0) return '';
+            
+            // Join with newlines to allow parseMarkdown to detect blocks/lists
+            let content = arr.join('\n');
+            if (W.fixOrphans) content = W.fixOrphans(content);
+            if (W.parseMarkdown) content = W.parseMarkdown(content);
+
+            const trimmed = content.trim();
+            if (trimmed && !trimmed.startsWith('<h') && !trimmed.startsWith('<ul') && !trimmed.startsWith('<ol') && !trimmed.startsWith('<p')) {
+                return `<p>${content}</p>`;
+            }
+            return content;
+        };
+
         // Formating ID for legal/technical display
         let displayId = req.overrideId || req.id;
         
@@ -567,18 +644,68 @@ const Browser = {
         if (req.evaluation) labelsHtml += `<span class="browser-label">Metoda: ${req.evaluation}</span>`;
         if (req.id && req.id.includes('9.')) labelsHtml += `<span class="browser-label">WCAG</span>`;
 
+        // Preconditions
+        let preconditionsHtml = '';
+        if (req.preconditions && req.preconditions.length > 0) {
+            preconditionsHtml = `
+                <div class="interpretation-area">
+                    <h4 class="u-interpretation-header">Warunki wstępne</h4>
+                    <section class="u-interpretation">
+                        ${renderListContent(req.preconditions)}
+                    </section>
+                </div>
+            `;
+        }
+
         // Procedure
-        const procedureHtml = (req.procedure || []).map(p => `<li>${p}</li>`).join('');
+        let procedureHtml = '';
+        if (req.procedure && req.procedure.length > 0) {
+            // Label "Jak to rozumieć?" dla wszystkich treści prawnych (U. oraz A.)
+            const isLegal = req.id.startsWith('U.') || req.id.startsWith('A') || (req.overrideId && req.overrideId.includes('Art'));
+            const procedureLabel = isLegal ? 'Jak to rozumieć?' : 'Procedura badania:';
+            procedureHtml = `
+                <div class="interpretation-area">
+                    <h4 class="u-interpretation-header">${procedureLabel}</h4>
+                    <section class="u-interpretation">
+                        ${renderListContent(req.procedure)}
+                    </section>
+                </div>
+            `;
+        }
         
+        // Criteria
+        let criteriaHtml = '';
+        if (req.form && req.form.inputs) {
+            criteriaHtml = `
+                <div class="browser-criteria" style="margin-top: 1rem; padding: 0.75rem; background: rgba(0,0,0,0.03); border: 1px solid var(--muted-border-color); border-radius: 4px;">
+                    <strong style="display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--primary);">Kryteria sukcesu:</strong>
+                    ${req.form.inputs.map(i => `<p style="margin-bottom: 0.25rem; font-size: 0.85rem;"><strong>${i.value.toUpperCase()}:</strong> ${clean(i.label)}</p>`).join('')}
+                </div>
+            `;
+        }
+
         // Checklist
         let checklistHtml = '';
         if (req.checklist && req.checklist.length > 0) {
             checklistHtml = `
-                <div class="browser-checklist" style="margin-top: 1.5rem; border-top: 1px dashed var(--muted-border-color); padding-top: 1rem;">
-                    <strong style="display: block; margin-bottom: 0.5rem;">Czego szukać:</strong>
-                    <ul>
-                        ${req.checklist.map(c => `<li>${c}</li>`).join('')}
-                    </ul>
+                <div class="interpretation-area">
+                    <h4 class="u-interpretation-header">Jak sprawdzić?</h4>
+                    <div class="detailed-checklist-container">
+                        ${renderListContent(req.checklist)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Notes
+        let notesHtml = '';
+        if (req.notes && req.notes.length > 0) {
+            notesHtml = `
+                <div class="interpretation-area">
+                    <h4 class="u-interpretation-header">Uwagi</h4>
+                    <section class="u-interpretation">
+                        ${renderListContent(req.notes)}
+                    </section>
                 </div>
             `;
         }
@@ -600,10 +727,11 @@ const Browser = {
                 </div>
             </div>
             <div class="browser-card-body">
-                <ul class="procedure-list">
-                    ${procedureHtml}
-                </ul>
+                ${preconditionsHtml}
+                ${procedureHtml}
+                ${criteriaHtml}
                 ${checklistHtml}
+                ${notesHtml}
             </div>
         `;
 
@@ -635,7 +763,7 @@ const Browser = {
             // Uwzględniamy treść artykułu, wymagania oraz kody techniczne przypisane do produktów
             results = matrixData
                 .filter(m => {
-                    let searchContent = (m.article + ' ' + (m.requirement || '') + ' ' + (m.category || '')).toLowerCase();
+                    let searchContent = (m.article + ' ' + (m.requirement || '') + ' ' + (m.category || '') + ' ' + (m.legal_id || '')).toLowerCase();
                     
                     // Dodaj kody techniczne z mapowania, aby można było znaleźć artykuł po kodzie EN
                     if (m.product_mappings) {
@@ -881,7 +1009,11 @@ function generateDescriptiveSummary(isInitial = false) {
                 </div>
 
                 <div class="summary-body">
-                    ${config.description.replace('{productName}', `<strong>${fullProductName}</strong>`)}
+                    ${(() => {
+                        let text = config.description.replace('{productName}', `<strong>${fullProductName}</strong>`);
+                        if (W.parseMarkdown) text = W.parseMarkdown(text);
+                        return text;
+                    })()}
                 </div>
     `;
 
@@ -1986,8 +2118,12 @@ function populateRadioList() {
     // Filter products first to ensure order is consistent
     const entries = Object.entries(productDictionary)
         .filter(([key, name]) => name && name.trim())
-        // Make sure the special "default" product (value "0") is first for debugging convenience
-        .sort(([aKey], [bKey]) => aKey === 'default' ? -1 : (bKey === 'default' ? 1 : 0));
+        // Make sure the special "default" product is first, then sort alphabetically by name
+        .sort((a, b) => {
+            if (a[0] === 'default') return -1;
+            if (b[0] === 'default') return 1;
+            return a[1].localeCompare(b[1], undefined, { numeric: true });
+        });
 
     entries.forEach(([key, name], idx) => {
         // Label acts as the container card for accessibility and click area
@@ -2090,7 +2226,9 @@ document.getElementById('auditForm').onsubmit = (e) => {
         const isProductDefault = selectedProduct === 'default';
         const isArt19 = item.article && item.article.includes('Art. 19');
         
-        if (isProductDefault || (productClausesRaw && productClausesRaw.trim())) {
+        // W nowym modelu productClausesRaw jest null jeśli produkt nie jest przypisany.
+        // Pusty ciąg znaków ("") oznacza przypisanie tylko klauzuli legal_id.
+        if (isProductDefault || productClausesRaw !== null) {
             const cleanCategory = item.category.trim();
             if (cleanCategory !== currentCategory) {
                 const h3 = document.createElement('h3');
@@ -2175,6 +2313,20 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 currentCategory = cleanCategory;
             }
 
+            // Helper for rendering lists locally within this scope
+            const renderBlocksFromDictionary = (arr) => {
+                if (!arr || arr.length === 0) return '';
+                let content = arr.join('\n');
+                if (W.fixOrphans) content = W.fixOrphans(content);
+                if (W.parseMarkdown) content = W.parseMarkdown(content);
+                const trimmed = content.trim();
+                // Ensure wrapped if not already
+                if (trimmed && !trimmed.startsWith('<h') && !trimmed.startsWith('<ul') && !trimmed.startsWith('<ol') && !trimmed.startsWith('<p')) {
+                    return `<p>${content}</p>`;
+                }
+                return content;
+            };
+
             const article = document.createElement('article');
             article.className = 'requirement-row';
             const safeArticleId = item.article.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
@@ -2190,37 +2342,39 @@ document.getElementById('auditForm').onsubmit = (e) => {
             }
 
             const clauses = (productClausesRaw || '').split(';').map(c => c.trim()).filter(c => c);
-            const uIds = [...new Set(clauses.filter(c => c.startsWith('U.')))];
-            const cClauses = clauses.filter(c => c.startsWith('C.'));
+            
+            // Automatycznie dodaj klauzulę prawną z m.legal_id jeśli istnieje
+            if (item.legal_id && !clauses.includes(item.legal_id)) {
+                clauses.unshift(item.legal_id);
+            }
 
-            // Renderowanie wskazówek "Jak to sprawdzić?"
-            const uHtml = uIds.map(id => {
-                const data = dictionaryData[id];
-                if (!data) return '';
+            const legalIds = [...new Set(clauses.filter(c => c.startsWith('U.') || c.startsWith('A')))];
+            const cClauses = clauses.filter(c => c.startsWith('C.') && dictionaryData[c]);
+
+            // Renderowanie "Jak to rozumieć?" (procedury)
+            const procedureHtml = legalIds.map(id => {
+                const data = dictionaryData[id.trim()];
+                if (!data || !data.procedure || data.procedure.length === 0) return '';
+                return renderBlocksFromDictionary(data.procedure);
+            }).join('').trim();
+
+            // Renderowanie "Jak sprawdzić?" (checklisty)
+            const checklistHtml = legalIds.map(id => {
+                const data = dictionaryData[id.trim()];
+                if (!data || !data.checklist || data.checklist.length === 0) return '';
                 
-                let procedures = (data.procedure || []).map(p => 
-                    `<p>${fixOrphans(stripNumbering(p))}</p>`
-                ).join('');
-
-                let checklists = '';
-                if (data.checklist && data.checklist.length > 0) {
-                    checklists = `
-                    <div class="detailed-checklist-container">
-                        ` + data.checklist.map(item => `<p class="checklist-item">${(W.fixOrphans || (s=>s))(item)}</p>`).join('') + `
-                    </div>`;
-                }
-
-                return procedures + checklists;
-            }).join('');
+                return `
+                <div class="detailed-checklist-container">
+                    ${renderBlocksFromDictionary(data.checklist)}
+                </div>`;
+            }).join('').trim();
 
             // Renderowanie warunków wstępnych
-            const preconditionsHtml = uIds.map(id => {
-                const data = dictionaryData[id];
+            const preconditionsHtml = legalIds.map(id => {
+                const data = dictionaryData[id.trim()];
                 if (!data || !data.preconditions || data.preconditions.length === 0) return '';
-                return (data.preconditions || []).map(p => 
-                    `<p>${fixOrphans(stripNumbering(p))}</p>`
-                ).join('');
-            }).join('');
+                return renderBlocksFromDictionary(data.preconditions);
+            }).join('').trim();
 
             const grouped = {};
             cClauses.forEach(c => {
@@ -2236,7 +2390,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 return numA - numB;
             }).map(prefix => `
                 <section class="clause-group">
-                    <h6 class="clause-group-title">${chapterNames[prefix] || prefix}</h6>
+                    <h5 class="clause-group-title">${chapterNames[prefix] || prefix}</h5>
                     ${grouped[prefix].map(c => {
                 const clauseData = (dictionaryData && dictionaryData[c]) ? dictionaryData[c] : null;
                 const clauseTitle = clauseData && clauseData.title ? clauseData.title.replace(/&nbsp;|\u00A0/g, ' ') : '';
@@ -2256,34 +2410,43 @@ document.getElementById('auditForm').onsubmit = (e) => {
                     <span class="sr-only">${expandLegal(item.article)}</span>
                 </h4>
                 
-                <p class="requirement-text">${item.requirement}</p>
+                <p class="requirement-text">${W.parseMarkdown ? W.parseMarkdown(item.requirement) : item.requirement}</p>
                 
                 ${preconditionsHtml ? `
                 <div class="interpretation-area" role="region" aria-labelledby="preconditions-header-${safeArticleId}">
-                    <h5 class="u-interpretation-header" id="preconditions-header-${safeArticleId}">
+                    <h4 class="u-interpretation-header" id="preconditions-header-${safeArticleId}">
                         Warunki wstępne
                         <span class="sr-only"> dla ${expandLegal(item.article)}</span>
-                    </h5>
+                    </h4>
                     <section class="u-interpretation">${preconditionsHtml}</section>
                 </div>` : ''}
                 
-                ${uHtml ? `
-                <div class="interpretation-area" role="region" aria-labelledby="how-to-test-header-${safeArticleId}">
-                    <h5 class="u-interpretation-header" id="how-to-test-header-${safeArticleId}">
-                        Jak można to sprawdzić?
+                ${procedureHtml ? `
+                <div class="interpretation-area" role="region" aria-labelledby="procedure-header-${safeArticleId}">
+                    <h4 class="u-interpretation-header" id="procedure-header-${safeArticleId}">
+                        Jak to rozumieć?
                         <span class="sr-only"> dla ${expandLegal(item.article)}</span>
-                    </h5>
-                    <section class="u-interpretation">${uHtml}</section>
+                    </h4>
+                    <section class="u-interpretation">${procedureHtml}</section>
+                </div>` : ''}
+
+                ${checklistHtml ? `
+                <div class="interpretation-area" role="region" aria-labelledby="how-to-test-header-${safeArticleId}">
+                    <h4 class="u-interpretation-header" id="how-to-test-header-${safeArticleId}">
+                        Jak sprawdzić?
+                        <span class="sr-only"> dla ${expandLegal(item.article)}</span>
+                    </h4>
+                    <section class="u-interpretation">${checklistHtml}</section>
                 </div>` : ''}
 
                 ${cHtml ? `
                 <section class="technical-area" aria-labelledby="technical-header-${safeArticleId}">
                     <details class="technical-details">
                         <summary class="technical-summary" aria-label="Szczegółowe testy techniczne (EN 301 549) dla ${expandLegal(item.article).replace(/\"/g, '&quot;')}">
-                            <h5 class="technical-title" id="technical-header-${safeArticleId}">
+                            <h4 class="technical-title" id="technical-header-${safeArticleId}">
                                 Szczegółowe testy techniczne (EN 301 549)
                                 <span class="sr-only"> dla ${expandLegal(item.article)}</span>
-                            </h5>
+                            </h4>
                         </summary>
                         <section class="technical-section">
                             ${cHtml}
@@ -2362,14 +2525,33 @@ window.showClause = (id, triggerEl = null) => {
     modal.setAttribute('aria-label', 'Szczegóły klauzuli');
 
     if (data) {
-        const renderList = (arr, tag = 'ol') => {
+        const renderListBlocks = (arr) => {
             if (!arr || arr.length === 0) return '<p><i>Brak danych</i></p>';
-            return `<${tag}>${arr.map(item => `<li>${(W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(item))}</li>`).join('')}</${tag}>`;
+
+            // Join items with newlines. This allows parseMarkdown to handle
+            // the entire array as continuous Markdown text, preserving list 
+            // continuity (so it creates one <ol> instead of many separate ones).
+            // We avoid stripNumbering here to preserve intentional "1. " or "11. " markers.
+            let content = arr.join('\n');
+            
+            if (W.fixOrphans) content = W.fixOrphans(content);
+            if (W.parseMarkdown) content = W.parseMarkdown(content);
+
+            // Ensure the result is wrapped in a tag if the parser didn't do it
+            const trimmed = content.trim();
+            if (trimmed && !trimmed.startsWith('<h') && !trimmed.startsWith('<ul') && !trimmed.startsWith('<ol') && !trimmed.startsWith('<p')) {
+                return `<p>${content}</p>`;
+            }
+            return content;
         };
 
         const renderCriteria = (form) => {
             if (!form || !form.inputs) return '<p><i>Brak określonych kryteriów.</i></p>';
-            return form.inputs.map(i => `<p><strong>${i.value.toUpperCase()}:</strong> ${(W.fixOrphans || (s=>s))(i.label)}</p>`).join('');
+            return form.inputs.map(i => {
+                let text = (W.fixOrphans || (s=>s))(i.label);
+                if (W.parseMarkdown) text = W.parseMarkdown(text);
+                return `<p><strong>${i.value.toUpperCase()}:</strong> ${text}</p>`;
+            }).join('');
         };
 
         const cleanTitle = stripNumbering(data.title.replace(/&nbsp;/g, ' '));
@@ -2382,38 +2564,42 @@ window.showClause = (id, triggerEl = null) => {
             </div>
 
             <section>
-                <p class="browser-card-section-title">Warunki wstępne</p>
+                <h4 class="browser-card-section-title">Warunki wstępne</h4>
                 <div class="section-content">
-                    ${renderList(data.preconditions)}
+                    ${renderListBlocks(data.preconditions)}
                 </div>
             </section>
 
             <section>
-                <p class="browser-card-section-title">Procedura</p>
+                <h4 class="browser-card-section-title">${(id.trim().startsWith('U.') || id.trim().startsWith('A')) ? 'Jak to rozumieć?' : 'Procedura'}</h4>
                 <div class="section-content">
-                    ${renderList(data.procedure)}
+                    ${renderListBlocks(data.procedure)}
                 </div>
             </section>
 
             <section class="criteria-section">
-                <p class="browser-card-section-title">Kryteria oceny (${data.evaluation})</p>
+                <h4 class="browser-card-section-title">Kryteria oceny (${data.evaluation})</h4>
                 <div class="section-content">
                     ${renderCriteria(data.form)}
                 </div>
             </section>
 
             <section class="how-to-check-section">
-                <p class="browser-card-section-title">Jak to sprawdzić?</p>
+                <h4 class="browser-card-section-title">Jak to sprawdzić?</h4>
                 <div class="section-content">
-                    ${data.checklist && data.checklist.length > 0 ? data.checklist.map(item => `<p class="checklist-item">${(W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(item))}</p>`).join('') : `<p><i>Brak danych</i></p>`}
+                    ${data.checklist && data.checklist.length > 0 ? data.checklist.map(item => {
+                        let text = (W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(item));
+                        if (W.parseMarkdown) text = W.parseMarkdown(text);
+                        return `<p class="checklist-item">${text}</p>`;
+                    }).join('') : `<p><i>Brak danych</i></p>`}
                 </div>
             </section>
 
             ${data.notes && data.notes.length > 0 ? `
             <section>
-                <p class="browser-card-section-title">Uwagi</p>
+                <h4 class="browser-card-section-title">Uwagi</h4>
                 <div class="section-content">
-                    ${data.notes.map(n => `<p>${(W.fixOrphans || (s=>s))(n)}</p>`).join('')}
+                    ${renderListBlocks(data.notes)}
                 </div>
             </section>` : ''}
         `;
@@ -2468,13 +2654,18 @@ window.showGlossary = (triggerEl = null) => {
     const title = document.getElementById('modalTitle');
     const body = document.getElementById('modalBody');
 
-    const terms = Object.keys(glossaryData).sort();
-    const glossaryHtml = terms.map(term => `
-        <div class="glossary-item">
-            <h3>${term}</h3>
-            <p>${(W.fixOrphans || (s=>s))(glossaryData[term])}</p>
-        </div>
-    `).join('');
+    const terms = Object.keys(glossaryData).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+    const glossaryHtml = terms.map(term => {
+        let def = glossaryData[term];
+        if (W.fixOrphans) def = W.fixOrphans(def);
+        if (W.parseMarkdown) def = W.parseMarkdown(def);
+        return `
+            <div class="glossary-item">
+                <h3>${term}</h3>
+                <p>${def}</p>
+            </div>
+        `;
+    }).join('');
 
     if (modal.open) {
         modal.close();

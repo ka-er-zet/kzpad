@@ -89,7 +89,6 @@ W menu nawigacyjnym dostępna jest "Przeglądarka wymagań".
 W prawym górnym menu znajduje się ikona pomocy — `Słownik pojęć`. Kliknięcie otwiera modal z wyjaśnieniami używanych w aplikacji terminów (np. TIK, Klauzula, Procedura).
 
 - Jak używać: kliknij ikonę `?` w pasku nagłówka, lub zamknij modal klawiszem `Esc` / przyciskiem `Zamknij`.
-- Dostępność: modal ma właściwe `aria-label` i nagłówki (h2 → h3); zawartość jest czytelna dla czytników ekranu.
 - Gdzie edytować treści: definicje znajdują się w pliku `clauses_json/glossary.json` — dodaj / edytuj pary klucz → opis.
 - Utrzymanie: słownik jest niezależny od `clauses.json`; można rozszerzać go bez modyfikacji istniejących klauzul. W przyszłości można dodać automatyczne linkowanie terminów w opisach.
 

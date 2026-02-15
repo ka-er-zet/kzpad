@@ -491,6 +491,71 @@ async function alertModal(message, title = 'Informacja') {
 }
 
 /**
+ * Wyświetla dialog z polem wprowadzania tekstu.
+ * @param {string} message Treść zachęty
+ * @param {string} [title] Tytuł dialogu
+ * @param {string} [defaultValue] Domyślna wartość pola
+ * @returns {Promise<string|null>} Wprowadzona wartość lub null jeśli anulowano
+ */
+async function promptModal(message, title = 'Wprowadź dane', defaultValue = '') {
+    return new Promise((resolve) => {
+        let dialog = document.getElementById('app-prompt-dialog');
+        if (!dialog) {
+            dialog = document.createElement('dialog');
+            dialog.id = 'app-prompt-dialog';
+            dialog.setAttribute('aria-modal', 'true');
+            dialog.innerHTML = `
+                <article>
+                    <header>
+                        <a href="#close" aria-label="Zamknij" class="close" id="prompt-close"></a>
+                        <h3 id="prompt-dialog-title" style="margin: 0;"></h3>
+                    </header>
+                    <p id="prompt-dialog-message" style="margin-bottom: 1rem;"></p>
+                    <input type="text" id="prompt-input" style="margin-bottom: 1.5rem;">
+                    <footer>
+                        <button id="prompt-cancel" class="outline secondary">Anuluj</button>
+                        <button id="prompt-ok" class="primary">OK</button>
+                    </footer>
+                </article>
+            `;
+            document.body.appendChild(dialog);
+        }
+
+        const titleEl = dialog.querySelector('#prompt-dialog-title');
+        const msgEl = dialog.querySelector('#prompt-dialog-message');
+        const inputEl = dialog.querySelector('#prompt-input');
+        const cancelBtn = dialog.querySelector('#prompt-cancel');
+        const okBtn = dialog.querySelector('#prompt-ok');
+        const closeBtn = dialog.querySelector('#prompt-close');
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        inputEl.value = defaultValue;
+
+        const close = (result) => {
+            dialog.close();
+            resolve(result);
+        };
+
+        okBtn.onclick = () => close(inputEl.value);
+        cancelBtn.onclick = () => close(null);
+        closeBtn.onclick = () => close(null);
+        
+        inputEl.onkeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                close(inputEl.value);
+            }
+        };
+
+        dialog.oncancel = () => resolve(null);
+
+        dialog.showModal();
+        setTimeout(() => inputEl.focus(), 50);
+    });
+}
+
+/**
  * Aktualizuje komunikat o stanie w regionie aria-live.
  * @param {string} message Treść komunikatu
  * @param {number} [duration] Czas wyświetlania w ms (0 = na stałe)
@@ -743,6 +808,127 @@ function fixOrphans(text) {
 }
 
 /**
+ * Simple Markdown parser for a subset of standard signs.
+ * Supports: **bold**, *italic*, [link](url), `code`, \n -> br
+ * @param {string} text Markdown string
+ * @returns {string} Sanitized HTML string
+ */
+function parseMarkdown(text) {
+    if (!text) return '';
+    
+    // 1. Handle literal \n string if present (backslash + n)
+    let t = text.replace(/\\n/g, '\n');
+
+    // 2. Initial escape to prevent raw HTML injection
+    let html = t
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    // 3. Inline formatting
+    html = html
+        // Bold: **text** or __text__
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/__(.*?)__/g, '<strong>$1</strong>')
+        // Italic: *text* or _text_
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/_(.*?)_/g, '<em>$1</em>')
+        // Inline code: `text`
+        .replace(/`(.*?)`/g, '<code>$1</code>')
+        // Links: [text](url)
+        .replace(/\[(.*?)\]\((https?:\/\/.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
+    // 4. Block formatting: Headers, Lists and New Lines
+    const lines = html.split('\n');
+    let result = '';
+    let listStack = []; // Stack to keep track of nested list types and indents
+
+    const closeAllLists = () => {
+        while (listStack.length > 0) {
+            result += `</${listStack.pop().type}>`;
+        }
+    };
+
+    lines.forEach((line, idx) => {
+        // Match leading spaces/indentation
+        const indentMatch = line.match(/^(\s*)/);
+        const indent = indentMatch ? indentMatch[1].length : 0;
+        const trimmed = line.trim();
+        
+        // Headers: # Header
+        const headerMatch = trimmed.match(/^(#{1,3})\s+(.+)$/);
+        if (headerMatch) {
+            closeAllLists();
+            const level = headerMatch[1].length;
+            result += `<h${level + 3}>${headerMatch[2]}</h${level + 3}>`;
+            return;
+        }
+
+        // Unordered matching: "- " or "* "
+        const ulMatch = trimmed.match(/^[-*]\s+(.+)$/);
+        // Ordered matching: "1. " or "2. " etc.
+        const olMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+
+        if (ulMatch || olMatch) {
+            const currentType = ulMatch ? 'ul' : 'ol';
+            const content = ulMatch ? ulMatch[1] : olMatch[2];
+
+            const getStartAttr = () => (olMatch && olMatch[1] !== '1') ? ` start="${olMatch[1]}"` : '';
+
+            // Logic for nesting
+            if (listStack.length === 0) {
+                // Start a brand new list
+                result += `<${currentType}${getStartAttr()} class="markdown-list">`;
+                listStack.push({ type: currentType, indent: indent });
+            } else {
+                let top = listStack[listStack.length - 1];
+                
+                if (indent > top.indent) {
+                    // Start a nested list
+                    result += `<${currentType}${getStartAttr()} class="markdown-list">`;
+                    listStack.push({ type: currentType, indent: indent });
+                } else if (indent < top.indent) {
+                    // Close nested list(s) until we hit a matching or lower indent
+                    while (listStack.length > 0 && indent < listStack[listStack.length - 1].indent) {
+                        result += `</${listStack.pop().type}>`;
+                    }
+                    // If the type at this level is different, switch it
+                    top = listStack[listStack.length - 1];
+                    if (top && top.type !== currentType) {
+                        result += `</${listStack.pop().type}><${currentType}${getStartAttr()} class="markdown-list">`;
+                        listStack.push({ type: currentType, indent: indent });
+                    }
+                } else if (currentType !== top.type) {
+                    // Same indent but different type (e.g., switched from - to 1.)
+                    result += `</${listStack.pop().type}><${currentType}${getStartAttr()} class="markdown-list">`;
+                    listStack.push({ type: currentType, indent: indent });
+                }
+            }
+            result += `<li>${content}</li>`;
+        } else {
+            // Not a list item
+            if (trimmed === '') {
+                // Empty lines: close lists unless specified otherwise by MD flavour (we close for simplicity)
+                closeAllLists();
+                if (idx < lines.length - 1) result += '<br>';
+            } else {
+                // Regular paragraph text - if we were in a list, close it unless it's intended to be a multi-line list item
+                // In our current simple model, any non-list-marked line closes the list.
+                closeAllLists();
+                result += line;
+                if (idx < lines.length - 1) {
+                    result += '<br>';
+                }
+            }
+        }
+    });
+
+    closeAllLists();
+    
+    return result;
+}
+
+/**
  * Usuwa numerację ID z początku tekstu (np. "C.5.1 Tytuł" -> "Tytuł")
  */
 function stripNumbering(text) {
@@ -954,6 +1140,7 @@ window.utils = {
     fixOrphans,
     stripNumbering,
     expandLegal,
+    parseMarkdown,
     getAuditStats,
     getStatusLabel,
     getFilename,
