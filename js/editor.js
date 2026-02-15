@@ -1578,7 +1578,7 @@ window.openClausePicker = async (productId) => {
             if (k.startsWith('U.')) return false; 
             if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
             return true;
-        });
+        }).sort(([,a], [,b]) => (a.title || '').localeCompare(b.title || ''));
 
         if (entries.length === 0) {
             listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul.</p>'; 
@@ -1692,7 +1692,7 @@ window.openLegalClausePicker = async () => {
             if (!k.startsWith('U.')) return false; 
             if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
             return true;
-        });
+        }).sort(([,a], [,b]) => (a.title || '').localeCompare(b.title || ''));
 
         if (entries.length === 0) {
             listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul ustawowych.</p>';
