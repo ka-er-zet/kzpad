@@ -2522,7 +2522,6 @@ window.showClause = (id, triggerEl = null) => {
 
     // Reset accessibility attributes for clause details
     title.textContent = 'Szczegóły klauzuli';
-    modal.setAttribute('aria-label', 'Szczegóły klauzuli');
 
     if (data) {
         const renderListBlocks = (arr) => {
@@ -2611,7 +2610,6 @@ window.showClause = (id, triggerEl = null) => {
     }
     
     modal.removeAttribute('hidden');
-    modal.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('modal-is-open');
     modal.showModal();
     // Reset scroll position to top
@@ -2628,7 +2626,6 @@ const handleCloseModal = () => {
     const modal = document.getElementById('clauseModal');
     modal.close();
     modal.setAttribute('hidden', '');
-    modal.setAttribute('aria-hidden', 'true');
     document.documentElement.classList.remove('modal-is-open');
     if (lastModalTrigger) {
         lastModalTrigger.focus();
@@ -2636,17 +2633,23 @@ const handleCloseModal = () => {
     }
 };
 
-document.getElementById('closeModal').onclick = handleCloseModal;
-document.getElementById('closeModalBtn').onclick = handleCloseModal;
+document.addEventListener('DOMContentLoaded', () => {
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    if (closeModalBtn) {
+        closeModalBtn.onclick = handleCloseModal;
+    }
 
-// Zamykanie modala przy kliknięciu w tło (backdrop) lub klawiszem ESC
-document.getElementById('clauseModal').onclick = (e) => {
-    if (e.target.nodeName === 'DIALOG') handleCloseModal();
-};
-document.getElementById('clauseModal').oncancel = (e) => {
-    e.preventDefault(); // Prevent default close so we can use our handler
-    handleCloseModal();
-};
+    const clauseModalEl = document.getElementById('clauseModal');
+    if (clauseModalEl) {
+        clauseModalEl.onclick = (e) => {
+            if (e.target.nodeName === 'DIALOG') handleCloseModal();
+        };
+        clauseModalEl.oncancel = (e) => {
+            e.preventDefault();
+            handleCloseModal();
+        };
+    }
+});
 
 window.showGlossary = (triggerEl = null) => {
     lastModalTrigger = triggerEl;
@@ -2671,14 +2674,12 @@ window.showGlossary = (triggerEl = null) => {
         modal.close();
     }
     title.textContent = 'Słownik pojęć';
-    modal.setAttribute('aria-label', 'Słownik pojęć');
     body.innerHTML = `
         <p class="glossary-intro">W tym słowniku znajdziesz wyjaśnienia kluczowych pojęć używanych w aplikacji KZ-PAD.</p>
         ${glossaryHtml}
     `;
 
     modal.removeAttribute('hidden');
-    modal.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('modal-is-open');
     modal.showModal();
     // Reset scroll position to top
