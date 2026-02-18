@@ -32,7 +32,7 @@
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
         <!-- Wybierz kategorię do edycji (hero-style) -->
         <header style="margin-bottom:1rem; text-align:center;">
             <h1 style="margin-bottom:0.75rem;">Wybierz kategorię do edycji</h1>
@@ -115,9 +115,6 @@
             </div>
 
             <div class="editor-container">
-                <aside class="editor-sidebar">
-                </aside>
-                
                 <div class="editor-main">
                     <div id="quick-filters" class="hidden">
                         <button class="outline secondary small filter-btn" data-prefix="C." onclick="setPrefixFilter('C.')">EN 301 549 (C.)</button>
@@ -129,12 +126,12 @@
                     <div id="add-item-actions" style="margin-top: 0.5rem; margin-bottom: 1rem;">
                         <button id="btn-add-new" class="primary small" style="width: auto;">+ Dodaj nowe mapowanie</button>
                     </div>
-                    <div id="items-list">
-                        <!-- Lista elementów (klauzul/artykułów) -->
-                    </div>
-                    <div id="form-container">
+                    <ul id="items-list" aria-label="Lista elementów">
+                        <!-- Wypełniane dynamicznie przez renderList() -->
+                    </ul>
+                    <section id="form-container" tabindex="-1" aria-label="Formularz edycji">
                         <p class="secondary">Wybierz element z listy, aby rozpocząć edycję.</p>
-                    </div>
+                    </section>
                 </div>
             </div>
         </section>
