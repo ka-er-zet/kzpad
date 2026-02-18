@@ -13,6 +13,65 @@ let lastToastMessage = "";
 let lastToastTime = 0;
 
 /**
+ * Announces a message to screen readers via the live region.
+ * Clears and re-sets to ensure re-announcement even for identical messages.
+ * @param {string} message
+ */
+function srAnnounce(message) {
+    const el = document.getElementById('sr-announcer');
+    if (!el) return;
+    el.textContent = '';
+    // rAF + timeout: daje czas na reset przed wstrzyknięciem nowej treści
+    requestAnimationFrame(() => {
+        setTimeout(() => { el.textContent = message; }, 50);
+    });
+}
+
+/**
+ * Returns Polish plural form for a count.
+ * @param {number} n
+ * @param {string} one   - np. "klauzula"
+ * @param {string} few   - np. "klauzule"  (2–4 oraz 22–24, 32–34…)
+ * @param {string} many  - np. "klauzul"   (0, 5+, 11–19)
+ * @returns {string}
+ */
+function plPlural(n, one, few, many) {
+    if (n === 1) return one;
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return few;
+    return many;
+}
+
+/**
+ * Counts loaded items and returns a human-readable announcement string.
+ * @returns {string}
+ */
+function buildLoadAnnouncement() {
+    if (!currentData) return 'Dane zostały załadowane.';
+
+    let count = 0;
+    let noun = '';
+
+    if (currentType === 'clauses') {
+        count = Object.keys(currentData).length;
+        noun = plPlural(count, 'klauzula', 'klauzule', 'klauzul');
+    } else if (currentType === 'mapping') {
+        count = (currentData.matrix || []).length;
+        noun = plPlural(count, 'mapowanie', 'mapowania', 'mapowań');
+    } else if (currentType === 'summaries') {
+        const sums = currentData.compliance_summaries || currentData;
+        count = typeof sums === 'object' ? Object.keys(sums).length : 0;
+        noun = plPlural(count, 'podsumowanie', 'podsumowania', 'podsumowań');
+    } else if (currentType === 'glossary') {
+        count = Object.keys(currentData).length;
+        noun = plPlural(count, 'pojęcie', 'pojęcia', 'pojęć');
+    }
+
+    return `Załadowano ${count} ${noun}.`;
+}
+
+/**
  * Confirmation Modal state
  */
 let confirmPromiseResolve = null;
@@ -760,6 +819,9 @@ function onDataLoaded(sourceInfo) {
 
     if (window.lucide) window.lucide.createIcons();
 
+    // Screen reader announcement – ile elementów załadowano
+    srAnnounce(buildLoadAnnouncement());
+
     // focus + smooth-scroll to editor area (Edycja...)
     const editorTitle = document.getElementById('editor-title');
     if (editorTitle) {
@@ -831,11 +893,17 @@ function renderList(searchTerm = '') {
                 align-items: center;
                 user-select: none;
             `;
+            productItem.setAttribute('role', 'button');
+            productItem.setAttribute('tabindex', '0');
+            productItem.setAttribute('aria-label', 'Zarządzaj produktami');
             productItem.innerHTML = `
                 <i data-lucide="package" class="icon-md icon-primary" aria-hidden="true" style="margin-right: 0.25rem"></i>
                 <span>Zarządzaj produktami</span>
             `;
             productItem.onclick = () => loadItem('_products');
+            productItem.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadItem('_products'); }
+            };
             specialActions.appendChild(productItem);
         }
     }
@@ -902,6 +970,8 @@ function renderList(searchTerm = '') {
             // Drag and Drop support — ENABLED only when reordering is allowed
             if (currentType !== 'summaries') {
                 li.draggable = true;
+                li.setAttribute('aria-keyshortcuts', 'Alt+ArrowUp Alt+ArrowDown');
+                li.setAttribute('aria-description', 'Użyj Alt+strzałka góra/dół, aby zmienić kolejność. Naciśnij Enter lub Spację, aby otworzyć.');
 
                 li.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', key);
@@ -944,6 +1014,8 @@ function renderList(searchTerm = '') {
                 const dot = document.createElement('span');
                 dot.className = 'item-mod-indicator';
                 dot.title = 'Ten element został zmieniony';
+                dot.setAttribute('aria-label', 'Niezapisane zmiany');
+                dot.setAttribute('role', 'img');
                 li.appendChild(dot);
             }
 
@@ -967,6 +1039,7 @@ function renderList(searchTerm = '') {
 
             const upBtn = document.createElement('button');
             upBtn.className = 'outline';
+            upBtn.setAttribute('aria-label', `Przesuń w górę: ${key}`);
             upBtn.title = 'Przesuń w górę';
             upBtn.innerText = '↑';
             upBtn.disabled = idx <= 0;
@@ -974,6 +1047,7 @@ function renderList(searchTerm = '') {
 
             const downBtn = document.createElement('button');
             downBtn.className = 'outline';
+            downBtn.setAttribute('aria-label', `Przesuń w dół: ${key}`);
             downBtn.title = 'Przesuń w dół';
             downBtn.innerText = '↓';
             downBtn.disabled = idx === -1 || idx >= (length - 1);
@@ -1034,6 +1108,7 @@ function renderList(searchTerm = '') {
             const editBtn = document.createElement('button');
             editBtn.className = 'primary outline small';
             editBtn.textContent = 'Edytuj';
+            editBtn.setAttribute('aria-label', `Edytuj: ${key}`);
             editBtn.onclick = (e) => { e.stopPropagation(); loadItem(key); };
             li.appendChild(editBtn);
 
@@ -1044,7 +1119,7 @@ function renderList(searchTerm = '') {
                 delBtn.innerHTML = '<i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>'; 
                 // Inline styles removed in favor of CSS alignment
                 delBtn.style.margin = '0';
-                delBtn.setAttribute('aria-label', 'Usuń');
+                delBtn.setAttribute('aria-label', `Usuń: ${key}`);
                 delBtn.onclick = (e) => { e.stopPropagation(); deleteItem(key); };
                 li.appendChild(delBtn);
             }
@@ -1134,13 +1209,11 @@ async function showList(force = false) {
 window.setPrefixFilter = (prefix) => {
     currentPrefixFilter = prefix;
     
-    // Update UI
+    // Update UI + aria-pressed
     document.querySelectorAll('#quick-filters button').forEach(btn => {
-        if (btn.dataset.prefix === prefix) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
+        const isActive = btn.dataset.prefix === prefix;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     
     renderList(searchInput.value);
@@ -1235,11 +1308,11 @@ function renderClauseForm(id, data) {
     if (!data.form.inputs && !isLegal) data.form.inputs = [];
 
     formContainer.innerHTML = `
-        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         
         <div class="field-group">
             <div class="section-header">
-                <i data-lucide="${isLegal ? 'scale' : 'code'}" class="icon-md icon-primary"></i>
+                <i data-lucide="${isLegal ? 'scale' : 'code'}" class="icon-md icon-primary" aria-hidden="true"></i>
                 <h3 class="m-0">Edycja: ${isLegal ? 'Klauzula Prawna' : 'Klauzula Techniczna'}</h3>
             </div>
 
@@ -1339,7 +1412,7 @@ function renderProductsForm() {
     isFormDirty = false;
 
     formContainer.innerHTML = `
-        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         <div class="field-group">
             <div class="section-border">
                 <div class="section-title-row">
@@ -1362,7 +1435,7 @@ function renderProductsForm() {
                             <label for="prod-name-${pId}" class="sr-only">Pełna nazwa produktu ${pId}</label>
                             <input type="text" id="prod-name-${pId}" class="product-name-input" value="${pName}" oninput="updateProductName('${pId}', this.value)" placeholder="Wpisz nazwę produktu...">
                         </div>
-                        <button class="outline error small product-remove-btn" onclick="removeProduct('${pId}')" aria-label="Usuń produkt">
+                        <button class="outline error small product-remove-btn" onclick="removeProduct('${pId}')" aria-label="Usuń produkt: ${pName} (${pId})">
                             <i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -1386,7 +1459,7 @@ function renderProductsForm() {
  */
 function renderMappingForm(id, data) {
     formContainer.innerHTML = `
-        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         
         <div class="form-header">
             <h3 class="m-0">Edycja mapowania artykułu</h3>
@@ -1426,14 +1499,14 @@ function renderMappingForm(id, data) {
                             </div>
                             <div class="product-mapping-grid">
                                 <label class="prod-mapping-label">
-                                    <input type="checkbox" class="prod-mapping-check" data-pid="${pId}" ${isChecked ? 'checked' : ''} onchange="toggleMappingInput('${pId}', this.checked)">
+                                    <input type="checkbox" class="prod-mapping-check" data-pid="${pId}" ${isChecked ? 'checked' : ''} onchange="toggleMappingInput('${pId}', this.checked)" aria-label="Dotyczy: ${pName} (${pId})">
                                     <span class="prod-mapping-label-text">Dotyczy</span>
                                 </label>
                                 <div class="prod-mapping-codes">
                                     <label for="input-${pId}" class="prod-mapping-codes-label">Klauzule techniczne (C.*):</label>
                                     <input type="text" class="prod-mapping-input" id="input-${pId}" data-pid="${pId}" value="${isChecked ? (val || '') : ''}" ${!isChecked ? 'disabled' : ''} placeholder="Np. C.9.1.1.1; C.9.1.1.2">
                                 </div>
-                                <button class="outline picker-btn" onclick="openClausePicker('${pId}')">Wybierz kody</button>
+                                <button class="outline picker-btn" aria-label="Wybierz kody klauzul dla: ${pName} (${pId})" onclick="openClausePicker('${pId}')">Wybierz kody</button>
                             </div>
                         </div>
                     `;
@@ -1859,10 +1932,10 @@ function renderSummaryForm(id, data) {
     };
 
     formContainer.innerHTML = `
-        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         <div class="field-group">
             <div class="section-header">
-                <i data-lucide="file-text" class="icon-md icon-primary"></i>
+                <i data-lucide="file-text" class="icon-md icon-primary" aria-hidden="true"></i>
                 <h3 class="m-0">Edycja Szablonu: ${templateNames[id] || data.status || id}</h3>
             </div>
 
@@ -1935,7 +2008,7 @@ function renderSummaryForm(id, data) {
 function renderGlossaryForm(id, data) {
     // data is the definition string from glossary.json
     formContainer.innerHTML = `
-        <p class="text-left"><a href="#" onclick="showList(); return false;">← Powrót do listy</a></p>
+        <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         <div class="field-group">
             <div class="flex-between">
                 <h3 class="m-0">Słownik</h3>
@@ -1965,7 +2038,7 @@ function renderArrayItem(type, value, index) {
         <div class="array-item" data-type="${type}" data-index="${index}">
             <label class="sr-only" for="arr-${type}-${index}">Element listy ${index + 1}</label>
             <textarea id="arr-${type}-${index}" rows="2" oninput="syncArrayValue('${type}', ${index}, this.value); autoResize(this)">${value}</textarea>
-            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń element ${index + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
         </div>
     `;
 }
@@ -2154,6 +2227,17 @@ window.saveCurrent = () => {
         isFormDirty = false;
         renderList(searchInput.value);
         showToast(`Zmiany w liście produktów zostały zapisane lokalnie. Pamiętaj o eksporcie pliku JSON.`, "success");
+        return;
+    }
+
+    // Summaries have fixed IDs (no edit-id input in form) — skip ID validation
+    if (currentType === 'summaries') {
+        updateStateFromUI();
+        isFormDirty = false;
+        renderList(searchInput.value);
+        loadItem(activeItemId, true);
+        const nameLabel = editorState[currentType].label || currentType;
+        showToast(`Zmiany zapisane: ${nameLabel} — ${activeItemId}. Pamiętaj o pobraniu uaktualnionego pliku JSON!`, "success");
         return;
     }
 
