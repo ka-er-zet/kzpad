@@ -895,33 +895,33 @@ function renderList(searchTerm = '') {
         return false;
     })
         .forEach(key => {
-            const div = document.createElement('div');
-            div.className = 'list-item' + (activeItemId === key ? ' active' : '');
-            div.tabIndex = 0; // make focusable for keyboard support
+            const li = document.createElement('li');
+            li.className = 'list-item' + (activeItemId === key ? ' active' : '');
+            li.tabIndex = 0; // make focusable for keyboard support
 
             // Drag and Drop support — ENABLED only when reordering is allowed
             if (currentType !== 'summaries') {
-                div.draggable = true;
+                li.draggable = true;
 
-                div.addEventListener('dragstart', (e) => {
+                li.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', key);
                     // Używamy setTimeout(0), aby przeglądarka zrobiła "ghost image"
                     // z pełną widocznością elementu zanim nałożymy klasę .dragging
-                    setTimeout(() => div.classList.add('dragging'), 0);
+                    setTimeout(() => li.classList.add('dragging'), 0);
                     e.dataTransfer.effectAllowed = 'move';
                 });
 
-                div.addEventListener('dragover', (e) => {
+                li.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     e.dataTransfer.dropEffect = 'move';
                     div.classList.add('drag-over');
                 });
 
-                div.addEventListener('dragleave', () => {
+                li.addEventListener('dragleave', () => {
                     div.classList.remove('drag-over');
                 });
 
-                div.addEventListener('drop', (e) => {
+                li.addEventListener('drop', (e) => {
                     e.preventDefault();
                     div.classList.remove('drag-over');
                     const draggedKey = e.dataTransfer.getData('text/plain');
@@ -930,13 +930,13 @@ function renderList(searchTerm = '') {
                     }
                 });
 
-                div.addEventListener('dragend', () => {
+                li.addEventListener('dragend', () => {
                     div.classList.remove('dragging');
                     document.querySelectorAll('.list-item').forEach(i => i.classList.remove('drag-over'));
                 });
             } else {
                 // Explicitly disable draggable for summaries
-                div.draggable = false;
+                li.draggable = false;
             }
 
             // Modification indicator (per-item)
@@ -944,7 +944,7 @@ function renderList(searchTerm = '') {
                 const dot = document.createElement('span');
                 dot.className = 'item-mod-indicator';
                 dot.title = 'Ten element został zmieniony';
-                div.appendChild(dot);
+                li.appendChild(dot);
             }
 
             // Show Up/Down controls to allow manual reordering
@@ -983,7 +983,7 @@ function renderList(searchTerm = '') {
             if (currentType !== 'summaries') {
                 controls.appendChild(upBtn);
                 controls.appendChild(downBtn);
-                div.appendChild(controls);
+                li.appendChild(controls);
             }
 
             const label = document.createElement('span');
@@ -1028,14 +1028,14 @@ function renderList(searchTerm = '') {
                 }
             }
             label.textContent = displayText;
-            div.appendChild(label);
+            li.appendChild(label);
 
             // Add edit button
             const editBtn = document.createElement('button');
             editBtn.className = 'primary outline small';
             editBtn.textContent = 'Edytuj';
             editBtn.onclick = (e) => { e.stopPropagation(); loadItem(key); };
-            div.appendChild(editBtn);
+            li.appendChild(editBtn);
 
             // Add delete button (if not summaries)
             if (currentType !== 'summaries') {
@@ -1046,11 +1046,11 @@ function renderList(searchTerm = '') {
                 delBtn.style.margin = '0';
                 delBtn.setAttribute('aria-label', 'Usuń');
                 delBtn.onclick = (e) => { e.stopPropagation(); deleteItem(key); };
-                div.appendChild(delBtn);
+                li.appendChild(delBtn);
             }
 
             // click / keyboard handlers - remove click to load, only button
-            div.onkeydown = (e) => {
+            li.onkeydown = (e) => {
                 // Enter/Space loads item
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadItem(key); return; }
                 
@@ -1069,7 +1069,7 @@ function renderList(searchTerm = '') {
                 }
             };
 
-            itemsList.appendChild(div);
+            itemsList.appendChild(li);
         });
         
     if (window.lucide) window.lucide.createIcons();
@@ -1113,6 +1113,19 @@ async function showList(force = false) {
     }
     
     renderList(searchInput.value);
+
+    // Przenieś fokus na pierwszy element listy lub na sam kontener listy,
+    // aby czytnik ekranu ogłosił powrót do kontekstu listy
+    setTimeout(() => {
+        const firstActive = itemsList.querySelector('.list-item.active')
+                         || itemsList.querySelector('.list-item');
+        if (firstActive) {
+            firstActive.focus();
+        } else {
+            itemsList.setAttribute('tabindex', '-1');
+            itemsList.focus();
+        }
+    }, 50);
 }
 
 /**
@@ -1188,10 +1201,13 @@ async function loadItem(id, force = false) {
     if (window.lucide) window.lucide.createIcons();
     
     // Auto-resize all textareas once the form is loaded
+    // + przenieś fokus na formularz, aby czytnik ekranu wiedział o zmianie kontekstu
     setTimeout(() => {
         document.querySelectorAll('#form-container textarea').forEach(tx => {
             autoResize(tx);
         });
+        const fc = document.getElementById('form-container');
+        if (fc) fc.focus();
     }, 0);
 }
 
