@@ -117,9 +117,9 @@
             <div class="editor-container">
                 <div class="editor-main">
                     <div id="quick-filters" class="hidden">
-                        <button class="outline secondary small filter-btn" data-prefix="C." onclick="setPrefixFilter('C.')">EN 301 549 (C.)</button>
-                        <button class="outline secondary small filter-btn" data-prefix="U." onclick="setPrefixFilter('U.')">Ustawa (U.)</button>
-                        <button class="outline secondary small filter-btn active" data-prefix="" onclick="setPrefixFilter('')">Wszystkie</button>
+                        <button class="outline secondary small filter-btn" data-prefix="C." aria-pressed="false" onclick="setPrefixFilter('C.')">EN 301 549 (C.)</button>
+                        <button class="outline secondary small filter-btn" data-prefix="U." aria-pressed="false" onclick="setPrefixFilter('U.')">Ustawa (U.)</button>
+                        <button class="outline secondary small filter-btn active" data-prefix="" aria-pressed="true" onclick="setPrefixFilter('')">Wszystkie</button>
                     </div>
                     <div id="special-actions" style="margin-bottom: 2rem;"></div>
                     <input type="search" id="sidebar-search" placeholder="Szukaj..." aria-label="Wyszukaj na liście">
@@ -181,6 +181,9 @@
             </footer>
         </article>
     </dialog>
+
+    <!-- Screen reader live region – anonsowanie załadowania danych -->
+    <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
     <script src="js/lucide.min.js"></script>
     <script src="js/editor.js"></script>
