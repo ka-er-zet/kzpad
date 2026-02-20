@@ -138,7 +138,7 @@ function placeIconLabel(buttonEl, labelEl) {
     if (!buttonEl || !labelEl) return;
     try {
         // Reset positioning classes/styles
-        labelEl.classList.remove('icon-label--left','icon-label--right');
+        labelEl.classList.remove('icon-label--left', 'icon-label--right');
         labelEl.style.left = '';
         labelEl.style.right = '';
 
@@ -154,7 +154,7 @@ function placeIconLabel(buttonEl, labelEl) {
         // Preferred: center above button using absolute pixel coords (works with position:fixed)
         if (centerLeft >= 8 && (centerLeft + labelRect.width) <= (vw - 8)) {
             labelEl.style.left = `${centerLeft}px`;
-            labelEl.classList.remove('icon-label--left','icon-label--right');
+            labelEl.classList.remove('icon-label--left', 'icon-label--right');
         } else if (brect.left < vw / 2) {
             // Place to the right aligned to button's left edge
             const leftPx = Math.min(brect.left + 8, vw - labelRect.width - 8);
@@ -202,7 +202,7 @@ function showIconLabel(label) {
  * Enhance icon-only buttons with visible labels on hover/focus for affordance.
  * Adds .icon-label spans that appear on hover/focus, removes redundant aria-label/title.
  */
-function enhanceIconButtons(){
+function enhanceIconButtons() {
     const selectors = ['#menu-toggle', '#btn-save-audit', '#btn-edit-config', '#btn-save-wizard', '#btn-load-wizard', '#btn-download-spreadsheet', 'button[onclick*="toggleTheme"]', '.theme-toggle'];
     const seen = new Set();
     selectors.forEach(sel => {
@@ -238,10 +238,10 @@ function enhanceIconButtons(){
                 placeIconLabel(el, span);
                 showIconLabel(span);
             };
-            
+
             el.addEventListener('mouseenter', showAndPosition);
             el.addEventListener('focus', showAndPosition);
-            
+
             el.addEventListener('mouseleave', (e) => {
                 // Only hide if we aren't moving into the label itself (WCAG 1.4.13 Hoverable)
                 if (e.relatedTarget !== span && !span.contains(e.relatedTarget)) {
@@ -249,7 +249,7 @@ function enhanceIconButtons(){
                     hideAllIconLabels();
                 }
             });
-            
+
             el.addEventListener('blur', (e) => {
                 // Only hide if focus didn't move to the label (though labels aren't usually focusable)
                 if (e.relatedTarget !== span) {
@@ -257,13 +257,13 @@ function enhanceIconButtons(){
                     hideAllIconLabels();
                 }
             });
-            
+
             el.addEventListener('mousemove', () => {
                 if (span.classList.contains('icon-label--visible')) {
                     placeIconLabel(el, span);
                 }
             });
-            
+
             // Allow hovering on the label itself
             span.addEventListener('mouseenter', () => showIconLabel(span));
             span.addEventListener('mouseleave', (e) => {
@@ -424,14 +424,14 @@ function confirmModal(message, title = "Potwierdzenie", confirmText = "Potwierd�
             // Place the cancel button on the right and make it the primary (focused) action
             actions.classList.add('reverse-buttons');
             // Swap visual styling: make cancel primary, confirm secondary
-            cancelBtn.classList.remove('outline','secondary');
-            confirmBtn.classList.add('outline','secondary');
+            cancelBtn.classList.remove('outline', 'secondary');
+            confirmBtn.classList.add('outline', 'secondary');
             cancelBtn.focus();
         } else {
             actions.classList.remove('reverse-buttons');
             // Ensure default styling: confirm is primary
-            confirmBtn.classList.remove('outline','secondary');
-            cancelBtn.classList.add('outline','secondary');
+            confirmBtn.classList.remove('outline', 'secondary');
+            cancelBtn.classList.add('outline', 'secondary');
             confirmBtn.focus();
         }
 
@@ -507,7 +507,7 @@ async function promptModal(message, title = 'Wprowadź dane', defaultValue = '')
             dialog.innerHTML = `
                 <article>
                     <header>
-                        <a href="#close" aria-label="Zamknij" class="close" id="prompt-close"></a>
+                        <button aria-label="Zamknij" class="close" id="prompt-close"></button>
                         <h3 id="prompt-dialog-title" style="margin: 0;"></h3>
                     </header>
                     <p id="prompt-dialog-message" style="margin-bottom: 1rem;"></p>
@@ -540,7 +540,7 @@ async function promptModal(message, title = 'Wprowadź dane', defaultValue = '')
         okBtn.onclick = () => close(inputEl.value);
         cancelBtn.onclick = () => close(null);
         closeBtn.onclick = () => close(null);
-        
+
         inputEl.onkeydown = (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -815,7 +815,7 @@ function fixOrphans(text) {
  */
 function parseMarkdown(text) {
     if (!text) return '';
-    
+
     // 1. Handle literal \n string if present (backslash + n)
     let t = text.replace(/\\n/g, '\n');
 
@@ -854,7 +854,7 @@ function parseMarkdown(text) {
         const indentMatch = line.match(/^(\s*)/);
         const indent = indentMatch ? indentMatch[1].length : 0;
         const trimmed = line.trim();
-        
+
         // Headers: # Header
         const headerMatch = trimmed.match(/^(#{1,3})\s+(.+)$/);
         if (headerMatch) {
@@ -882,7 +882,7 @@ function parseMarkdown(text) {
                 listStack.push({ type: currentType, indent: indent });
             } else {
                 let top = listStack[listStack.length - 1];
-                
+
                 if (indent > top.indent) {
                     // Start a nested list
                     result += `<${currentType}${getStartAttr()} class="markdown-list">`;
@@ -924,7 +924,7 @@ function parseMarkdown(text) {
     });
 
     closeAllLists();
-    
+
     return result;
 }
 
@@ -1122,7 +1122,7 @@ function checkDataI18n(messages, root = document) {
     }
 
     return missing;
-} 
+}
 
 // Expose functions globally
 window.utils = {

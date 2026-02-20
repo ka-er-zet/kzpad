@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/pico.min.css">
     <link rel="stylesheet" href="css/editor.css">
 </head>
+
 <body>
     <header class="app-header">
         <a href="#main-content" class="skip-link" aria-label="Pomiń nawigację do treści głównej">Pomiń nawigację</a>
@@ -22,11 +24,13 @@
         </div>
 
         <nav class="header-actions" aria-label="Menu edytora">
-            <button id="btn-download-json-nav" class="outline secondary icon-btn" aria-label="Pobierz JSON" title="Pobierz JSON">
+            <button id="btn-download-json-nav" class="outline secondary icon-btn" aria-label="Pobierz zmiany (JSON)"
+                data-icon-label="Pobierz zmiany (JSON)" title="Pobierz zmiany (JSON)">
                 <i data-lucide="download-cloud" aria-hidden="true"></i>
             </button>
 
-            <button id="btn-theme-toggle" class="outline secondary icon-btn theme-toggle" aria-label="Zmień motyw" title="Zmień motyw">
+            <button id="btn-theme-toggle" class="outline secondary icon-btn theme-toggle" aria-label="Zmień motyw"
+                data-icon-label="Zmień motyw" title="Zmień motyw">
                 <i id="theme-icon" data-lucide="moon" aria-hidden="true"></i>
             </button>
         </nav>
@@ -36,7 +40,8 @@
         <!-- Wybierz kategorię do edycji (hero-style) -->
         <header style="margin-bottom:1rem; text-align:center;">
             <h1 style="margin-bottom:0.75rem;">Wybierz kategorię do edycji</h1>
-            <p class="muted" style="margin-top:0; margin-bottom:0.5rem;">Najpierw wybierz typ danych, potem wczytaj plik i przejdź do edycji.</p>
+            <p class="muted" style="margin-top:0; margin-bottom:0.5rem;">Najpierw wybierz typ danych, potem wczytaj plik
+                i przejdź do edycji.</p>
         </header>
 
         <nav class="editor-nav" id="file-type-selector" style="margin-bottom:1rem;">
@@ -44,28 +49,40 @@
                 <li>
                     <button class="hero-card" data-type="clauses" aria-pressed="false">
                         <span class="hero-card-icon" aria-hidden="true"><i data-lucide="book-open"></i></span>
-                        <span class="hero-card-content"><p class="hero-card-title">Klauzule</p><p class="hero-card-desc muted">Edytuj bazę klauzul</p></span>
+                        <span class="hero-card-content">
+                            <p class="hero-card-title">Klauzule</p>
+                            <p class="hero-card-desc muted">Edytuj bazę klauzul</p>
+                        </span>
                     </button>
                 </li>
 
                 <li>
                     <button class="hero-card" data-type="mapping" aria-pressed="false">
                         <span class="hero-card-icon" aria-hidden="true"><i data-lucide="map"></i></span>
-                        <span class="hero-card-content"><p class="hero-card-title">Mapowania</p><p class="hero-card-desc muted">Przypisz klauzule do produktów</p></span>
+                        <span class="hero-card-content">
+                            <p class="hero-card-title">Mapowania</p>
+                            <p class="hero-card-desc muted">Przypisz klauzule do produktów</p>
+                        </span>
                     </button>
                 </li>
 
                 <li>
                     <button class="hero-card" data-type="summaries" aria-pressed="false">
                         <span class="hero-card-icon" aria-hidden="true"><i data-lucide="file-text"></i></span>
-                        <span class="hero-card-content"><p class="hero-card-title">Podsumowania</p><p class="hero-card-desc muted">Szablony podsumowań</p></span>
+                        <span class="hero-card-content">
+                            <p class="hero-card-title">Podsumowania</p>
+                            <p class="hero-card-desc muted">Szablony podsumowań</p>
+                        </span>
                     </button>
                 </li>
 
                 <li>
                     <button class="hero-card" data-type="glossary" aria-pressed="false">
                         <span class="hero-card-icon" aria-hidden="true"><i data-lucide="book"></i></span>
-                        <span class="hero-card-content"><p class="hero-card-title">Słownik</p><p class="hero-card-desc muted">Definicje i pojęcia</p></span>
+                        <span class="hero-card-content">
+                            <p class="hero-card-title">Słownik</p>
+                            <p class="hero-card-desc muted">Definicje i pojęcia</p>
+                        </span>
                     </button>
                 </li>
             </ul>
@@ -93,8 +110,9 @@
                         <div class="loader-desc"><small>Załaduj lokalny plik JSON</small></div>
                     </div>
                     <div class="loader-action">
-                        <input type="file" id="file-input" accept=".json" style="display:none">
-                        <label for="file-input" class="primary small" role="button">Wybierz plik</label>
+                        <input type="file" id="file-input" accept=".json" style="display: none;">
+                        <button type="button" class="primary small"
+                            onclick="document.getElementById('file-input').click()">Wybierz plik</button>
                     </div>
                 </div>
             </div>
@@ -106,9 +124,6 @@
                 Edycja: <span id="editor-category-name">(brak)</span>
             </h2>
         </div>
-        <div id="editor-secondary-actions" class="hidden" style="margin-bottom: 1.5rem;">
-            <button id="btn-show-loader" class="primary outline small" style="width: auto;">Wczytaj inny plik</button>
-        </div>
         <section id="editor-workspace" class="hidden" aria-labelledby="editor-title">
 
             <div class="sticky-controls">
@@ -117,14 +132,18 @@
             <div class="editor-container">
                 <div class="editor-main">
                     <div id="quick-filters" class="hidden">
-                        <button class="outline secondary small filter-btn" data-prefix="C." aria-pressed="false" onclick="setPrefixFilter('C.')">EN 301 549 (C.)</button>
-                        <button class="outline secondary small filter-btn" data-prefix="U." aria-pressed="false" onclick="setPrefixFilter('U.')">Ustawa (U.)</button>
-                        <button class="outline secondary small filter-btn active" data-prefix="" aria-pressed="true" onclick="setPrefixFilter('')">Wszystkie</button>
+                        <button class="outline secondary small filter-btn active" data-prefix=""
+                            onclick="setPrefixFilter('')">Pokaż wszystkie klauzule</button>
+                        <button class="outline secondary small filter-btn" data-prefix="C."
+                            onclick="setPrefixFilter('C.')">Pokaż klauzule normy EN 301 549 (C)</button>
+                        <button class="outline secondary small filter-btn" data-prefix="U."
+                            onclick="setPrefixFilter('U.')">Pokaż klauzule Ustawy (U)</button>
                     </div>
                     <div id="special-actions" style="margin-bottom: 2rem;"></div>
                     <input type="search" id="sidebar-search" placeholder="Szukaj..." aria-label="Wyszukaj na liście">
                     <div id="add-item-actions" style="margin-top: 0.5rem; margin-bottom: 1rem;">
-                        <button id="btn-add-new" class="primary small" style="width: auto;">+ Dodaj nowe mapowanie</button>
+                        <button id="btn-add-new" class="primary small" style="width: auto;">+ Dodaj nowe
+                            mapowanie</button>
                     </div>
                     <ul id="items-list" aria-label="Lista elementów">
                         <!-- Wypełniane dynamicznie przez renderList() -->
@@ -139,14 +158,15 @@
 
     <footer class="container" style="text-align: center; margin-top: 2rem; padding-bottom: 2rem;">
         <hr>
-        <p class="muted" style="font-size: 0.85rem;">&copy; 2026 KZ-PAD Editor. Narzędzie do zarządzania bazą danych treści.</p>
+        <p class="muted" style="font-size: 0.85rem;">&copy; 2026 KZ-PAD Editor. Narzędzie do zarządzania bazą danych
+            treści.</p>
     </footer>
 
     <!-- Modal for adding new item -->
     <dialog id="modal-add-item" aria-labelledby="modal-add-title">
         <article>
             <header>
-                <a href="#close" aria-label="Zamknij" class="close" onclick="closeAddItemModal()"></a>
+                <button aria-label="Zamknij" class="close" onclick="closeAddItemModal()"></button>
                 <h2 id="modal-add-title">Dodaj nowy element</h2>
             </header>
             <div>
@@ -171,21 +191,22 @@
     <dialog id="modal-confirm">
         <article>
             <header>
-                <a href="#close" aria-label="Anuluj" class="close" onclick="closeConfirmModal(false)"></a>
+                <button aria-label="Anuluj" class="close" onclick="closeConfirmModal(false)"></button>
                 <h2 id="modal-confirm-title">Potwierdzenie</h2>
             </header>
             <p id="modal-confirm-message">Czy na pewno chcesz wykonać tę akcję?</p>
             <footer>
-                <button id="modal-confirm-cancel-btn" class="secondary outline" onclick="closeConfirmModal(false)">Anuluj</button>
+                <button id="modal-confirm-cancel-btn" class="secondary outline"
+                    onclick="closeConfirmModal(false)">Anuluj</button>
                 <button id="modal-confirm-btn" class="primary" onclick="closeConfirmModal(true)">Potwierdź</button>
             </footer>
         </article>
     </dialog>
 
-    <!-- Screen reader live region – anonsowanie załadowania danych -->
-    <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
-
     <script src="js/lucide.min.js"></script>
     <script src="js/editor.js"></script>
+    <!-- Live region dla czytników ekranu (ogłoszenia bez zmiany fokusu) -->
+    <div id="sr-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 </body>
+
 </html>

@@ -95,7 +95,7 @@ function showConfirm(title, message, confirmText = 'Potwierdź', cancelText = 'A
 
     return new Promise((resolve) => {
         const modal = document.getElementById('modal-confirm');
-        
+
         if (!modal) {
             const confirmed = confirm(message);
             if (confirmed && callback) callback();
@@ -106,7 +106,7 @@ function showConfirm(title, message, confirmText = 'Potwierdź', cancelText = 'A
         // Update content
         document.getElementById('modal-confirm-title').textContent = title;
         document.getElementById('modal-confirm-message').textContent = message;
-        
+
         // Update button labels and styles
         const confirmBtn = document.getElementById('modal-confirm-btn');
         const cancelBtn = document.getElementById('modal-confirm-cancel-btn');
@@ -141,7 +141,7 @@ function showConfirm(title, message, confirmText = 'Potwierdź', cancelText = 'A
 window.closeConfirmModal = (confirmed) => {
     const modal = document.getElementById('modal-confirm');
     if (modal) modal.close();
-    
+
     if (confirmPromiseResolve) {
         confirmPromiseResolve(confirmed);
         confirmPromiseResolve = null;
@@ -161,7 +161,7 @@ async function promptModal(message, title = 'Wprowadź dane', defaultValue = '')
             dialog.innerHTML = `
                 <article>
                     <header>
-                        <a href="#close" aria-label="Zamknij" class="close" id="prompt-close"></a>
+                        <button aria-label="Zamknij" class="close" id="prompt-close"></button>
                         <h3 id="prompt-dialog-title" class="m-0 dialog-title"></h3>
                     </header>
                     <p id="prompt-dialog-message" class="mb-1 dialog-message"></p>
@@ -195,7 +195,7 @@ async function promptModal(message, title = 'Wprowadź dane', defaultValue = '')
         okBtn.onclick = () => close(inputEl.value);
         cancelBtn.onclick = () => close(null);
         closeBtn.onclick = () => close(null);
-        
+
         inputEl.onkeydown = (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -251,7 +251,7 @@ function showToast(message, type = 'success', duration = 0) {
     announcement.setAttribute('role', type === 'error' ? 'alert' : 'status');
     announcement.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
     announcement.className = 'sr-only';
-    
+
     const visualContent = document.createElement('div');
     visualContent.style.display = 'flex';
     visualContent.style.alignItems = 'center';
@@ -282,12 +282,12 @@ function showToast(message, type = 'success', duration = 0) {
     closeBtn.className = 'toast-close';
     closeBtn.setAttribute('aria-label', `Zamknij`); // Simplified label
     closeBtn.setAttribute('type', 'button');
-    closeBtn.innerHTML = '<i data-lucide="x" class="icon-sm" aria-hidden="true"></i>'; 
+    closeBtn.innerHTML = '<i data-lucide="x" class="icon-sm" aria-hidden="true"></i>';
 
     toast.appendChild(announcement);
     toast.appendChild(visualContent);
     toast.appendChild(closeBtn);
-    
+
     container.appendChild(toast);
 
     // Screen reader announcement
@@ -412,6 +412,22 @@ function init() {
     // File input change
     document.getElementById('file-input').addEventListener('change', handleFileUpload);
 
+    // Clear selection/focus when clicking outside list items
+    document.addEventListener('click', (e) => {
+        // Find if we clicked inside a list item or a button/input
+        const isClickInside = e.target.closest('.list-item') ||
+            e.target.closest('button') ||
+            e.target.closest('input') ||
+            e.target.closest('textarea');
+
+        if (!isClickInside) {
+            // Remove focus from any active element
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+        }
+    });
+
     // Search functionality
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
@@ -437,16 +453,8 @@ function init() {
     const themeToggle = document.getElementById('btn-theme-toggle');
     if (themeToggle) themeToggle.addEventListener('click', () => toggleTheme());
 
-    // Show loader button
-    const showLoaderBtn = document.getElementById('btn-show-loader');
-    if (showLoaderBtn) {
-        showLoaderBtn.addEventListener('click', () => {
-            loaderSection.classList.remove('hidden');
-            workspaceSection.classList.add('hidden');
-            document.querySelector('.editor-title-container').classList.add('hidden');
-            document.getElementById('editor-secondary-actions').classList.add('hidden');
-        });
-    }
+    // Enhance icon buttons with visible labels
+    enhanceIconButtons();
 }
 
 /**
@@ -463,15 +471,15 @@ function addNewItem(forcedPrefix) {
         showToast("Podsumowania mają sztywną strukturę. Dodawanie nowych elementów jest zablokowane.", "info");
         return;
     }
-    
+
     const modal = document.getElementById('modal-add-item');
     const input = document.getElementById('new-item-id');
     const hintsList = document.getElementById('modal-add-hints');
     const title = modal ? modal.querySelector('h3') : null;
-    
+
     if (modal && input) {
         input.value = (typeof forcedPrefix === 'string') ? forcedPrefix : "";
-        
+
         if (title) {
             if (currentType === 'clauses') {
                 if (forcedPrefix === 'C.') title.textContent = 'Nowa klauzula techniczna (C)';
@@ -547,7 +555,7 @@ function addNewItem(forcedPrefix) {
         };
 
         modal.showModal();
-        
+
         setTimeout(() => input.focus(), 100);
     }
 }
@@ -557,24 +565,62 @@ window.closeAddItemModal = () => {
     if (modal) modal.close();
 };
 
+/**
+ * Wstawia nowy klucz do obiektu we właściwej pozycji (natural sort).
+ * Zamiast dodawać na końcu, szuka miejsca gdzie nowy klucz "pasuje" w posortowanej kolejności.
+ */
+function insertKeyAtNaturalPosition(obj, newId, newValue) {
+    const keys = Object.keys(obj);
+
+    // Znajdź indeks wśród istniejących kluczy gdzie newId "pasuje" naturalnie
+    // bez zmiany kolejności pozostałych kluczy
+    let insertIdx = keys.length; // domyślnie na końcu
+    for (let i = 0; i < keys.length; i++) {
+        const cmp = newId.localeCompare(keys[i], undefined, { numeric: true, sensitivity: 'base' });
+        if (cmp < 0) { insertIdx = i; break; }
+    }
+
+    // Wstaw nowy klucz w znalezione miejsce, reszta bez zmian
+    const result = {};
+    for (let i = 0; i < keys.length; i++) {
+        if (i === insertIdx) result[newId] = newValue;
+        result[keys[i]] = obj[keys[i]];
+    }
+    if (insertIdx === keys.length) result[newId] = newValue;
+    return result;
+}
+
+/**
+ * Wstawia nowy element do tablicy matrix we właściwej pozycji (natural sort po id).
+ */
+function insertMatrixItemAtNaturalPosition(matrix, newItem) {
+    const allIds = [...matrix.map(it => it.id), newItem.id].sort((a, b) =>
+        a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
+    );
+    const insertIdx = allIds.indexOf(newItem.id);
+    const result = [...matrix];
+    result.splice(insertIdx, 0, newItem);
+    return result;
+}
+
 window.confirmAddItem = () => {
     const input = document.getElementById('new-item-id');
     const newId = input.value.trim();
-    
+
     if (!newId) return;
 
     if (currentType === 'clauses') {
         if (currentData[newId]) { showToast("Element o tym ID już istnieje!", "error"); return; }
-        
+
         // Domyślna struktura zależna od typu klauzuli
-        const baseStructure = { 
+        const baseStructure = {
             id: newId,
-            title: "", 
-            evaluation: "", 
-            procedure: [], 
-            checklist: [], 
-            preconditions: [], 
-            notes: [] 
+            title: "",
+            evaluation: "",
+            procedure: [],
+            checklist: [],
+            preconditions: [],
+            notes: []
         };
 
         if (newId.startsWith('C.')) {
@@ -588,14 +634,16 @@ window.confirmAddItem = () => {
             baseStructure.title = "";
             baseStructure.form = {};
         }
-        
-        currentData[newId] = baseStructure;
+
+        currentData = insertKeyAtNaturalPosition(currentData, newId, baseStructure);
+        editorState[currentType].data = currentData;
     } else if (currentType === 'glossary') {
         if (currentData[newId]) { showToast("To hasło już istnieje!", "error"); return; }
-        currentData[newId] = ""; // New entry in glossary is just an empty definition string
+        currentData = insertKeyAtNaturalPosition(currentData, newId, "");
+        editorState[currentType].data = currentData; // New entry in glossary is just an empty definition string
     } else if (currentType === 'mapping') {
         if (currentData.matrix.find(it => it.id === newId)) { showToast("Element o tym ID już istnieje!", "error"); return; }
-        currentData.matrix.push({
+        currentData.matrix = insertMatrixItemAtNaturalPosition(currentData.matrix, {
             id: newId,
             legal_id: "",
             article: "",
@@ -609,14 +657,14 @@ window.confirmAddItem = () => {
     closeAddItemModal();
     renderList(searchInput.value);
     loadItem(newId, true);
-    
+
     const typeLabel = editorState[currentType].label || currentType;
     showToast(`Dodano nowy element (${typeLabel}): ${newId}. Pamiętaj o pobraniu zmian!`, "success");
 };
 
 window.deleteItem = (key) => {
     if (!currentData) return;
-    
+
     let itemName = key;
     if (currentType === 'clauses' && currentData[key]?.title) {
         itemName = `${key} (${currentData[key].title})`;
@@ -645,7 +693,7 @@ window.deleteItem = (key) => {
             if (activeItemId === key) {
                 showList(true);
             }
-            
+
             markAsModified();
             renderList(searchInput.value);
             showToast(`Usunięto element: ${key}. Pamiętaj o eksporcie uaktualnionego pliku JSON!`, "success");
@@ -663,16 +711,16 @@ window.deleteItem = (key) => {
  */
 function markAsModified(itemId = null) {
     if (!currentData) return;
-    
+
     const state = editorState[currentType];
     state.modified = true;
-    
+
     // Add specific item to modified list if provided or if we have an active item
     const targetId = itemId || activeItemId;
     if (targetId) {
         state.modifiedItems.add(targetId);
     }
-    
+
     updateDownloadButtonState();
 }
 
@@ -683,22 +731,37 @@ function updateDownloadButtonState() {
     const navDownload = document.getElementById('btn-download-json-nav');
     if (!navDownload) return;
 
-    const modifiedCount = Object.values(editorState).filter(s => s.modified).length;
+    const modifiedCount = Object.values(editorState).filter(s => s.modified && s.data).length;
+
+    let label = "Pobierz zmiany (JSON)";
     if (modifiedCount > 0) {
         navDownload.classList.remove('secondary');
         navDownload.classList.add('primary');
-        navDownload.title = `Pobierz zmiany (${modifiedCount})`;
+        const pl = plPlural(modifiedCount, 'plik', 'pliki', 'plików');
+        label = `Pobierz zmienione pliki (${modifiedCount} ${pl})`;
     } else {
         navDownload.classList.remove('primary');
         navDownload.classList.add('secondary');
-        navDownload.title = `Pobierz JSON`;
+    }
+
+    navDownload.title = label;
+    navDownload.setAttribute('aria-label', label);
+    navDownload.setAttribute('data-icon-label', label);
+
+    // Update visible label if exists
+    const labelEl = navDownload.querySelector('.icon-label');
+    if (labelEl) {
+        labelEl.textContent = label;
+        if (labelEl.classList.contains('icon-label--visible')) {
+            placeIconLabel(navDownload, labelEl);
+        }
     }
 
     // Update category buttons (hero-cards) to show modification status
     typeButtons.forEach(btn => {
         const type = btn.dataset.type;
         const state = editorState[type];
-        
+
         let indicator = btn.querySelector('.mod-indicator');
         if (state && state.modified) {
             if (!indicator) {
@@ -722,7 +785,7 @@ function updateDownloadButtonState() {
 function resetEditorViewState() {
     activeItemId = null;
     currentPrefixFilter = ''; // Reset quick filter
-    
+
     // Reset quick filter UI buttons
     document.querySelectorAll('#quick-filters button').forEach(btn => {
         if (btn.dataset.prefix === '') btn.classList.add('active');
@@ -732,7 +795,7 @@ function resetEditorViewState() {
     workspaceSection.classList.add('hidden');
     itemsList.innerHTML = '';
     formContainer.innerHTML = '<p class="secondary">Wybierz element z listy, aby rozpocząć edycję.</p>';
-    
+
     // Show list, hide form
     itemsList.style.display = 'block';
     formContainer.style.display = 'none';
@@ -740,9 +803,6 @@ function resetEditorViewState() {
     // hide title container until user selects a category or loads data
     const titleContainer = document.querySelector('.editor-title-container');
     if (titleContainer) titleContainer.classList.add('hidden');
-
-    const secondaryActions = document.getElementById('editor-secondary-actions');
-    if (secondaryActions) secondaryActions.classList.add('hidden');
 }
 
 /**
@@ -788,49 +848,41 @@ function handleFileUpload(e) {
  * Called when data is ready for editing
  */
 function onDataLoaded(sourceInfo) {
-    loaderSection.classList.add('hidden');
+    // Nie dotykamy loaderSection — fokus zostaje na przycisku "Wczytaj".
+    // Pokazujemy workspace (był hidden), ale NIE chowamy loadera.
     workspaceSection.classList.remove('hidden');
-    
-    // update editor H2 with selected category (human-readable)
+
+    // update editor H2
     const mapNames = { clauses: 'Klauzule', mapping: 'Mapowania', summaries: 'Podsumowania', glossary: 'Słownik' };
     const catName = mapNames[currentType] || currentType;
     const editorCat = document.getElementById('editor-category-name');
     if (editorCat) editorCat.textContent = catName;
 
-    // show editor title container when data is loaded
+    // show editor title container and secondary actions
     const titleContainer = document.querySelector('.editor-title-container');
     if (titleContainer) titleContainer.classList.remove('hidden');
-
-    const secondaryActions = document.getElementById('editor-secondary-actions');
-    if (secondaryActions) secondaryActions.classList.remove('hidden');
 
     // Show/hide quick filters for clauses
     const quickFilters = document.getElementById('quick-filters');
     if (quickFilters) {
-        if (currentType === 'clauses') {
-            quickFilters.classList.remove('hidden');
-        } else {
-            quickFilters.classList.add('hidden');
-        }
+        quickFilters.classList.toggle('hidden', currentType !== 'clauses');
     }
 
-    // Reset view to list mode when data is loaded/switched
+    // Renderuj listę
     showList(true);
 
     if (window.lucide) window.lucide.createIcons();
 
-    // Screen reader announcement – ile elementów załadowano
-    srAnnounce(buildLoadAnnouncement());
-
-    // focus + smooth-scroll to editor area (Edycja...)
+    // Najpierw focus (NVDA ogłosi nagłówek), potem announce z opóźnieniem
+    // żeby live region nie był przerywany przez zmianę fokusu
     const editorTitle = document.getElementById('editor-title');
     if (editorTitle) {
-        // small delay to allow layout & focusable elements to settle
-        setTimeout(() => {
-            editorTitle.focus();
-            editorTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 80);
+        editorTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        editorTitle.focus();
     }
+
+    // Ogłoszenie SR po tym jak NVDA skończy czytać nagłówek (~500ms)
+    setTimeout(() => srAnnounce(buildLoadAnnouncement()), 500);
 }
 
 /**
@@ -839,7 +891,22 @@ function onDataLoaded(sourceInfo) {
 function renderList(searchTerm = '') {
     const term = (searchTerm || '').toLowerCase();
     itemsList.innerHTML = '';
-    
+
+    // Opis klawiszowy — ustawiony raz na <ul>, nie na każdym elemencie
+    if (currentType !== 'summaries') {
+        let hintEl = document.getElementById('items-list-hint');
+        if (!hintEl) {
+            hintEl = document.createElement('div');
+            hintEl.id = 'items-list-hint';
+            hintEl.className = 'list-hint';
+            hintEl.innerHTML = '<i data-lucide="info" class="icon-sm" aria-hidden="true"></i> <span>Chwyć uchwyt kropkowany, aby przeciągnąć, lub użyj <strong>Alt + strzałki</strong>, aby zmienić kolejność.</span>';
+            itemsList.parentNode.insertBefore(hintEl, itemsList);
+        }
+        itemsList.setAttribute('aria-describedby', 'items-list-hint');
+    } else {
+        itemsList.removeAttribute('aria-describedby');
+    }
+
     // Obsługa dodawania nowych elementów (dynamiczne przyciski pod wyszukiwarką)
     const addActions = document.getElementById('add-item-actions');
     if (addActions) {
@@ -849,17 +916,17 @@ function renderList(searchTerm = '') {
             grid.style.display = 'grid';
             grid.style.gridTemplateColumns = '1fr 1fr';
             grid.style.gap = '0.5rem';
-            
+
             const btnC = document.createElement('button');
             btnC.className = 'primary small';
             btnC.innerHTML = '<i data-lucide="plus" class="icon-left" aria-hidden="true"></i> Dodaj klauzulę C';
             btnC.onclick = () => addNewItem('C.');
-            
+
             const btnU = document.createElement('button');
             btnU.className = 'primary small';
             btnU.innerHTML = '<i data-lucide="plus" class="icon-left" aria-hidden="true"></i> Dodaj klauzulę U';
             btnU.onclick = () => addNewItem('U.');
-            
+
             grid.appendChild(btnC);
             grid.appendChild(btnU);
             addActions.appendChild(grid);
@@ -895,6 +962,7 @@ function renderList(searchTerm = '') {
             `;
             productItem.setAttribute('role', 'button');
             productItem.setAttribute('tabindex', '0');
+            productItem.setAttribute('aria-pressed', activeItemId === '_products' ? 'true' : 'false');
             productItem.setAttribute('aria-label', 'Zarządzaj produktami');
             productItem.innerHTML = `
                 <i data-lucide="package" class="icon-md icon-primary" aria-hidden="true" style="margin-right: 0.25rem"></i>
@@ -931,20 +999,20 @@ function renderList(searchTerm = '') {
 
     keys.filter(key => {
         if (key.toLowerCase().includes(term)) return true;
-        
+
         // Extended search for better usability
         if (currentType === 'clauses' && currentData[key]) {
             return (currentData[key].title || '').toLowerCase().includes(term);
         } else if (currentType === 'mapping') {
             const item = (currentData.matrix || []).find(it => it.id === key);
             if (item) {
-                return (item.article || '').toLowerCase().includes(term) || 
-                       (item.category || '').toLowerCase().includes(term) ||
-                       (item.requirement || '').toLowerCase().includes(term);
+                return (item.article || '').toLowerCase().includes(term) ||
+                    (item.category || '').toLowerCase().includes(term) ||
+                    (item.requirement || '').toLowerCase().includes(term);
             }
         } else if (currentType === 'glossary' && currentData[key]) {
             return (currentData[key].term || '').toLowerCase().includes(term) ||
-                   (currentData[key].definition || '').toLowerCase().includes(term);
+                (currentData[key].definition || '').toLowerCase().includes(term);
         } else if (currentType === 'summaries' && currentData.compliance_summaries && currentData.compliance_summaries[key]) {
             const s = currentData.compliance_summaries[key];
             const friendly = {
@@ -956,22 +1024,48 @@ function renderList(searchTerm = '') {
                 'all_inapplicable': 'Brak wymagań (Pełny)',
                 'all_inapplicable_partial': 'Brak wymagań (Częściowy)'
             };
-            return (s.title || '').toLowerCase().includes(term) || 
-                   (s.status || '').toLowerCase().includes(term) ||
-                   (friendly[key] || '').toLowerCase().includes(term);
+            return (s.title || '').toLowerCase().includes(term) ||
+                (s.status || '').toLowerCase().includes(term) ||
+                (friendly[key] || '').toLowerCase().includes(term);
         }
         return false;
     })
         .forEach(key => {
             const li = document.createElement('li');
             li.className = 'list-item' + (activeItemId === key ? ' active' : '');
-            li.tabIndex = 0; // make focusable for keyboard support
+            li.dataset.key = key;
+            li.tabIndex = 0; // Card is now selectable/focusable
+
+            // Keyboard Reordering Logic on the Card itself
+            li.onkeydown = (e) => {
+                if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+                    if (currentType === 'summaries') return;
+                    e.preventDefault();
+                    const delta = e.key === 'ArrowUp' ? -1 : 1;
+                    if (currentType === 'mapping') {
+                        moveMatrixItem(key, delta);
+                    } else {
+                        moveObjectItem(currentType, key, delta);
+                    }
+                    // Refocus the card after re-render to allow continuous moving
+                    setTimeout(() => {
+                        const newLi = document.querySelector(`li[data-key="${key}"]`);
+                        if (newLi) newLi.focus();
+                    }, 50);
+                }
+            };
+
+            // 1. Add Drag Handle (Grip) for visual cue only
+            if (currentType !== 'summaries') {
+                const handle = document.createElement('span'); // Changed to span as it's just visual now
+                handle.className = 'drag-handle';
+                handle.innerHTML = '<i data-lucide="grip-vertical" aria-hidden="true"></i>';
+                li.appendChild(handle);
+            }
 
             // Drag and Drop support — ENABLED only when reordering is allowed
             if (currentType !== 'summaries') {
                 li.draggable = true;
-                li.setAttribute('aria-keyshortcuts', 'Alt+ArrowUp Alt+ArrowDown');
-                li.setAttribute('aria-description', 'Użyj Alt+strzałka góra/dół, aby zmienić kolejność. Naciśnij Enter lub Spację, aby otworzyć.');
 
                 li.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', key);
@@ -984,16 +1078,16 @@ function renderList(searchTerm = '') {
                 li.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     e.dataTransfer.dropEffect = 'move';
-                    div.classList.add('drag-over');
+                    li.classList.add('drag-over');
                 });
 
                 li.addEventListener('dragleave', () => {
-                    div.classList.remove('drag-over');
+                    li.classList.remove('drag-over');
                 });
 
                 li.addEventListener('drop', (e) => {
                     e.preventDefault();
-                    div.classList.remove('drag-over');
+                    li.classList.remove('drag-over');
                     const draggedKey = e.dataTransfer.getData('text/plain');
                     if (draggedKey && draggedKey !== key) {
                         reorderTo(draggedKey, key);
@@ -1001,7 +1095,7 @@ function renderList(searchTerm = '') {
                 });
 
                 li.addEventListener('dragend', () => {
-                    div.classList.remove('dragging');
+                    li.classList.remove('dragging');
                     document.querySelectorAll('.list-item').forEach(i => i.classList.remove('drag-over'));
                 });
             } else {
@@ -1019,46 +1113,6 @@ function renderList(searchTerm = '') {
                 li.appendChild(dot);
             }
 
-            // Show Up/Down controls to allow manual reordering
-            const controls = document.createElement('span');
-            controls.className = 'list-controls';
-            // Inline style removed in favor of CSS gap
-
-            let idx, length, moveFn;
-            if (currentType === 'mapping') {
-                idx = (currentData.matrix || []).findIndex(it => it.id === key);
-                length = (currentData.matrix || []).length;
-                moveFn = (id, delta) => moveMatrixItem(id, delta);
-            } else {
-                const data = (currentType === 'summaries') ? currentData.compliance_summaries : currentData;
-                const allKeys = Object.keys(data || {});
-                idx = allKeys.indexOf(key);
-                length = allKeys.length;
-                moveFn = (id, delta) => moveObjectItem(currentType, id, delta);
-            }
-
-            const upBtn = document.createElement('button');
-            upBtn.className = 'outline';
-            upBtn.setAttribute('aria-label', `Przesuń w górę: ${key}`);
-            upBtn.title = 'Przesuń w górę';
-            upBtn.innerText = '↑';
-            upBtn.disabled = idx <= 0;
-            upBtn.addEventListener('click', (ev) => { ev.stopPropagation(); moveFn(key, -1); });
-
-            const downBtn = document.createElement('button');
-            downBtn.className = 'outline';
-            downBtn.setAttribute('aria-label', `Przesuń w dół: ${key}`);
-            downBtn.title = 'Przesuń w dół';
-            downBtn.innerText = '↓';
-            downBtn.disabled = idx === -1 || idx >= (length - 1);
-            downBtn.addEventListener('click', (ev) => { ev.stopPropagation(); moveFn(key, 1); });
-
-            // Do not show manual up/down arrows for Summaries (they are ordered by template config)
-            if (currentType !== 'summaries') {
-                controls.appendChild(upBtn);
-                controls.appendChild(downBtn);
-                li.appendChild(controls);
-            }
 
             const label = document.createElement('span');
             label.className = 'list-key';
@@ -1080,7 +1134,7 @@ function renderList(searchTerm = '') {
                 }
             } else if (currentType === 'summaries' && currentData.compliance_summaries && currentData.compliance_summaries[key]) {
                 const s = currentData.compliance_summaries[key];
-                
+
                 // Mapowanie technicznych ID na czytelne nazwy dla edytora (nie zmieniając JSONa)
                 const templateNames = {
                     'full_compliance': 'ZGODNY (Pełny zakres - wszystkie klauzule OK)',
@@ -1116,7 +1170,7 @@ function renderList(searchTerm = '') {
             if (currentType !== 'summaries') {
                 const delBtn = document.createElement('button');
                 delBtn.className = 'error outline small';
-                delBtn.innerHTML = '<i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>'; 
+                delBtn.innerHTML = '<i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>';
                 // Inline styles removed in favor of CSS alignment
                 delBtn.style.margin = '0';
                 delBtn.setAttribute('aria-label', `Usuń: ${key}`);
@@ -1124,29 +1178,9 @@ function renderList(searchTerm = '') {
                 li.appendChild(delBtn);
             }
 
-            // click / keyboard handlers - remove click to load, only button
-            li.onkeydown = (e) => {
-                // Enter/Space loads item
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadItem(key); return; }
-                
-                // Alt+ArrowUp / Alt+ArrowDown to reorder (accessibility)
-                // Disabled for summaries
-                if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
-                    if (currentType === 'summaries') return; // ignore reorder keys for summaries
-                    const delta = e.key === 'ArrowUp' ? -1 : 1;
-                    if (currentType === 'mapping') {
-                        e.preventDefault();
-                        moveMatrixItem(key, delta);
-                    } else if (currentType === 'clauses') {
-                        e.preventDefault();
-                        moveObjectItem('clauses', key, delta);
-                    }
-                }
-            };
-
             itemsList.appendChild(li);
         });
-        
+
     if (window.lucide) window.lucide.createIcons();
 }
 
@@ -1166,15 +1200,16 @@ async function showList(force = false) {
     }
 
     isFormDirty = false;
+    const lastActiveId = activeItemId; // zapamiętaj przed wyzerowaniem
     activeItemId = null;
     itemsList.style.display = 'block';
     formContainer.style.display = 'none';
-    
+
     // Show add actions and search
     const addActions = document.getElementById('add-item-actions');
     const isSummaries = currentType === 'summaries';
     if (addActions) addActions.style.display = isSummaries ? 'none' : 'block';
-    
+
     document.getElementById('sidebar-search').style.display = 'block';
 
     const specialActions = document.getElementById('special-actions');
@@ -1186,21 +1221,20 @@ async function showList(force = false) {
         if (currentType === 'clauses') quickFilters.classList.remove('hidden');
         else quickFilters.classList.add('hidden');
     }
-    
+
     renderList(searchInput.value);
 
-    // Przenieś fokus na pierwszy element listy lub na sam kontener listy,
-    // aby czytnik ekranu ogłosił powrót do kontekstu listy
-    setTimeout(() => {
-        const firstActive = itemsList.querySelector('.list-item.active')
-                         || itemsList.querySelector('.list-item');
-        if (firstActive) {
-            firstActive.focus();
-        } else {
-            itemsList.setAttribute('tabindex', '-1');
-            itemsList.focus();
-        }
-    }, 50);
+    // Ustaw focus na ostatnio edytowanym elemencie listy
+    if (lastActiveId) {
+        setTimeout(() => {
+            const targetLi = Array.from(itemsList.querySelectorAll('.list-item'))
+                .find(el => el.dataset.key === lastActiveId);
+            if (targetLi) {
+                targetLi.focus();
+                targetLi.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }, 50);
+    }
 }
 
 /**
@@ -1208,14 +1242,14 @@ async function showList(force = false) {
  */
 window.setPrefixFilter = (prefix) => {
     currentPrefixFilter = prefix;
-    
+
     // Update UI + aria-pressed
     document.querySelectorAll('#quick-filters button').forEach(btn => {
         const isActive = btn.dataset.prefix === prefix;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
-    
+
     renderList(searchInput.value);
 };
 /**
@@ -1236,22 +1270,22 @@ async function loadItem(id, force = false) {
     activeItemId = id;
     isFormDirty = false; // Reset the dirty flag when a new item is loaded
     renderList(searchInput.value); // refresh active state in list
-    
+
     // Hide list, show form
     itemsList.style.display = 'none';
     formContainer.style.display = 'block';
-    
+
     // Hide add actions container instead of individual button
     const addActions = document.getElementById('add-item-actions');
     if (addActions) addActions.style.display = 'none';
-    
+
     document.getElementById('sidebar-search').style.display = 'none';
     const quickFilters = document.getElementById('quick-filters');
     if (quickFilters) quickFilters.classList.add('hidden');
-    
+
     const specialActions = document.getElementById('special-actions');
     if (specialActions) specialActions.style.display = 'none';
-    
+
     let itemData = null;
     if (currentType === 'clauses') {
         itemData = currentData[id];
@@ -1272,7 +1306,7 @@ async function loadItem(id, force = false) {
     }
 
     if (window.lucide) window.lucide.createIcons();
-    
+
     // Auto-resize all textareas once the form is loaded
     // + przenieś fokus na formularz, aby czytnik ekranu wiedział o zmianie kontekstu
     setTimeout(() => {
@@ -1298,7 +1332,7 @@ window.autoResize = (el) => {
  */
 function renderClauseForm(id, data) {
     const isLegal = id.startsWith('U.');
-    
+
     // Ensure all required arrays exist
     if (!data.preconditions) data.preconditions = [];
     if (!data.procedure) data.procedure = [];
@@ -1489,9 +1523,9 @@ function renderMappingForm(id, data) {
             <p><small>Zaznacz produkty objęte tym artykułem. Jeśli produkt wymaga specyficznych klauzul technicznych (C.*), wpisz je lub wybierz przyciskiem.</small></p>
             <div id="product-mappings-container">
                 ${Object.entries(currentData.products || {}).map(([pId, pName]) => {
-                    const val = (data.product_mappings || {})[pId];
-                    const isChecked = val !== null && val !== undefined;
-                    return `
+        const val = (data.product_mappings || {})[pId];
+        const isChecked = val !== null && val !== undefined;
+        return `
                         <div class="product-mapping-row">
                             <div class="product-mapping-header">
                                 <span class="product-id-badge">${pId}</span>
@@ -1510,7 +1544,7 @@ function renderMappingForm(id, data) {
                             </div>
                         </div>
                     `;
-                }).join('')}
+    }).join('')}
             </div>
         </div>
 
@@ -1531,10 +1565,10 @@ window.addProductPrompt = () => {
 
     // 2. Save current state of the list if any (though products use live-sync oninput)
     updateStateFromUI();
-    
+
     // 3. Ensure products object exists
     if (!currentData.products) currentData.products = {};
-    
+
     // 4. Generate next ID (p1, p2, etc.)
     const keys = Object.keys(currentData.products);
     let maxNum = 0;
@@ -1546,7 +1580,7 @@ window.addProductPrompt = () => {
         }
     });
     const newId = `p${maxNum + 1}`;
-    
+
     // 5. Add empty product to the master list
     currentData.products[newId] = "";
 
@@ -1560,11 +1594,11 @@ window.addProductPrompt = () => {
             }
         });
     }
-    
+
     // 7. Mark as modified and refresh UI
     markAsModified('_products');
     renderProductsForm();
-    
+
     // 8. Focus the new input
     setTimeout(() => {
         const inputs = document.querySelectorAll('#products-editor-main input');
@@ -1639,7 +1673,7 @@ window.openClausePicker = async (productId) => {
         </article>
     `;
     document.body.appendChild(overlay);
-    
+
     // Cleanup on close
     overlay.addEventListener('close', () => {
         overlay.remove();
@@ -1655,26 +1689,26 @@ window.openClausePicker = async (productId) => {
     const listEl = overlay.querySelector('.clause-picker-list');
     const searchEl = overlay.querySelector('.clause-picker-search');
     const item = currentData.matrix.find(it => it.id === activeItemId);
-    
+
     // Get current value from the input field in the main editor UI
     const inputField = document.getElementById(`input-${productId}`);
     const currentVal = inputField ? inputField.value : '';
-    const selectedSet = new Set(currentVal.split(';').map(s=>s.trim()).filter(Boolean));
+    const selectedSet = new Set(currentVal.split(';').map(s => s.trim()).filter(Boolean));
 
-    const renderList = (filter='') => {
+    const renderList = (filter = '') => {
         listEl.innerHTML = '';
-        const entries = Object.entries(window._clausesCache).filter(([k,v]) => {
-            if (k.startsWith('U.')) return false; 
+        const entries = Object.entries(window._clausesCache).filter(([k, v]) => {
+            if (k.startsWith('U.')) return false;
             if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
             return true;
-        }).sort(([,a], [,b]) => (a.title || '').localeCompare(b.title || ''));
+        }).sort(([, a], [, b]) => (a.title || '').localeCompare(b.title || ''));
 
         if (entries.length === 0) {
-            listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul.</p>'; 
+            listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul.</p>';
             return;
         }
 
-        entries.forEach(([k,v]) => {
+        entries.forEach(([k, v]) => {
             const row = document.createElement('label');
             row.style.display = 'flex';
             row.style.alignItems = 'start';
@@ -1682,7 +1716,7 @@ window.openClausePicker = async (productId) => {
             row.style.padding = '0.25rem 0';
             row.style.cursor = 'pointer';
             row.style.borderBottom = '1px solid var(--muted-border-color)';
-            
+
             const isChecked = selectedSet.has(k);
             row.innerHTML = `
                 <input type="checkbox" value="${k}" ${isChecked ? 'checked' : ''} class="chk-top">
@@ -1698,17 +1732,17 @@ window.openClausePicker = async (productId) => {
     renderList('');
     // Focus search input after modal is shown
     setTimeout(() => searchEl.focus(), 50);
-    searchEl.addEventListener('input', (e)=> renderList(e.target.value.toLowerCase()));
+    searchEl.addEventListener('input', (e) => renderList(e.target.value.toLowerCase()));
 
-    overlay.querySelector('.save').addEventListener('click', ()=>{
-        const checked = Array.from(listEl.querySelectorAll('input[type=checkbox]:checked')).map(i=>i.value);
-        
+    overlay.querySelector('.save').addEventListener('click', () => {
+        const checked = Array.from(listEl.querySelectorAll('input[type=checkbox]:checked')).map(i => i.value);
+
         // Zaktualizuj widoczny input (C.*)
         const inp = document.getElementById(`input-${productId}`);
         const chk = document.querySelector(`.prod-mapping-check[data-pid="${productId}"]`);
-        
+
         if (inp) inp.value = checked.join('; ');
-        
+
         // Jeśli coś wybrano, zaznaczamy produkt
         if (checked.length > 0 && chk && !chk.checked) {
             chk.checked = true;
@@ -1759,7 +1793,7 @@ window.openLegalClausePicker = async () => {
         </article>
     `;
     document.body.appendChild(overlay);
-    
+
     // Cleanup on close
     overlay.addEventListener('close', () => {
         overlay.remove();
@@ -1775,20 +1809,20 @@ window.openLegalClausePicker = async () => {
     const editLegalId = document.getElementById('edit-legal-id');
     const currentVal = editLegalId ? editLegalId.value.trim() : '';
 
-    const renderList = (filter='') => {
+    const renderList = (filter = '') => {
         listEl.innerHTML = '';
-        const entries = Object.entries(window._clausesCache).filter(([k,v]) => {
-            if (!k.startsWith('U.')) return false; 
+        const entries = Object.entries(window._clausesCache).filter(([k, v]) => {
+            if (!k.startsWith('U.')) return false;
             if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
             return true;
-        }).sort(([,a], [,b]) => (a.title || '').localeCompare(b.title || ''));
+        }).sort(([, a], [, b]) => (a.title || '').localeCompare(b.title || ''));
 
         if (entries.length === 0) {
             listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul ustawowych.</p>';
             return;
         }
 
-        entries.forEach(([k,v]) => {
+        entries.forEach(([k, v]) => {
             const row = document.createElement('label');
             row.style.display = 'flex';
             row.style.alignItems = 'start';
@@ -1796,7 +1830,7 @@ window.openLegalClausePicker = async () => {
             row.style.padding = '0.25rem 0';
             row.style.cursor = 'pointer';
             row.style.borderBottom = '1px solid var(--muted-border-color)';
-            
+
             const isChecked = (k === currentVal);
             row.innerHTML = `
                 <input type="radio" name="legal-clause-radio" value="${k}" ${isChecked ? 'checked' : ''} class="chk-top">
@@ -1811,9 +1845,9 @@ window.openLegalClausePicker = async () => {
 
     renderList('');
     setTimeout(() => searchEl.focus(), 50);
-    searchEl.addEventListener('input', (e)=> renderList(e.target.value.toLowerCase()));
+    searchEl.addEventListener('input', (e) => renderList(e.target.value.toLowerCase()));
 
-    overlay.querySelector('.save').addEventListener('click', ()=>{
+    overlay.querySelector('.save').addEventListener('click', () => {
         const selected = listEl.querySelector('input[type=radio]:checked');
         if (selected && editLegalId) {
             editLegalId.value = selected.value;
@@ -1834,27 +1868,31 @@ window.moveMatrixItem = (id, delta) => {
     const tmp = currentData.matrix[newIndex];
     currentData.matrix[newIndex] = currentData.matrix[idx];
     currentData.matrix[idx] = tmp;
-    
-    activeItemId = id; // keep the moved item highlighted
-    markAsModified();
+
+    markAsModified(id);
     // refresh UI
     renderList(searchInput.value);
+    // Refocus for keyboard users
+    setTimeout(() => {
+        const el = document.querySelector(`li[data-key="${id}"]`);
+        if (el) el.focus();
+    }, 50);
 };
 
 // Move an item in an object-based data structure (reorders keys)
 window.moveObjectItem = (type, key, delta) => {
     const data = (type === 'summaries') ? currentData.compliance_summaries : currentData;
     if (!data) return;
-    
+
     const keys = Object.keys(data);
     const idx = keys.indexOf(key);
     if (idx === -1) return;
-    
+
     const newIndex = idx + delta;
     if (newIndex < 0 || newIndex >= keys.length) return;
-    
+
     const targetKey = keys[newIndex];
-    
+
     // Rebuild the object to reflect the new key order
     const newObj = {};
     keys.forEach((k, i) => {
@@ -1873,10 +1911,14 @@ window.moveObjectItem = (type, key, delta) => {
         editorState[type].data = newObj;
         currentData = newObj;
     }
-    
-    activeItemId = key;
-    markAsModified();
+
+    markAsModified(key);
     renderList(searchInput.value);
+    // Refocus for keyboard users
+    setTimeout(() => {
+        const el = document.querySelector(`li[data-key="${key}"]`);
+        if (el) el.focus();
+    }, 50);
 };
 
 // Reorder items by dragging: moves draggedKey to targetKey's position
@@ -1899,10 +1941,10 @@ window.reorderTo = (draggedKey, targetKey) => {
         if (fromIdx !== -1 && toIdx !== -1) {
             const [key] = keys.splice(fromIdx, 1);
             keys.splice(toIdx, 0, key);
-            
+
             const newObj = {};
             keys.forEach(k => { newObj[k] = data[k]; });
-            
+
             if (currentType === 'summaries') {
                 currentData.compliance_summaries = newObj;
             } else {
@@ -1911,10 +1953,15 @@ window.reorderTo = (draggedKey, targetKey) => {
             }
         }
     }
-    
-    activeItemId = draggedKey;
-    markAsModified();
+
+    markAsModified(draggedKey);
     renderList(searchInput.value);
+
+    // Explicitly refocus the item after drag-and-drop reorder
+    setTimeout(() => {
+        const newLi = document.querySelector(`li[data-key="${draggedKey}"]`);
+        if (newLi) newLi.focus();
+    }, 50);
 };
 
 /**
@@ -1955,22 +2002,22 @@ function renderSummaryForm(id, data) {
                 <h6>Etykiety sekcji (Teksty nagłówków list w raporcie)</h6>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                     ${Object.entries(data.sections || {}).map(([sKey, sVal]) => {
-                        const friendlyLabels = {
-                            failures_label: 'Nagłówek: Niezgodności',
-                            passed_label: 'Nagłówek: Spełnione',
-                            inapplicable_label: 'Nagłówek: Nie dotyczy',
-                            untested_label: 'Nagłówek: Niepoddane ocenie',
-                            conclusions_label: 'Nagłówek: Wnioski',
-                            conclusions_value: 'Treść wniosków (domyślna)',
-                            note_label: 'Nagłówek: Uwaga',
-                            note_value: 'Treść uwagi (domyślna)'
-                        };
-                        return `
+        const friendlyLabels = {
+            failures_label: 'Nagłówek: Niezgodności',
+            passed_label: 'Nagłówek: Spełnione',
+            inapplicable_label: 'Nagłówek: Nie dotyczy',
+            untested_label: 'Nagłówek: Niepoddane ocenie',
+            conclusions_label: 'Nagłówek: Wnioski',
+            conclusions_value: 'Treść wniosków (domyślna)',
+            note_label: 'Nagłówek: Uwaga',
+            note_value: 'Treść uwagi (domyślna)'
+        };
+        return `
                             <label>${friendlyLabels[sKey] || sKey}
                                 <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}">
                             </label>
                         `;
-                    }).join('')}
+    }).join('')}
                 </div>
             </div>
 
@@ -1979,17 +2026,17 @@ function renderSummaryForm(id, data) {
                 <h6>Metadane (Etykiety danych dodatkowych)</h6>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                     ${Object.entries(data.meta || {}).map(([mKey, mVal]) => {
-                        const friendlyMeta = {
-                            date_label: 'Etykieta: Data kontroli',
-                            scope_label: 'Etykieta: Zakres kontroli',
-                            scope_value: 'Wartość: Zakres (np. Pełny)'
-                        };
-                        return `
+        const friendlyMeta = {
+            date_label: 'Etykieta: Data kontroli',
+            scope_label: 'Etykieta: Zakres kontroli',
+            scope_value: 'Wartość: Zakres (np. Pełny)'
+        };
+        return `
                             <label>${friendlyMeta[mKey] || mKey}
                                 <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}">
                             </label>
                         `;
-                    }).join('')}
+    }).join('')}
                 </div>
             </div>
             ` : ''}
@@ -2056,7 +2103,7 @@ function updateStateFromUI() {
         const idInput = document.getElementById('edit-id');
         const newId = idInput ? idInput.value.trim() : activeItemId;
         if (!newId) return false;
-        
+
         if (newId !== activeItemId) {
             if (currentData[newId]) {
                 // If ID exists and we are not just saving, we might have a conflict.
@@ -2102,7 +2149,7 @@ function updateStateFromUI() {
             if (catInput) item.category = catInput.value;
             if (reqInput) item.requirement = reqInput.value;
             if (legalIdInput) item.legal_id = legalIdInput.value.trim();
-            
+
             const newMappings = {};
             document.querySelectorAll('.prod-mapping-check').forEach(chk => {
                 const pId = chk.dataset.pid;
@@ -2137,7 +2184,7 @@ function updateStateFromUI() {
             if (statusInput) item.status = statusInput.value;
             if (titleInput) item.title = titleInput.value;
             if (descInput) item.description = descInput.value;
-            
+
             document.querySelectorAll('.section-label-input').forEach(input => {
                 item.sections[input.dataset.skey] = input.value;
             });
@@ -2152,7 +2199,7 @@ function updateStateFromUI() {
         const defInput = document.getElementById('edit-definition');
         const newTerm = idInput ? idInput.value.trim() : activeItemId;
         const newDefinition = defInput ? defInput.value.trim() : (currentData[activeItemId] || "");
-        
+
         if (!newTerm) return false;
 
         if (newTerm !== activeItemId) {
@@ -2164,7 +2211,7 @@ function updateStateFromUI() {
         }
         currentData[activeItemId] = newDefinition;
     }
-    
+
     markAsModified();
     return true;
 }
@@ -2263,11 +2310,11 @@ window.saveCurrent = () => {
     // Call state update
     updateStateFromUI();
     isFormDirty = false; // Changes are now saved to the editor state
-    
+
     // Refresh the sidebar list to show potential name/ID changes
     renderList(searchInput.value);
     loadItem(activeItemId, true); // Refresh form to sync any ID changes
-    
+
     const typeLabel = editorState[currentType].label || currentType;
     const nameLabel = activeItemId === '_products' ? 'Lista Produktów' : activeItemId;
     showToast(`Zmiany zapisane: ${typeLabel} — ${nameLabel}. Pamiętaj o pobraniu uaktualnionego pliku JSON!`, "success");
@@ -2278,7 +2325,7 @@ window.saveCurrent = () => {
  */
 function exportAllModified() {
     const modifiedEntries = Object.entries(editorState).filter(([type, s]) => s.modified && s.data);
-    
+
     if (modifiedEntries.length === 0) {
         // If nothing modified, fallback to current data even if not "modified" flag set (backwards compat)
         if (currentData) {
@@ -2311,7 +2358,7 @@ function executeExport(entries) {
         setTimeout(() => {
             downloadJson(type, s.data);
         }, index * 250);
-        
+
         s.modified = false;
         s.modifiedItems.clear();
     });
@@ -2328,13 +2375,13 @@ function downloadJson(type, data) {
     const jsonStr = JSON.stringify(data, null, 2);
     const blob = new Blob([jsonStr], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    
+
     const a = document.createElement('a');
     a.href = url;
     a.download = `${type}_updated.json`;
     document.body.appendChild(a);
     a.click();
-    
+
     // cleanup
     setTimeout(() => {
         document.body.removeChild(a);
@@ -2342,11 +2389,135 @@ function downloadJson(type, data) {
     }, 100);
 }
 
+/**
+ * Place an icon label so it stays inside the viewport.
+ * Adapted from wizard.js for consistency.
+ */
+function placeIconLabel(buttonEl, labelEl) {
+    if (!buttonEl || !labelEl) return;
+    try {
+        labelEl.classList.remove('icon-label--left', 'icon-label--right');
+        labelEl.style.left = '';
+        labelEl.style.right = '';
+
+        void labelEl.offsetWidth; // Force layout
+
+        const brect = buttonEl.getBoundingClientRect();
+        const labelRect = labelEl.getBoundingClientRect();
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const centerLeft = brect.left + (brect.width / 2) - (labelRect.width / 2);
+
+        if (centerLeft >= 8 && (centerLeft + labelRect.width) <= (vw - 8)) {
+            labelEl.style.left = `${centerLeft}px`;
+        } else if (brect.left < vw / 2) {
+            const leftPx = Math.min(brect.left + 8, vw - labelRect.width - 8);
+            labelEl.style.left = `${leftPx}px`;
+            labelEl.classList.add('icon-label--left');
+        } else {
+            const leftPx = Math.max(brect.right - labelRect.width - 8, 8);
+            labelEl.style.left = `${leftPx}px`;
+            labelEl.classList.add('icon-label--right');
+        }
+
+        const viewportH = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        let topPx = brect.bottom + 8;
+        if ((topPx + labelRect.height + 8) > viewportH) {
+            topPx = Math.max(brect.top - labelRect.height - 8, 8);
+        }
+        labelEl.style.top = `${topPx}px`;
+        labelEl.style.transform = 'translateY(0)';
+    } catch (e) { /* ignore */ }
+}
+
+function hideAllIconLabels() {
+    document.querySelectorAll('.icon-label').forEach(label => {
+        label.classList.remove('icon-label--visible');
+    });
+}
+
+function showIconLabel(label) {
+    if (label.dataset.isDismissed === 'true') return;
+    hideAllIconLabels();
+    label.classList.add('icon-label--visible');
+}
+
+/**
+ * Enhance icon-only buttons with visible labels on hover/focus.
+ */
+function enhanceIconButtons() {
+    const selectors = ['#btn-download-json-nav', '#btn-theme-toggle', '.theme-toggle'];
+    selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+            const label = el.getAttribute('data-icon-label') || el.getAttribute('aria-label') || el.title;
+            if (!label || el.querySelector('.icon-label')) return;
+
+            if (!getComputedStyle(el).position || getComputedStyle(el).position === 'static') {
+                el.style.position = 'relative';
+            }
+            const span = document.createElement('span');
+            span.className = 'icon-label';
+            span.textContent = label;
+            span.setAttribute('aria-hidden', 'true');
+            el.appendChild(span);
+
+            if (el.hasAttribute('title')) el.removeAttribute('title');
+
+            const showAndPosition = () => {
+                placeIconLabel(el, span);
+                showIconLabel(span);
+            };
+
+            el.addEventListener('mouseenter', showAndPosition);
+            el.addEventListener('focus', showAndPosition);
+            el.addEventListener('mouseleave', (e) => {
+                if (e.relatedTarget !== span && !span.contains(e.relatedTarget)) {
+                    delete span.dataset.isDismissed;
+                    hideAllIconLabels();
+                }
+            });
+            el.addEventListener('blur', (e) => {
+                if (e.relatedTarget !== span) {
+                    delete span.dataset.isDismissed;
+                    hideAllIconLabels();
+                }
+            });
+            el.addEventListener('mousemove', () => {
+                if (span.classList.contains('icon-label--visible')) placeIconLabel(el, span);
+            });
+            span.addEventListener('mouseenter', () => showIconLabel(span));
+            span.addEventListener('mouseleave', (e) => {
+                if (e.relatedTarget !== el && !el.contains(e.relatedTarget)) {
+                    delete span.dataset.isDismissed;
+                    hideAllIconLabels();
+                }
+            });
+        });
+    });
+}
+
+/**
+ * Handle Escape for tooltips and reposition on resize/scroll/click.
+ */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.icon-label--visible').forEach(label => {
+            label.dataset.isDismissed = 'true';
+            label.classList.remove('icon-label--visible');
+        });
+    }
+});
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.icon-label').forEach(label => placeIconLabel(label.parentElement, label));
+});
+window.addEventListener('scroll', () => hideAllIconLabels());
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('button')) hideAllIconLabels();
+});
+
 // Theme helpers
-function applyTheme(theme){
+function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('kzpad-theme', theme);
-    // update theme icon in topbar (support both selector patterns)
     const iconBtnChild = document.querySelector('#btn-theme-toggle i');
     const themeIconById = document.getElementById('theme-icon');
     if (window.lucide) {
@@ -2355,9 +2526,22 @@ function applyTheme(theme){
         if (themeIconById) themeIconById.setAttribute('data-lucide', name);
         window.lucide.createIcons();
     }
+
+    // Update labels for theme toggle
+    const themeToggle = document.getElementById('btn-theme-toggle');
+    if (themeToggle) {
+        const actionText = theme === 'dark' ? 'Przełącz na motyw jasny' : 'Przełącz na motyw ciemny';
+        themeToggle.setAttribute('aria-label', actionText);
+        themeToggle.setAttribute('data-icon-label', actionText);
+        const labelEl = themeToggle.querySelector('.icon-label');
+        if (labelEl) {
+            labelEl.textContent = actionText;
+            placeIconLabel(themeToggle, labelEl);
+        }
+    }
 }
 
-function toggleTheme(){
+function toggleTheme() {
     const cur = document.documentElement.getAttribute('data-theme') || 'dark';
     applyTheme(cur === 'dark' ? 'light' : 'dark');
 }

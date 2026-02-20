@@ -3,10 +3,12 @@
     --form-element-invalid-active-border-color: #FF8383;
 
     /* Buttons */
-    --btn-bg: #0A5B76; /* primary button background (dark) */
+    --btn-bg: #0A5B76;
+    /* primary button background (dark) */
 
     /* Search icon color (used to theme search input border) */
-    --search-icon-color: rgb(65,84,98); /* matches icon stroke in pico icons */
+    --search-icon-color: rgb(65, 84, 98);
+    /* matches icon stroke in pico icons */
     --btn-bg-hover: #07465B;
     --btn-foreground: #ffffff;
 
@@ -21,25 +23,28 @@
     --error-bg: rgba(255, 131, 131, 0.1);
 
     /* Card/border color used instead of muted */
-    --card-border-color: rgba(255,255,255,0.06);
+    --card-border-color: rgba(255, 255, 255, 0.06);
 
     /* Border for individual requirement rows (lighter in dark theme) */
-    --requirement-row-border-color: rgba(255,255,255,0.04);
+    --requirement-row-border-color: rgba(255, 255, 255, 0.04);
 
     /* Emphasis color used for category headers, tags, and labels */
     --emphasis-color: var(--primary);
-    --primary-inverse: #ffffff; /* Default inverse for darker primary */
-    
+    --primary-inverse: #ffffff;
+    /* Default inverse for darker primary */
+
     /* Default focus color (swapped in themes) */
-    --focus-color: hsl(38, 92%, 60%); 
+    --focus-color: hsl(38, 92%, 60%);
     /* Skip Link defaults: high contrast teal for safety */
     --skip-bg: #06425A;
     --skip-color: #ffffff;
-} 
+}
 
 /* Light theme overrides */
-:root[data-theme="light"], [data-theme="light"] {
-    --btn-bg: #1D6A8C; /* lighter button variant for light theme */
+:root[data-theme="light"],
+[data-theme="light"] {
+    --btn-bg: #1D6A8C;
+    /* lighter button variant for light theme */
     --btn-bg-hover: #155766;
     --btn-foreground: #ffffff;
 
@@ -48,10 +53,10 @@
     --error: #C94B56;
     --error-bg: rgba(201, 77, 94, 0.08);
 
-    --card-border-color: rgba(0,0,0,0.08);
+    --card-border-color: rgba(0, 0, 0, 0.08);
 
     /* Border for individual requirement rows in light theme (darker for contrast) */
-    --requirement-row-border-color: rgba(0,0,0,0.12);
+    --requirement-row-border-color: rgba(0, 0, 0, 0.12);
 
     /* Background for the whole page in light mode */
     --background-color: #f3f3f3;
@@ -61,11 +66,12 @@
     --card-sectionning-background-color: #ffffff;
 
     /* In light theme use a stronger/darker emphasis color for these UI accents */
-    --emphasis-color: #0A5B76; /* darker teal for contrast in light mode */
+    --emphasis-color: #0A5B76;
+    /* darker teal for contrast in light mode */
     --primary: #0A5B76;
     --primary-inverse: #ffffff;
     --focus-color: hsl(224, 76%, 48%);
-    
+
     /* Skip link high contrast for light theme */
     --skip-bg: #06425A;
     --skip-color: #ffffff;
@@ -76,8 +82,8 @@ code {
     --code-color: var(--color);
 }
 
-body { 
-    background-color: var(--background-color); 
+body {
+    background-color: var(--background-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -102,6 +108,7 @@ hgroup p {
     border: 0;
     z-index: 2000;
 }
+
 .skip-link:focus {
     clip: auto;
     width: auto;
@@ -115,7 +122,7 @@ hgroup p {
     color: var(--skip-color) !important;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     font-weight: 600;
     text-decoration: none;
 }
@@ -123,7 +130,9 @@ hgroup p {
 /* Pico sets --text-decoration to none by default; restore underlines for ordinary
    content links inside the wizard for accessibility. Keep UI/navigation exceptions
    (nav links, icon buttons) unchanged. */
-#main-content a, .u-interpretation a, .technical-area a {
+#main-content a,
+.u-interpretation a,
+.technical-area a {
     --text-decoration: underline;
     -webkit-text-decoration: var(--text-decoration);
     text-decoration: var(--text-decoration);
@@ -167,6 +176,7 @@ dialog#clauseModal a[target="_blank"]::after,
     opacity: 0.95;
     color: currentColor;
 }
+
 .external-link-icon i {
     display: inline-block;
     width: 1em;
@@ -199,20 +209,25 @@ a[target="_blank"]:focus {
 }
 
 /* Fix for 400% zoom and mobile layout - Reflow and Sticky Management */
-@media (max-width: 600px), (max-height: 500px) {
+@media (max-width: 600px),
+(max-height: 500px) {
     .app-header {
-        position: relative; /* Remove sticky on small heights/zoom for better space */
+        position: relative;
+        /* Remove sticky on small heights/zoom for better space */
         flex-wrap: wrap;
         padding: 0.5rem;
     }
+
     .header-content {
         margin-bottom: 0.5rem;
     }
+
     .header-actions {
         width: 100%;
         justify-content: space-around;
         gap: 0.25rem;
     }
+
     .header-icon-container {
         width: 32px;
         height: 32px;
@@ -224,11 +239,13 @@ a[target="_blank"]:focus {
     align-items: center;
     gap: 1rem;
 }
+
 .header-actions {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
+
 .header-icon-container {
     width: 42px;
     height: 42px;
@@ -236,16 +253,19 @@ a[target="_blank"]:focus {
     align-items: center;
     justify-content: center;
 }
+
 .app-logo-svg {
     width: 100%;
     height: auto;
     max-height: 40px;
 }
+
 .header-title {
     display: block;
     line-height: 1.2;
     font-size: 1.1rem;
 }
+
 .icon-btn {
     padding: 0;
     border: none;
@@ -256,10 +276,12 @@ a[target="_blank"]:focus {
     justify-content: center;
     background: transparent;
     cursor: pointer;
-    color: var(--primary); /* using primary theme color for icons */
+    color: var(--primary);
+    /* using primary theme color for icons */
     margin: 0;
     border-radius: 6px;
 }
+
 .icon-btn:hover {
     color: var(--primary);
     background: var(--primary-focus);
@@ -267,14 +289,17 @@ a[target="_blank"]:focus {
 
 /* Selected product heading adjustments for desktop */
 #selectedProductName {
-    font-size: 1.4rem; /* Slightly larger product name */
+    font-size: 1.4rem;
+    /* Slightly larger product name */
     font-weight: 600;
     line-height: 1.2;
     margin-top: 0.25rem;
 }
+
 #selectedProductName .selected-product-label {
     display: block;
-    font-size: 1.1rem; /* Smaller label for desktop */
+    font-size: 1.1rem;
+    /* Smaller label for desktop */
     font-weight: 400;
     margin-bottom: 0.25rem;
     color: var(--color);
@@ -282,10 +307,22 @@ a[target="_blank"]:focus {
 
 /* Hide header subtitle on small screens to avoid crowding */
 @media (max-width: 480px) {
-    .header-content .text-muted { display: none; }
-    .header-title { font-size: 1rem; }
-    .header-icon-container { width: 38px; height: 38px; }
-    .app-logo-svg { max-height: 34px; }
+    .header-content .text-muted {
+        display: none;
+    }
+
+    .header-title {
+        font-size: 1rem;
+    }
+
+    .header-icon-container {
+        width: 38px;
+        height: 38px;
+    }
+
+    .app-logo-svg {
+        max-height: 34px;
+    }
 
     /* Responsive paddings and heading sizes for narrow devices */
     :root {
@@ -294,12 +331,26 @@ a[target="_blank"]:focus {
     }
 
     /* Global container adjustments */
-    .container, #main-content { padding-left: var(--page-padding-horizontal); padding-right: var(--page-padding-horizontal); }
+    .container,
+    #main-content {
+        padding-left: var(--page-padding-horizontal);
+        padding-right: var(--page-padding-horizontal);
+    }
 
     /* Headings scale down for mobile for better fit */
-    h1 { font-size: clamp(1.25rem, 4vw, 1.6rem); margin-top: 2rem; margin-bottom: 1rem; }
-    h2 { font-size: clamp(1rem, 3.5vw, 1.25rem); }
-    h3 { font-size: clamp(0.95rem, 3vw, 1.05rem); }
+    h1 {
+        font-size: clamp(1.25rem, 4vw, 1.6rem);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: clamp(1rem, 3.5vw, 1.25rem);
+    }
+
+    h3 {
+        font-size: clamp(0.95rem, 3vw, 1.05rem);
+    }
 
     /* Mobile: reduce label size to 1.2rem */
     #selectedProductName .selected-product-label {
@@ -307,12 +358,26 @@ a[target="_blank"]:focus {
     }
 
     /* Requirement rows and summary cards become more compact on mobile */
-    .requirement-row { padding: 0.5rem; }
-    .requirement-text { font-size: 1rem; }
-    .category-header { font-size: 1.05rem; margin: 1.5rem 0 0.75rem 0; }
+    .requirement-row {
+        padding: 0.5rem;
+    }
 
-    .summary-result-card { padding: 1rem; }
-    .summary-header { padding-bottom: 1rem; }
+    .requirement-text {
+        font-size: 1rem;
+    }
+
+    .category-header {
+        font-size: 1.05rem;
+        margin: 1.5rem 0 0.75rem 0;
+    }
+
+    .summary-result-card {
+        padding: 1rem;
+    }
+
+    .summary-header {
+        padding-bottom: 1rem;
+    }
 
     /* Stack header and button vertically in initial summary on mobile */
     .summary-header.initial {
@@ -321,13 +386,16 @@ a[target="_blank"]:focus {
         gap: 0.75rem;
         padding-bottom: 0.5rem;
     }
+
     .summary-header.initial #btn-generate-summary {
         width: 100%;
         display: block;
     }
 
     /* Compact modal spacing on small devices */
-    #clauseModal #modalBody { padding: 0.75rem; }
+    #clauseModal #modalBody {
+        padding: 0.75rem;
+    }
 }
 
 /* --- GLOBAL FOCUS STYLE (MATCHING AUDIT PAGE) --- */
@@ -374,14 +442,19 @@ dialog .icon-btn:focus-visible {
     justify-content: center;
     height: 40px;
 }
+
 .header-actions .icon-btn i {
     vertical-align: middle;
 }
+
 /* Icon button visible labels (copied from global style.css, scoped for wizard) */
 .icon-label {
-    position: fixed; /* keep label relative to viewport to avoid ancestor clipping */
-    top: 0; /* positioned via JS */
-    left: 0; /* positioned via JS */
+    position: fixed;
+    /* keep label relative to viewport to avoid ancestor clipping */
+    top: 0;
+    /* positioned via JS */
+    left: 0;
+    /* positioned via JS */
     background: var(--card-background-color);
     border: 1px solid var(--muted-color);
     color: var(--h5-color);
@@ -392,7 +465,8 @@ dialog .icon-btn:focus-visible {
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    pointer-events: auto; /* allow hover on the label itself to avoid flicker */
+    pointer-events: auto;
+    /* allow hover on the label itself to avoid flicker */
     cursor: default;
     z-index: 9999;
     transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
@@ -413,35 +487,45 @@ dialog .icon-btn:focus-visible {
 }
 
 /* Dark theme overrides for wizard: adjust primary/emphasis to requested cyan */
-:root[data-theme="dark"], [data-theme="dark"] {
+:root[data-theme="dark"],
+[data-theme="dark"] {
     --primary: #13C4FF;
     --emphasis-color: #13C4FF;
-    --primary-inverse: #000000; /* High contrast black for cyan background */
+    --primary-inverse: #000000;
+    /* High contrast black for cyan background */
     --skip-bg: var(--primary);
     --skip-color: var(--primary-inverse);
 }
 
 /* On touch devices, show only on focus (no hover) */
 @media (hover: none) {
-    button:hover .icon-label { opacity: 0; visibility: hidden; }
-}.text-muted {
+    button:hover .icon-label {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.text-muted {
     opacity: 0.7;
     font-size: 0.8rem;
 }
+
 /* High-contrast subtitle for the wizard header */
 .app-header .text-muted {
     color: var(--header-subtitle-color);
     opacity: 0.95;
 }
 
-.container { 
-    padding-top: 2rem; 
-    padding-bottom: 0rem;}
+.container {
+    padding-top: 2rem;
+    padding-bottom: 0rem;
+}
 
 main {
     padding-bottom: 0;
     flex: 1;
 }
+
 .clause-tag {
     display: inline-flex;
     align-items: center;
@@ -461,10 +545,12 @@ main {
     text-align: left;
     max-width: 100%;
 }
+
 .clause-tag-id {
     font-weight: 700;
     white-space: nowrap;
 }
+
 .clause-tag-title {
     font-weight: 400;
     border-left: 1px solid currentColor;
@@ -472,11 +558,13 @@ main {
     /* Allow wrapping for very long titles if needed, but usually keep it concise */
     display: inline-block;
 }
-.clause-tag:hover { 
+
+.clause-tag:hover {
     background: var(--emphasis-color);
     color: var(--primary-inverse);
     border-color: var(--emphasis-color);
 }
+
 .clause-tag:focus-visible {
     outline: 3px solid var(--focus-color) !important;
     outline-offset: 2px !important;
@@ -486,6 +574,7 @@ main {
     margin-bottom: 1rem;
     padding-left: 0.5rem;
 }
+
 .clause-group-title {
     font-size: 0.8rem;
     opacity: 0.9;
@@ -529,17 +618,21 @@ main {
     --switch-height: 1.5rem !important;
     position: relative;
     border: 2px solid var(--primary) !important;
-    background-image: none !important; /* Remove Pico's default dot image */
-    background-color: transparent !important; /* Fix: Force transparent track by default */
+    background-image: none !important;
+    /* Remove Pico's default dot image */
+    background-color: transparent !important;
+    /* Fix: Force transparent track by default */
 }
 
 .art19-switch-label input[type="checkbox"][role="switch"]:checked {
-    background-image: none !important; 
-    background-color: var(--primary) !important; /* Track background when checked */
+    background-image: none !important;
+    background-color: var(--primary) !important;
+    /* Track background when checked */
 }
 
 .art19-switch-label input[type="checkbox"][role="switch"]::before {
-    display: none !important; /* Hide any extra pseudo-elements from Pico */
+    display: none !important;
+    /* Hide any extra pseudo-elements from Pico */
 }
 
 .art19-switch-label input[type="checkbox"][role="switch"]::after {
@@ -551,18 +644,21 @@ main {
     height: 0.85rem !important;
     background-color: var(--primary) !important;
     background-image: none !important;
-    border: 2px solid var(--primary) !important; /* Thicker border matching switch border */
+    border: 2px solid var(--primary) !important;
+    /* Thicker border matching switch border */
     border-radius: 50% !important;
     transition: left 0.2s ease-in-out !important;
     left: 0.1rem !important;
     margin: 0 !important;
-    right: auto !important; /* Ensure right doesn't interfere */
+    right: auto !important;
+    /* Ensure right doesn't interfere */
 }
 
 .art19-switch-label input[type="checkbox"][role="switch"]:checked::after {
     left: calc(100% - 0.1rem - 0.85rem) !important;
     background-color: var(--primary-inverse) !important;
-    border-color: var(--primary) !important; /* Still match switch border when checked */
+    border-color: var(--primary) !important;
+    /* Still match switch border when checked */
 }
 
 .art19-switch-label span {
@@ -583,6 +679,7 @@ main {
     border-radius: var(--border-radius);
     background: var(--card-background-color);
 }
+
 .requirement-text {
     font-weight: 500;
     font-size: 1.1rem;
@@ -590,12 +687,14 @@ main {
     margin-bottom: 1.5rem;
     line-height: 1.5;
 }
+
 .interpretation-area {
     padding: 1rem 1.25rem;
     margin: 0.5rem 1rem 1.5rem 2rem;
     border-left: 0.125rem solid var(--primary);
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
+
 .u-interpretation-header {
     font-weight: bold;
     color: var(--emphasis-color);
@@ -607,22 +706,26 @@ main {
     letter-spacing: 1px;
     border: none;
 }
+
 .u-interpretation {
     font-size: 0.95rem;
     color: var(--color);
     padding: 0 !important;
     margin: 0 !important;
 }
-.u-interpretation p { 
-    padding: 0 !important; 
+
+.u-interpretation p {
+    padding: 0 !important;
     margin: 0 0 0.75rem 0 !important;
     line-height: 1.5;
 }
+
 .u-interpretation ul {
     list-style-type: disc !important;
     padding-left: 1.5rem !important;
     margin: 0.5rem 0 1rem 0 !important;
 }
+
 .u-interpretation li {
     margin-bottom: 0.5rem;
     line-height: 1.4;
@@ -634,12 +737,14 @@ main {
     padding-top: 0;
     border-top: 1px solid var(--card-border-color);
 }
+
 .technical-area p small {
     font-size: 0.8rem;
     color: var(--color);
     opacity: 0.9;
     font-weight: bold;
 }
+
 /* Technical tests (EN 301 549) styling */
 .technical-area details,
 .technical-details {
@@ -648,6 +753,7 @@ main {
     padding: 0;
     margin-top: 1.25rem;
 }
+
 .technical-area summary,
 .technical-summary {
     color: var(--color);
@@ -658,13 +764,16 @@ main {
     justify-content: space-between;
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
-    margin-left: -0.75rem; /* pull back to align text despite padding */
+    margin-left: -0.75rem;
+    /* pull back to align text despite padding */
     gap: 0.5rem;
 }
+
 .technical-summary:focus .technical-title,
 .technical-summary:focus-visible .technical-title {
     text-decoration: underline;
 }
+
 .technical-title {
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -676,12 +785,14 @@ main {
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
 }
+
 /* Ensure the chevron (Pico pseudo-element) is vertically centered */
 .technical-summary::after {
     float: none !important;
     margin-bottom: 0 !important;
     margin-top: 0 !important;
 }
+
 /* Underline for interactive technical summary */
 .technical-summary:hover .technical-title,
 .technical-summary:focus .technical-title,
@@ -691,18 +802,21 @@ main {
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
 }
+
 .technical-section {
     margin-top: 1.25rem;
 }
-.requirement-id { 
-    font-weight: bold; 
-    color: var(--requirement-id-foreground); 
-    font-size: 1rem; 
+
+.requirement-id {
+    font-weight: bold;
+    color: var(--requirement-id-foreground);
+    font-size: 1rem;
     margin: 0;
     padding: 1rem;
     border-bottom: 1px solid var(--card-border-color);
     display: block;
 }
+
 .requirement-id small {
     display: block;
     color: var(--color);
@@ -711,8 +825,15 @@ main {
     font-size: 0.8em;
     margin-top: 0.2rem;
 }
-.requirement-row section, .requirement-row p { padding: 0 1rem; }
-.requirement-row section { margin-bottom: 1.5rem; }
+
+.requirement-row section,
+.requirement-row p {
+    padding: 0 1rem;
+}
+
+.requirement-row section {
+    margin-bottom: 1.5rem;
+}
 
 /* Modal */
 #clauseModal {
@@ -721,7 +842,7 @@ main {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10001;
     display: flex;
     justify-content: center;
@@ -786,7 +907,7 @@ main {
         padding: 0;
         align-items: stretch;
     }
-    
+
     #clauseModal article {
         width: 100vw;
         max-width: 100vw;
@@ -797,12 +918,12 @@ main {
         display: flex;
         flex-direction: column;
     }
-    
+
     #clauseModal header,
     #clauseModal footer {
         flex: 0 0 auto;
     }
-    
+
     #modalBody {
         flex: 1 1 auto;
         max-height: none;
@@ -812,10 +933,13 @@ main {
 
 #modalTitle {
     margin: 0;
-    color: var(--color); /* use neutral page color */
-    font-size: 1.28rem; /* slightly smaller to fit denser layout */
+    color: var(--color);
+    /* use neutral page color */
+    font-size: 1.28rem;
+    /* slightly smaller to fit denser layout */
     line-height: 1.2;
 }
+
 #modalTitle small {
     display: block;
     font-weight: normal;
@@ -830,6 +954,7 @@ main {
     border-bottom: 1px dashed var(--muted-border-color);
     margin-bottom: 0.75rem;
 }
+
 .clause-body-title .clause-title {
     margin: 0;
     font-size: 1.05rem;
@@ -840,7 +965,9 @@ main {
 }
 
 @media (max-width: 640px) {
-    .clause-body-title .clause-title { font-size: 1rem; }
+    .clause-body-title .clause-title {
+        font-size: 1rem;
+    }
 }
 
 /* Modal body heading adjustments: ensure h4 is not styled like a link and reduce spacing */
@@ -851,7 +978,8 @@ main {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--color); /* Removed emphasis color to avoid blue text */
+    color: var(--color);
+    /* Removed emphasis color to avoid blue text */
 }
 
 #clauseModal #modalBody .browser-card-section-title {
@@ -866,13 +994,13 @@ main {
 
 
 /* Normalize list and paragraph spacing inside modal body */
-#clauseModal #modalBody p, 
+#clauseModal #modalBody p,
 #clauseModal #modalBody li {
     margin: 0 0 0.4rem 0;
     line-height: 1.5;
 }
 
-#clauseModal #modalBody ul, 
+#clauseModal #modalBody ul,
 #clauseModal #modalBody ol {
     margin: 0 0 1rem 1.25rem;
     padding: 0;
@@ -942,7 +1070,8 @@ main {
     padding-left: 1.25rem;
     border-left: 2px solid var(--muted-border-color);
     margin-top: 0.5rem;
-    margin-left: 0.25rem; /* subtle offset for the vertical line */
+    margin-left: 0.25rem;
+    /* subtle offset for the vertical line */
 }
 
 /* More breathing room specifically for checklist items in "How to check" */
@@ -952,7 +1081,7 @@ main {
 
 /* Specific spacing for criteria section to prevent border from sticking to last item */
 #clauseModal article section.criteria-section {
-    padding-bottom: 0.5rem; 
+    padding-bottom: 0.5rem;
 }
 
 /* Stylizacja dla product-select-container form */
@@ -1061,25 +1190,32 @@ dialog[open] {
     overflow: hidden;
     padding: 2rem 0;
 }
+
 dialog[open] article {
     max-height: none;
     margin: 0;
 }
 
-.hidden { 
+.hidden {
     display: none !important;
 }
 
 /* Prevent horizontal overflow on small screens: make images and tables responsive
    and allow tables to scroll horizontally when necessary. Also ensure long words wrap. */
-img, #clauseModal img, .summary-result-card img, .requirement-row img {
+img,
+#clauseModal img,
+.summary-result-card img,
+.requirement-row img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
 /* Tables can be wide (from normative content) — make them scroll inside their container */
-.requirement-row table, .summary-result-card table, #clauseModal table, .technical-area table {
+.requirement-row table,
+.summary-result-card table,
+#clauseModal table,
+.technical-area table {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -1088,14 +1224,24 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
 }
 
 /* Ensure inline content breaks so long tokens don't force horizontal scroll */
-.requirement-row, .summary-result-card, .summary-link-list, .browser-card-body, #modalBody {
+.requirement-row,
+.summary-result-card,
+.summary-link-list,
+.browser-card-body,
+#modalBody {
     word-break: break-word;
     overflow-wrap: anywhere;
 }
 
 /* Extra safety on very narrow viewports */
 @media (max-width: 480px) {
-    body, .container, #resultsContent { max-width: 100%; overflow-x: hidden; }
+
+    body,
+    .container,
+    #resultsContent {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 }
 
 #product-selection-error {
@@ -1121,6 +1267,7 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
     font-weight: 800;
     display: block;
 }
+
 .product-select-container {
     margin-bottom: 3rem;
     overflow: hidden;
@@ -1230,7 +1377,8 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
 
 .summary-item-comment {
     font-size: 0.9rem;
-    color: var(--color); /* Pełny kontrast zamiast muted */
+    color: var(--color);
+    /* Pełny kontrast zamiast muted */
     margin: 0.25rem 0 0.5rem 0.5rem;
     padding-left: 0.75rem;
     border-left: 2px solid var(--primary);
@@ -1263,24 +1411,29 @@ img, #clauseModal img, .summary-result-card img, .requirement-row img {
     margin-bottom: 0 !important;
     user-select: none;
 }
+
 .product-radio-card:hover {
     background: var(--primary-focus);
     border-color: var(--primary);
 }
+
 .product-radio-card:has(input:checked) {
     border-color: var(--primary);
     background: var(--primary-focus);
 }
+
 .product-radio-card:focus-within {
     outline: 3px solid var(--primary);
     outline-offset: 4px;
 }
+
 .product-radio-card input[type="radio"] {
     margin: 0;
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
 }
+
 .product-radio-card span {
     flex-grow: 1;
     font-size: 1rem;
@@ -1301,7 +1454,9 @@ input[type="radio"] {
     color: var(--btn-foreground);
     font-weight: bold;
 }
-#generateBtn:hover, #generateBtn:focus {
+
+#generateBtn:hover,
+#generateBtn:focus {
     background-color: var(--btn-bg-hover);
     border-color: var(--btn-bg-hover);
 }
@@ -1314,7 +1469,11 @@ fieldset {
 }
 
 /* Improve contrast for form controls */
-input[type="text"], input[type="search"], input[type="number"], select, textarea {
+input[type="text"],
+input[type="search"],
+input[type="number"],
+select,
+textarea {
     border: 2px solid var(--form-element-border-color);
     border-radius: 6px;
     padding: 0.5rem;
@@ -1326,9 +1485,10 @@ input[type="text"], input[type="search"], input[type="number"], select, textarea
 #browser-search {
     border-color: var(--search-icon-color);
 }
+
 #browser-search:focus-visible {
     border-color: var(--search-icon-color);
-    outline: 3px solid rgba(65,84,98,0.15);
+    outline: 3px solid rgba(65, 84, 98, 0.15);
     outline-offset: 2px;
 }
 
@@ -1337,17 +1497,23 @@ input[type="text"], input[type="search"], input[type="number"], select, textarea
     color: var(--color);
 }
 
-input[type="text"]:focus-visible, input[type="search"]:focus-visible, input[type="number"]:focus-visible, select:focus-visible, textarea:focus-visible {
+input[type="text"]:focus-visible,
+input[type="search"]:focus-visible,
+input[type="number"]:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 2px;
     border-color: var(--primary);
 }
 
 /* Darken placeholder color slightly to improve legibility */
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: var(--form-element-placeholder-color);
     opacity: 0.9;
 }
+
 fieldset[aria-invalid="true"] {
     border: 3px solid var(--form-element-invalid-border-color);
     box-shadow: 0 0 12px rgba(255, 131, 131, 0.2);
@@ -1362,6 +1528,7 @@ fieldset[aria-invalid="true"] {
 .detailed-checklist-container {
     margin-top: 1rem;
 }
+
 .example-label {
     display: block;
     font-size: 0.85rem;
@@ -1371,6 +1538,7 @@ fieldset[aria-invalid="true"] {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
 .checklist-item {
     margin-bottom: 0.5rem;
     line-height: 1.4;
@@ -1502,6 +1670,7 @@ fieldset[aria-invalid="true"] {
         transform: translateX(calc(100% + 1rem));
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -1516,6 +1685,7 @@ fieldset[aria-invalid="true"] {
         max-width: none;
     }
 }
+
 /* Hero Section Styles */
 .hero-container {
     transition: opacity 0.3s ease-out;
@@ -1544,7 +1714,8 @@ fieldset[aria-invalid="true"] {
 }
 
 .hero-grid li::before {
-    content: none !important; /* Usuwa kropki w niektórych resetach CSS */
+    content: none !important;
+    /* Usuwa kropki w niektórych resetach CSS */
 }
 
 .hero-card {
@@ -1558,8 +1729,9 @@ fieldset[aria-invalid="true"] {
     border: 2px solid transparent;
     background-color: var(--card-background-color);
     margin: 0 !important;
-    text-decoration: none !important; /* Wymuszenie braku podkreślenia dla elementu <a> */
-    
+    text-decoration: none !important;
+    /* Wymuszenie braku podkreślenia dla elementu <a> */
+
     /* Reset stylów przycisku dla zachowania wyglądu karty */
     width: 100%;
     height: 100%;
@@ -1573,10 +1745,11 @@ fieldset[aria-invalid="true"] {
     -webkit-appearance: none;
 }
 
-.hero-card:hover, .hero-card:focus {
+.hero-card:hover,
+.hero-card:focus {
     text-decoration: none !important;
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     background-color: var(--card-sectionning-background-color);
     border-color: var(--primary);
 }
@@ -1585,7 +1758,7 @@ fieldset[aria-invalid="true"] {
 .hero-card[aria-pressed="true"],
 .hero-card.active {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     background-color: var(--card-sectionning-background-color);
     border-color: var(--primary);
     color: var(--color);
@@ -1624,7 +1797,8 @@ h2.hero-card-title {
     color: var(--h3-color);
 }
 
-#setup-section.hidden, #hero-section.hidden {
+#setup-section.hidden,
+#hero-section.hidden {
     display: none;
 }
 
@@ -1642,12 +1816,12 @@ h2.hero-card-title {
 
 .hero-card {
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin: 0;
 }
 
 .hero-card:hover {
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 #hero-section {
@@ -1685,7 +1859,7 @@ h2.hero-card-title {
     background: var(--card-background-color);
     padding: 0.5rem;
     border-radius: 2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .view-switcher button {
@@ -1695,7 +1869,8 @@ h2.hero-card-title {
     transition: all 0.2s ease;
     border: 2px solid transparent !important;
     position: relative;
-    background: transparent !important; /* Reset default backgound */
+    background: transparent !important;
+    /* Reset default backgound */
 }
 
 .view-switcher button[aria-checked="true"] {
@@ -1718,6 +1893,7 @@ h2.hero-card-title {
     .view-switcher button {
         border: 1px solid CanvasText !important;
     }
+
     .view-switcher button[aria-checked="true"] {
         background-color: SelectedItem !important;
         color: SelectedItemText !important;
@@ -1779,8 +1955,10 @@ h2.hero-card-title {
     gap: 0.25rem;
     height: 100%;
     width: 100%;
-    margin: 0 !important; /* Wyzerowanie marginesów pico.css */
-    text-decoration: none; /* Dla elementu <a> */
+    margin: 0 !important;
+    /* Wyzerowanie marginesów pico.css */
+    text-decoration: none;
+    /* Dla elementu <a> */
 
     /* Reset link/button styles */
     font-family: inherit;
@@ -1793,10 +1971,10 @@ h2.hero-card-title {
     -webkit-appearance: none;
 }
 
-.browser-category-card:hover, 
+.browser-category-card:hover,
 .browser-category-card:focus {
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     color: var(--primary);
     text-decoration: none;
 }
@@ -1806,7 +1984,7 @@ h2.hero-card-title {
     font-size: 1.1rem;
     line-height: 1.3;
     font-weight: 600;
-} 
+}
 
 .browser-category-card p {
     font-size: 0.85rem;
@@ -1894,7 +2072,7 @@ h2.hero-card-title {
     font-weight: 700;
     text-align: left;
     color: var(--primary);
-} 
+}
 
 
 #browser-back-to-cats {
@@ -1942,7 +2120,8 @@ p.hero-card-title {
 
 /* Footer styles - light background for logos */
 .app-footer {
-    background-color: #ffffff; /* Light background for both themes */
+    background-color: #ffffff;
+    /* Light background for both themes */
     border-top: 1px solid #e0e0e0;
     padding: 1rem 0;
     margin-top: 1rem;
@@ -1976,7 +2155,7 @@ p.hero-card-title {
     .footer-row {
         gap: 1rem;
     }
-    
+
     .footer-logo {
         height: 1.1rem;
     }
@@ -1993,12 +2172,21 @@ p.hero-card-title {
     margin-bottom: 0.5rem;
     padding-left: 1.5rem;
 }
+
 .markdown-list li {
     margin-bottom: 0.25rem;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
