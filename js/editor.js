@@ -892,16 +892,13 @@ function renderList(searchTerm = '') {
     const term = (searchTerm || '').toLowerCase();
     itemsList.innerHTML = '';
 
-    // Opis klawiszowy — ustawiony raz na <ul>, nie na każdym elemencie
+    // Podpowiedź jako pierwszy element listy (li), tylko dla listy
     if (currentType !== 'summaries') {
-        let hintEl = document.getElementById('items-list-hint');
-        if (!hintEl) {
-            hintEl = document.createElement('div');
-            hintEl.id = 'items-list-hint';
-            hintEl.className = 'list-hint';
-            hintEl.innerHTML = '<i data-lucide="info" class="icon-sm" aria-hidden="true"></i> <span>Chwyć uchwyt kropkowany, aby przeciągnąć, lub użyj <strong>Alt + strzałki</strong>, aby zmienić kolejność.</span>';
-            itemsList.parentNode.insertBefore(hintEl, itemsList);
-        }
+        const hintLi = document.createElement('li');
+        hintLi.id = 'items-list-hint';
+        hintLi.className = 'list-hint';
+        hintLi.innerHTML = '<i data-lucide="info" class="icon-sm" aria-hidden="true"></i> <span>Chwyć uchwyt kropkowany, aby przeciągnąć, lub użyj <strong>Alt + strzałki</strong>, aby zmienić kolejność.</span>';
+        itemsList.appendChild(hintLi);
         itemsList.setAttribute('aria-describedby', 'items-list-hint');
     } else {
         itemsList.removeAttribute('aria-describedby');
@@ -1034,31 +1031,15 @@ function renderList(searchTerm = '') {
             const li = document.createElement('li');
             li.className = 'list-item' + (activeItemId === key ? ' active' : '');
             li.dataset.key = key;
-            li.tabIndex = 0; // Card is now selectable/focusable
-
-            // Keyboard Reordering Logic on the Card itself
-            li.onkeydown = (e) => {
-                if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
-                    if (currentType === 'summaries') return;
-                    e.preventDefault();
-                    const delta = e.key === 'ArrowUp' ? -1 : 1;
-                    if (currentType === 'mapping') {
-                        moveMatrixItem(key, delta);
-                    } else {
-                        moveObjectItem(currentType, key, delta);
-                    }
-                    // Refocus the card after re-render to allow continuous moving
-                    setTimeout(() => {
-                        const newLi = document.querySelector(`li[data-key="${key}"]`);
-                        if (newLi) newLi.focus();
-                    }, 50);
-                }
-            };
+            // li is NOT a tab stop — buttons inside are the tab targets.
+            // Clicking anywhere on the card (not on action buttons) opens the edit form.
+            li.onclick = () => loadItem(key);
 
             // 1. Add Drag Handle (Grip) for visual cue only
             if (currentType !== 'summaries') {
-                const handle = document.createElement('span'); // Changed to span as it's just visual now
+                const handle = document.createElement('span');
                 handle.className = 'drag-handle';
+                handle.setAttribute('aria-hidden', 'true');
                 handle.innerHTML = '<i data-lucide="grip-vertical" aria-hidden="true"></i>';
                 li.appendChild(handle);
             }
@@ -1069,8 +1050,6 @@ function renderList(searchTerm = '') {
 
                 li.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', key);
-                    // Używamy setTimeout(0), aby przeglądarka zrobiła "ghost image"
-                    // z pełną widocznością elementu zanim nałożymy klasę .dragging
                     setTimeout(() => li.classList.add('dragging'), 0);
                     e.dataTransfer.effectAllowed = 'move';
                 });
@@ -1099,7 +1078,6 @@ function renderList(searchTerm = '') {
                     document.querySelectorAll('.list-item').forEach(i => i.classList.remove('drag-over'));
                 });
             } else {
-                // Explicitly disable draggable for summaries
                 li.draggable = false;
             }
 
@@ -1113,10 +1091,12 @@ function renderList(searchTerm = '') {
                 li.appendChild(dot);
             }
 
-
+            // Visual label — aria-hidden because screen reader gets context from editBtn's aria-label
             const label = document.createElement('span');
             label.className = 'list-key';
-            // Combine key and title
+            label.setAttribute('aria-hidden', 'true');
+
+            // Compute displayText
             let displayText = key;
             if (currentType === 'clauses' && currentData[key] && currentData[key].title) {
                 const title = currentData[key].title;
@@ -1134,8 +1114,6 @@ function renderList(searchTerm = '') {
                 }
             } else if (currentType === 'summaries' && currentData.compliance_summaries && currentData.compliance_summaries[key]) {
                 const s = currentData.compliance_summaries[key];
-
-                // Mapowanie technicznych ID na czytelne nazwy dla edytora (nie zmieniając JSONa)
                 const templateNames = {
                     'full_compliance': 'ZGODNY (Pełny zakres - wszystkie klauzule OK)',
                     'non_compliance_full': 'NIEZGODNY (Pełny zakres - błędy w klauzulach)',
@@ -1145,7 +1123,6 @@ function renderList(searchTerm = '') {
                     'all_inapplicable': 'BRAK WYMAGAŃ (Wszystkie klauzule: Nie dotyczy)',
                     'all_inapplicable_partial': 'BRAK WYMAGAŃ (Częściowy zakres: Wszystkie "Nie dotyczy")'
                 };
-
                 displayText = templateNames[key] || s.status || key;
             } else if (currentType === 'mapping') {
                 const item = (currentData.matrix || []).find(it => it.id === key);
@@ -1158,20 +1135,44 @@ function renderList(searchTerm = '') {
             label.textContent = displayText;
             li.appendChild(label);
 
-            // Add edit button
+            // Edit button — PRIMARY tab stop on the card.
+            // aria-label includes full displayText so screen reader announces
+            // context + action in one: "Edytuj: [full name], przycisk"
             const editBtn = document.createElement('button');
             editBtn.className = 'primary outline small';
             editBtn.textContent = 'Edytuj';
-            editBtn.setAttribute('aria-label', `Edytuj: ${key}`);
+            editBtn.setAttribute('aria-label', `Edytuj: ${displayText}`);
+
+            // Keyboard reordering (Alt+Arrow) handled on the edit button
+            if (currentType !== 'summaries') {
+                editBtn.addEventListener('keydown', (e) => {
+                    if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+                        e.preventDefault();
+                        const delta = e.key === 'ArrowUp' ? -1 : 1;
+                        if (currentType === 'mapping') {
+                            moveMatrixItem(key, delta);
+                        } else {
+                            moveObjectItem(currentType, key, delta);
+                        }
+                        // Refocus the edit button after re-render
+                        setTimeout(() => {
+                            const newLi = document.querySelector(`li[data-key="${key}"]`);
+                            if (newLi) {
+                                const btn = newLi.querySelector('button.primary');
+                                if (btn) btn.focus();
+                            }
+                        }, 50);
+                    }
+                });
+            }
             editBtn.onclick = (e) => { e.stopPropagation(); loadItem(key); };
             li.appendChild(editBtn);
 
-            // Add delete button (if not summaries)
+            // Delete button
             if (currentType !== 'summaries') {
                 const delBtn = document.createElement('button');
                 delBtn.className = 'error outline small';
                 delBtn.innerHTML = '<i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>';
-                // Inline styles removed in favor of CSS alignment
                 delBtn.style.margin = '0';
                 delBtn.setAttribute('aria-label', `Usuń: ${key}`);
                 delBtn.onclick = (e) => { e.stopPropagation(); deleteItem(key); };
@@ -1180,6 +1181,7 @@ function renderList(searchTerm = '') {
 
             itemsList.appendChild(li);
         });
+
 
     if (window.lucide) window.lucide.createIcons();
 }
@@ -1224,13 +1226,15 @@ async function showList(force = false) {
 
     renderList(searchInput.value);
 
-    // Ustaw focus na ostatnio edytowanym elemencie listy
+    // Ustaw focus na przycisku Edytuj ostatnio edytowanego elementu
     if (lastActiveId) {
         setTimeout(() => {
             const targetLi = Array.from(itemsList.querySelectorAll('.list-item'))
                 .find(el => el.dataset.key === lastActiveId);
             if (targetLi) {
-                targetLi.focus();
+                const editBtn = targetLi.querySelector('button.primary');
+                const focusTarget = editBtn || targetLi;
+                focusTarget.focus();
                 targetLi.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }, 50);
@@ -1270,9 +1274,11 @@ async function loadItem(id, force = false) {
     activeItemId = id;
     isFormDirty = false; // Reset the dirty flag when a new item is loaded
     renderList(searchInput.value); // refresh active state in list
-
-    // Hide list, show form
+    // Ukryj listę i podpowiedź, gdy edytujemy formularz
     itemsList.style.display = 'none';
+    // Usuń podpowiedź z DOM po przejściu do edycji
+    const hintEl = document.getElementById('items-list-hint');
+    if (hintEl) hintEl.remove();
     formContainer.style.display = 'block';
 
     // Hide add actions container instead of individual button
@@ -1313,8 +1319,9 @@ async function loadItem(id, force = false) {
         document.querySelectorAll('#form-container textarea').forEach(tx => {
             autoResize(tx);
         });
-        const fc = document.getElementById('form-container');
-        if (fc) fc.focus();
+        // Ustaw focus na nagłówku formularza (h3)
+        const h3 = document.querySelector('#form-container h3');
+        if (h3) h3.focus();
     }, 0);
 }
 
@@ -1347,7 +1354,7 @@ function renderClauseForm(id, data) {
         <div class="field-group">
             <div class="section-header">
                 <i data-lucide="${isLegal ? 'scale' : 'code'}" class="icon-md icon-primary" aria-hidden="true"></i>
-                <h3 class="m-0">Edycja: ${isLegal ? 'Klauzula Prawna' : 'Klauzula Techniczna'}</h3>
+                <h3 class="m-0" tabindex="-1">Edycja: ${isLegal ? 'Klauzula Prawna' : 'Klauzula Techniczna'}</h3>
             </div>
 
             <div class="grid-1-3">
@@ -1870,12 +1877,21 @@ window.moveMatrixItem = (id, delta) => {
     currentData.matrix[idx] = tmp;
 
     markAsModified(id);
-    // refresh UI
     renderList(searchInput.value);
-    // Refocus for keyboard users
+    // Przywróć widoczność listy i podpowiedzi po powrocie do listy
+    itemsList.style.display = '';
+    // Announce new position to screen reader
+    const newPos = currentData.matrix.findIndex(it => it.id === id) + 1;
+    const total = currentData.matrix.length;
+    const dir = delta < 0 ? 'w górę' : 'w dół';
+    setTimeout(() => srAnnounce(`Karta przeniesiona ${dir} na pozycję ${newPos} z ${total}`), 200);
+    // Refocus edit button for keyboard users
     setTimeout(() => {
         const el = document.querySelector(`li[data-key="${id}"]`);
-        if (el) el.focus();
+        if (el) {
+            const btn = el.querySelector('button.primary');
+            if (btn) btn.focus();
+        }
     }, 50);
 };
 
@@ -1914,10 +1930,20 @@ window.moveObjectItem = (type, key, delta) => {
 
     markAsModified(key);
     renderList(searchInput.value);
-    // Refocus for keyboard users
+    // Announce new position to screen reader
+    const posData = (type === 'summaries') ? currentData.compliance_summaries : currentData;
+    const allKeys = Object.keys(posData);
+    const newPos = allKeys.indexOf(key) + 1;
+    const total = allKeys.length;
+    const dir = delta < 0 ? 'w górę' : 'w dół';
+    setTimeout(() => srAnnounce(`Karta przeniesiona ${dir} na pozycję ${newPos} z ${total}`), 200);
+    // Refocus edit button for keyboard users
     setTimeout(() => {
         const el = document.querySelector(`li[data-key="${key}"]`);
-        if (el) el.focus();
+        if (el) {
+            const btn = el.querySelector('button.primary');
+            if (btn) btn.focus();
+        }
     }, 50);
 };
 
@@ -1925,10 +1951,12 @@ window.moveObjectItem = (type, key, delta) => {
 window.reorderTo = (draggedKey, targetKey) => {
     if (!currentData || draggedKey === targetKey) return;
 
+    // Capture fromIdx before reorder to determine direction
+    let fromIdx = -1, toIdx = -1;
     if (currentType === 'mapping') {
         const matrix = currentData.matrix;
-        const fromIdx = matrix.findIndex(it => it.id === draggedKey);
-        const toIdx = matrix.findIndex(it => it.id === targetKey);
+        fromIdx = matrix.findIndex(it => it.id === draggedKey);
+        toIdx = matrix.findIndex(it => it.id === targetKey);
         if (fromIdx !== -1 && toIdx !== -1) {
             const [item] = matrix.splice(fromIdx, 1);
             matrix.splice(toIdx, 0, item);
@@ -1936,8 +1964,8 @@ window.reorderTo = (draggedKey, targetKey) => {
     } else {
         const data = (currentType === 'summaries') ? currentData.compliance_summaries : currentData;
         const keys = Object.keys(data);
-        const fromIdx = keys.indexOf(draggedKey);
-        const toIdx = keys.indexOf(targetKey);
+        fromIdx = keys.indexOf(draggedKey);
+        toIdx = keys.indexOf(targetKey);
         if (fromIdx !== -1 && toIdx !== -1) {
             const [key] = keys.splice(fromIdx, 1);
             keys.splice(toIdx, 0, key);
@@ -1956,11 +1984,26 @@ window.reorderTo = (draggedKey, targetKey) => {
 
     markAsModified(draggedKey);
     renderList(searchInput.value);
-
-    // Explicitly refocus the item after drag-and-drop reorder
+    // Announce new position to screen reader
+    (() => {
+        const posData = currentType === 'mapping'
+            ? currentData.matrix
+            : Object.keys((currentType === 'summaries') ? currentData.compliance_summaries : currentData);
+        const newPos = currentType === 'mapping'
+            ? posData.findIndex(it => it.id === draggedKey) + 1
+            : posData.indexOf(draggedKey) + 1;
+        const total = posData.length;
+        const dir = toIdx < fromIdx ? 'w górę' : 'w dół';
+        setTimeout(() => srAnnounce(`Karta przeniesiona ${dir} na pozycję ${newPos} z ${total}`), 200);
+    })();
+    // Refocus the edit button of the dragged item after re-render
     setTimeout(() => {
         const newLi = document.querySelector(`li[data-key="${draggedKey}"]`);
-        if (newLi) newLi.focus();
+        if (newLi) {
+            const editBtn = newLi.querySelector('button.primary');
+            if (editBtn) editBtn.focus();
+            newLi.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     }, 50);
 };
 
