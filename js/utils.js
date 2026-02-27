@@ -819,6 +819,17 @@ function parseMarkdown(text) {
     // 1. Handle literal \n string if present (backslash + n)
     let t = text.replace(/\\n/g, '\n');
 
+    // Stash HTML tables and other pre-formatted HTML before escaping
+    const htmlStash = [];
+    const stash = (tag) => {
+        const key = `\x00${htmlStash.length}\x00`;
+        htmlStash.push(tag);
+        return key;
+    };
+
+    // Stash HTML tables: <table>...</table>
+    t = t.replace(/<table[\s\S]*?<\/table>/gi, (match) => stash(match));
+
     // 2. Initial escape to prevent raw HTML injection
     let html = t
         .replace(/&/g, '&amp;')
@@ -826,6 +837,15 @@ function parseMarkdown(text) {
         .replace(/>/g, '&gt;');
 
     // 3. Inline formatting
+    // Images: ![alt](src)
+    html = html.replace(/!\[(.*?)\]\((.*?)\)/g, (_, alt, src) =>
+        stash(`<img src="${src}" alt="${alt}" style="max-width:100%;display:block;margin:0.5em 0">`)
+    );
+    // Links: [text](url)
+    html = html.replace(/\[(.*?)\]\((https?:\/\/.*?)\)/g, (_, text, url) =>
+        stash(`<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`)
+    );
+
     html = html
         // Bold: **text** or __text__
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -834,9 +854,10 @@ function parseMarkdown(text) {
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/_(.*?)_/g, '<em>$1</em>')
         // Inline code: `text`
-        .replace(/`(.*?)`/g, '<code>$1</code>')
-        // Links: [text](url)
-        .replace(/\[(.*?)\]\((https?:\/\/.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        .replace(/`(.*?)`/g, '<code>$1</code>');
+
+    // Restore stashed HTML tags
+    html = html.replace(/\x00(\d+)\x00/g, (_, i) => htmlStash[+i]);
 
     // 4. Block formatting: Headers, Lists and New Lines
     const lines = html.split('\n');
@@ -933,7 +954,9 @@ function parseMarkdown(text) {
  */
 function stripNumbering(text) {
     if (!text) return '';
-    return text.replace(/^((C|U)\.[A-Z0-9\.]+|[\d\.]+|[A-Z]\d+[\.\)]?)\s*/, '');
+    // see wizard.js stripNumbering change above for rationale; we also need to
+    // absorb hyphens because of clauses like "C.5.3-1".
+    return text.replace(/^((?:C|U)\.[A-Za-z0-9\.-]+|[\d\.]+|[A-Z]\d+[\.\)]?)\s*/, '');
 }
 
 /**

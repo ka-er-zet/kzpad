@@ -130,7 +130,11 @@ const chapterNames = {
  */
 function stripNumbering(text) {
     if (!text) return '';
-    return text.replace(/^((C|U)\.[A-Z0-9\.]+|[\d\.]+|[A-Z]\d+[\.\)]?)\s*/, '');
+    // Remove leading clause numbering.  The numbering may include a hyphen
+    // and additional digits (e.g. "C.5.3-1") or a lowercase letter suffix
+    // (e.g. "C.8.3.2.5.c"), so the regex must be permissive enough to eat
+    // the whole prefix.  After the prefix we trim any whitespace.
+    return text.replace(/^((?:C|U)\.[A-Za-z0-9\.-]+|[\d\.]+|[A-Z]\d+[\.\)]?)\s*/, '');
 }
 
 /**
@@ -622,8 +626,8 @@ const Browser = {
             const parts = req.id.split('.');
             if (parts.length >= 2) {
                 displayId = `Art. ${parts[1]}`;
-                if (parts[2]) displayId += ` ust. ${parts[2]}`;
-                if (parts[3]) displayId += ` pkt ${parts[3]}`;
+                if (parts[2] && parts[2] !== '0') displayId += ` ust. ${parts[2]}`;
+                if (parts[3] && parts[3] !== '0') displayId += ` pkt ${parts[3]}`;
                 
                 if (parts[4]) {
                     const subParts = parts[4].split('-');
@@ -1010,7 +1014,7 @@ function generateDescriptiveSummary(isInitial = false) {
 
                 <div class="summary-body">
                     ${(() => {
-                        let text = config.description.replace('{productName}', `<strong>${fullProductName}</strong>`);
+                        let text = config.description.replace('{productName}', `**${fullProductName}**`);
                         if (W.parseMarkdown) text = W.parseMarkdown(text);
                         return text;
                     })()}

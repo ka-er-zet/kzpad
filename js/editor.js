@@ -877,8 +877,10 @@ function onDataLoaded(sourceInfo) {
     // żeby live region nie był przerywany przez zmianę fokusu
     const editorTitle = document.getElementById('editor-title');
     if (editorTitle) {
-        editorTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        editorTitle.focus();
+        setTimeout(() => {
+            editorTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            editorTitle.focus();
+        }, 50);
     }
 
     // Ogłoszenie SR po tym jak NVDA skończy czytać nagłówek (~500ms)
@@ -1661,7 +1663,7 @@ window.openClausePicker = async (productId) => {
             <header>
                 <a href="#close" aria-label="Zamknij" class="close" onclick="document.getElementById('clause-picker-dialog').close()"></a>
                 <h3 class="m-0">Wybierz klauzule techniczne</h3>
-                <p class="muted-help">Dla produktu: <strong>${productId} — ${pName}</strong></p>
+                <p class="muted-help">Dla produktu: ${productId} — ${pName}</p>
             </header>
             
             <div class="field-group">

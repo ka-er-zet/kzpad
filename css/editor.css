@@ -38,6 +38,11 @@ body {
     background-color: var(--background-color);
 }
 
+/* Remove padding-inline-start for #items-list */
+#items-list {
+    padding-inline-start: 0 !important;
+}
+
 .skip-link {
     position: absolute;
     top: 0;
@@ -455,6 +460,10 @@ button.small {
     align-items: center;
 }
 
+#editor-title {
+    scroll-margin-top: 5rem;
+}
+
 .editor-title-container {
     display: flex;
     justify-content: flex-start;
@@ -566,8 +575,12 @@ button.small {
 }
 
 /* Ensure sub-elements follow color change only on focus */
-.list-item:focus-within button,
 .list-item:focus-within .drag-handle {
+    color: var(--primary-inverse) !important;
+}
+
+/* Buttons inherit inverted colors when card is focused */
+.list-item:focus-within button {
     color: var(--primary-inverse) !important;
     border-color: var(--primary-inverse) !important;
     background-color: transparent !important;
@@ -628,6 +641,17 @@ button.small {
     justify-content: center;
     height: 2rem;
     padding: 0 0.75rem;
+    /* Hidden by default — revealed on card hover/focus */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+
+/* Reveal buttons on mouse hover OR when keyboard focus is anywhere in the card */
+.list-item:hover button,
+.list-item:focus-within button {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .list-controls button {

@@ -2046,6 +2046,10 @@ h2.hero-card-title {
     font-size: 1.2rem;
 }
 
+[data-theme="dark"] .browser-card-id {
+    color: #a8d8ff;
+}
+
 .browser-card-labels {
     display: flex;
     gap: 0.5rem;

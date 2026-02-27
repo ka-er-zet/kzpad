@@ -48,6 +48,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.1.3.1; C.5.1.5 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.5.1.3.1; C.5.1.5 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.1.3.1; C.5.1.5 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -61,16 +72,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.11.3.1.1.1 |
-| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.11.3.1.1.1 |
-| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.11.3.1.1.2 |
-| Bankomaty i wpłatomaty (p04) | C.11.3.1.1.2 |
-| Automaty biletowe (p05) | C.11.3.1.1.2 |
-| Urządzenia do odprawy (check-in) (p06) | C.11.3.1.1.2 |
-| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.11.3.1.1.2 |
-| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.11.3.1.1.2 |
-| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.3.1.1.2 |
-| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.3.1.1.2 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.11.1.1.1.1; C.11.1.3.1.1; C.11.3.1.1.1 |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.11.1.1.1.1; C.11.1.3.1.1; C.11.3.1.1.1 |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.11.1.1.1.2; C.11.3.1.1.2 |
+| Bankomaty i wpłatomaty (p04) | C.11.1.1.1.2; C.11.3.1.1.2 |
+| Automaty biletowe (p05) | C.11.1.1.1.2; C.11.3.1.1.2 |
+| Urządzenia do odprawy (check-in) (p06) | C.11.1.1.1.2; C.11.3.1.1.2 |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.11.1.1.1.2; C.11.3.1.1.2 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.11.1.1.1.1; C.11.1.3.1.1; C.11.3.1.1.1 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.1.1.1.1; C.11.1.3.1.1; C.11.3.1.1.1 |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.1.1.1.1; C.11.1.3.1.1; C.11.3.1.1.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -94,6 +116,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.1.4 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.12 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.12 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -117,6 +150,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.12.1.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.12.1.2 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.12.1.2 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -140,6 +184,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.12.1.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.12.1.2 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.12.1.2 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -163,6 +218,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.9.1.1.1; C.10.1.1.1; C.12.1.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.9.1.1.1; C.10.1.1.1; C.12.1.2 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.9.1.1.1; C.10.1.1.1; C.12.1.2 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -186,6 +252,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -209,6 +286,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.12.1.1 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.12.1.1 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.12.1.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -216,7 +304,7 @@
 
 **Legal ID:** U.7.1.2.c  
 **Kategoria:** Informacje o produkcie (Art. 7)  
-**Wymaganie:** Instrukcje, o których mowa w pkt 2 są przedstawione w formatach tekstowych umożliwiających wykorzystanie ich w celu alternatywnej i wspomagającej komunikacji
+**Wymaganie:** Instrukcje, o których mowa w pkt 2 są przedstawione w formatach tekstowych umożliwiających wykorzystanie ich w celu alternatywnej i wspomagającej komunikacji, które mogą być przedstawiane za pomocą więcej niż jednego kanału sensorycznego
 
 #### Mapowania produktów
 
@@ -232,6 +320,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.9.3.1.1; C.10.3.1.1; C.12.1.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.9.3.1.1; C.10.3.1.1; C.12.1.2 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.9.3.1.1; C.10.3.1.1; C.12.1.2 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -255,6 +354,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.12.1.1 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.12.1.1 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.12.1.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -270,9 +380,25 @@
 | --- | --- |
 | Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.9.1.1.1; C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.9.3.1.1; C.9.4.1.2; C.10.1.1.1; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.10.3.1.1; C.10.4.1.2; C.12.1.2 |
 | Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.9.1.1.1; C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.9.3.1.1; C.9.4.1.2; C.10.1.1.1; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.10.3.1.1; C.10.4.1.2; C.12.1.2 |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.9.1.1.1; C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.9.3.1.1; C.9.4.1.2; C.10.1.1.1; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.10.3.1.1; C.10.4.1.2; C.12.1.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.9.1.1.1; C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.9.3.1.1; C.9.4.1.2; C.10.1.1.1; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.10.3.1.1; C.10.4.1.2; C.12.1.2 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.9.1.1.1; C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.9.3.1.1; C.9.4.1.2; C.10.1.1.1; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.10.3.1.1; C.10.4.1.2; C.12.1.2 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -288,9 +414,25 @@
 | --- | --- |
 | Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
 | Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -311,7 +453,20 @@
 | Automaty biletowe (p05) | C.5.1.3.1; C.5.1.5; C.5.1.7; C.5.5.2; C.6.4 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.1.3.1; C.5.1.5; C.5.1.7; C.5.5.2; C.6.4 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.1.3.1; C.5.1.5; C.5.1.7; C.5.5.2; C.6.4 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.6.2.1.1; C.6.4 |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -335,6 +490,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.1.7; C.6.4 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.5.1.7 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.1.7 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -358,6 +524,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.1.4; C.11.1.4.3; C.11.2.4.7 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.1.4.3; C.11.1.4.4.1; C.11.2.4.3; C.11.2.4.7; C.11.7 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.1.4.3; C.11.1.4.4.1; C.11.2.4.3; C.11.2.4.7; C.11.7 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -381,6 +558,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.1.3 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.8.1.3; C.11.1.4.1 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.8.1.3; C.11.1.4.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -388,7 +576,7 @@
 
 **Legal ID:** U.8.0.1.e  
 **Kategoria:** Wymagania projektowe i interfejsu użytkownika (Art. 8)  
-**Wymaganie:** Jeżeli produkt wykorzystuje sygnały dźwiękowe do przekazywania informacji, wskazania działania, które należy wykonać, wskazania konieczności reakcji ze strony użytkownika lub zaznaczenia pewnych elementów zapewnia się rozwiązania alternatywne do stosowania sygnałów dźwiękowych
+**Wymaganie:** Jeżeli produkt wykorzystuje sygnały dźwiękowe do przekazywania informacji, wskazania działania, które należy wykonać, wskazania konieczności reakcji ze strony użytkownika lub zaznaczenia pewnych elementów – zapewnia się rozwiązania alternatywne do stosowania sygnałów dźwiękowych
 
 #### Mapowania produktów
 
@@ -404,6 +592,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.1.5 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.1.1.1.1; C.11.1.3.3; C.11.7 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.1.1.1.1; C.11.1.3.3; C.11.7 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -427,6 +626,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.6.1; C.8.2.1.1 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.1.4.2; C.11.7 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.1.4.2; C.11.7 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -450,6 +660,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.5.1; C.5.5.2; C.5.9; C.8.4.2.1 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.5.5.1; C.5.5.2; C.5.9; C.8.4.1; C.8.4.2.1; C.11.2.1.1.1; C.11.2.5.1 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.2.1.1.1; C.11.2.5.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -473,6 +694,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.4.2.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.8.4.2.2; C.11.1.3.4 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.8.4.2.2; C.11.1.3.4 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -496,6 +728,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.2.3.1 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.10.2.3.1; C.11.2.3.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -519,6 +762,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.4.1.2 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.1.3.11; C.5.1.3.8; C.5.1.3.9 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -532,16 +786,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.5.3 |
-| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.5.3 |
-| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.3 |
-| Bankomaty i wpłatomaty (p04) | C.5.3 |
-| Automaty biletowe (p05) | C.5.3 |
-| Urządzenia do odprawy (check-in) (p06) | C.5.3 |
-| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.3 |
-| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.3 |
-| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.5.3 |
-| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.3 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.5.3-1; C.5.3-2 |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.5.3-1; C.5.3-2 |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.3-1; C.5.3-2 |
+| Bankomaty i wpłatomaty (p04) | C.5.3-1; C.5.3-2 |
+| Automaty biletowe (p05) | C.5.3-1; C.5.3-2 |
+| Urządzenia do odprawy (check-in) (p06) | C.5.3-1; C.5.3-2 |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.3-1; C.5.3-2 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.5.3-1; C.5.3-2 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.5.3-1; C.5.3-2 |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.3-1; C.5.3-2 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -555,16 +820,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.11.7 |
-| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.11.7 |
-| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
-| Bankomaty i wpłatomaty (p04) |  |
-| Automaty biletowe (p05) |  |
-| Urządzenia do odprawy (check-in) (p06) |  |
-| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
-| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
-| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.7 |
-| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.7 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.11.6.2; C.11.7 |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.11.6.2; C.11.7 |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.11.6.2 |
+| Bankomaty i wpłatomaty (p04) | C.11.6.2 |
+| Automaty biletowe (p05) | C.11.6.2 |
+| Urządzenia do odprawy (check-in) (p06) | C.11.6.2 |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.11.6.2 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.11.6.2; C.11.7 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.6.2; C.11.7 |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.11.6.2; C.11.7 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -572,7 +848,7 @@
 
 **Legal ID:** U.8.0.5.c  
 **Kategoria:** Wymagania projektowe i interfejsu użytkownika (Art. 8)  
-**Wymaganie:** Zapewnia się wystarczająco długi czas na reakcję oraz możliwość jego dostosowywania przez użytkownika
+**Wymaganie:** Zapewnia się wystarczająco długi czas na reakcję użytkownika oraz możliwość dostosowywania przez użytkownika czasu na tę reakcję
 
 #### Mapowania produktów
 
@@ -588,6 +864,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.11.2.2.1 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.2.2.1 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.10.2.2.1; C.11.2.2.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -611,6 +898,51 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.1.2 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.8.1.2; C.11.5.2.3 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.8.1.2; C.11.5.2.3 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
+
+---
+
+### A23-06-01 - Art. 23 ust. 6 pkt 1
+
+**Legal ID:** U.23.6.1  
+**Kategoria:** Oznakowanie CE, deklaracja zgodności i identyfikacja (Art. 23, 24, 26)  
+**Wymaganie:** Jeżeli z dokonanej oceny zgodności produktu, o której mowa w ust. 2, wynika, że produkt spełnia wymagania dostępności, przed jego wprowadzeniem do obrotu producent sporządza w formie pisemnej, w postaci papierowej lub elektronicznej deklarację zgodności potwierdzającą zgodność produktu z wymaganiami dostępności, zwaną dalej „deklaracją zgodności”
+
+#### Mapowania produktów
+
+| Produkt | Kody techniczne |
+| --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -634,6 +966,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -641,7 +984,7 @@
 
 **Legal ID:** U.23.7.0  
 **Kategoria:** Oznakowanie CE, deklaracja zgodności i identyfikacja (Art. 23, 24, 26)  
-**Wymaganie:** Jeżeli jest to niemożliwe lub nieuzasadnione ze względu na charakter produktu, oznakowanie CE umieszcza się na opakowaniu i w dołączonych do produktu dokumentach
+**Wymaganie:** W przypadku gdy umieszczenie na produkcie lub jego tabliczce znamionowej oznakowania CE w sposób, o którym mowa w ust. 6 pkt 2, jest niemożliwe lub nieuzasadnione ze względu na charakter produktu, oznakowanie CE umieszcza się na opakowaniu i w dołączonych do produktu dokumentach w sposób, o którym mowa w ust. 6 pkt 2. 
 
 #### Mapowania produktów
 
@@ -657,29 +1000,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
-
----
-
-### A23-06-01 - Art. 23 ust. 6 pkt 1
-
-**Legal ID:** U.23.6.1  
-**Kategoria:** Oznakowanie CE, deklaracja zgodności i identyfikacja (Art. 23, 24, 26)  
-**Wymaganie:** Dla produktu została sporządzona (w formie pisemnej, w postaci papierowej lub elektronicznej) deklaracja zgodności potwierdzającą zgodność produktu z wymaganiami dostępności
-
-#### Mapowania produktów
-
-| Produkt | Kody techniczne |
-| --- | --- |
-| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
-| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
-| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
-| Bankomaty i wpłatomaty (p04) |  |
-| Automaty biletowe (p05) |  |
-| Urządzenia do odprawy (check-in) (p06) |  |
-| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
-| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
-| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
-| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -703,6 +1034,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -726,6 +1068,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -749,6 +1102,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -756,7 +1120,7 @@
 
 **Legal ID:** U.26.1.0  
 **Kategoria:** Oznakowanie CE, deklaracja zgodności i identyfikacja (Art. 23, 24, 26)  
-**Wymaganie:** Na produkcie (lub opakowaniu/dokumencie) umieszczono nazwę typu, numer partii, numer serii lub inne informacje umożliwiające identyfikację produktu
+**Wymaganie:** Producent umieszcza na produkcie, a w przypadku gdy jest to niemożliwe ze względu na wielkość lub charakter produktu – na opakowaniu lub w dokumencie dołączonym do produktu, nazwę typu, numer partii, numer serii lub inne informacje umożliwiające jego identyfikację.
 
 #### Mapowania produktów
 
@@ -772,6 +1136,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -779,7 +1154,7 @@
 
 **Legal ID:** U.26.2.0  
 **Kategoria:** Oznakowanie CE, deklaracja zgodności i identyfikacja (Art. 23, 24, 26)  
-**Wymaganie:** Na produkcie (lub opakowaniu/dokumencie) umieszczono dane producenta, takie, jak: imię i nazwisko lub nazwę (firmę) oraz zarejestrowaną nazwę handlową lub zarejestrowany znak towarowy, jeżeli je posiada, oraz jego dane kontaktowe, w tym wskazanie jednego punktu kontaktowego. Dane kontaktowe są podawane w języku polskim
+**Wymaganie:** Producent umieszcza na produkcie, a w przypadku gdy jest to niemożliwe ze względu na wielkość lub charakter produktu – na opakowaniu lub w dokumencie dołączonym do produktu, swoje imię i nazwisko lub nazwę (firmę) oraz zarejestrowaną nazwę handlową lub zarejestrowany znak towarowy, jeżeli je posiada, oraz swoje dane kontaktowe, w tym wskazanie jednego punktu kontaktowego z producentem. Dane kontaktowe są podawane w języku polskim.
 
 #### Mapowania produktów
 
@@ -795,6 +1170,17 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -808,11 +1194,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
 | Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.1.3.1; C.5.1.3.14 |
 | Bankomaty i wpłatomaty (p04) | C.5.1.3.1; C.5.1.3.14 |
 | Automaty biletowe (p05) | C.5.1.3.1; C.5.1.3.14 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.1.3.1; C.5.1.3.14 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.1.3.1; C.5.1.3.14 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -826,11 +1228,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
 | Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.1.3.11; C.5.1.3.2 |
 | Bankomaty i wpłatomaty (p04) | C.5.1.3.11; C.5.1.3.2 |
 | Automaty biletowe (p05) | C.5.1.3.11; C.5.1.3.2 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.1.3.11; C.5.1.3.2 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.1.3.11; C.5.1.3.2 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -844,11 +1262,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
 | Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.2; C.8.5 |
 | Bankomaty i wpłatomaty (p04) | C.5.2; C.8.5 |
 | Automaty biletowe (p05) | C.5.2; C.8.5 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.2; C.8.5 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.2; C.8.5 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -862,11 +1296,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
 | Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.5.2; C.8.4.1 |
 | Bankomaty i wpłatomaty (p04) | C.5.5.2; C.8.4.1 |
 | Automaty biletowe (p05) | C.5.5.2; C.8.4.1 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.5.2; C.8.4.1 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.5.2; C.8.4.1 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -880,11 +1330,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
 | Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.1.5; C.11.2.2.1 |
 | Bankomaty i wpłatomaty (p04) | C.5.1.5; C.11.2.2.1 |
 | Automaty biletowe (p05) | C.5.1.5; C.11.2.2.1 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.1.5; C.11.2.2.1 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.1.5; C.11.2.2.1 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -898,11 +1364,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
 | Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.5.1.3.12; C.8.1.2; C.8.2.2.1 |
 | Bankomaty i wpłatomaty (p04) | C.5.1.3.12; C.8.1.2; C.8.2.2.1 |
 | Automaty biletowe (p05) | C.5.1.3.12; C.8.1.2; C.8.2.2.1 |
 | Urządzenia do odprawy (check-in) (p06) | C.5.1.3.12; C.8.1.2; C.8.2.2.1 |
 | Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.5.1.3.12; C.8.1.2; C.8.2.2.1 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -916,7 +1398,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.1.3.1; C.5.1.3.14; C.11.3.1.1.2; C.5.1.3.6; C.5.1.3.15 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -930,7 +1432,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.6.1; C.6.2.1.1; C.6.2.1.2 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -944,7 +1466,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.6.2.1.2; C.6.5.2; C.6.5.3; C.6.5.4 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -958,7 +1500,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.1.2; C.8.2.2.2 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -972,7 +1534,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.2.2.2 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -986,7 +1568,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.6.5.2; C.6.5.3; C.6.5.6; C.7.1.1; C.7.1.2; C.7.1.4; C.7.2.1; C.7.2.2; C.7.3; C.11.5.2.3; C.11.7 |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1000,6 +1602,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
 | Umowy o kredyt konsumencki i hipoteczny (p13) |  |
@@ -1024,17 +1636,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2; C.12.2.4 |
-| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2; C.12.2.4 |
-| Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2; C.12.2.4 |
-| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.12.1.2; C.12.2.4 |
-| Usługi w zakresie pieniądza elektronicznego (p15) | C.12.1.2; C.12.2.4 |
-| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.12.1.2; C.12.2.4 |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2; C.12.2.4 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2; C.12.2.4 |
-| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2; C.12.2.4 |
-| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.2; C.12.2.4 |
-| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.2; C.12.2.4 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2 |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2 |
+| Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.12.1.2 |
+| Usługi w zakresie pieniądza elektronicznego (p15) | C.12.1.2 |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.12.1.2 |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2 |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2 |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.2 |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.2 |
 
 ---
 
@@ -1048,6 +1670,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.11.3.1.1.1; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.11.3.1.1.1; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.11.3.1.1.1; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4 |
@@ -1072,6 +1704,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.1.1.1; C.9.3.1.1; C.10.1.1.1; C.10.3.1.1; C.11.1.1.1.1; C.11.3.1.1.1 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.1.1; C.9.3.1.1; C.10.1.1.1; C.10.3.1.1; C.11.1.1.1.1; C.11.3.1.1.1 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.1.1.1; C.9.3.1.1; C.10.1.1.1; C.10.3.1.1; C.11.1.1.1.1; C.11.3.1.1.1 |
@@ -1096,6 +1738,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.12; C.11.7 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.12; C.11.7 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.1.4.3; C.9.1.4.4; C.9.1.4.12; C.10.1.4.3; C.10.1.4.4; C.10.1.4.12; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.12; C.11.7 |
@@ -1120,6 +1772,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.1.1.1; C.10.1.1.1; C.11.1.1.1.1 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.1.1; C.10.1.1.1; C.11.1.1.1.1 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.1.1.1; C.10.1.1.1; C.11.1.1.1.1 |
@@ -1144,6 +1806,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.3.2; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.1.2; C.11.4.1.2.1; C.11.4.1.2.2; C.11.4.1.3.1; C.11.4.1.3.2; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.3.2; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.1.2; C.11.4.1.2.1; C.11.4.1.2.2; C.11.4.1.3.1; C.11.4.1.3.2; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17 |
@@ -1168,6 +1840,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.3.2; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.1.2; C.11.4.1.2.1; C.11.4.1.2.2; C.11.4.1.3.1; C.11.4.1.3.2; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5 |
@@ -1185,7 +1867,7 @@
 ### A22-00-1-4 - Art 22 pkt 1-4
 
 **Legal ID:** U.22.00.1-4  
-**Kategoria:** Usługi towarzyszące (Art. 22)  
+**Kategoria:** Usługi wsparcia (Art. 22)  
 **Wymaganie:** W przypadku gdy udostępniane są usługi wsparcia związane z produktem albo usługą, w szczególności:
 1) pomoc techniczna,
 2) centra obsługi telefonicznej,
@@ -1231,6 +1913,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2; C.12.2.4; C.9.6; C.10.1.3.1; C.10.1.4.3; C.10.1.4.4; C.10.2.4.2 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2; C.9.6; C.11.1.1.1.1 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
@@ -1255,6 +1947,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
@@ -1279,6 +1981,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.1; C.12.2.2; C.9.6 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.1; C.12.2.2; C.9.6 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
@@ -1303,17 +2015,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.1; C.9.6; C.10.1.3.1 |
-| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2 |
-| Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
-| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.12.1.2 |
-| Usługi w zakresie pieniądza elektronicznego (p15) | C.12.1.2 |
-| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.12.1.2 |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2 |
-| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2 |
-| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.2 |
-| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.2 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2; C.9.6; |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2; C.9.6; |
+| Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2; C.9.6; |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.12.1.2; C.9.6; |
+| Usługi w zakresie pieniądza elektronicznego (p15) | C.12.1.2; C.9.6; |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.12.1.2; C.9.6; |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2; C.9.6; |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2; C.9.6; |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2; C.9.6; |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.2; C.9.6; |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.2; C.9.6; |
 
 ---
 
@@ -1327,17 +2049,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2 |
-| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2 |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
 | Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.12.1.2 |
 | Usługi w zakresie pieniądza elektronicznego (p15) | C.12.1.2 |
 | Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.12.1.2 |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2 |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2 |
-| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.2 |
-| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.2 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1351,17 +2083,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.12.1.2 |
-| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.12.1.2 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.12.1.2 |
 | Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.12.1.2 |
 | Usługi w zakresie pieniądza elektronicznego (p15) | C.12.1.2 |
 | Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.12.1.2 |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2 |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2 |
-| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.2 |
-| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.2 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1375,7 +2117,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.6.2.1.1; C.6.2.1.2; C.6.2.2.1; C.6.2.2.2; C.6.2.2.3; C.6.2.2.4; C.6.2.3; C.6.2.4; C.6.5.2; C.6.5.3; C.6.5.4; C.6.5.5; C.6.5.6; C.13.2; C.13.3 |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1389,7 +2151,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.1.1; C.9.1.4.3; C.9.2.1.1; C.9.2.4.3; C.9.3.1.1; C.9.4.1.2; C.11.1.1.1.1; C.11.1.4.3; C.11.2.1.1.1; C.11.2.4.3; C.11.3.1.1.1; C.11.5.2.3 |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1403,7 +2185,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.7.1.1; C.7.1.2; C.7.1.3; C.7.1.4; C.7.2.1; C.7.2.2; C.7.2.3; C.7.3 |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1417,9 +2219,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1433,9 +2253,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1449,9 +2287,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
 | Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
 | Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1465,9 +2321,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
 | Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
 | Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1481,9 +2355,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
 | Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
 | Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.3; C.11.4.1.3; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1497,9 +2389,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
 | Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2 |
 | Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2 |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1513,9 +2423,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
 | Strony internetowe i aplikacje mobilne przewoźników (p17) | C.12.1.2 |
 | Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.12.1.2 |
 | Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.12.1.2 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1529,10 +2457,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Umowy o kredyt konsumencki i hipoteczny (p13) | C.5.1.3.8; C.5.1.3.9; C.5.3; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.5.1.3.8; C.5.1.3.9; C.5.3; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Usługi w zakresie pieniądza elektronicznego (p15) | C.5.1.3.8; C.5.1.3.9; C.5.3; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
-| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.5.1.3.8; C.5.1.3.9; C.5.3; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) | C.5.1.3.8; C.5.1.3.9; C.5.3-1; C.5.3-2; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.5.1.3.8; C.5.1.3.9; C.5.3-1; C.5.3-2; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Usługi w zakresie pieniądza elektronicznego (p15) | C.5.1.3.8; C.5.1.3.9; C.5.3-1; C.5.3-2; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.5.1.3.8; C.5.1.3.9; C.5.3-1; C.5.3-2; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1546,10 +2491,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.3.1.1; C.10.3.1.1; C.11.3.1.1.1 |
 | Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.9.3.1.1; C.10.3.1.1; C.11.3.1.1.1 |
 | Usługi w zakresie pieniądza elektronicznego (p15) | C.9.3.1.1; C.10.3.1.1; C.11.3.1.1.1 |
 | Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.9.3.1.1; C.10.3.1.1; C.11.3.1.1.1 |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1563,6 +2525,26 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
 | Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.7.1.2; C.11.1.2.2; C.11.1.2.5 |
 
 ---
@@ -1577,6 +2559,26 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
 | Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.10.4.1.1; C.10.4.1.2; C.11.5.2.3 |
 
 ---
@@ -1591,6 +2593,26 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
 | Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.10.1.1.1; C.10.1.3.1; C.10.1.3.2; C.10.2.4.2; C.11.1.3.1.1; C.11.5.2.9 |
 
 ---
@@ -1605,6 +2627,26 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
 | Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.10.1.4.10; C.10.2.4.3; C.11.1.4.10; C.11.2.4.3 |
 
 ---
@@ -1619,6 +2661,26 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
 | Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.10.1.4.4; C.11.1.4.4.1; C.11.7 |
 
 ---
@@ -1633,6 +2695,26 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) |  |
 | Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.12.1.1 |
 
 ---
@@ -1647,7 +2729,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
 | Usługi handlu elektronicznego (sprzedaż online) (p20) | C.12.1.1; C.12.1.2 |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1661,7 +2763,27 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.5.1.3.8; C.5.1.3.16; C.5.3; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) |  |
+| Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) |  |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) |  |
+| Bankomaty i wpłatomaty (p04) |  |
+| Automaty biletowe (p05) |  |
+| Urządzenia do odprawy (check-in) (p06) |  |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) |  |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) |  |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) |  |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) |  |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) |  |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) |  |
+| Umowy o kredyt konsumencki i hipoteczny (p13) |  |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) |  |
+| Usługi w zakresie pieniądza elektronicznego (p15) |  |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) |  |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) |  |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) |  |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) |  |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.5.1.3.8; C.5.1.3.16; C.5.3-1; C.5.3-2; C.9.1.1.1; C.9.1.2.1; C.9.1.2.2; C.9.1.2.3; C.9.1.2.4; C.9.1.2.5; C.9.1.3.1; C.9.1.3.2; C.9.1.3.3; C.9.1.3.4; C.9.1.3.5; C.9.1.4.1; C.9.1.4.2; C.9.1.4.3; C.9.1.4.4; C.9.1.4.5; C.9.1.4.10; C.9.1.4.11; C.9.1.4.12; C.9.1.4.13; C.9.2.1.1; C.9.2.1.2; C.9.2.1.4; C.9.2.2.1; C.9.2.2.2; C.9.2.3.1; C.9.2.4.1; C.9.2.4.2; C.9.2.4.3; C.9.2.4.4; C.9.2.4.5; C.9.2.4.6; C.9.2.4.7; C.9.2.5.1; C.9.2.5.2; C.9.2.5.3; C.9.2.5.4; C.9.3.1.1; C.9.3.1.2; C.9.3.2.1; C.9.3.2.2; C.9.3.2.3; C.9.3.2.4; C.9.3.3.1; C.9.3.3.2; C.9.3.3.3; C.9.3.3.4; C.9.4.1.1; C.9.4.1.2; C.9.4.1.3; C.9.6; C.10.1.1.1; C.10.1.2.1; C.10.1.2.2; C.10.1.2.3; C.10.1.2.4; C.10.1.2.5; C.10.1.3.1; C.10.1.3.2; C.10.1.3.3; C.10.1.3.4; C.10.1.3.5; C.10.1.4.1; C.10.1.4.2; C.10.1.4.3; C.10.1.4.4; C.10.1.4.5; C.10.1.4.10; C.10.1.4.11; C.10.1.4.12; C.10.1.4.13; C.10.2.1.1; C.10.2.1.2; C.10.2.1.4; C.10.2.2.1; C.10.2.2.2; C.10.2.3.1; C.10.2.4.2; C.10.2.4.3; C.10.2.4.4; C.10.2.4.6; C.10.2.4.7; C.10.2.5.1; C.10.2.5.2; C.10.2.5.3; C.10.2.5.4; C.10.3.1.1; C.10.3.1.2; C.10.3.2.1; C.10.3.2.2; C.10.3.3.1; C.10.3.3.2; C.10.3.3.3; C.10.3.3.4; C.10.4.1.1; C.10.4.1.2; C.10.4.1.3; C.11.1.1.1.1; C.11.1.1.1.2; C.11.1.2.1.1; C.11.1.2.1.2.1; C.11.1.2.1.2.2; C.11.1.2.2; C.11.1.2.3.1; C.11.1.2.3.2; C.11.1.2.4; C.11.1.2.5; C.11.1.3.1.1; C.11.1.3.2.1; C.11.1.3.3; C.11.1.3.4; C.11.1.3.5.1; C.11.1.3.5.2; C.11.1.4.1; C.11.1.4.2; C.11.1.4.3; C.11.1.4.4.1; C.11.1.4.4.2; C.11.1.4.5.1; C.11.1.4.5.2; C.11.1.4.10; C.11.1.4.11; C.11.1.4.12; C.11.1.4.13; C.11.2.1.1.1; C.11.2.1.1.2; C.11.2.1.2; C.11.2.1.4.1; C.11.2.1.4.2; C.11.2.2.1; C.11.2.2.2; C.11.2.3.1; C.11.2.4.3; C.11.2.4.4; C.11.2.4.6; C.11.2.4.7; C.11.2.5.1; C.11.2.5.2; C.11.2.5.3.1; C.11.2.5.4; C.11.3.1.1.1; C.11.3.1.1.2; C.11.3.2.1; C.11.3.2.2; C.11.3.3.1.1; C.11.3.3.1.2; C.11.3.3.2; C.11.3.3.3; C.11.3.3.4; C.11.4.1.1.1; C.11.4.1.2.1; C.11.4.1.3.1; C.11.5.1; C.11.5.2.1; C.11.5.2.2; C.11.5.2.3; C.11.5.2.4; C.11.5.2.5; C.11.5.2.6; C.11.5.2.7; C.11.5.2.8; C.11.5.2.9; C.11.5.2.10; C.11.5.2.11; C.11.5.2.12; C.11.5.2.13; C.11.5.2.14; C.11.5.2.15; C.11.5.2.16; C.11.5.2.17; C.11.6.1; C.11.6.2; C.11.7; C.11.8.2; C.11.8.3; C.11.8.4; C.11.8.5; C.12.1.1; C.12.1.2; C.12.2.2; C.12.2.3; C.12.2.4 |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) |  |
 
 ---
 
@@ -1947,16 +3069,16 @@
 
 | Produkt | Kody techniczne |
 | --- | --- |
-| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
+| Konsumenckie systemy sprzętu komputerowego ogólnego przeznaczenia (komputery stacjonarne, laptopy, smartfony, tablety) (p01) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
 | Systemy operacyjne dla sprzętu komputerowego ogólnego przeznaczenia (p02) | C.11.1.3.4 |
-| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
-| Bankomaty i wpłatomaty (p04) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
-| Automaty biletowe (p05) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
-| Urządzenia do odprawy (check-in) (p06) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
-| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
-| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
-| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
-| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5; C.8.3.2.6; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
+| Terminale płatnicze w fizycznych punktach sprzedaży (p03) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
+| Bankomaty i wpłatomaty (p04) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
+| Automaty biletowe (p05) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
+| Urządzenia do odprawy (check-in) (p06) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
+| Interaktywne terminale informacyjne (z wyłączeniem terminali w pojazdach) (p07) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
+| Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2 |
+| Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
+| Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.8.3.2.1; C.8.3.2.2; C.8.3.2.3.1; C.8.3.2.3.2; C.8.3.2.3.3; C.8.3.2.4; C.8.3.2.5.a; C.8.3.2.5.b; C.8.3.2.5.c; C.8.3.2.6.a; C.8.3.2.6.b; C.8.3.2.6.c; C.8.3.2.6.d; C.8.3.3.1; C.8.3.3.2; C.8.3.3.3.1; C.8.3.3.3.2; C.11.1.3.4 |
 | Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.1.3.4; C.11.1.3.4 |
 | Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.1.3.4; C.11.1.3.4 |
 | Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.1.3.4; C.11.1.3.4 |
@@ -2059,17 +3181,16 @@
 | Konsumenckie urządzenia końcowe z interaktywnymi zdolnościami obliczeniowymi wykorzystywane do usług telekomunikacyjnych (np. smartfony, telefony VoIP, tablety z funkcją dzwonienia). (p08) | C.11.5.2.3 |
 | Urządzenia końcowe dla usług medialnych (np. przystawki TV, konsole do gier) (p09) | C.11.5.2.3 |
 | Czytniki książek elektronicznych (sprzęt i oprogramowanie) (p10) | C.5.1.3.11; C.5.1.3.8; C.5.1.3.9 |
-| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.9.4.1.2; C.11.4.1.2.1 |
-| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.9.4.1.2; C.11.4.1.2.1 |
-| Umowy o kredyt konsumencki i hipoteczny (p13) | C.9.4.1.2; C.10.4.1.2; C.11.4.1.2.1 |
-| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.9.4.1.2; C.11.4.1.2.1 |
-| Usługi w zakresie pieniądza elektronicznego (p15) | C.9.4.1.2; C.11.4.1.2.1 |
-| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.9.4.1.2; C.11.4.1.2.1 |
-| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.9.4.1.2; C.11.4.1.2.1 |
-| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.9.4.1.2; C.11.4.1.2.1 |
-| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.9.4.1.2; C.11.4.1.2.1 |
-| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.9.4.1.2; C.11.4.1.2.1 |
-| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.9.4.1.2; C.10.4.1.2; C.11.4.1.2.1 |
+| Usługi telekomunikacyjne (łączność głosowa, tekstowa, zgłoszenia alarmowe) (p11) | C.11.4.1.2.1 |
+| Usługi dostępu do audiowizualnych usług medialnych (strony, aplikacje, odtwarzacze) (p12) | C.11.4.1.2.1 |
+| Umowy o kredyt konsumencki i hipoteczny (p13) | C.10.4.1.2; C.11.4.1.2.1 |
+| Usługi maklerskie, zarządzanie portfelem i doradztwo inwestycyjne (p14) | C.11.4.1.2.1 |
+| Usługi w zakresie pieniądza elektronicznego (p15) | C.11.4.1.2.1 |
+| Usługi powiązane z rachunkiem płatniczym i płatności (przelewy, karty, wpłaty/wypłaty) (p16) | C.11.4.1.2.1 |
+| Strony internetowe i aplikacje mobilne przewoźników (p17) | C.11.4.1.2.1 |
+| Bilety elektroniczne i systemy sprzedaży biletów (p18) | C.11.4.1.2.1 |
+| Informacje o podróży (w tym w czasie rzeczywistym) (p19) | C.11.4.1.2.1 |
+| Usługi handlu elektronicznego (sprzedaż online) (p20) | C.11.4.1.2.1 |
+| Rozpowszechnianie książek elektronicznych (pliki i software) (p21) | C.10.4.1.2; C.11.4.1.2.1 |
 
 ---
-
