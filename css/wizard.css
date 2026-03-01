@@ -36,9 +36,15 @@
 
     /* Default focus color (swapped in themes) */
     --focus-color: hsl(38, 92%, 60%);
+    /* Summary warning color (amber, readable on dark background) */
+    --summary-warning-color: #f59e0b;
     /* Skip Link defaults: high contrast teal for safety */
     --skip-bg: #06425A;
     --skip-color: #ffffff;
+
+    /* Secondary colors for muted/disabled states */
+    --secondary-border-color: rgba(255, 255, 255, 0.06);
+    --secondary-text-color: #9ca3af;
 }
 
 /* Light theme overrides */
@@ -80,9 +86,16 @@
     --primary-inverse: #ffffff;
     --focus-color: hsl(224, 76%, 48%);
 
+    /* Summary warning color (amber-700, readable on light background) */
+    --summary-warning-color: #B45309;
+
     /* Skip link high contrast for light theme */
     --skip-bg: #06425A;
     --skip-color: #ffffff;
+
+    /* Secondary colors for light theme */
+    --secondary-border-color: rgba(0, 0, 0, 0.08);
+    --secondary-text-color: #6b7280;
 }
 
 /* Override input border color for dark theme (improve from 4.5:1 to 4.6:1) */
@@ -207,7 +220,7 @@ a[target="_blank"]:focus {
 /* Scroll-hide header behavior */
 .app-header {
     background-color: var(--card-background-color);
-    border-bottom: 1px solid var(--muted-border-color);
+    border-bottom: 1px solid var(--secondary-border-color);
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
@@ -470,7 +483,7 @@ dialog .icon-btn:focus-visible {
     left: 0;
     /* positioned via JS */
     background: var(--card-background-color);
-    border: 1px solid var(--muted-color);
+    border: 1px solid var(--secondary-border-color);
     color: var(--h5-color);
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
@@ -579,9 +592,17 @@ main {
     border-color: var(--emphasis-color);
 }
 
+.clause-tag:hover .clause-tag-id {
+    color: var(--primary-inverse);
+}
+
 .clause-tag:focus-visible {
     outline: 3px solid var(--focus-color) !important;
     outline-offset: 2px !important;
+}
+
+.clause-tag:focus-visible .clause-tag-id {
+    color: var(--primary-inverse);
 }
 
 .clause-group {
@@ -693,6 +714,11 @@ main {
     border-radius: var(--border-radius);
     background: var(--card-background-color);
 }
+
+/* Suppress focus ring on programmatic focus (mouse click from summary),
+   show only on keyboard navigation via focus-visible */
+.requirement-row:focus { outline: none; }
+.requirement-row:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; }
 
 .requirement-text {
     font-weight: 500;
@@ -965,7 +991,7 @@ main {
 /* Clause title shown inside modal body (moved from header) */
 .clause-body-title {
     padding: 0 1.5rem 0.5rem 1.5rem;
-    border-bottom: 1px dashed var(--muted-border-color);
+    border-bottom: 1px dashed var(--secondary-border-color);
     margin-bottom: 0.75rem;
 }
 
@@ -1082,7 +1108,7 @@ main {
 
 #clauseModal .section-content {
     padding-left: 1.25rem;
-    border-left: 2px solid var(--muted-border-color);
+    border-left: 2px solid var(--secondary-border-color);
     margin-top: 0.5rem;
     margin-left: 0.25rem;
     /* subtle offset for the vertical line */
@@ -1302,7 +1328,7 @@ img,
 /* Stylizacja Radio jako czytelnych kart - Wzorzec Label-Container */
 /* --- Raport / Podsumowanie Kontroli --- */
 .summary-result-card {
-    border-left: 8px solid var(--muted-border-color);
+    border-left: 8px solid var(--secondary-border-color);
     padding: 2rem;
     box-shadow: var(--card-box-shadow);
     border-radius: var(--border-radius);
@@ -1313,7 +1339,7 @@ img,
 
 [data-theme="light"] .summary-result-card {
     background-color: #f8f9fa !important;
-    border: 1px solid var(--muted-border-color);
+    border: 1px solid var(--secondary-border-color);
     border-left-width: 8px;
 }
 
@@ -1323,7 +1349,7 @@ img,
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--muted-border-color);
+    border-bottom: 1px solid var(--secondary-border-color);
     padding-bottom: 2rem;
 }
 
@@ -1357,6 +1383,15 @@ img,
     text-transform: uppercase;
 }
 
+/* State-based coloring via data-state attribute (avoids JS theme detection) */
+.summary-result-card[data-state="pass"] { border-left-color: var(--form-element-valid-border-color); }
+.summary-result-card[data-state="fail"] { border-left-color: var(--form-element-invalid-border-color); }
+.summary-result-card[data-state="warning"] { border-left-color: var(--summary-warning-color); }
+
+.summary-result-card[data-state="pass"]    .summary-status-title { color: var(--form-element-valid-border-color); }
+.summary-result-card[data-state="fail"]    .summary-status-title { color: var(--form-element-invalid-border-color); }
+.summary-result-card[data-state="warning"] .summary-status-title { color: var(--summary-warning-color); }
+
 .summary-meta {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1364,12 +1399,14 @@ img,
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
     opacity: 0.9;
+    color: var(--color);
 }
 
 .summary-body {
     white-space: pre-line;
     line-height: 1.6;
     font-size: 1.05rem;
+    color: var(--color);
 }
 
 .summary-sections {
@@ -1407,6 +1444,66 @@ img,
     line-height: 1.4;
 }
 
+.summary-incomplete-warning {
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--form-element-invalid-border-color);
+    border-left: 4px solid var(--form-element-invalid-border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.summary-incomplete-warning strong {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.summary-incomplete-warning p {
+    margin-bottom: 0.5rem;
+    color: var(--color);
+}
+
+.summary-incomplete-warning ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.summary-incomplete-warning li {
+    margin-bottom: 0.2rem;
+}
+
+.summary-proposed-assessment {
+    font-size: 0.85rem;
+    color: var(--secondary-text-color);
+    padding: 0.5rem 0.75rem;
+    background-color: var(--form-element-background-color);
+    border-left: 3px solid var(--primary-color);
+    margin: 0.5rem 0 0.75rem 0;
+    line-height: 1.5;
+}
+
+.summary-failed-tests-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--secondary-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0.5rem 0 0.25rem 0.5rem;
+}
+
+.summary-failed-tests {
+    margin: 0 0 0.25rem 0.5rem;
+    padding-left: 1rem;
+    list-style: disc;
+    font-size: 0.875rem;
+    color: var(--color);
+}
+
+.summary-failed-tests li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
 .summary-anchor {
     text-decoration: none;
     color: inherit;
@@ -1426,7 +1523,7 @@ img,
     align-items: center;
     gap: 1rem;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--muted-border-color);
+    border: 1px solid var(--secondary-border-color);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
@@ -1966,7 +2063,7 @@ h2.hero-card-title {
     background: var(--card-background-color);
     padding: 1.25rem 1rem;
     border-radius: 0.75rem;
-    border: 1px solid var(--muted-border-color);
+    border: 1px solid var(--secondary-border-color);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     text-align: center;
@@ -2039,7 +2136,7 @@ h2.hero-card-title {
     background: var(--card-background-color);
     border-radius: 1rem;
     padding: 1.5rem;
-    border: 1px solid var(--muted-border-color);
+    border: 1px solid var(--secondary-border-color);
 }
 
 .browser-card .interpretation-area {
@@ -2057,7 +2154,7 @@ h2.hero-card-title {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 1px solid var(--muted-border-color);
+    border-bottom: 1px solid var(--secondary-border-color);
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -2216,3 +2313,296 @@ p.hero-card-title {
         transform: scale(1);
     }
 }
+
+/* ==========================================
+   Test Cards (Jak sprawdzić? – interaktywne)
+   ========================================== */
+
+.checklist-test-item {
+    border: 1px solid var(--form-element-border-color);
+    border-left: 4px solid var(--form-element-border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding-bottom: 0;
+    background: transparent;
+    transition: border-left-color 0.2s ease, border-left-width 0.2s ease, opacity 0.2s ease;
+    overflow: hidden;
+}
+
+.checklist-test-summary {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    user-select: none;
+    color: var(--contrast);
+}
+
+.checklist-test-summary::-webkit-details-marker { display: none; }
+
+.checklist-test-summary::after {
+    display: none !important;
+    transform: none !important;
+}
+
+/* Badge for unevaluated tests */
+.checklist-test-item:not(.is-pass):not(.is-fail):not(.is-na) .checklist-test-summary::after {
+    display: flex !important;
+    content: 'Brak oceny';
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--contrast);
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: transparent;
+    color: var(--contrast);
+    transform: none !important;
+    width: auto;
+}
+
+.checklist-test-summary::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.checklist-test-item[open] .checklist-test-summary::before {
+    transform: rotate(45deg);
+    margin-top: -3px;
+}
+
+.checklist-test-summary:hover {
+    background: color-mix(in srgb, var(--primary) 6%, transparent);
+}
+
+.checklist-test-summary:focus,
+.checklist-test-summary:focus-visible {
+    outline: none;
+}
+
+.checklist-test-item:has(.checklist-test-summary:focus-visible) {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+.checklist-test-item[open] .checklist-test-summary {
+    color: var(--contrast) !important;
+}
+
+.checklist-test-controls {
+    padding: 0 1.25rem 0;
+    border: none;
+    margin: 0;
+}
+
+.checklist-test-item .test-description {
+    font-size: 0.875rem;
+    color: var(--contrast);
+    margin: 0 1.25rem 0.75rem;
+    line-height: 1.6;
+}
+
+.checklist-test-item .test-description p {
+    margin-bottom: 0.5rem;
+}
+
+.test-options-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.test-options-row label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.test-options-row input[type="radio"] {
+    margin: 0;
+}
+
+.checklist-test-item textarea {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.checklist-test-item textarea::placeholder {
+    color: var(--contrast);
+    opacity: 0.7;
+}
+
+/* State indicators */
+.checklist-test-item.is-pass {
+    border-left-color: var(--form-element-valid-border-color);
+    border-left-width: 6px;
+}
+
+.checklist-test-item.is-fail {
+    border-left-color: var(--form-element-invalid-border-color);
+    border-left-width: 6px;
+}
+
+.checklist-test-item.is-na {
+    border-left-color: var(--secondary-border-color);
+}
+
+/* Status badge on summary (visible when collapsed) */
+.checklist-test-item.is-pass  .checklist-test-summary::after,
+.checklist-test-item.is-fail  .checklist-test-summary::after,
+.checklist-test-item.is-na    .checklist-test-summary::after {
+    display: flex !important;
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transform: none !important;
+    width: auto;
+}
+
+.checklist-test-item.is-pass .checklist-test-summary::after {
+    content: 'Spełnione';
+    background: color-mix(in srgb, var(--form-element-valid-border-color) 15%, transparent);
+    color: var(--form-element-valid-border-color);
+}
+
+.checklist-test-item.is-fail .checklist-test-summary::after {
+    content: 'Niespełnione';
+    background: color-mix(in srgb, var(--form-element-invalid-border-color) 15%, transparent);
+    color: var(--form-element-invalid-border-color);
+}
+
+.checklist-test-item.is-na .checklist-test-summary::after {
+    content: 'Nie dotyczy';
+    background: color-mix(in srgb, var(--contrast) 15%, transparent);
+    color: var(--contrast);
+}
+
+/* Theme-specific colors for test badges to ensure proper contrast */
+[data-theme="dark"] .checklist-test-item.is-pass .checklist-test-summary::after,
+[data-theme="dark"] .checklist-test-item.is-pass {
+    border-left-color: #66BB6A;
+}
+
+[data-theme="dark"] .checklist-test-item.is-pass .checklist-test-summary::after {
+    background: color-mix(in srgb, #66BB6A 15%, transparent);
+    color: #66BB6A;
+}
+
+[data-theme="light"] .checklist-test-item.is-pass .checklist-test-summary::after,
+[data-theme="light"] .checklist-test-item.is-pass {
+    border-left-color: #2E7D32;
+}
+
+[data-theme="light"] .checklist-test-item.is-pass .checklist-test-summary::after {
+    background: color-mix(in srgb, #2E7D32 15%, transparent);
+    color: #2E7D32;
+}
+
+[data-theme="dark"] .checklist-test-item.is-fail .checklist-test-summary::after,
+[data-theme="dark"] .checklist-test-item.is-fail {
+    border-left-color: #EF5350;
+}
+
+[data-theme="dark"] .checklist-test-item.is-fail .checklist-test-summary::after {
+    background: color-mix(in srgb, #EF5350 15%, transparent);
+    color: #EF5350;
+}
+
+[data-theme="light"] .checklist-test-item.is-fail .checklist-test-summary::after,
+[data-theme="light"] .checklist-test-item.is-fail {
+    border-left-color: #C62828;
+}
+
+[data-theme="light"] .checklist-test-item.is-fail .checklist-test-summary::after {
+    background: color-mix(in srgb, #C62828 15%, transparent);
+    color: #C62828;
+}
+
+/* Theme-specific colors for summary cards to match test cards */
+[data-theme="dark"] .summary-result-card[data-state="pass"] {
+    border-left-color: #66BB6A;
+}
+[data-theme="dark"] .summary-result-card[data-state="pass"] .summary-status-title {
+    color: #66BB6A;
+}
+
+[data-theme="light"] .summary-result-card[data-state="pass"] {
+    border-left-color: #2E7D32;
+}
+[data-theme="light"] .summary-result-card[data-state="pass"] .summary-status-title {
+    color: #2E7D32;
+}
+
+[data-theme="dark"] .summary-result-card[data-state="fail"] {
+    border-left-color: #EF5350;
+}
+[data-theme="dark"] .summary-result-card[data-state="fail"] .summary-status-title {
+    color: #EF5350;
+}
+
+[data-theme="light"] .summary-result-card[data-state="fail"] {
+    border-left-color: #C62828;
+}
+[data-theme="light"] .summary-result-card[data-state="fail"] .summary-status-title {
+    color: #C62828;
+}
+
+/* Theme-specific colors for incomplete warning to match */
+[data-theme="dark"] .summary-incomplete-warning {
+    border-color: #EF5350;
+}
+
+[data-theme="light"] .summary-incomplete-warning {
+    border-color: #C62828;
+}
+
+.test-summary-assessment {
+    margin: 0.5rem 0 1rem 0;
+    font-size: 0.875rem;
+}
+
+.test-summary-assessment:empty {
+    display: none;
+}
+
+.test-summary-assessment p,
+.test-summary-assessment li {
+    margin: 0.15rem 0;
+}
+
+.test-summary-proposal {
+    font-weight: 600;
+}
+
+.test-summary-counts {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ts-fail { color: var(--color-fail, #c0392b); }
+.ts-pass { color: var(--color-pass, #27ae60); }
+.ts-na   { color: var(--secondary-text-color); }

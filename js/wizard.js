@@ -1,4 +1,4 @@
-let matrixData = [];
+﻿let matrixData = [];
 let dictionaryData = {};
 let productDictionary = {};
 let summaryTemplates = {};
@@ -620,8 +620,18 @@ const Browser = {
         const renderListContent = (arr) => {
             if (!arr || arr.length === 0) return '';
             
+            // Convert test objects to readable text for this summary/browser view
+            const stringified = arr.map(item => {
+                if (item && typeof item === 'object' && item.type === 'test') {
+                    let text = `**${item.title || ''}**`;
+                    if (item.description) text += `: ${item.description}`;
+                    return text;
+                }
+                return item;
+            });
+
             // Join with newlines to allow parseMarkdown to detect blocks/lists
-            let content = arr.join('\n');
+            let content = stringified.join('\n');
             if (W.fixOrphans) content = W.fixOrphans(content);
             if (W.parseMarkdown) content = W.parseMarkdown(content);
 
@@ -856,12 +866,20 @@ function scrollToRequirement(targetId) {
     
     const header = document.querySelector('.app-header');
     const headerOffset = header ? header.getBoundingClientRect().height : 0;
-    // Scroll so the element starts after the header with some padding
     const top = element.getBoundingClientRect().top + window.pageYOffset - headerOffset - 16;
     
-    window.scrollTo({ top, behavior: 'smooth' });
-    
-    // Highlight effect
+    // Instant jump — no animation (better for motion sensitivity and screen readers)
+    window.scrollTo({ top, behavior: 'instant' });
+    element.focus({ preventScroll: true });
+
+    // Announce navigation to screen readers via live region
+    const label = element.getAttribute('aria-label') || '';
+    const announcement = document.getElementById('generation-announcement');
+    if (announcement && label) {
+        announcement.textContent = '';
+        requestAnimationFrame(() => { announcement.textContent = `Przejście do: ${label}`; });
+    }
+
     const originalBg = element.style.backgroundColor;
     element.style.backgroundColor = 'var(--primary-focus)';
     element.style.transition = 'background-color 0.3s';
@@ -871,6 +889,41 @@ function scrollToRequirement(targetId) {
         // Clean up transition after animation
         setTimeout(() => { element.style.transition = ''; }, 300);
     }, 2000);
+}
+
+function updateTestSummaryForRow(row) {
+    const summaryDiv = row.querySelector('.test-summary-assessment');
+    if (!summaryDiv) return;
+
+    const testCards = Array.from(row.querySelectorAll('.checklist-test-item[data-test-id]'));
+    const total = testCards.length;
+    const evaluated = testCards.filter(card => card.querySelector('input[type="radio"]:checked'));
+
+    if (evaluated.length === 0) {
+        summaryDiv.innerHTML = '';
+        return;
+    }
+
+    const failed = evaluated.filter(card => card.querySelector('input[value="fail"]:checked')).length;
+    const passed = evaluated.filter(card => card.querySelector('input[value="pass"]:checked')).length;
+    const na     = evaluated.filter(card => card.querySelector('input[value="na"]:checked')).length;
+
+    const pluralTest = n => n === 1 ? 'test' : (n >= 2 && n <= 4) ? 'testy' : 'testów';
+
+    let proposal;
+    if (failed > 0) proposal = 'Niespełnione';
+    else if (na === evaluated.length) proposal = 'Nie dotyczy';
+    else proposal = 'Spełnione';
+
+    const parts = [];
+    if (failed > 0) parts.push(`${failed} ${pluralTest(failed)} niespełnione`);
+    if (passed > 0) parts.push(`${passed} ${pluralTest(passed)} spełnione`);
+    if (na     > 0) parts.push(`${na} ${pluralTest(na)} wykluczone`);
+
+    let html = `<p>Proponowana ocena klauzuli: <strong>${proposal}</strong></p>`;
+    html += `<p>Sprawdzono ${evaluated.length} z ${total} ${pluralTest(total)}: ${parts.join(', ')}.</p>`;
+
+    summaryDiv.innerHTML = html;
 }
 
 function getAssessmentSummaryData() {
@@ -899,6 +952,7 @@ function getAssessmentSummaryData() {
     const passed = [];
     const untested = [];
     const inapplicable = [];
+    const incompleteAssessments = []; // klauzule z ocenionymi testami ale bez oceny klauzuli
 
     activeRows.forEach((row, index) => {
         // Dodaj unikalne ID do każdego wiersza dla nawigacji, jeśli jeszcze nie ma
@@ -906,20 +960,48 @@ function getAssessmentSummaryData() {
         
         const article = row.querySelector('.requirement-id span[aria-hidden="true"]')?.textContent?.trim() || '';
         const requirementText = row.querySelector('.requirement-text')?.textContent?.trim() || '';
-        const comment = row.querySelector('textarea')?.value || '';
+        const safeArticleId = article.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+        const comment = row.querySelector(`textarea[name="comment-${safeArticleId}"]`)?.value || '';
         const fullLabel = `${article} - ${requirementText}`;
         
+        // Zbierz testy jednostkowe: wszystkie ocenione ORAZ te które mają komentarz
+        const allTests = Array.from(row.querySelectorAll('.checklist-test-item[data-test-id]')).map(card => {
+            const summary = card.querySelector('.checklist-test-summary');
+            const testComment = card.querySelector('textarea')?.value || '';
+            const checkedRadio = card.querySelector('input[type="radio"]:checked');
+            const status = checkedRadio ? checkedRadio.value : null; // 'pass', 'fail', 'na' lub null
+            
+            // Zwróć test jeśli jest oceniony LUB ma komentarz
+            if (status || testComment) {
+                return { 
+                    title: summary ? summary.textContent.trim() : '', 
+                    comment: testComment,
+                    status: status || 'na'
+                };
+            }
+            return null;
+        }).filter(t => t !== null);
+
         // Obiekt pomocniczy dla linku i danych
         const itemData = { 
             label: fullLabel, 
             article: article,
             requirement: requirementText,
             comment: comment,
+            failedTests: allTests,
             targetId: row.id 
         };
         
-        const selectedRadio = row.querySelector('input[type="radio"]:checked');
-        
+        const selectedRadio = row.querySelector(`input[type="radio"][name="status-${safeArticleId}"]:checked`);
+
+        // Sprawdź czy wiersz ma ocenione testy jednostkowe ale brak oceny klauzuli
+        const hasEvaluatedTests = row.querySelector(
+            '.checklist-test-item input[type="radio"]:checked'
+        ) !== null;
+        if (!selectedRadio && hasEvaluatedTests) {
+            incompleteAssessments.push({ label: fullLabel, article, targetId: row.id });
+        }
+
         if (!selectedRadio) {
             untestedCount++;
             untested.push(itemData);
@@ -956,7 +1038,7 @@ function getAssessmentSummaryData() {
     }
 
     return {
-        passed, failures, untested, inapplicable,
+        passed, failures, untested, inapplicable, incompleteAssessments,
         passedCount, failedCount, untestedCount, inapplicableCount, totalCount,
         templateKey, isArt19Enabled
     };
@@ -987,16 +1069,15 @@ function generateDescriptiveSummary(isInitial = false) {
 
     const fullProductName = getFullProductNameWizard();
     const summaryData = getAssessmentSummaryData();
-    const { failures, passed, untested, inapplicable, templateKey, untestedCount } = summaryData;
+    const { failures, passed, untested, inapplicable, incompleteAssessments, templateKey, untestedCount } = summaryData;
 
     const config = summaryTemplates.compliance_summaries[templateKey];
     const currentDate = new Date().toLocaleDateString('pl-PL');
 
     // Kolorystyka zależy od wyniku
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const orangeColor = isDark ? '#ffa500' : '#6B4A0B';
-    const borderColor = templateKey === 'no_assessment' ? orangeColor : (summaryData.failedCount > 0 ? 'var(--form-element-invalid-border-color)' : 'var(--form-element-valid-border-color)');
-    
+    const inapplicableOnlyTemplate = templateKey === 'all_inapplicable' || templateKey === 'all_inapplicable_partial';
+    const summaryState = (templateKey === 'no_assessment' || inapplicableOnlyTemplate) ? 'warning' : (summaryData.failedCount > 0 ? 'fail' : 'pass');
+
     // Dodaj informację o kontroli częściowej do statusu
     let displayStatus = config.status;
     if (templateKey !== 'no_assessment') {
@@ -1008,7 +1089,7 @@ function generateDescriptiveSummary(isInitial = false) {
     }
 
     let html = `
-        <article class="summary-result-card" style="border-left-color: ${borderColor}">
+        <article class="summary-result-card" data-state="${summaryState}">
             <header class="summary-header">
                 <h2>Podsumowanie kontroli</h2>
                 <button id="btn-generate-summary" class="primary" onclick="generateDescriptiveSummary()">
@@ -1017,13 +1098,26 @@ function generateDescriptiveSummary(isInitial = false) {
             </header>
 
             <div class="summary-content-area">
-                <h3 class="summary-status-title" style="color: ${borderColor}">
+                <h3 class="summary-status-title">
                     STATUS: ${displayStatus}
                 </h3>
                 
                 <div class="summary-meta">
                     <div><strong>Data kontroli:</strong> ${currentDate}</div>
                 </div>
+
+                ${incompleteAssessments.length > 0 ? `
+                <div class="summary-incomplete-warning" role="alert">
+                    <strong>Uwaga: brakująca ocena klauzuli</strong>
+                    <p>Poniższe klauzule mają ocenione testy jednostkowe, ale nie wybrano dla nich oceny ogólnej. Uzupełnij ocenę, aby podsumowanie było kompletne.</p>
+                    <ul>
+                        ${incompleteAssessments.map(it => `
+                        <li>
+                            <a href="#${it.targetId}" onclick="event.preventDefault(); scrollToRequirement('${it.targetId}');">${it.label}</a>
+                        </li>`).join('')}
+                    </ul>
+                </div>
+                ` : ''}
 
                 <div class="summary-body">
                     ${(() => {
@@ -1033,6 +1127,8 @@ function generateDescriptiveSummary(isInitial = false) {
                     })()}
                 </div>
     `;
+
+    // Sekcje zawartości
 
     if (config.meta) {
         html += `
@@ -1048,7 +1144,7 @@ function generateDescriptiveSummary(isInitial = false) {
         html += '<div class="summary-sections">';
         
         // Funkcja pomocnicza do budowania listy z linkami
-        const renderLinkList = (items) => {
+        const renderLinkList = (items, showFailedTests = false) => {
             return `<ul class="summary-link-list">${items.map(item => `
                 <li>
                     <div class="summary-item-content">
@@ -1058,6 +1154,41 @@ function generateDescriptiveSummary(isInitial = false) {
                             ${item.label}
                         </a>
                         ${item.comment ? `<p class="summary-item-comment">Komentarz: ${item.comment}</p>` : ''}
+                        ${showFailedTests && item.failedTests && item.failedTests.length > 0 ? `
+                        ${(() => {
+                            const failed = item.failedTests.filter(t => t.status === 'fail');
+                            const passed = item.failedTests.filter(t => t.status === 'pass');
+                            const na = item.failedTests.filter(t => t.status === 'na');
+                            const totalEvaluated = item.failedTests.length;
+                            
+                            // Proponowana ocena na bazie testów
+                            let proposalHtml = '<p class="summary-proposed-assessment"><strong>Proponowana ocena:</strong><br>';
+                            if (failed.length > 0) proposalHtml += `Niespełnione testy jednostkowe: ${failed.length}<br>`;
+                            if (passed.length > 0) proposalHtml += `Spełnione testy jednostkowe: ${passed.length}<br>`;
+                            if (na.length > 0) proposalHtml += `Wykluczone testy jednostkowe: ${na.length}<br>`;
+                            proposalHtml += `Oceniono ${totalEvaluated} testów jednostkowych</p>`;
+                            
+                            let html = '';
+                            if (failed.length > 0) {
+                                html += `<p class="summary-failed-tests-label">Niespełnione testy jednostkowe:</p>
+                                <ul class="summary-failed-tests">
+                                    ${failed.map(t => `<li><strong>${t.title}</strong>${t.comment ? ` — ${t.comment}` : ''}</li>`).join('')}
+                                </ul>`;
+                            }
+                            if (passed.length > 0) {
+                                html += `<p class="summary-failed-tests-label">Spełnione testy jednostkowe (z komentarzem):</p>
+                                <ul class="summary-failed-tests">
+                                    ${passed.map(t => `<li><strong>${t.title}</strong>${t.comment ? ` — ${t.comment}` : ''}</li>`).join('')}
+                                </ul>`;
+                            }
+                            if (na.length > 0) {
+                                html += `<p class="summary-failed-tests-label">Wykluczone testy jednostkowe (z opisem przyczyny):</p>
+                                <ul class="summary-failed-tests">
+                                    ${na.map(t => `<li><strong>${t.title}</strong>${t.comment ? ` — ${t.comment}` : ''}</li>`).join('')}
+                                </ul>`;
+                            }
+                            return proposalHtml + html;
+                        })()}` : ''}
                     </div>
                 </li>`).join('')}</ul>`;
         };
@@ -1065,25 +1196,25 @@ function generateDescriptiveSummary(isInitial = false) {
         // Niezgodności
         if (failures.length > 0) {
             const label = sections.failures_label || 'Wykryte niezgodności:';
-            html += `<h3>${label}</h3>${renderLinkList(failures)}`;
+            html += `<h3>${label}</h3>${renderLinkList(failures, true)}`;
         }
         
         // Zgodności
         if (passed.length > 0) {
             const label = sections.passed_label || 'Kryteria ocenione jako spełnione:';
-            html += `<h3>${label}</h3>${renderLinkList(passed)}`;
+            html += `<h3>${label}</h3>${renderLinkList(passed, true)}`;
         }
 
         // Nie dotyczy
         if (inapplicable.length > 0) {
             const label = sections.inapplicable_label || 'Kryteria niemające zastosowania:';
-            html += `<h3>${label}</h3>${renderLinkList(inapplicable)}`;
+            html += `<h3>${label}</h3>${renderLinkList(inapplicable, true)}`;
         }
 
         // Nieocenione
         if (untested.length > 0) {
             const label = sections.untested_label || 'Kryteria niepoddane ocenie:';
-            html += `<h3>${label}</h3>${renderLinkList(untested)}`;
+            html += `<h3>${label}</h3>${renderLinkList(untested, true)}`;
         }
 
         // Uwaga / Wnioski
@@ -1296,6 +1427,12 @@ async function downloadSummaryODT() {
     customSections.push({ type: 'KV', key: 'Osoba kontrolująca:', value: auditor || '(nie podano)' });
     customSections.push({ type: 'separator' });
 
+    // Uwaga o brakujących ocenach
+    if (summaryData.incompleteAssessments.length > 0) {
+        customSections.push({ type: 'title', level: 3, text: '⚠️ Uwaga: Brakująca ocena klauzuli' });
+        customSections.push({ type: 'list', items: summaryData.incompleteAssessments.map(item => ({ label: item.label })) });
+    }
+
     // 3. Tekst główny (z szablonu)
     let descText = 'Raport wygenerowany z Konfiguratora.';
     if (templateKey !== 'no_assessment') {
@@ -1315,28 +1452,28 @@ async function downloadSummaryODT() {
          const failuresLabel = sections.failures_label || "Wykryte niezgodności:";
          if (summaryData.failures.length > 0) {
              customSections.push({ type: 'title', level: 3, text: failuresLabel });
-             customSections.push({ type: 'list', items: summaryData.failures.map(f => ({ label: f.label, note: f.comment })) });
+             customSections.push({ type: 'list', items: summaryData.failures.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
          }
          
          // Zgodności
          const passedLabel = sections.passed_label || "Kryteria ocenione jako spełnione:";
          if (summaryData.passed.length > 0) {
               customSections.push({ type: 'title', level: 3, text: passedLabel });
-              customSections.push({ type: 'list', items: summaryData.passed.map(f => ({ label: f.label, note: f.comment })) });
+              customSections.push({ type: 'list', items: summaryData.passed.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
          }
          
          // Nie dotyczy
          const naLabel = sections.inapplicable_label || "Kryteria niemające zastosowania:";
          if (summaryData.inapplicable.length > 0) {
               customSections.push({ type: 'title', level: 3, text: naLabel });
-              customSections.push({ type: 'list', items: summaryData.inapplicable.map(f => ({ label: f.label, note: f.comment })) });
+              customSections.push({ type: 'list', items: summaryData.inapplicable.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
          }
          
          // Nieocenione
          const untestedLabel = sections.untested_label || "Kryteria niepoddane ocenie:";
          if (summaryData.untested.length > 0) {
              customSections.push({ type: 'title', level: 3, text: untestedLabel });
-             customSections.push({ type: 'list', items: summaryData.untested.map(f => ({ label: f.label, note: f.comment })) });
+             customSections.push({ type: 'list', items: summaryData.untested.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
          }
 
          // Konkluzje (np. walidator)
@@ -1503,6 +1640,18 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
         
         summarySheet.addRow([]); // Separator po metadanych
         
+        // Uwaga o brakujących ocenach
+        if (summaryData.incompleteAssessments.length > 0) {
+            const warningTitle = summarySheet.addRow(['⚠️ Uwaga: Brakująca ocena klauzuli']);
+            warningTitle.getCell(1).font = { bold: true, size: 11, color: { argb: 'FFFF6600' } }; // Pomarańczowy
+            
+            summaryData.incompleteAssessments.forEach(item => {
+                const r = summarySheet.addRow([`• ${item.label}`]);
+                r.getCell(1).alignment = { wrapText: true };
+            });
+            summarySheet.addRow([]); // Separator po ostrzeżeniu
+        }
+        
         const fullProductName = getFullProductNameWizard();
         const descText = config.description.replace('{productName}', fullProductName).replace(/<[^>]*>/g, '');
         // Dodaj description jako zwykły tekst
@@ -1510,7 +1659,7 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
         descRow.getCell(1).alignment = { wrapText: true };
         summarySheet.addRow([]); // Separator
 
-        // Helper do dodawania listy z komentarzami
+        // Helper do dodawania listy z komentarzami i testami
         const addListItems = (items) => {
              items.forEach(item => {
                 const r = summarySheet.addRow([`• ${item.label}`]);
@@ -1521,6 +1670,63 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
                     // Standardowy kolor, bez kursywy, wcięcie
                     rc.getCell(1).font = { size: 10 }; 
                     rc.getCell(1).alignment = { wrapText: true, indent: 2 }; 
+                }
+                // Testy jednostkowe - podzielone na grupy wg statusu
+                if (item.failedTests && item.failedTests.length > 0) {
+                    const failed = item.failedTests.filter(t => t.status === 'fail');
+                    const passed = item.failedTests.filter(t => t.status === 'pass');
+                    const na = item.failedTests.filter(t => t.status === 'na');
+                    
+                    // Niespełnione
+                    if (failed.length > 0) {
+                        const rt = summarySheet.addRow(['Niespełnione testy jednostkowe:']);
+                        rt.getCell(1).font = { size: 10, bold: true };
+                        rt.getCell(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        rt.getCell(1).alignment = { wrapText: true, indent: 1 };
+                        
+                        failed.forEach(test => {
+                            let testLabel = `  ↳ ${test.title}`;
+                            if (test.comment) testLabel += ` — ${test.comment}`;
+                            const rtt = summarySheet.addRow([testLabel]);
+                            rtt.getCell(1).font = { size: 9 };
+                            rtt.getCell(1).alignment = { wrapText: true };
+                            rtt.getCell(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        });
+                    }
+                    
+                    // Spełnione z komentarzem
+                    if (passed.length > 0) {
+                        const rt = summarySheet.addRow(['Spełnione testy jednostkowe (z komentarzem):']);
+                        rt.getCell(1).font = { size: 10, bold: true };
+                        rt.getCell(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        rt.getCell(1).alignment = { wrapText: true, indent: 1 };
+                        
+                        passed.forEach(test => {
+                            let testLabel = `  ↳ ${test.title}`;
+                            if (test.comment) testLabel += ` — ${test.comment}`;
+                            const rtt = summarySheet.addRow([testLabel]);
+                            rtt.getCell(1).font = { size: 9 };
+                            rtt.getCell(1).alignment = { wrapText: true };
+                            rtt.getCell(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        });
+                    }
+                    
+                    // Nie dotyczy z komentarzem
+                    if (na.length > 0) {
+                        const rt = summarySheet.addRow(['Wykluczone testy jednostkowe (z opisem przyczyny):']);
+                        rt.getCell(1).font = { size: 10, bold: true };
+                        rt.getCell(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        rt.getCell(1).alignment = { wrapText: true, indent: 1 };
+                        
+                        na.forEach(test => {
+                            let testLabel = `  ↳ ${test.title}`;
+                            if (test.comment) testLabel += ` — ${test.comment}`;
+                            const rtt = summarySheet.addRow([testLabel]);
+                            rtt.getCell(1).font = { size: 9 };
+                            rtt.getCell(1).alignment = { wrapText: true };
+                            rtt.getCell(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        });
+                    }
                 }
             });
             summarySheet.addRow([]); // Odstęp po sekcji
@@ -1652,8 +1858,10 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
 
         const article = rowEl.querySelector('.requirement-id span[aria-hidden="true"]')?.textContent?.trim() || '';
         const requirementText = rowEl.querySelector('.requirement-text')?.textContent?.trim() || '';
-        
-        const selectedStatusEl = rowEl.querySelector('input[type="radio"]:checked');
+
+        // Użyj właściwych nazw pól (nie querySelector('input[type=radio]:checked'), bo też łapie testy jednostkowe)
+        const safeArticleId = article.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+        const selectedStatusEl = rowEl.querySelector(`input[type="radio"][name="status-${safeArticleId}"]:checked`);
         let currentStatus = 'Wybierz...';
         if (selectedStatusEl) {
             const val = selectedStatusEl.value;
@@ -1662,8 +1870,27 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
             else if (val === 'not-applicable') currentStatus = 'Nie dotyczy';
         }
 
-        const currentComment = rowEl.querySelector('textarea')?.value || '';
-        const rowData = [article, requirementText, currentStatus, currentComment];
+        // Użyj właściwego selektora dla komentarza klauzuli (nie pierwszej textarea w DOM)
+        const currentComment = rowEl.querySelector(`textarea[name="comment-${safeArticleId}"]`)?.value || '';
+
+        // Zbierz testy jednostkowe z tej klauzuli
+        const testCards = Array.from(rowEl.querySelectorAll('.checklist-test-item[data-test-id]'));
+        const unitTests = testCards.map(card => {
+            const testDataId = card.getAttribute('data-test-id');
+            const safeTestId = testDataId.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            const testTitle = card.querySelector('.checklist-test-summary')?.textContent?.trim() || '';
+            const testRadio = card.querySelector(`input[name="test-status-${safeTestId}"]:checked`);
+            let testStatus = 'Wybierz...';
+            if (testRadio) {
+                if (testRadio.value === 'pass') testStatus = 'Spełnione';
+                else if (testRadio.value === 'fail') testStatus = 'Niespełnione';
+                else if (testRadio.value === 'na') testStatus = 'Nie dotyczy';
+            }
+            const testComment = card.querySelector(`textarea[name="test-comment-${safeTestId}"]`)?.value || '';
+            return { testDataId, testTitle, testStatus, testComment };
+        });
+
+        const rowData = { article, requirementText, currentStatus, currentComment, unitTests };
 
         if (article.includes('Art. 19')) {
             art19RowsData.push(rowData);
@@ -1672,12 +1899,13 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
         }
     });
 
-    // Funkcja pomocnicza do dodawania i formatowania wierszy danych
+    // Funkcja pomocnicza do dodawania i formatowania wierszy danych (z testami jednostkowymi)
     const addDataRows = (ws, dataArray) => {
         dataArray.forEach(rowData => {
-            const newRow = ws.addRow(rowData);
-            
-            newRow.getCell(1).alignment = { vertical: 'top', horizontal: 'left', wrapText: true }; 
+            const { article, requirementText, currentStatus, currentComment, unitTests } = rowData;
+            const newRow = ws.addRow([article, requirementText, currentStatus, currentComment]);
+
+            newRow.getCell(1).alignment = { vertical: 'top', horizontal: 'left', wrapText: true };
             newRow.getCell(2).alignment = { vertical: 'top', horizontal: 'left', wrapText: true };
             newRow.getCell(3).alignment = { vertical: 'top', horizontal: 'center', wrapText: true };
             newRow.getCell(4).alignment = { vertical: 'top', horizontal: 'left', wrapText: true };
@@ -1699,6 +1927,38 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
                 errorTitle: 'Nieprawidłowa wartość',
                 error: 'Wybierz wartość z listy: Spełnione, Niespełnione lub Nie dotyczy'
             };
+
+            // Testy jednostkowe – wiersze wcięte pod klauzulą
+            if (unitTests && unitTests.length > 0) {
+                unitTests.forEach(test => {
+                    const testRow = ws.addRow(['', `  ↳ ${test.testTitle}`, test.testStatus, test.testComment]);
+                    testRow.getCell(1).alignment = { vertical: 'top', horizontal: 'left' };
+                    testRow.getCell(2).alignment = { vertical: 'top', horizontal: 'left', wrapText: true, indent: 2 };
+                    testRow.getCell(3).alignment = { vertical: 'top', horizontal: 'center', wrapText: true };
+                    testRow.getCell(4).alignment = { vertical: 'top', horizontal: 'left', wrapText: true };
+                    testRow.getCell(2).font = { size: 9 };
+                    testRow.getCell(3).font = { size: 9 };
+                    testRow.getCell(4).font = { size: 9 };
+                    testRow.eachCell((cell) => {
+                        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF5F5F5' } };
+                        cell.border = {
+                            top: { style: 'hair' },
+                            left: { style: 'thin' },
+                            bottom: { style: 'hair' },
+                            right: { style: 'thin' }
+                        };
+                    });
+                    // Dodaj walidację danych dla kolumny oceny testu
+                    testRow.getCell(3).dataValidation = {
+                        type: 'list',
+                        allowBlank: true,
+                        formulae: ['"Wybierz...,Spełnione,Niespełnione,Nie dotyczy"'],
+                        showErrorMessage: true,
+                        errorTitle: 'Nieprawidłowa wartość',
+                        error: 'Wybierz wartość z listy: Spełnione, Niespełnione lub Nie dotyczy'
+                    };
+                });
+            }
         });
     };
 
@@ -1896,6 +2156,45 @@ function downloadWizardAssessment() {
         graph.push(assertion);
     });
 
+    // Assertions z testów (Jak sprawdzić?)
+    document.querySelectorAll('.checklist-test-item[data-test-id]').forEach((card) => {
+        const testDataId = card.dataset.testId;
+        // Convert "U.7.1.1.a--test--0" → "U.7.1.1.a#test-0" for EARL identifier
+        const earlTestId = testDataId.replace(/--test--(\d+)$/, '#test-$1');
+        const safeTestId = testDataId.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+        const radios = card.querySelectorAll(`input[name="test-status-${safeTestId}"]`);
+        const textarea = card.querySelector(`textarea[name="test-comment-${safeTestId}"]`);
+
+        let testOutcome = 'earl:untested';
+        radios.forEach(radio => {
+            if (radio.checked) {
+                if (radio.value === 'pass') testOutcome = 'earl:passed';
+                else if (radio.value === 'fail') testOutcome = 'earl:failed';
+                else if (radio.value === 'na') testOutcome = 'earl:inapplicable';
+            }
+        });
+
+        const testAssertion = {
+            "@type": "earl:Assertion",
+            "earl:assertedBy": { "@id": auditor ? "_:compoundAssertor" : "_:toolAssertor" },
+            "earl:subject": { "@id": "_:subject" },
+            "earl:test": {
+                "@type": "earl:TestCriterion",
+                "dct:identifier": earlTestId
+            },
+            "earl:result": {
+                "@type": "earl:TestResult",
+                "earl:outcome": { "@id": testOutcome },
+                "dct:description": textarea?.value || '',
+                "dct:date": new Date().toISOString()
+            },
+            "earl:mode": { "@id": "earl:manual" }
+        };
+
+        graph.push(testAssertion);
+    });
+
     // Wygeneruj EARL JSON-LD
     const earlReport = {
         "@context": context,
@@ -1997,7 +2296,40 @@ async function handleWizardFileLoad(event) {
                 const outcome = assertion['earl:result']?.['earl:outcome']?.['@id'];
                 const comment = assertion['earl:result']?.['dct:description'] || '';
 
-                if (articleId) {
+                if (!articleId) return;
+
+                // Test card assertions have "#test-N" in the identifier
+                if (articleId.includes('#test-')) {
+                    // Convert "U.7.1.1.a#test-0" → "U.7.1.1.a--test--0" → safeTestId
+                    const testDataId = articleId.replace(/#test-(\d+)$/, '--test--$1');
+                    const safeTestId = testDataId.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+                    let testVal = '';
+                    if (outcome === 'earl:passed') testVal = 'pass';
+                    else if (outcome === 'earl:failed') testVal = 'fail';
+                    else if (outcome === 'earl:inapplicable') testVal = 'na';
+
+                    if (testVal) {
+                        const radio = document.querySelector(`input[name="test-status-${safeTestId}"][value="${testVal}"]`);
+                        if (radio) {
+                            radio.checked = true;
+                            // Trigger visual state update and open the card
+                            const card = radio.closest('.checklist-test-item');
+                            if (card) {
+                                card.classList.remove('is-pass', 'is-fail', 'is-na');
+                                card.classList.add('is-' + testVal);
+                                card.open = true;
+                            }
+                        }
+                    }
+
+                    const testTextarea = document.querySelector(`textarea[name="test-comment-${safeTestId}"]`);
+                    if (testTextarea) testTextarea.value = comment;
+                    return;
+                }
+
+                // Regular requirement-row assertion
+                {
                     // Obliczyć safeArticleId tak samo jak w generateAssessmentRows()
                     const safeArticleId = articleId.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
                     
@@ -2128,6 +2460,39 @@ function setupWizardSave() {
             if (loadBtn) loadBtn.click();
         }
     });
+}
+
+/**
+ * Renders an interactive test card (fieldset) for a single test object.
+ * @param {string} clauseId - the parent clause ID (e.g. "U.7.1.1.a")
+ * @param {{type:string, title:string, description?:string}} testObj
+ * @param {number} testIndex - zero-based index of this test in the checklist array
+ */
+function renderTestCard(clauseId, testObj, testIndex) {
+    const testDataId = `${clauseId}--test--${testIndex}`;
+    const safeTestId = testDataId.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    const title = (W.fixOrphans ? W.fixOrphans(testObj.title || '') : (testObj.title || ''));
+    let descHtml = '';
+    if (testObj.description) {
+        let d = testObj.description;
+        if (W.fixOrphans) d = W.fixOrphans(d);
+        if (W.parseMarkdown) d = W.parseMarkdown(d);
+        descHtml = `<div class="test-description">${d}</div>`;
+    }
+    return `<details class="checklist-test-item" data-test-id="${testDataId}">
+        <summary class="checklist-test-summary">${title}</summary>
+        ${descHtml}
+        <fieldset class="checklist-test-controls" aria-label="Ocena testu: ${title}">
+            <legend class="sr-only">Ocena testu: ${title}</legend>
+            <div class="test-options-row">
+                <label><input type="radio" name="test-status-${safeTestId}" value="pass"> Spełnione</label>
+                <label><input type="radio" name="test-status-${safeTestId}" value="fail"> Niespełnione</label>
+                <label><input type="radio" name="test-status-${safeTestId}" value="na"> Nie dotyczy</label>
+            </div>
+            <label for="test-comment-${safeTestId}">Komentarz do testu</label>
+            <textarea id="test-comment-${safeTestId}" name="test-comment-${safeTestId}" placeholder="Wpisz komentarz..." aria-label="Komentarz do testu: ${title}"></textarea>
+        </fieldset>
+    </details>`;
 }
 
 function populateRadioList() {
@@ -2463,21 +2828,46 @@ document.getElementById('auditForm').onsubmit = (e) => {
             }
 
             // Helper for rendering lists locally within this scope
-            const renderBlocksFromDictionary = (arr) => {
+            const renderBlocksFromDictionary = (arr, clauseId = '') => {
                 if (!arr || arr.length === 0) return '';
-                let content = arr.join('\n');
-                if (W.fixOrphans) content = W.fixOrphans(content);
-                if (W.parseMarkdown) content = W.parseMarkdown(content);
-                const trimmed = content.trim();
-                // Ensure wrapped if not already
-                if (trimmed && !trimmed.startsWith('<h') && !trimmed.startsWith('<ul') && !trimmed.startsWith('<ol') && !trimmed.startsWith('<p')) {
-                    return `<p>${content}</p>`;
-                }
-                return content;
+
+                // Separate string items and test objects; render test objects as interactive cards
+                const parts = [];
+                let stringBuf = [];
+                let testItemIndex = 0;
+
+                const flushStrings = () => {
+                    if (stringBuf.length === 0) return;
+                    let content = stringBuf.join('\n');
+                    if (W.fixOrphans) content = W.fixOrphans(content);
+                    if (W.parseMarkdown) content = W.parseMarkdown(content);
+                    const trimmed = content.trim();
+                    if (trimmed && !trimmed.startsWith('<h') && !trimmed.startsWith('<ul') && !trimmed.startsWith('<ol') && !trimmed.startsWith('<p')) {
+                        parts.push(`<p>${content}</p>`);
+                    } else {
+                        parts.push(content);
+                    }
+                    stringBuf = [];
+                };
+
+                arr.forEach((item, idx) => {
+                    if (item && typeof item === 'object' && item.type === 'test') {
+                        flushStrings();
+                        parts.push(renderTestCard(clauseId, item, testItemIndex));
+                        testItemIndex++;
+                    } else {
+                        stringBuf.push(String(item));
+                    }
+                });
+                flushStrings();
+
+                return parts.join('\n');
             };
 
             const article = document.createElement('article');
             article.className = 'requirement-row';
+            article.tabIndex = -1;
+            article.setAttribute('aria-label', `Wymaganie: ${item.article} — ${item.requirement}`);
             const safeArticleId = item.article.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
             
             if (isProductDefault && (!productClausesRaw || !productClausesRaw.trim())) {
@@ -2514,7 +2904,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 
                 return `
                 <div class="detailed-checklist-container">
-                    ${renderBlocksFromDictionary(data.checklist)}
+                    ${renderBlocksFromDictionary(data.checklist, id.trim())}
                 </div>`;
             }).join('').trim();
 
@@ -2604,8 +2994,9 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 </section>` : ''}
                 
                 <section class="assessment-section">
-                    <fieldset>
+                    <fieldset aria-describedby="test-summary-${safeArticleId}">
                         <legend>Ocena spełnienia wymagania dla ${item.article}</legend>
+                        <div class="test-summary-assessment" id="test-summary-${safeArticleId}"></div>
                         
                         <label for="status-compliant-${safeArticleId}">
                             <input type="radio" id="status-compliant-${safeArticleId}" name="status-${safeArticleId}" value="compliant">
@@ -2640,6 +3031,14 @@ document.getElementById('auditForm').onsubmit = (e) => {
     });
     
     document.getElementById('resultsArea').classList.remove('hidden');
+    
+    // Event delegation: aktualizuj podsumowanie testów przy każdej zmianie oceny testu
+    list.addEventListener('change', (e) => {
+        if (e.target.type === 'radio' && e.target.name && e.target.name.startsWith('test-status-')) {
+            const row = e.target.closest('.requirement-row');
+            if (row) updateTestSummaryForRow(row);
+        }
+    });
     
     // Announce completion to screen readers
     const announcement = document.getElementById('generation-announcement');
@@ -2676,11 +3075,21 @@ window.showClause = (id, triggerEl = null) => {
         const renderListBlocks = (arr) => {
             if (!arr || arr.length === 0) return '<p><i>Brak danych</i></p>';
 
+            // Convert test objects to readable text for modal display
+            const stringified = arr.map(item => {
+                if (item && typeof item === 'object' && item.type === 'test') {
+                    let text = `**${item.title || ''}**`;
+                    if (item.description) text += `: ${item.description}`;
+                    return text;
+                }
+                return item;
+            });
+
             // Join items with newlines. This allows parseMarkdown to handle
             // the entire array as continuous Markdown text, preserving list 
             // continuity (so it creates one <ol> instead of many separate ones).
             // We avoid stripNumbering here to preserve intentional "1. " or "11. " markers.
-            let content = arr.join('\n');
+            let content = stringified.join('\n');
             
             if (W.fixOrphans) content = W.fixOrphans(content);
             if (W.parseMarkdown) content = W.parseMarkdown(content);
@@ -2736,7 +3145,13 @@ window.showClause = (id, triggerEl = null) => {
                 <h4 class="browser-card-section-title">Jak to sprawdzić?</h4>
                 <div class="section-content">
                     ${data.checklist && data.checklist.length > 0 ? data.checklist.map(item => {
-                        let text = (W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(item));
+                        let rawText;
+                        if (item && typeof item === 'object' && item.type === 'test') {
+                            rawText = `**${item.title || ''}**${item.description ? ': ' + item.description : ''}`;
+                        } else {
+                            rawText = String(item);
+                        }
+                        let text = (W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(rawText));
                         if (W.parseMarkdown) text = W.parseMarkdown(text);
                         return `<p class="checklist-item">${text}</p>`;
                     }).join('') : `<p><i>Brak danych</i></p>`}
@@ -2798,6 +3213,16 @@ document.addEventListener('DOMContentLoaded', () => {
             handleCloseModal();
         };
     }
+
+    // Event delegation: test card radio → visual state classes
+    document.addEventListener('change', (e) => {
+        const radio = e.target;
+        if (!radio.matches('.checklist-test-item input[type="radio"]')) return;
+        const card = radio.closest('.checklist-test-item');
+        if (!card) return;
+        card.classList.remove('is-pass', 'is-fail', 'is-na');
+        card.classList.add('is-' + radio.value);
+    });
 });
 
 window.showGlossary = (triggerEl = null) => {
