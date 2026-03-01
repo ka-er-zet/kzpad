@@ -1856,9 +1856,12 @@ function downloadWizardAssessment() {
         const article = articleEl.textContent;
         const requirementText = row.querySelector('.requirement-text')?.textContent || '';
         
+        // Obliczyć safeArticleId tak samo jak w generateAssessmentRows()
+        const safeArticleId = article.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+        
         // Szukaj radio buttons dla tego wymagania
-        const radios = row.querySelectorAll(`input[name="status-${article}"]`);
-        const textarea = row.querySelector(`textarea[name="comment-${article}"]`);
+        const radios = row.querySelectorAll(`input[name="status-${safeArticleId}"]`);
+        const textarea = row.querySelector(`textarea[name="comment-${safeArticleId}"]`);
 
         let status = null;
         let outcome = 'earl:untested';
@@ -1995,6 +1998,9 @@ async function handleWizardFileLoad(event) {
                 const comment = assertion['earl:result']?.['dct:description'] || '';
 
                 if (articleId) {
+                    // Obliczyć safeArticleId tak samo jak w generateAssessmentRows()
+                    const safeArticleId = articleId.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                    
                     // Mapowanie EARL outcome na wartości radio
                     let val = '';
                     if (outcome === 'earl:passed') val = 'compliant';
@@ -2002,11 +2008,11 @@ async function handleWizardFileLoad(event) {
                     else if (outcome === 'earl:inapplicable') val = 'not-applicable';
 
                     if (val) {
-                        const radio = document.querySelector(`input[name="status-${articleId}"][value="${val}"]`);
+                        const radio = document.querySelector(`input[name="status-${safeArticleId}"][value="${val}"]`);
                         if (radio) radio.checked = true;
                     }
 
-                    const textarea = document.querySelector(`textarea[name="comment-${articleId}"]`);
+                    const textarea = document.querySelector(`textarea[name="comment-${safeArticleId}"]`);
                     if (textarea) textarea.value = comment;
                 }
             });
@@ -2173,6 +2179,48 @@ function populateRadioList() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+    
+    // Add event listeners to hide errors when user starts typing
+    const productNameInput = document.getElementById('wizard-product-name');
+    const productDescInput = document.getElementById('wizard-product-desc');
+    const auditorInput = document.getElementById('wizard-auditor-name');
+    
+    const productNameError = document.getElementById('product-name-error');
+    const productDescError = document.getElementById('product-desc-error');
+    const auditorError = document.getElementById('auditor-name-error');
+    
+    if (productNameInput && productNameError) {
+        productNameInput.addEventListener('input', () => {
+            if (productNameInput.value.trim()) {
+                productNameError.classList.add('hidden');
+                productNameError.style.display = 'none';
+                productNameInput.removeAttribute('aria-invalid');
+                productNameInput.removeAttribute('aria-describedby');
+            }
+        });
+    }
+    
+    if (productDescInput && productDescError) {
+        productDescInput.addEventListener('input', () => {
+            if (productDescInput.value.trim()) {
+                productDescError.classList.add('hidden');
+                productDescError.style.display = 'none';
+                productDescInput.removeAttribute('aria-invalid');
+                productDescInput.removeAttribute('aria-describedby');
+            }
+        });
+    }
+    
+    if (auditorInput && auditorError) {
+        auditorInput.addEventListener('input', () => {
+            if (auditorInput.value.trim()) {
+                auditorError.classList.add('hidden');
+                auditorError.style.display = 'none';
+                auditorInput.removeAttribute('aria-invalid');
+                auditorInput.removeAttribute('aria-describedby');
+            }
+        });
+    }
 }
 
 document.getElementById('auditForm').onsubmit = (e) => {
@@ -2212,6 +2260,90 @@ document.getElementById('auditForm').onsubmit = (e) => {
     errorEl.style.display = 'none';
     firstFieldset.removeAttribute('aria-invalid');
     firstFieldset.removeAttribute('aria-describedby');
+    
+    // Validate required fields
+    const productNameInput = document.getElementById('wizard-product-name');
+    const productDescInput = document.getElementById('wizard-product-desc');
+    const auditorInput = document.getElementById('wizard-auditor-name');
+    
+    const productNameError = document.getElementById('product-name-error');
+    const productDescError = document.getElementById('product-desc-error');
+    const auditorError = document.getElementById('auditor-name-error');
+    
+    const productName = productNameInput?.value?.trim() || '';
+    const productDesc = productDescInput?.value?.trim() || '';
+    const auditor = auditorInput?.value?.trim() || '';
+    
+    let hasErrors = false;
+    const header = document.querySelector('.app-header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    
+    // Check product name
+    if (!productName) {
+        hasErrors = true;
+        productNameError.classList.remove('hidden');
+        productNameError.style.display = 'flex';
+        productNameInput.setAttribute('aria-invalid', 'true');
+        productNameInput.setAttribute('aria-describedby', 'product-name-error');
+    } else {
+        productNameError.classList.add('hidden');
+        productNameError.style.display = 'none';
+        productNameInput.removeAttribute('aria-invalid');
+        productNameInput.removeAttribute('aria-describedby');
+    }
+    
+    // Check product description
+    if (!productDesc) {
+        hasErrors = true;
+        productDescError.classList.remove('hidden');
+        productDescError.style.display = 'flex';
+        productDescInput.setAttribute('aria-invalid', 'true');
+        productDescInput.setAttribute('aria-describedby', 'product-desc-error');
+    } else {
+        productDescError.classList.add('hidden');
+        productDescError.style.display = 'none';
+        productDescInput.removeAttribute('aria-invalid');
+        productDescInput.removeAttribute('aria-describedby');
+    }
+    
+    // Check auditor name
+    if (!auditor) {
+        hasErrors = true;
+        auditorError.classList.remove('hidden');
+        auditorError.style.display = 'flex';
+        auditorInput.setAttribute('aria-invalid', 'true');
+        auditorInput.setAttribute('aria-describedby', 'auditor-name-error');
+    } else {
+        auditorError.classList.add('hidden');
+        auditorError.style.display = 'none';
+        auditorInput.removeAttribute('aria-invalid');
+        auditorInput.removeAttribute('aria-describedby');
+    }
+    
+    if (hasErrors) {
+        resultsArea.classList.add('hidden');
+        
+        // Determine which input field to focus on (first one with error)
+        let firstInputWithError = null;
+        if (!productName) {
+            firstInputWithError = productNameInput;
+        } else if (!productDesc) {
+            firstInputWithError = productDescInput;
+        } else if (!auditor) {
+            firstInputWithError = auditorInput;
+        }
+        
+        const targetTop = window.pageYOffset + firstInputWithError.getBoundingClientRect().top - headerHeight - 20;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        
+        // Focus on the input field, not the error message
+        firstInputWithError.focus();
+        
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        return;
+    }
     
     const selectedProduct = selectedRadio.value;
     const productFullName = productDictionary[selectedProduct] || selectedProduct;

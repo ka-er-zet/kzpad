@@ -1118,6 +1118,26 @@ main {
     display: flex;
 }
 
+#product-name-error,
+#product-desc-error,
+#auditor-name-error {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid var(--error);
+    border-radius: 8px;
+    margin: 0.5rem 0 1rem 0;
+    background-color: var(--error-bg);
+    color: var(--error);
+}
+
+#product-name-error:not(.hidden),
+#product-desc-error:not(.hidden),
+#auditor-name-error:not(.hidden) {
+    display: flex;
+}
+
 #auditForm fieldset legend {
     padding: 0;
     margin: 0;

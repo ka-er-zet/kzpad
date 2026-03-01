@@ -163,14 +163,38 @@
                 <fieldset>
                     <legend>Informacje dodatkowe o przedmiocie kontroli</legend>
                     
-                    <label for="wizard-product-name">Nazwa produktu / Usługi</label>
-                    <input type="text" id="wizard-product-name" name="product-name">
+                    <label for="wizard-product-name">
+                        Nazwa produktu / Usługi
+                        <span style="color: var(--form-element-invalid-border-color); font-weight: bold;" aria-hidden="true">*</span>
+                        <span class="sr-only">(pole wymagane)</span>
+                    </label>
+                    <input type="text" id="wizard-product-name" name="product-name" aria-required="true">
+                    <div id="product-name-error" class="hidden">
+                        <i data-lucide="alert-circle" style="width: 24px; height: 24px; flex-shrink: 0; margin-right: 0.5rem;" aria-hidden="true"></i>
+                        <span>Błąd: Nazwa produktu / usługi jest wymagana.</span>
+                    </div>
                     
-                    <label for="wizard-product-desc">Opis / Wersja / URL</label>
-                    <input type="text" id="wizard-product-desc" name="product-desc">
+                    <label for="wizard-product-desc">
+                        Opis / Wersja / URL
+                        <span style="color: var(--form-element-invalid-border-color); font-weight: bold;" aria-hidden="true">*</span>
+                        <span class="sr-only">(pole wymagane)</span>
+                    </label>
+                    <input type="text" id="wizard-product-desc" name="product-desc" aria-required="true">
+                    <div id="product-desc-error" class="hidden">
+                        <i data-lucide="alert-circle" style="width: 24px; height: 24px; flex-shrink: 0; margin-right: 0.5rem;" aria-hidden="true"></i>
+                        <span>Błąd: Opis / Wersja / URL jest wymagane.</span>
+                    </div>
                     
-                    <label for="wizard-auditor-name">Osoba przeprowadzająca kontrolę</label>
-                    <input type="text" id="wizard-auditor-name" name="auditor-name">
+                    <label for="wizard-auditor-name">
+                        Osoba przeprowadzająca kontrolę
+                        <span style="color: var(--form-element-invalid-border-color); font-weight: bold;" aria-hidden="true">*</span>
+                        <span class="sr-only">(pole wymagane)</span>
+                    </label>
+                    <input type="text" id="wizard-auditor-name" name="auditor-name" aria-required="true">
+                    <div id="auditor-name-error" class="hidden">
+                        <i data-lucide="alert-circle" style="width: 24px; height: 24px; flex-shrink: 0; margin-right: 0.5rem;" aria-hidden="true"></i>
+                        <span>Błąd: Osoba przeprowadzająca kontrolę jest wymagana.</span>
+                    </div>
                 </fieldset>
 
                 <button type="submit" id="generateBtn">
