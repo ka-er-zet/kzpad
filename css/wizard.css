@@ -54,6 +54,9 @@
     /* Override input border color for adequate contrast (5.1:1 vs 1.5:1) */
     --form-element-border-color: #555555;
 
+    /* Search icon color for light theme - ensure contrast with light background */
+    --search-icon-color: #555555;
+
     --error: #A41E34;
     --error-bg: #FFF6F8;
     /* Very light pinkish background */
