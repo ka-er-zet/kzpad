@@ -2452,19 +2452,7 @@ p.hero-card-title {
 }
 
 /* State indicators */
-.checklist-test-item.is-pass {
-    border-left-color: var(--form-element-valid-border-color);
-    border-left-width: 6px;
-}
-
-.checklist-test-item.is-fail {
-    border-left-color: var(--form-element-invalid-border-color);
-    border-left-width: 6px;
-}
-
-.checklist-test-item.is-na {
-    border-left-color: var(--secondary-border-color);
-}
+/* Border color and width changes removed per user request */
 
 /* Status badge on summary (visible when collapsed) */
 .checklist-test-item.is-pass  .checklist-test-summary::after,
@@ -2501,19 +2489,9 @@ p.hero-card-title {
 }
 
 /* Theme-specific colors for test badges to ensure proper contrast */
-[data-theme="dark"] .checklist-test-item.is-pass .checklist-test-summary::after,
-[data-theme="dark"] .checklist-test-item.is-pass {
-    border-left-color: #66BB6A;
-}
-
 [data-theme="dark"] .checklist-test-item.is-pass .checklist-test-summary::after {
     background: color-mix(in srgb, #66BB6A 15%, transparent);
     color: #66BB6A;
-}
-
-[data-theme="light"] .checklist-test-item.is-pass .checklist-test-summary::after,
-[data-theme="light"] .checklist-test-item.is-pass {
-    border-left-color: #2E7D32;
 }
 
 [data-theme="light"] .checklist-test-item.is-pass .checklist-test-summary::after {
@@ -2521,19 +2499,9 @@ p.hero-card-title {
     color: #2E7D32;
 }
 
-[data-theme="dark"] .checklist-test-item.is-fail .checklist-test-summary::after,
-[data-theme="dark"] .checklist-test-item.is-fail {
-    border-left-color: #EF5350;
-}
-
 [data-theme="dark"] .checklist-test-item.is-fail .checklist-test-summary::after {
     background: color-mix(in srgb, #EF5350 15%, transparent);
     color: #EF5350;
-}
-
-[data-theme="light"] .checklist-test-item.is-fail .checklist-test-summary::after,
-[data-theme="light"] .checklist-test-item.is-fail {
-    border-left-color: #C62828;
 }
 
 [data-theme="light"] .checklist-test-item.is-fail .checklist-test-summary::after {
