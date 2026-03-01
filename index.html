@@ -146,8 +146,8 @@
                 
                 <form id="auditForm">
                 <p id="form-instruction" style="margin-bottom: 1rem;">Pola oznaczone gwiazdką (<span style="color: var(--form-element-invalid-border-color); font-weight: bold;" aria-hidden="true">*</span>) są wymagane.</p>
-                <fieldset id="productFieldset">
-                    <legend>
+                <fieldset id="productFieldset" role="radiogroup" aria-required="true" aria-labelledby="product-group-legend">
+                    <legend id="product-group-legend">
                         Wybierz produkt lub usługę
                         <span style="color: var(--form-element-invalid-border-color); font-weight: bold;" aria-hidden="true">*</span>
                         <span class="sr-only">(pole wymagane)</span>

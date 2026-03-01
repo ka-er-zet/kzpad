@@ -103,10 +103,23 @@ function showToast(message, type = 'success', duration = 5000) {
         window.lucide.createIcons();
     }
 
+    // Store previously focused element for restore after close
+    const previouslyFocused = document.activeElement;
+
     // Close button handler
     closeBtn.addEventListener('click', () => {
         toast.remove();
+        // Restore focus to the element that triggered the toast
+        if (previouslyFocused && previouslyFocused !== document.body) {
+            previouslyFocused.focus();
+        }
     });
+
+    // Move focus to close button immediately after display
+    // Use setTimeout to ensure the element is in the DOM and visible
+    setTimeout(() => {
+        closeBtn.focus();
+    }, 50);
 }
 
 /**
@@ -2399,7 +2412,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
                 const clauseData = (dictionaryData && dictionaryData[c]) ? dictionaryData[c] : null;
                 const clauseTitle = clauseData && clauseData.title ? clauseData.title.replace(/&nbsp;|\u00A0/g, ' ') : '';
                 const cleanTitle = stripNumbering(clauseTitle);
-                const ariaLabelSafe = `Klauzula ${c}${cleanTitle ? ': ' + cleanTitle : ''}`.replace(/"/g, '&quot;');
+                const ariaLabelSafe = `${c}${cleanTitle ? ' ' + cleanTitle : ''} - otwórz szczegóły klauzuli`.replace(/"/g, '&quot;');
                 return `<button class="clause-tag" data-clause-id="${c}" onclick="showClause('${c}', this)" aria-label="${ariaLabelSafe}">
                     <span class="clause-tag-id">${c}</span>
                     <span class="clause-tag-title">${cleanTitle}</span>

@@ -280,7 +280,7 @@ function showToast(message, type = 'success', duration = 0) {
 
     const closeBtn = document.createElement('button');
     closeBtn.className = 'toast-close';
-    closeBtn.setAttribute('aria-label', `Zamknij`); // Simplified label
+    closeBtn.setAttribute('aria-label', `Zamknij powiadomienie: ${message}`);
     closeBtn.setAttribute('type', 'button');
     closeBtn.innerHTML = '<i data-lucide="x" class="icon-sm" aria-hidden="true"></i>';
 
@@ -299,10 +299,23 @@ function showToast(message, type = 'success', duration = 0) {
         window.lucide.createIcons();
     }
 
+    // Store previously focused element for restore after close
+    const previouslyFocused = document.activeElement;
+
     closeBtn.addEventListener('click', () => {
         if (lastToastMessage === message) lastToastMessage = ""; // reset so same message can be shown again
         toast.remove();
+        // Restore focus to the element that triggered the toast
+        if (previouslyFocused && previouslyFocused !== document.body) {
+            previouslyFocused.focus();
+        }
     });
+
+    // Move focus to close button immediately after display
+    // Use setTimeout to ensure the element is in the DOM and visible
+    setTimeout(() => {
+        closeBtn.focus();
+    }, 100);
 
     // Auto-hide only if explicitly requested with duration > 0
     if (duration > 0) {

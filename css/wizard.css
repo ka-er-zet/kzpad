@@ -7,8 +7,8 @@
     /* primary button background (dark) */
 
     /* Search icon color (used to theme search input border) */
-    --search-icon-color: rgb(65, 84, 98);
-    /* matches icon stroke in pico icons */
+    --search-icon-color: #C8D0DD;
+    /* enhanced contrast for dark theme */
     --btn-bg-hover: #07465B;
     --btn-foreground: #ffffff;
 
@@ -20,7 +20,8 @@
 
     /* Error states */
     --error: #FF8383;
-    --error-bg: rgba(255, 131, 131, 0.1);
+    --error-bg: #2D1515;
+    /* Darker red-tinted background for better visibility in dark theme */
 
     /* Card/border color used instead of muted */
     --card-border-color: rgba(255, 255, 255, 0.06);
@@ -50,8 +51,12 @@
 
     --requirement-id-foreground: #111111;
 
-    --error: #C94B56;
-    --error-bg: rgba(201, 77, 94, 0.08);
+    /* Override input border color for adequate contrast (5.1:1 vs 1.5:1) */
+    --form-element-border-color: #555555;
+
+    --error: #A41E34;
+    --error-bg: #FFF6F8;
+    /* Very light pinkish background */
 
     --card-border-color: rgba(0, 0, 0, 0.08);
 
@@ -75,6 +80,12 @@
     /* Skip link high contrast for light theme */
     --skip-bg: #06425A;
     --skip-color: #ffffff;
+}
+
+/* Override input border color for dark theme (improve from 4.5:1 to 4.6:1) */
+:root:not([data-theme="light"]),
+[data-theme="dark"] {
+    --form-element-border-color: #AEBACE;
 }
 
 /* Improve contrast for code elements */
@@ -1242,18 +1253,6 @@ img,
         max-width: 100%;
         overflow-x: hidden;
     }
-}
-
-#product-selection-error {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
-    border: 2px solid var(--error);
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    background-color: var(--error-bg);
-    color: var(--error);
 }
 
 .category-header {

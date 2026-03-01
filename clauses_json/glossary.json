@@ -12,5 +12,13 @@
   "PAD": "Polski Akt o Dostępności – ustawa regulująca wymagania dostępności dla produktów i usług w Polsce.",
   "disabled": "Stan elementu interfejsu użytkownika, w którym jest on nieaktywny, niedostępny do interakcji (zazwyczaj wygląda na wyszarzone lub pociemniałe). Ma zastosowanie podczas testowania kontrastu elementów interfejsu.",
   "hover": "Stan elementu interfejsu użytkownika, gdy kursor myszy znajduje się nad nim. Elementy mogą zmieniać wygląd (kolor, tło) w tym stanie. Wymaga sprawdzenia kontrastu, zgodnie z wytycznymi dostępności.",
-  "focus": "Stan elementu interfejsu użytkownika, gdy jest on wybrany lub osiąga fokus (np. poprzez nawigację klawiszem Tab). Elementy w stanie focus są zazwyczaj obramowane lub podświetlone. Wymagany jest wystarczający kontrast między elementem a tłem w tym stanie."
+  "focus": "Stan elementu interfejsu użytkownika, gdy jest on wybrany lub osiąga fokus (np. poprzez nawigację klawiszem Tab). Elementy w stanie focus są zazwyczaj obramowane lub podświetlone. Wymagany jest wystarczający kontrast między elementem a tłem w tym stanie.",
+  "Alfabet Braila": "System pisma umożliwiający czytanie i pisanie osobom niewidomym. Znaki Braila złożone z punktów wystupiających z powierzchni umożliwiają rozpoznawanie tekstu poprzez dotyk palców.",
+  "Kod QR": "Dwuwymiarowy kod kreskowy (Quick Response) zawierający zakodowane dane (np. adres URL, tekst). Może być szybko zeskanowany kamerą urządzenia mobilnego, umożliwiając dostęp do informacji bez manualnego wprowadzania tekstu.",
+  "Tag NFC": "Technologia komunikacji bliskiego zasięgu (Near Field Communication) umożliwiająca bezprzewodową wymianę danych na krótkich dystansach (kilka cm). Pozwala na aktywację informacji poprzez zbliżenie urządzenia do tagu.",
+  "Gniazdo audio (minijack)": "Standardowe port audio, zazwyczaj 3,5 mm, używany do podłączania słuchawek, mikrofonów i innego sprzętu audio do urządzenia. Zastosowanie standardowego zamiast gniazda zastrzeżonego zapewnia kompatybilność z narzędziami wspomagającymi.",
+  "Interfejs": "Punkt polegający na interakcji między użytkownikiem a urządzeniem/systemem (np. ekran dotykowy, przycisk, klawiatura). Interfejs musi być dostępny dla osób o różnych możliwościach.",
+  "Bluetooth": "Standard bezprzewodowy do komunikacji między urządzeniami na krótkich dystansach. Umożliwia podłączenie narzędzi wspomagających (słuchawek, urządzeń sterujących, czytników ekranu) bez kabli.",
+  "Syntezator mowy": "Oprogramowanie lub urządzenie konwertujące tekst na słowa wymawiające głosowo. Umożliwia osobom niewidomym dostęp do treści tekstowych przy pomocy słuchu.",
+  "Kanał sensoryczny": "Zmysł lub sposób percepcji informacji (wzrok, słuch, dotyk, węch, smak). Wymogi dostępności wymagają przekazywania informacji poprzez wiele kanałów sensorycznych, aby była ona dostępna dla osób z niepełnosprawnościami zmysłowymi."
 }
