@@ -8,36 +8,12 @@
     ],
     "evaluation": "Inspekcja i testy technologii asystujących",
     "checklist": [
-      {
-        "type": "test",
-        "title": "Sprawdzenie dotykowe",
-        "description": "Należy zweryfikować, czy przyciski i kluczowe elementy sterujące są możliwe do zidentyfikowania bez użycia wzroku (np. czy posiadają wypukłe symbole, grawerowanie lub oznaczenia w alfabecie Braille'a)."
-      },
-      {
-        "type": "test",
-        "title": "Test klawiatury numerycznej",
-        "description": "Jeśli urządzenie posiada klawiaturę fizyczną, należy sprawdzić, czy na klawiszu z cyfrą „5” znajduje się wyczuwalny dotykiem punkt lub kreska (punkt orientacyjny)."
-      },
-      {
-        "type": "test",
-        "title": "Alternatywa dla etykiet i tabliczki znamionowej",
-        "description": "Należy sprawdzić, czy informacje na tabliczce znamionowej są dostępne w alternatywnej formie, np. poprzez kod QR lub tag NFC, który po zeskanowaniu telefonem umożliwia odczytanie treści głosem."
-      },
-      {
-        "type": "test",
-        "title": "Test wyjścia audio",
-        "description": "Jeżeli produkt ma wyjście audio, należy podłączyć słuchawki do gniazda audio (minijack) lub poprzez innych typowy interfejs (np. bluetooth). Należy zweryfikować, czy po podłączeniu urządzenie uruchamia tryb głosowy i czy wszystkie informacje wyświetlane na ekranie (np. ceny, opcje wyboru) są odczytywane przez syntezator mowy."
-      },
-      {
-        "type": "test",
-        "title": "Test komunikatów błędu",
-        "description": "Należy spróbować wywołać błąd w obsłudze. Należy sprawdzić, czy informacja o błędzie jest przekazywana zarówno wizualnie (komunikat), jak i dźwiękowo."
-      },
-      {
-        "type": "test",
-        "title": "Weryfikacja alternatywy dla dźwięków ",
-        "description": "W przypadku urządzeń emitujących dźwięki (np. sygnał zatwierdzenia), należy sprawdzić (przy wyciszonym dźwięku lub w stoperach), czy każdemu sygnałowi towarzyszy wyraźna reakcja wizualna na ekranie lub obudowie (np. mignięcie ramki, podświetlenie diody)."
-      },
+      "**Sprawdzenie dotykowe**: Należy zweryfikować, czy przyciski i kluczowe elementy sterujące są możliwe do zidentyfikowania bez użycia wzroku (np. czy posiadają wypukłe symbole, grawerowanie lub oznaczenia w alfabecie Braille'a).",
+      "**Klawiatura numeryczna**: Jeśli urządzenie posiada klawiaturę fizyczną, należy sprawdzić, czy na klawiszu z cyfrą „5” znajduje się wyczuwalny dotykiem punkt lub kreska (punkt orientacyjny).",
+      "**Etykiety i tabliczki**: Należy sprawdzić, czy informacje na tabliczce znamionowej są dostępne w alternatywnej formie, np. poprzez kod QR lub tag NFC, który po zeskanowaniu telefonem umożliwia odczytanie treści głosem.",
+      "**Test wyjścia audio**: Jeżeli produkt ma wyjście audio, należy podłączyć słuchawki do gniazda audio (minijack) lub poprzez innych typowy interfejs (np. bluetooth). Należy zweryfikować, czy po podłączeniu urządzenie uruchamia tryb głosowy i czy wszystkie informacje wyświetlane na ekranie (np. ceny, opcje wyboru) są odczytywane przez syntezator mowy.",
+      "**Test komunikatów błędu**: Należy spróbować wywołać błąd w obsłudze. Należy sprawdzić, czy informacja o błędzie jest przekazywana zarówno wizualnie (komunikat), jak i dźwiękowo.",
+      "**Weryfikacja wizualna dźwięków**: W przypadku urządzeń emitujących dźwięki (np. sygnał zatwierdzenia), należy sprawdzić (przy wyciszonym dźwięku lub w stoperach), czy każdemu sygnałowi towarzyszy wyraźna reakcja wizualna na ekranie lub obudowie (np. mignięcie ramki, podświetlenie diody).",
       "**Ważne**: Urządzenie posiadające ekran dotykowy, które nie jest wyposażone w fizyczne wyjście audio (gniazdo słuchawkowe) ani wbudowany głośnik z funkcją lektora, należy uznać za niezgodne z tym wymaganiem (brak alternatywnego kanału sensorycznego dla wzroku)."
     ],
     "notes": [],

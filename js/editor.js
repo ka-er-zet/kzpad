@@ -1440,7 +1440,10 @@ function renderClauseForm(id, data) {
             <div id="checklist-container">
                 ${data.checklist.map((item, idx) => renderArrayItem('checklist', item, idx)).join('')}
             </div>
-            <button class="outline contrast small" onclick="addArrayItem('checklist')">${isLegal ? '+ Dodaj krok' : '+ Dodaj punkt'}</button>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button class="outline contrast small" onclick="addArrayItem('checklist')">${isLegal ? '+ Dodaj blok tekstu' : '+ Dodaj punkt'}</button>
+                <button class="outline contrast small" onclick="addTestItem('checklist')">+ Dodaj test</button>
+            </div>
         </div>
 
         <div class="field-group">
@@ -2139,6 +2142,24 @@ window.toggleGlossaryEdit = () => {
  * Helpers for Array fields (Checklist/Preconditions)
  */
 function renderArrayItem(type, value, index) {
+    // Object items (test cards) get a specialised two-field editor
+    if (value && typeof value === 'object' && value.type === 'test') {
+        return `
+        <div class="array-item array-item--test" data-type="${type}" data-index="${index}">
+            <div class="test-item-fields">
+                <label for="arr-${type}-${index}-title">Tytuł testu ${index + 1}</label>
+                <input id="arr-${type}-${index}-title" type="text" value="${(value.title || '').replace(/"/g, '&quot;')}"
+                       oninput="syncTestArrayValue('${type}', ${index}, 'title', this.value)"
+                       placeholder="Nazwa / tytuł testu">
+                <label for="arr-${type}-${index}-desc">Opis testu (markdown)</label>
+                <textarea id="arr-${type}-${index}-desc" rows="3"
+                          oninput="syncTestArrayValue('${type}', ${index}, 'description', this.value); autoResize(this)"
+                          placeholder="Szczegółowy opis kroku testowego…">${value.description || ''}</textarea>
+            </div>
+            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń test ${index + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+        </div>
+        `;
+    }
     return `
         <div class="array-item" data-type="${type}" data-index="${index}">
             <label class="sr-only" for="arr-${type}-${index}">Element listy ${index + 1}</label>
@@ -2277,9 +2298,38 @@ function updateStateFromUI() {
 window.syncArrayValue = (type, index, value) => {
     // We update currentData directly for checklists/preconditions to avoid complex DOM state management
     if (currentType === 'clauses') {
+        // Guard: don't overwrite object items with a flat string
+        if (currentData[activeItemId][type][index] && typeof currentData[activeItemId][type][index] === 'object') return;
         currentData[activeItemId][type][index] = value;
         markAsModified();
     }
+};
+
+window.syncTestArrayValue = (type, index, field, value) => {
+    if (currentType === 'clauses') {
+        const item = currentData[activeItemId][type][index];
+        if (item && typeof item === 'object') {
+            item[field] = value;
+            markAsModified();
+        }
+    }
+};
+
+const scrollToLastArrayItem = (type) => {
+    // Use two nested setTimeout(0) calls so this runs after loadItem's own
+    // setTimeout(0) (which focuses the form h3), ensuring focus lands on
+    // the new item's first input/textarea instead of the section header.
+    setTimeout(() => {
+        const container = document.getElementById(type + '-container');
+        if (!container) return;
+        const items = container.querySelectorAll('.array-item');
+        if (items.length === 0) return;
+        const last = items[items.length - 1];
+        last.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Focus the first editable field in the new item
+        const focusTarget = last.querySelector('input[type="text"], textarea');
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+    }, 50);
 };
 
 window.addArrayItem = (type) => {
@@ -2288,13 +2338,33 @@ window.addArrayItem = (type) => {
     currentData[activeItemId][type].push("");
     markAsModified();
     loadItem(activeItemId, true);
+    scrollToLastArrayItem(type);
+};
+
+window.addTestItem = (type) => {
+    updateStateFromUI();
+    if (!currentData[activeItemId][type]) currentData[activeItemId][type] = [];
+    currentData[activeItemId][type].push({ type: 'test', title: '', description: '' });
+    markAsModified();
+    loadItem(activeItemId, true);
+    scrollToLastArrayItem(type);
 };
 
 window.removeArrayItem = (type, index) => {
     updateStateFromUI();
-    currentData[activeItemId][type].splice(index, 1);
+    const list = currentData[activeItemId][type];
+    list.splice(index, 1);
     markAsModified();
     loadItem(activeItemId, true);
+    // Scroll to the item that took this slot (or the last one if it was the last)
+    setTimeout(() => {
+        const container = document.getElementById(type + '-container');
+        if (!container) return;
+        const items = container.querySelectorAll('.array-item');
+        if (items.length === 0) return;
+        const targetIndex = Math.min(index, items.length - 1);
+        items[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
 };
 
 // Funkcje do obsługi formularza (inputs w klauzulach C)

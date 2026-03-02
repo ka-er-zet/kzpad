@@ -80,7 +80,7 @@
     },
     "all_inapplicable_partial": {
       "id": "all_inapplicable_partial",
-      "status": "BRAK MAJĄCYCH ZASTOSOWANIE WYMAGAŃ (częściowa)",
+      "status": "BRAK MAJĄCYCH ZASTOSOWANIE WYMAGAŃ W SPRAWDZONYM ZAKRESIE",
       "title": "Podsumowanie kontroli dostępności (Częściowe)",
       "description": "W zweryfikowanym zakresie kontroli stwierdzono, że żadne z wybranych kryteriów dostępności nie ma zastosowania do produktu/usługi {productName}.\n\nOznacza to, że w sprawdzonym obszarze badane wymagania ustawowe nie nakładają na produkt konkretnych obowiązków technicznych.",
       "sections": {

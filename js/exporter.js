@@ -59,6 +59,14 @@
             <style:paragraph-properties fo:margin-left="1cm" fo:margin-top="0.2cm"/>
             <style:text-properties fo:font-size="10pt"/>
         </style:style>
+        <style:style style:name="P_TestHeader" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-left="1cm" fo:margin-top="0.25cm" fo:margin-bottom="0.1cm"/>
+            <style:text-properties fo:font-size="10pt" fo:font-weight="bold"/>
+        </style:style>
+        <style:style style:name="P_TestItem" style:family="paragraph" style:parent-style-name="Standard">
+            <style:paragraph-properties fo:margin-left="1cm" fo:margin-bottom="0.2cm"/>
+            <style:text-properties fo:font-size="10pt"/>
+        </style:style>
         <style:style style:name="Tbl1" style:family="table">
             <style:table-properties table:border-model="collapsing" />
         </style:style>
@@ -140,8 +148,59 @@
                     section.items.forEach(item => {
                         contentXml += `<text:list-item><text:p text:style-name="P1">${window.utils.xmlEscape(item.label)}</text:p>`;
                         if (item.note) {
-                            // "nie notatka, a komentarz i jeśli się da, niech komentarz będzie w następnej linii pod wymaganiem, ale niech ma wcięcie"
+                            // "nie notatka, a komentarz i jeśli się da, komentarz będzie w następnej linii pod wymaganiem, ale niech ma wcięcie"
                             contentXml += `<text:p text:style-name="P_Comment">Komentarz: ${window.utils.xmlEscape(item.note)}</text:p>`;
+                        }
+                        // Renderuj testy jednostkowe grupując wg statusu jeśli istnieją
+                        if (item.tests && item.tests.length > 0) {
+                            const failed = item.tests.filter(t => t.status === 'fail');
+                            const passed = item.tests.filter(t => t.status === 'pass');
+                            const na = item.tests.filter(t => t.status === 'na');
+                            
+                            // Niespełnione
+                            if (failed.length > 0) {
+                                contentXml += `<text:p text:style-name="P_TestHeader"><text:span text:style-name="T_BOLD">Niespełnione testy jednostkowe:</text:span></text:p>`;
+                                contentXml += `<text:list text:style-name="L1">`;
+                                failed.forEach(test => {
+                                    contentXml += `<text:list-item><text:p text:style-name="P_TestItem">`;
+                                    contentXml += `<text:span text:style-name="T_BOLD">${window.utils.xmlEscape(test.title)}</text:span>`;
+                                    if (test.comment) {
+                                        contentXml += ` — ${window.utils.xmlEscape(test.comment)}`;
+                                    }
+                                    contentXml += `</text:p></text:list-item>`;
+                                });
+                                contentXml += `</text:list>`;
+                            }
+                            
+                            // Spełnione z komentarzem
+                            if (passed.length > 0) {
+                                contentXml += `<text:p text:style-name="P_TestHeader"><text:span text:style-name="T_BOLD">Spełnione testy jednostkowe (z komentarzem):</text:span></text:p>`;
+                                contentXml += `<text:list text:style-name="L1">`;
+                                passed.forEach(test => {
+                                    contentXml += `<text:list-item><text:p text:style-name="P_TestItem">`;
+                                    contentXml += `<text:span text:style-name="T_BOLD">${window.utils.xmlEscape(test.title)}</text:span>`;
+                                    if (test.comment) {
+                                        contentXml += ` — ${window.utils.xmlEscape(test.comment)}`;
+                                    }
+                                    contentXml += `</text:p></text:list-item>`;
+                                });
+                                contentXml += `</text:list>`;
+                            }
+                            
+                            // Nie dotyczy z komentarzem
+                            if (na.length > 0) {
+                                contentXml += `<text:p text:style-name="P_TestHeader"><text:span text:style-name="T_BOLD">Wykluczone testy jednostkowe (z opisem przyczyny):</text:span></text:p>`;
+                                contentXml += `<text:list text:style-name="L1">`;
+                                na.forEach(test => {
+                                    contentXml += `<text:list-item><text:p text:style-name="P_TestItem">`;
+                                    contentXml += `<text:span text:style-name="T_BOLD">${window.utils.xmlEscape(test.title)}</text:span>`;
+                                    if (test.comment) {
+                                        contentXml += ` — ${window.utils.xmlEscape(test.comment)}`;
+                                    }
+                                    contentXml += `</text:p></text:list-item>`;
+                                });
+                                contentXml += `</text:list>`;
+                            }
                         }
                         contentXml += `</text:list-item>`;
                     });
