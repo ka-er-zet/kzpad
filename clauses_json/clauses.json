@@ -1,44 +1,31 @@
 {
   "U.7.1.1.a": {
     "id": "U.7.1.1.a",
-    "title": "U.7.1.1.a Więcej niż jeden zmysł (kanał sensoryczny) (Art. 7 ust. 1 pkt 1 lit. a)",
+    "title": "U.7.1.1.a Więcej niż jeden zmysł (kanał sensoryczny) dla informacji o produkcie (Art. 7 ust. 1 pkt 1 lit. a)",
     "preconditions": [],
     "procedure": [
-      "Przepis ten wprowadza wymóg wielozmysłowego dostępu do informacji. Oznacza to, że żadna informacja dotycząca obsługi produktu, etykieta ani ostrzeżenie nie mogą być przekazywane wyłącznie za pomocą jednego zmysłu (np. tylko wzroku lub tylko słuchu).\nNależy przyjąć dwie kluczowe zasady interpretacyjne:\n- Informacje wizualne (tekst, ikony, diody, komunikaty na ekranie) muszą posiadać alternatywę dostępną dla słuchu (np. odczyt przez lektora) lub dotyku (np. wypukłe oznaczenia).\n- Informacje dźwiękowe (sygnały ostrzegawcze, dźwięki błędów) muszą posiadać alternatywę wizualną (np. komunikat tekstowy, miganie elementu) lub dotykową (wibracje).\nCelem regulacji jest zapewnienie możliwości obsługi urządzenia oraz odczytania ostrzeżeń niezależnie od tego, czy osoba korzystająca widzi, czy słyszy."
+      "Wymóg ten dotyczy wyłącznie dostępu do informacji o produkcie, a nie możliwości jego fizycznej obsługi (kwestie sterowania regulują art. 8 i 9).",
+      "Przepis wprowadza bezwzględny wymóg wielozmysłowego dostępu do instrukcji, etykiet i ostrzeżeń zamieszczonych w lub na produkcie (w tym informacji w postaci papierowej trwale załączonych do produktu).",
+      "Zasada weryfikacji: Żadna istotna informacja (np. etykieta znamionowa, ostrzeżenie o bezpieczeństwie) nie może być przekazywana wyłącznie za pomocą jednego zmysłu.",
+      "Przekaz wyłącznie wizualny (np. płaski druk na papierze lub obudowie) musi posiadać alternatywę dotykową (np. alfabet Braille'a) lub słuchową (np. wyczuwalny kod QR/tag NFC inicjujący odczyt cyfrowy). Ostrzeżenia dźwiękowe generowane przez urządzenie muszą z kolei posiadać alternatywę wizualną."
     ],
-    "evaluation": "Inspekcja i testy technologii asystujących",
+    "evaluation": "Inspekcja",
     "checklist": [
       {
         "type": "test",
-        "title": "Sprawdzenie dotykowe",
-        "description": "Należy zweryfikować, czy przyciski i kluczowe elementy sterujące są możliwe do zidentyfikowania bez użycia wzroku (np. czy posiadają wypukłe symbole, grawerowanie lub oznaczenia w alfabecie Braille'a)."
+        "title": "Test etykiet fizycznych i informacji papierowych",
+        "description": "Należy zidentyfikować wszystkie instrukcje, ostrzeżenia i etykiety umieszczone na obudowie produktu lub trwale do niego załączone w postaci papierowej (np. naklejki, tabliczki znamionowe, nadruki z ostrzeżeniami). Ponieważ stanowią one przekaz wyłącznie wizualny, należy zweryfikować, czy posiadają alternatywę dla drugiego zmysłu. Wynik jest pozytywny, jeśli na etykiecie znajduje się ta sama treść w wypukłym alfabecie Braille'a LUB jeśli na produkcie naklejono wyczuwalny dotykiem znacznik (kod QR lub tag NFC z wypukłym oznaczeniem, w tym w Braille'u informującym o jego obecności), który po zeskanowaniu smartfonem kieruje do tekstowej wersji etykiety, możliwej do przetworzenia i odczytania przez systemowy czytnik ekranu."
       },
-      {
-  "type": "test",
-  "title": "Test klawiatury fizycznej (punkty orientacyjne)",
-  "description": "Jeśli urządzenie posiada klawiaturę fizyczną, należy zweryfikować obecność wypukłych punktów orientacyjnych ułatwiających bezwzrokową nawigację. Zgodnie z wymogami technicznymi, w przypadku klawiatury numerycznej na klawiszu z cyfrą „5” bezwzględnie musi znajdować się wyczuwalny dotykiem punkt lub kreska. Ponadto, w przypadku pełnej klawiatury alfanumerycznej (np. układ QWERTY), należy sprawdzić, czy analogiczne wyczuwalne wypustki znajdują się na klawiszach z literami „F” i „J”, co stanowi podstawową formę zapewnienia rozpoznawalności części obsługiwanych bez użycia wzroku."
-},
-      {
-  "type": "test",
-  "title": "Sprawdzenie alternatyw dla etykiet i tabliczek znamionowych (kody QR i tagi NFC)",
-  "description": "Należy upewnić się, że informacje nadrukowane na fizycznej tabliczce znamionowej urządzenia (np. model, parametry techniczne) można odczytać bez użycia wzroku. W tym celu należy odszukać na obudowie kod QR lub tag NFC. Ponieważ osoba niewidoma nie jest w stanie wzrokowo zlokalizować tych elementów na gładkiej obudowie, ich umiejscowienie powinno być wyraźnie oznaczone w sposób wyczuwalny dotykiem, na przykład za pomocą wypukłego komunikatu w alfabecie Braille'a lub jednoznacznego, wypukłego znacznika nawigacyjnego. Po zlokalizowaniu i zeskanowaniu znacznika telefonem, na ekranie smartfona powinien wyświetlić się tekst zawierający te same dane co fizyczna tabliczka, co umożliwi ich odsłuchanie za pomocą systemowego czytnika ekranu."
-},
       {
         "type": "test",
-        "title": "Test wyjścia audio",
-        "description": "Jeżeli produkt ma wyjście audio i zainstalowany system operacyjny, należy podłączyć słuchawki do gniazda audio (minijack) lub poprzez innych typowy interfejs (np. bluetooth). Należy zweryfikować, czy po podłączeniu urządzenie uruchamia tryb głosowy i czy wszystkie informacje wyświetlane na ekranie są odczytywane przez syntezator mowy."
+        "title": "Test wbudowanych instrukcji i ostrzeżeń cyfrowych (dla urządzeń z ekranem)",
+        "description": "Jeżeli produkt wyświetla instrukcje obsługi lub krytyczne ostrzeżenia systemowe na zintegrowanym ekranie, należy zweryfikować, czy informacjom tym towarzyszy alternatywa. W przypadku urządzeń o funkcjonalności zamkniętej należy sprawdzić, czy komunikaty tekstowe ostrzegające o błędach (np. przekroczenie czasu, zła karta) są równolegle komunikowane kanałem dźwiękowym (np. odczytywane przez wbudowany syntezator mowy lub sygnalizowane alarmem akustycznym). Wyświetlanie ostrzeżeń wyłącznie w formie tekstu na ekranie skutkuje wynikiem negatywnym."
       },
-     {
-  "type": "test",
-  "title": "Test komunikatów o błędzie",
-  "description": "Celem testu jest weryfikacja, czy urządzenie fizyczne przekazuje ostrzeżenia i błędy wielozmysłowo. Należy celowo doprowadzić do błędu lub sytuacji wyjątkowej podczas obsługi, na przykład poprzez: wpisanie błędnego kodu PIN, wcisnanie kilku klawiszy na raz, przekroczenie limitu czasu na wykonanie jakiegoś działania. Często opisy błędów (wraz z ich przyczynami, czyli gotowymi scenariuszami testowymi) znajdują się w dokumentacji (instrukcji) dołączonej do urządzenia. Następnie należy sprawdzić, czy wywołanemu błędowi towarzyszą równocześnie sygnały z dwóch niezależnych kanałów. Kanał wizualny (dla osób niesłyszących): czy na ekranie pojawia się komunikat tekstowy lub czy miga dioda ostrzegawcza. Kanał dźwiękowy (dla osób niewidomych): czy urządzenie emituje sygnał ostrzegawczy (np. alarm) lub czy komunikat o błędzie jest odczytywany na głos przez syntezator mowy. Jeżeli maszyna komunikuje błąd wyłącznie jednym kanałem (np. tylko głośno piszczy, ale na ekranie brak powiadomienia), wynik testu jest negatywny."
-},
       {
-  "type": "test",
-  "title": "Weryfikacja wizualnej alternatywy dla komunikatów dźwiękowych",
-  "description": "Celem testu jest sprawdzenie, czy urządzenie przekazuje informacje dźwiękowe również kanałem wizualnym (wymóg kluczowy dla osób niesłyszących). Aby wywołać sygnał dźwiękowy podlegający ocenie, audytor musi wykonać standardowe operacje lub symulować błędy właściwe dla badanego urządzenia. Po wywołaniu zdarzenia, które w normalnych warunkach generuje dźwięk (np. pisk, dzwonek, komunikat), należy zweryfikować (przy wyciszonym urządzeniu lub w stoperach), czy w tym samym czasie na ekranie pojawia się równoważny komunikat tekstowy/graficzny, lub czy na obudowie miga przypisana do tego zdarzenia dioda. Dźwięk nie może być jedynym nośnikiem informacji."
-},
-      "**Ważne**: Urządzenie posiadające ekran dotykowy, które nie jest wyposażone w fizyczne wyjście audio (gniazdo słuchawkowe), standardowe połączenie bezprzewodowe (np. bluetooth) ani wbudowany głośnik z funkcją lektora, należy uznać za niezgodne z tym wymaganiem (brak alternatywnego kanału sensorycznego dla wzroku)."
+        "type": "test",
+        "title": "Test wielokanałowości wbudowanych ostrzeżeń dźwiękowych",
+        "description": "Należy celowo wywołać sytuację generującą błąd w obsłudze urządzenia (często przykłądy takich błędów, a więc gotowe scenariusze testowe, znajdują się w dokumentacji/instrukcji), co zazwyczaj skutkuje wygenerowaniem wbudowanego ostrzeżenia dźwiękowego. Należy sprawdzić (przy wyciszonym urządzeniu lub mając założone stopery), czy ostrzegawczemu sygnałowi dźwiękowemu zawsze towarzyszy równoważna reakcja wizualna. Np. wyraźny komunikat na ekranie lub intensywnie migająca, dedykowana dioda ostrzegawcza."
+      }
     ],
     "notes": [],
     "form": {}
@@ -91,46 +78,43 @@
       "Ten wymóg dotyczy czytelności napisów. Informacja jest bezużyteczna, jeśli użytkownik nie jest w stanie jej odczytać z powodu zbyt małych liter, bladego druku lub „zlewania się” tekstu.",
       "Jako osoba sprawdzająca musisz zwrócić uwagę na trzy parametry:",
       "1. Kontrast: Czy tekst wyraźnie „odcina się” od tła? (np. czarny tekst na białym tle jest czytelny, ale szary tekst na srebrnej obudowie – nie).",
-      "2. Rozmiar i krój: Czy litery są odpowiednio duże i mają prosty kształt? Wymóg ten uwzględnia „przewidywalne warunki użytkowania” – czyli np. to, że na ekran bankomatu patrzymy z większej odległości niż na telefon.",
-      "3. Odstępy: Czy litery i wiersze nie są upakowane zbyt ciasno? Odpowiednie światło między liniami ułatwia czytanie osobom słabowidzącym i osobom z dysleksją.",
-      "Wymóg dotyczy zarówno napisów nadrukowanych na obudowie (np. „Włóż kartę”), jak i treści wyświetlanych na ekranie urządzenia."
+      "2. Rozmiar i krój: Czy litery są odpowiednio duże i mają prosty kształt? Wymóg ten uwzględnia „przewidywalne warunki użytkowania” (np. inna wielkość czcionki jest wymagana dla produktu trzymanego w dłoni, a inna dla stacjonarnego terminala obsługiwanego z pozycji stojącej).",
+      "3. Odstępy: Czy litery i wiersze nie są wydrukowane/wyświetlone zbyt ciasno? Odpowiednie światło między liniami ułatwia czytanie osobom słabowidzącym i osobom z dysleksją."
     ],
     "evaluation": "Inspekcja / Pomiary kontrastu",
     "checklist": [
-      "**Weryfikacja nadruków na obudowie (etykiety fizyczne):**",
+      "Weryfikacja informacji fizycznych (nadruki na obudowie i trwale załączone etykiety papierowe):",
       {
         "type": "test",
-        "title": "Test widoczności i czytelności etykiet fizycznych",
-        "description": "Należy ocenić czytelność napisów nadrukowanych na produkcie w warunkach oświetleniowych typowych dla miejsca jego instalacji. Należy zweryfikować, czy napisy pozostają czytelne oraz upewnić się, że materiał z którego wykonano obudowę nie powoduje odblasków świetlnych uniemożliwiających bezproblemowy odczyt informacji."
+        "title": "Test widoczności i kontrastu etykiet fizycznych",
+        "description": "Należy ocenić czytelność napisów nadrukowanych na obudowie oraz na trwale dołączonych etykietach papierowych w przewidywalnych warunkach oświetleniowych. Należy zweryfikować, czy zastosowano wysoki kontrast pomiędzy tekstem a tłem (np. unikanie jasnoszarego druku na białym papierze/srebrnej obudowie). Należy upewnić się, że materiał nośnika (np. błyszczący papier, laminat) nie powoduje odblasków świetlnych uniemożliwiających odczyt."
       },
       {
         "type": "test",
-        "title": "Test kroju pisma etykiet fizycznych",
-        "description": "Należy zweryfikować rodzaj zastosowanej czcionki na nadrukach. Wymagane jest użycie czcionki prostej, pozbawionej elementów ozdobnych (preferowane standardowe kroje bezszeryfowe, np. typu Arial). Kształty liter muszą być precyzyjne, a odstępy między nimi wystarczające, aby zapobiec zlewaniu się sąsiadujących znaków."
+        "title": "Test typografii i odstępów etykiet fizycznych",
+        "description": "Należy zweryfikować fizyczną wielkość czcionki na nadrukach i etykietach papierowych w odniesieniu do odległości, z jakiej użytkownik typowo operuje produktem. Należy sprawdzić zastosowany krój pisma (wymagane czcionki proste, bezszeryfowe, bez elementów ozdobnych) oraz ocenić, czy odstępy między znakami i wierszami zapobiegają wizualnemu zlewaniu się tekstu."
       },
-      "**Weryfikacja interfejsu cyfrowego (ekran urządzenia):**",
+      "Weryfikacja interfejsu cyfrowego (ekran urządzenia):",
        {
         "type": "test",
-        "title": "Pomiar cyfrowego kontrastu wizualnego na ekranie",
+        "title": "Pomiar kontrastu (funkcjonalność otwarta)",
         "description": "Należy zbadać współczynnik kontrastu pomiędzy wyświetlanym tekstem a tłem w interfejsie urządzenia. Weryfikację przeprowadza się na podstawie bezpośredniego, cyfrowego zrzutu ekranu lub z wykorzystaniem oprogramowania analitycznego (np. Colour Contrast Analyser, Accessibility Insights), które bada surowe wartości cyfrowe pikseli (RGB). Bezwzględny stosunek jasności tekstu do tła dla standardowego tekstu musi wynosić co najmniej 4,5:1."
       },
       {
         "type": "test",
-        "title": "Inspekcja czytelności w warunkach otoczenia (dla terminali i urządzeń fizycznych)",
-        "description": "Należy dokonać organoleptycznej oceny czytelności ekranu w przewidywalnych warunkach oświetleniowych typowych dla miejsca pracy urządzenia. Weryfikacja polega na ocenie, czy zastosowane na ekranie matryce lub powłoki ochronne nie powodują odblasków świetlnych lub spadków jasności (np. w silnym oświetleniu), które całkowicie uniemożliwiają odczytanie informacji z ekranu użytkownikowi patrzącemu na wprost."
+        "title": "Inspekcja czytelności w warunkach otoczenia (funkcjonalność zamknięta)",
+        "description": "Należy dokonać organoleptycznej oceny czytelności ekranu w przewidywalnych warunkach oświetleniowych typowych dla miejsca pracy urządzenia. Weryfikacja polega na ocenie, czy zastosowane na ekranie matryce lub powłoki ochronne nie powodują odblasków świetlnych lub spadków jasności (np. w silnym oświetleniu), które całkowicie uniemożliwiają odczytanie informacji z ekranu użytkownikowi patrzącemu na wprost z typowej odległości operacyjnej."
+      },
+      {
+        "type": "test",
+        "title": "Test powiększania tekstu (funkcjonalność otwarta)",
+        "description": "W przypadku środowisk o funkcjonalności otwartej należy zweryfikować możliwość powiększenia tekstu w interfejsie produktu do poziomu co najmniej 200%, korzystając z systemowych narzędzi platformy. Wynik jest negatywny, jeżeli powiększenie skutkuje utratą treści, znikaniem elementów poza obszarem roboczym lub wymusza przewijanie ekranu w dwóch wymiarach, aby przeczytać jedną linię."
       },
       {
   "type": "test",
-  "title": "Test powiększania tekstu (dla systemów o funkcjonalności otwartej)",
-  "description": "W przypadku systemów o funkcjonalności otwartej (środowisk sprzętowych lub programowych, w których użytkownik ma swobodę modyfikowania globalnych ustawień systemu, np. komputery osobiste, smartfony, tablety) należy zweryfikować możliwość powiększenia tekstu w interfejsie produktu do poziomu co najmniej 200%. Powiększenie to należy wymusić korzystając z jednej z dwóch ścieżek: 1) globalnych ustawień wbudowanego systemu operacyjnego (np. zmiana rozmiaru czcionki lub skalowania interfejsu w panelu ustawień urządzenia) lub 2) wewnętrznych ustawień natywnej aplikacji wyświetlającej instrukcje wewnątrz produktu. Wynik weryfikacji jest negatywny, jeżeli powiększenie skutkuje utratą treści, ucinaniem tekstu, znikaniem elementów poza widocznym obszarem roboczym ekranu lub gdy wymusza na użytkowniku przewijanie ekranu w dwóch wymiarach (poziomo i pionowo), aby przeczytać pojedynczą linię tekstu."
-},
-      {
-  "type": "test",
-  "title": "Pomiar wielkości litery „H” (dla systemów o funkcjonalności zamkniętej)",
-  "description": "Test dotyczy systemów o funkcjonalności zamkniętej, czyli takich urządzeń lub interfejsów, w których konstrukcja sprzętowa lub polityka oprogramowania uniemożliwia użytkownikowi instalację własnych technologii wspomagających oraz stosowanie systemowego powiększania tekstu (np. dedykowane ekrany w terminalach, biletomatach, zablokowane czytniki). Jeżeli urządzenie takie nie udostępnia własnego mechanizmu powiększania tekstu, należy dokonać fizycznego pomiaru wysokości nieakcentowanej wielkiej litery „H” wyświetlanej na ekranie. Wymagane jest, aby wysokość znaku gwarantowała jego widoczność pod kątem co najmniej 0,7 stopnia w przewidywanej odległości widzenia. W celu weryfikacji audytor nie musi dokonywać samodzielnych obliczeń matematycznych – należy bezwzględnie posłużyć się Tabelą 5.1 znajdującą się w procedurze testowej dla klauzuli C.5.1.4, która zawiera gotowe wartości referencyjne minimalnej wysokości znaków dla poszczególnych odległości operacyjnych (np. odległość 500 mm wymaga wysokości znaku 6,1 mm)."
-},
-      "**Ważne**: Jeżeli tekst na ekranie charakteryzuje się niskim kontrastem, jest blady lub ma zbyt mały rozmiar przy jednoczesnym braku funkcji jego powiększania, całościowy wynik weryfikacji dla tego punktu należy bezwzględnie uznać za negatywny."
-    ],
+  "title": "Pomiar wielkości litery „H” (funkcjonalność zamknięta)",
+  "description": "Jeżeli urządzenie posiada ekran o funkcjonalności zamkniętej, która uniemożliwia systemowe powiększanie tekstu, należy zmierzyć wysokość wyświetlanej, nieakcentowanej wielkiej litery „H”. Uzyskany wynik należy zestawić z maksymalną projektową odległością widzenia określoną przez dostawcę produktu. Weryfikacja jest pozytywna, jeżeli zmierzona wysokość litery gwarantuje zachowanie kąta widzenia wynoszącego co najmniej 0,7 stopnia. Do weryfikacji należy użyć wartości z Tabeli 5.1 przypisanej do klauzuli C.5.1.4 (gdzie np. dla odległości 300 mm minimalna wysokość znaku wynosi 3,7 mm, a dla 500 mm wynosi 6,1 mm) lub dokonać własnych obliczeń zgodnie ze wzorem matematycznym określonym w normie."
+}    ],
     "notes": [],
     "form": {}
   },
@@ -139,52 +123,57 @@
     "title": "U.7.1.2 Dostępność instrukcji zewnętrznych (Art. 7 ust. 1 pkt 2)",
     "preconditions": [],
     "procedure": [
-      "Przepis ten reguluje sytuację, w której pełna instrukcja obsługi nie znajduje się bezpośrednio na produkcie (np. w menu urządzenia) ani nie została dołączona w formie drukowanej. W takim przypadku podmiot gospodarczy ma obowiązek udostępnić te informacje publicznie (np. na stronie internetowej).",
-      "Kluczowe są tutaj dwa powiązane wymagania:",
-      "1. Informacja o lokalizacji: Na samym produkcie lub jego opakowaniu musi znajdować się fizyczna informacja wskazująca, gdzie znaleźć instrukcję (np. adres strony www, kod QR). Informacja ta musi być trwała i czytelna.",
-      "2. Dostępność samej instrukcji: Dokument cyfrowy (np. plik PDF lub strona www), do którego odsyła informacja na opakowaniu, musi spełniać wymogi dostępności cyfrowej (być czytelny dla czytników ekranu, posiadać odpowiedni kontrast itp.)."
+      "Przepis reguluje sytuację, w której pełna instrukcja obsługi nie znajduje się bezpośrednio na produkcie ani nie została do niego dołączona w formie drukowanej. W takim przypadku podmiot gospodarczy ma obowiązek udostępnić te informacje publicznie w inny sposób (np. na stronie internetowej).",
+      "Weryfikacja w ramach tej klauzuli ogranicza się ściśle do literalnego brzmienia ustawy: sprawdzenia fizycznej obecności informacji odsyłającej oraz faktu funkcjonowania wskazanego adresu cyfrowego."
     ],
-    "evaluation": "Inspekcja",
+    "evaluation": "Inspekcja wizualna i cyfrowa",
     "checklist": [
-      "Inspekcja wizualna opakowania lub produktu:",
       {
         "type": "test",
-        "title": "Test obecności informacji o lokalizacji instrukcji",
-        "description": "Należy sprawdzić, czy na fizycznej obudowie urządzenia lub na jego opakowaniu znajduje się jednoznaczna informacja wskazująca miejsce pobrania instrukcji obsługi. Informacja ta może przyjąć formę bezpośredniego adresu URL (np. „Instrukcja dostępna pod adresem: ...”) lub kodu QR odsyłającego użytkownika do właściwego dokumentu."
+        "title": "Test obecności i lokalizacji informacji odsyłającej",
+        "description": "Należy dokonać inspekcji obudowy produktu oraz jego opakowania. Należy zweryfikować obecność jednoznacznej informacji wskazującej miejsce udostępnienia instrukcji obsługi. Informacja ta musi mieć formę adresu URL, kodu QR lub tagu NFC."
       },
       {
         "type": "test",
-        "title": "Test trwałości i czytelności informacji fizycznej",
-        "description": "Należy dokonać oceny nadruku zawierającego informację o lokalizacji instrukcji. Należy zweryfikować, czy nadruk jest trwały i nie ulega wytarciu pod wpływem standardowego dotyku. Należy również ocenić, czy zastosowano czcionkę o wystarczającym kontraście względem tła oraz odpowiedniej wielkości, co jest niezbędne do odczytania adresu przez osoby słabowidzące."
-      },
-      "Weryfikacja środowiska cyfrowego (Dokument docelowy):",
-      {
-        "type": "test",
-        "title": "Test formatu instrukcji docelowej",
-        "description": "Należy wejść pod wskazany na opakowaniu adres URL lub zeskanować umieszczony tam kod QR, a następnie otworzyć udostępnioną instrukcję obsługi. Należy sprawdzić, czy udostępniony dokument cyfrowy posiada warstwę tekstową możliwą do odczytu maszynowego. Wynik weryfikacji jest bezwzględnie negatywny, jeżeli instrukcja ma postać wyłącznie płaskiego skanu lub obrazu bez warstwy tekstowej, co uniemożliwia jej przetworzenie przez technologie asystujące (np. syntezatory mowy dla osób niewidomych)."
+        "title": "Weryfikacja aktywności miejsca docelowego",
+        "description": "Należy wejść pod wskazany na produkcie lub opakowaniu adres URL (w przeglądarce internetowej urządzenia stacjonarnego lub mobilnego, warto również sprawdzić działanie linku na różnych przeglądarkach, np. Chrome, Firefox, Safari) lub zeskanować kod QR/tag NFC (przy pomocy urządzania mobilnego). Należy sprawdzić wyłącznie, czy adres jest aktywny i czy prowadzi bezpośrednio do właściwej instrukcji obsługi badanego produktu. Wynik testu jest negatywny, jeżeli link jest martwy (nie wywołuje żadnego działania), prowadzi do błędu 404 (brak strony/pliku) lub odsyła wyłącznie na ogólną stronę główną producenta, zmuszając użytkownika do samodzielnego przeszukiwania serwisu."
       }
     ],
     "notes": [],
     "form": {}
   },
-  "U.7.1.2.a": {
+   "U.7.1.2.a": {
     "id": "U.7.1.2.a",
     "title": "U.7.1.2.a Spełnienie wymogów pkt 1 przez instrukcje (Art. 7 ust. 1 pkt 2 lit. a)",
     "preconditions": [
-      "Instrukcja obsługi nie znajduje się na samym produkcie, lecz została udostępniona publicznie w inny sposób (np. jako plik PDF do pobrania lub treść na stronie internetowej).",
-      "Udało się zlokalizować tę instrukcję na podstawie informacji umieszczonej na opakowaniu lub produkcie (zgodnie z poprzednim krokiem kontroli)."
+      "Instrukcja obsługi nie znajduje się na samym produkcie, lecz została udostępniona publicznie w inny sposób (np. jako plik PDF do pobrania lub treść na stronie internetowej)."
     ],
     "procedure": [
-      "Przepis ten przenosi wymagania dostępności z fizycznego urządzenia na jego cyfrową instrukcję obsługi (np. plik PDF, e-book lub stronę www). Oznacza to, że dokumentacja pobrana z internetu musi spełniać te same standardy czytelności i dostępności, co informacje na produkcie.\nKluczowe jest zapewnienie, aby dokument cyfrowy był uniwersalny:\n- Dla osób niewidomych: Instrukcja nie może być „płaskim” skanem lub zdjęciem tekstu. Musi zawierać warstwę tekstową, którą oprogramowanie (czytnik ekranu) zamieni na mowę.\n- Dla osób słabowidzących: Tekst w instrukcji musi być wyraźny (wysoki kontrast) i możliwy do powiększenia bez utraty jakości i konieczności przewijania ekranu w dwóch kierunkach (prawo-lewo).\n- Zrozumiałość: Dokument musi posiadać logiczną strukturę (tytuły, nagłówki rozdziałów), która pozwala na nawigację bez konieczności czytania całości."
+      "Przepis nakłada obowiązek, aby instrukcje zewnętrzne udostępnione w formie cyfrowej spełniały te same wymagania, co informacje zintegrowane z produktem (zdefiniowane w Art. 7 ust. 1 pkt 1).",
+      "Weryfikacja opiera się na ocenie podstawowych parametrów dostępności cyfrowej określonych w normie EN 301 549 (odpowiednio Rozdział 9 dla stron WWW lub Rozdział 10 dla dokumentów nieinternetowych).",
+      "Główne rygory oceny dokumentu obejmują: 1. dostępność dla więcej niż jednego zmysłu (wymóg posiadania warstwy tekstowej umożliwiającej odczyt maszynowy), 2. obecność opisów alternatywnych dla grafik, 3. możliwość powiększenia zawartości bez utraty treści."
     ],
     "evaluation": "Inspekcja i Kontrola",
     "checklist": [
-      "**Test „zaznaczania” (Weryfikacja czytnika ekranu)**:\n- Należy otworzyć instrukcję (np. PDF) i spróbować zaznaczyć myszką pojedyncze zdanie lub słowo.\n- Jeśli tekstu nie da się zaznaczyć (zaznacza się cała strona jako obrazek) – dokument jest skanem i nie spełnia wymagań (jest niewidoczny dla technologii asystujących).",
-      "**Test obrazków (Alternatywa tekstowa)**:\n- Należy sprawdzić, czy kluczowe ilustracje (np. schemat podłączenia kabli, rysunek przycisków) posiadają opis alternatywny (ukryty tekst wyjaśniający, co jest na obrazku). W programach biurowych/przeglądarkach PDF często widać to po najechaniu kursorem lub w właściwościach obrazu.",
-      "**Test powiększania**:\n- Należy powiększyć dokument do 200%. Należy zweryfikować, czy tekst pozostaje ostry (nie „pikseluje się”) i czy w przypadku stron WWW tekst układa się w kolumnie, tak aby nie trzeba było przewijać ekranu w poziomie.",
-      "**Ważne**: Sama obecność instrukcji w internecie nie wystarcza. Jeśli plik jest technicznie niedostępny (np. nieotagowany PDF, skan), podmiot nie spełnia tego wymogu."
+       {
+        "type": "test",
+        "title": "Test weryfikacji warstwy tekstowej (w zależności od formatu docelowego)",
+        "description": "Należy zweryfikować, czy instrukcja cyfrowa posiada aktywną warstwę tekstową, a nie jest wyłącznie obrazem tekstu. Metodyka zależy od środowiska:\n1. Pliki PDF: Należy podjąć próbę wyselekcjonowania pojedynczego słowa za pomocą kursora. Jeżeli zaznacza się cały blok strony jako pojedyncza grafika, oznacza to brak warstwy tekstowej (skan).\n2. Pliki edytorów tekstu (DOCX, ODT, RTF): Należy otworzyć plik i zweryfikować, czy w tekście można ustawić kursor edycji między poszczególnymi literami. Należy upewnić się, że treść instrukcji nie została wklejona do pliku jako seria zrzutów ekranu (zdjęć tekstu).\n3. Strony WWW (HTML): Należy podjąć próbę zaznaczenia tekstu w przeglądarce. Tekst instrukcji nie może być osadzony jako plik graficzny (np. JPG, PNG), z wyłączeniem logotypów.\nWynik weryfikacji jest negatywny, jeżeli treść instrukcji ma postać spłaszczonego obrazu, co całkowicie uniemożliwia jej przetworzenie przez technologie asystujące (np. czytniki ekranu dla osób niewidomych)."
+      },
+      {
+        "type": "test",
+        "title": "Test obecności alternatywy tekstowej dla elementów graficznych",
+        "description": "Należy zidentyfikować w instrukcji kluczowe ilustracje niosące treść (np. schematy podłączeń kabli, rysunki układu przycisków, diagramy operacyjne). Należy zweryfikować (wykorzystując narzędzia do badania struktury PDF lub inspektor kodu dla HTML), czy elementy te posiadają zdefiniowany opis alternatywny. Wynik jest negatywny, jeżeli ważna dla obsługi grafika nie zawiera ukrytego tekstu wyjaśniającego, co uniemożliwia jej zrozumienie za pomocą drugiego kanału sensorycznego (słuchu)."
+      },
+      {
+        "type": "test",
+        "title": "Test powiększania i skalowalności dokumentu",
+        "description": "Należy wymusić powiększenie widoku dokumentu docelowego do poziomu 200%. Należy zweryfikować jakość i układ tekstu po powiększeniu. Wynik testu jest negatywny, jeżeli powiększenie skutkuje pikselizacją utrudniającą odczyt, ucinaniem tekstu lub – w przypadku dokumentów o płynnym układzie (strony WWW) – jeżeli tekst nie podlega procesowi zawijania (reflow) i wymusza na użytkowniku przewijanie ekranu w dwóch wymiarach (poziomo i pionowo) w celu przeczytania jednej linii tekstu."
+      }
     ],
-    "notes": [],
+    "notes": [
+      "Uwaga metodyczna: Sama obecność pliku z instrukcją w sieci internetowej nie jest równoznaczna ze spełnieniem wymogu. Jeżeli udostępniony plik ma postać nieotagowanego, płaskiego skanu, podmiot gospodarczy nie spełnia warunków ustawy."
+    ],
     "form": {}
   },
   "U.7.1.2.b-01": {
@@ -288,13 +277,12 @@
     "id": "U.7.1.3",
     "title": "U.7.1.3 Instrukcje instalacji, konserwacji, przechowywania i pozbywania się (Art. 7 ust. 1 pkt 3)",
     "preconditions": [
-      "Produkt nie jest terminalem (np. bankomatem, wpłatomatem, automatem biletowym) – zgodnie z Art. 7 ust. 2 ustawy, terminale są zwolnione z tego konkretnego wymogu.",
       "Instrukcje dotyczące cyklu życia produktu (instalacja, serwis, utylizacja) nie zostały dołączone do produktu w formie fizycznej, lecz są udostępnione cyfrowo (np. na stronie www)."
     ],
     "procedure": [
       "Przepis ten dotyczy dokumentacji technicznej towarzyszącej produktowi, która obejmuje instalację, konserwację, przechowywanie i utylizację. Jeśli producent decyduje się nie drukować tych instrukcji, lecz udostępnić je w internecie (np. jako PDF do pobrania), musi zapewnić ich pełną dostępność cyfrową.\nUstawodawca precyzuje, że te konkretne dokumenty muszą spełniać wybrane wymogi dostępności:\n1. Dostępność sensoryczna (Pkt 1): Dokument musi być czytelny dla różnych zmysłów (np. wzrok i słuch poprzez czytnik ekranu). Tekst musi mieć odpowiedni kontrast, krój czcionki i odstępy.\n2. Alternatywa dla grafik (Pkt 2 lit. b tiret pierwsze): Wszystkie schematy montażowe, rysunki konserwacyjne czy ikony ostrzegawcze dotyczące utylizacji muszą posiadać opis tekstowy (tekst alternatywny).",
       "3. Format tekstowy dla AAC (Pkt 2 lit. c): Plik musi być technicznie przygotowany tak, aby oprogramowanie do komunikacji alternatywnej mogło przetworzyć jego treść (nie może to być skan, musi mieć zdefiniowany język).",
-      "Uwaga: W przeciwieństwie do głównej instrukcji obsługi, te dokumenty nie muszą zawierać opisu interfejsu użytkownika ani deklaracji zgodności z Art. 8–11 (chyba że wynika to z innych przepisów)."
+      "Uwaga: W przeciwieństwie do głównej instrukcji obsługi, te dokumenty nie muszą zawierać opisu interfejsu użytkownika ani deklaracji zgodności (chyba że wynika to z innych przepisów)."
     ],
     "evaluation": "Inspekcja i Kontrola Dostępności",
     "checklist": [
@@ -308,7 +296,6 @@
     "id": "U.7.1.4",
     "title": "U.7.1.4 Dostępność informacji na opakowaniu produktu (Art. 7 ust. 1 pkt 4)",
     "preconditions": [
-      "Produkt nie jest terminalem (np. bankomatem, wpłatomatem, automatem biletowym) – zgodnie z Art. 7 ust. 2 ustawy, terminale są zwolnione z wymogów dotyczących opakowania.",
       "Produkt posiada opakowanie, na którym umieszczono informacje tekstowe (etykiety, instrukcje skrócone, ostrzeżenia)."
     ],
     "procedure": [

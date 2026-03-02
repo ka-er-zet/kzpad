@@ -601,10 +601,6 @@ main {
     outline-offset: 2px !important;
 }
 
-.clause-tag:focus-visible .clause-tag-id {
-    color: var(--primary-inverse);
-}
-
 .clause-group {
     margin-bottom: 1rem;
     padding-left: 0.5rem;
@@ -1652,6 +1648,16 @@ fieldset[aria-invalid="true"] {
     margin-bottom: 0.5rem;
 }
 
+.detailed-checklist-container ol,
+.detailed-checklist-container ul {
+    margin-bottom: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+.detailed-checklist-container li {
+    margin-bottom: 0.25rem;
+}
+
 .example-label {
     display: block;
     font-size: 0.85rem;
@@ -2422,6 +2428,18 @@ p.hero-card-title {
 
 .checklist-test-item .test-description p {
     margin-bottom: 0.5rem;
+}
+
+.checklist-test-item .test-description ol,
+.checklist-test-item .test-description ul {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    margin-left: 1.5rem;
+}
+
+.checklist-test-item .test-description li {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
 }
 
 .test-options-row {

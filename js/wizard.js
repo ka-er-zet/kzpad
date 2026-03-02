@@ -666,14 +666,16 @@ const Browser = {
             if (hasTests) {
                 return arr.map(item => {
                     if (item && typeof item === 'object' && item.type === 'test') {
-                        let text = `<strong>${item.title || ''}</strong>`;
+                        let titleHtml = `<p><strong>${item.title || ''}</strong></p>`;
                         if (item.description) {
                             let desc = item.description;
                             if (W.fixOrphans) desc = W.fixOrphans(desc);
                             if (W.parseMarkdown) desc = W.parseMarkdown(desc);
-                            text += `: ${desc}`;
+                            // Return title and description as separate semantic elements
+                            // This ensures proper HTML structure: title in <p>, description as-is from parseMarkdown
+                            return titleHtml + desc;
                         }
-                        return `<p>${text}</p>`;
+                        return titleHtml;
                     }
                     // Parse markdown for regular string items
                     let itemText = item || '';
@@ -3231,15 +3233,13 @@ window.showClause = (id, triggerEl = null) => {
         const renderListBlocks = (arr) => {
             if (!arr || arr.length === 0) return '<p><i>Brak danych</i></p>';
 
-            // Convert test objects to readable text for modal display
+            // Convert test objects to markdown text BEFORE parsing (don't parse descriptions individually)
             const stringified = arr.map(item => {
                 if (item && typeof item === 'object' && item.type === 'test') {
                     let text = `**${item.title || ''}**`;
                     if (item.description) {
-                        let desc = item.description;
-                        if (W.fixOrphans) desc = W.fixOrphans(desc);
-                        if (W.parseMarkdown) desc = W.parseMarkdown(desc);
-                        text += `: ${desc}`;
+                        // Include raw description text - it will be parsed once below with full content
+                        text += `: ${item.description}`;
                     }
                     return text;
                 }
