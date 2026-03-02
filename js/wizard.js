@@ -265,6 +265,47 @@ function setupHero() {
             // Pokaż sekcję pod hero
             setupSection.classList.remove('hidden');
             
+            // Wyczyść pola formularza dla nowego arkusza
+            const productNameInput = document.getElementById('wizard-product-name');
+            const productDescInput = document.getElementById('wizard-product-desc');
+            const auditorInput = document.getElementById('wizard-auditor-name');
+            if (productNameInput) productNameInput.value = '';
+            if (productDescInput) productDescInput.value = '';
+            if (auditorInput) auditorInput.value = '';
+            
+            // Wyczyść zaznaczenie radio buttonów dla produktów
+            const productRadios = document.querySelectorAll('input[name="product_choice"]');
+            productRadios.forEach(radio => radio.checked = false);
+            
+            // Ukryj komunikaty o błędach z poprzedniego formularza
+            const productSelectionError = document.getElementById('product-selection-error');
+            const productNameError = document.getElementById('product-name-error');
+            const productDescError = document.getElementById('product-desc-error');
+            const auditorError = document.getElementById('auditor-name-error');
+            if (productSelectionError) {
+                productSelectionError.classList.add('hidden');
+                productSelectionError.style.display = 'none';
+            }
+            if (productNameError) {
+                productNameError.classList.add('hidden');
+                productNameError.style.display = 'none';
+            }
+            if (productDescError) {
+                productDescError.classList.add('hidden');
+                productDescError.style.display = 'none';
+            }
+            if (auditorError) {
+                auditorError.classList.add('hidden');
+                auditorError.style.display = 'none';
+            }
+            
+            // Ukryj poprzednie wyniki
+            const resultsArea = document.getElementById('resultsArea');
+            if (resultsArea) {
+                resultsArea.classList.add('hidden');
+                // Nie czyścimy innerHTML bo to usuwa elementy child w DOM
+            }
+            
             // Przewiń do sekcji pod hero
             setTimeout(() => {
                 const header = document.querySelector('.app-header');
@@ -2596,7 +2637,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
     const resultsArea = document.getElementById('resultsArea');
     
     if (!selectedRadio) {
-        resultsArea.classList.add('hidden');
+        if (resultsArea) resultsArea.classList.add('hidden');
         
         // Show the error message and highlight the group
         errorEl.classList.remove('hidden');
@@ -2686,7 +2727,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
     }
     
     if (hasErrors) {
-        resultsArea.classList.add('hidden');
+        if (resultsArea) resultsArea.classList.add('hidden');
         
         // Determine which input field to focus on (first one with error)
         let firstInputWithError = null;
@@ -2722,14 +2763,16 @@ document.getElementById('auditForm').onsubmit = (e) => {
     const list = document.getElementById('requirementsList');
     const selectedNameDisplay = document.getElementById('selectedProductName');
     
-    resultsArea.classList.remove('hidden');
-    resultsArea.setAttribute('data-selected-product', selectedProduct);
+    if (resultsArea) {
+        resultsArea.classList.remove('hidden');
+        resultsArea.setAttribute('data-selected-product', selectedProduct);
+    }
 
     // Aktualizuj tytuł strony po odświeżeniu raportu
     if (typeof Browser !== 'undefined' && Browser.updateTitle) {
         Browser.updateTitle(`Arkusz kontroli: ${productFullName}`);
     }
-    resultsArea.setAttribute('data-product-name', productFullName);
+    if (resultsArea) resultsArea.setAttribute('data-product-name', productFullName);
     
     let currentCategory = '';
     let art19Container = null; // Track Art. 19 container for requirements
