@@ -661,6 +661,28 @@ const Browser = {
         const renderListContent = (arr) => {
             if (!arr || arr.length === 0) return '';
             
+            // Special handling for test objects - each test gets its own paragraph
+            const hasTests = arr.some(item => item && typeof item === 'object' && item.type === 'test');
+            if (hasTests) {
+                return arr.map(item => {
+                    if (item && typeof item === 'object' && item.type === 'test') {
+                        let text = `<strong>${item.title || ''}</strong>`;
+                        if (item.description) {
+                            let desc = item.description;
+                            if (W.fixOrphans) desc = W.fixOrphans(desc);
+                            if (W.parseMarkdown) desc = W.parseMarkdown(desc);
+                            text += `: ${desc}`;
+                        }
+                        return `<p>${text}</p>`;
+                    }
+                    // Parse markdown for regular string items
+                    let itemText = item || '';
+                    if (W.fixOrphans) itemText = W.fixOrphans(itemText);
+                    if (W.parseMarkdown) itemText = W.parseMarkdown(itemText);
+                    return `<p>${itemText}</p>`;
+                }).join('');
+            }
+            
             // Convert test objects to readable text for this summary/browser view
             const stringified = arr.map(item => {
                 if (item && typeof item === 'object' && item.type === 'test') {
@@ -690,8 +712,8 @@ const Browser = {
             const parts = req.id.split('.');
             if (parts.length >= 2) {
                 displayId = `Art. ${parts[1]}`;
-                if (parts[2] && parts[2] !== '0') displayId += ` ust. ${parts[2]}`;
-                if (parts[3] && parts[3] !== '0') displayId += ` pkt ${parts[3]}`;
+                if (parts[2] && parseInt(parts[2]) !== 0) displayId += ` ust. ${parts[2]}`;
+                if (parts[3] && parseInt(parts[3]) !== 0) displayId += ` pkt ${parts[3]}`;
                 
                 if (parts[4]) {
                     const subParts = parts[4].split('-');
@@ -827,26 +849,101 @@ const Browser = {
 
         let results = [];
         if (this.view === 'legal') {
-            // Wyszukiwanie w wymaganiach prawnych (mapping.json)
-            // Uwzględniamy treść artykułu, wymagania oraz kody techniczne przypisane do produktów
+            // Wyszukiwanie w wymaganiach prawnych (mapping.json + powiązane klauzule U.*)
+            // Szukamy w pełnej treści klauzul U.* dla każdego artykułu
             results = matrixData
                 .filter(m => {
                     let searchContent = (m.article + ' ' + (m.requirement || '') + ' ' + (m.category || '') + ' ' + (m.legal_id || '')).toLowerCase();
                     
-                    // Dodaj kody techniczne z mapowania, aby można było znaleźć artykuł po kodzie EN
+                    // Dodaj kody techniczne z mapowania
                     if (m.product_mappings) {
-                        searchContent += ' ' + Object.values(m.product_mappings).join(' ');
+                        searchContent += ' ' + Object.values(m.product_mappings).join(' ').toLowerCase();
+                    }
+                    
+                    // Przeszukaj pełną treść powiązanej klauzuli U.*
+                    const uId = m.legal_id;
+                    const dictEntry = (uId ? dictionaryData[uId] : null) || (m.id ? dictionaryData[m.id] : null);
+                    if (dictEntry) {
+                        searchContent += ' ' + (dictEntry.id || '') + ' ' + (dictEntry.title || '');
+                        if (dictEntry.procedure && Array.isArray(dictEntry.procedure)) {
+                            searchContent += ' ' + dictEntry.procedure.join(' ');
+                        } else if (dictEntry.procedure) {
+                            searchContent += ' ' + dictEntry.procedure;
+                        }
+                        if (dictEntry.checklist && Array.isArray(dictEntry.checklist)) {
+                            searchContent += ' ' + dictEntry.checklist.join(' ');
+                        } else if (dictEntry.checklist) {
+                            searchContent += ' ' + dictEntry.checklist;
+                        }
+                        if (dictEntry.notes && Array.isArray(dictEntry.notes)) {
+                            searchContent += ' ' + dictEntry.notes.join(' ');
+                        } else if (dictEntry.notes) {
+                            searchContent += ' ' + dictEntry.notes;
+                        }
+                        if (dictEntry.preconditions && Array.isArray(dictEntry.preconditions)) {
+                            searchContent += ' ' + dictEntry.preconditions.join(' ');
+                        } else if (dictEntry.preconditions) {
+                            searchContent += ' ' + dictEntry.preconditions;
+                        }
+                        if (dictEntry.evaluation) {
+                            searchContent += ' ' + dictEntry.evaluation;
+                        }
+                        if (dictEntry.form && dictEntry.form.inputs) {
+                            searchContent += ' ' + dictEntry.form.inputs.map(i => i.label + ' ' + i.value).join(' ');
+                        }
                     }
 
-                    return searchContent.includes(this.searchQuery);
+                    return searchContent.toLowerCase().includes(this.searchQuery);
                 })
                 .map(m => this.transformLegalRequirement(m));
         } else {
-            // Wyszukiwanie w klauzulach technicznych (clauses.json)
+            // Wyszukiwanie w klauzulach technicznych (clauses.json) - tylko C.* (normy techniczne)
             results = Object.values(dictionaryData).filter(req => {
-                if (!req || !req.id) return false;
-                const text = (req.id + ' ' + (req.title || '') + ' ' + (req.procedure || []).join(' ')).toLowerCase();
-                return text.includes(this.searchQuery);
+                // Filtruj tylko klauzule C.* (normy techniczne), nie U.* (prawne)
+                if (!req || !req.id || !req.id.startsWith('C.')) return false;
+                
+                // Buduj tekst do przeszukania ze wszystkich pól
+                let searchContent = (req.id || '') + ' ' + (req.title || '');
+                
+                // Procedura
+                if (req.procedure && Array.isArray(req.procedure)) {
+                    searchContent += ' ' + req.procedure.join(' ');
+                } else if (req.procedure) {
+                    searchContent += ' ' + req.procedure;
+                }
+                
+                // Checklist
+                if (req.checklist && Array.isArray(req.checklist)) {
+                    searchContent += ' ' + req.checklist.join(' ');
+                } else if (req.checklist) {
+                    searchContent += ' ' + req.checklist;
+                }
+                
+                // Notes
+                if (req.notes && Array.isArray(req.notes)) {
+                    searchContent += ' ' + req.notes.join(' ');
+                } else if (req.notes) {
+                    searchContent += ' ' + req.notes;
+                }
+                
+                // Preconditions
+                if (req.preconditions && Array.isArray(req.preconditions)) {
+                    searchContent += ' ' + req.preconditions.join(' ');
+                } else if (req.preconditions) {
+                    searchContent += ' ' + req.preconditions;
+                }
+                
+                // Evaluation
+                if (req.evaluation) {
+                    searchContent += ' ' + req.evaluation;
+                }
+                
+                // Form criteria
+                if (req.form && req.form.inputs) {
+                    searchContent += ' ' + req.form.inputs.map(i => i.label + ' ' + i.value).join(' ');
+                }
+                
+                return searchContent.toLowerCase().includes(this.searchQuery);
             });
         }
 
@@ -1320,11 +1417,18 @@ function slugifyWizard(text) {
         'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
         'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z'
     };
-    return text.toString().split('').map(char => mapping[char] || char).join('')
+    let slug = text.toString().split('').map(char => mapping[char] || char).join('')
         .replace(/[^a-z0-9]/gi, '_')
         .replace(/_+/g, '_')
         .replace(/^_+|_+$/g, '')
         .toLowerCase();
+    
+    // Ogranicz długość slugu do 60 znaków dla kompatybilności z systemami plików
+    if (slug.length > 60) {
+        slug = slug.substring(0, 60);
+    }
+    
+    return slug;
 }
 
 /**
@@ -1337,7 +1441,16 @@ function generateWizardFileName(extension) {
     const date = new Date().toISOString().split('T')[0];
 
     const pProfile = slugifyWizard(profileName);
-    const pProduct = (productName && productName !== 'Produkt/Usługa' && productName !== 'Produkt') ? slugifyWizard(productName) : '';
+    // Obciąć długą nazwę produktu (max 50 znaków przed slugify) aby uniknąć zbyt długiej nazwy pliku
+    let truncatedProductName = productName;
+    if (truncatedProductName && truncatedProductName.length > 50) {
+        // Spróbuj obciąć na pierwszej przecinku lub nawiasie, jeśli jest
+        const commaIdx = truncatedProductName.indexOf(',');
+        const parenIdx = truncatedProductName.indexOf('(');
+        const cutIdx = commaIdx > 0 && commaIdx < 50 ? commaIdx : (parenIdx > 0 && parenIdx < 50 ? parenIdx : 50);
+        truncatedProductName = truncatedProductName.substring(0, cutIdx).trim();
+    }
+    const pProduct = (truncatedProductName && truncatedProductName !== 'Produkt/Usługa' && truncatedProductName !== 'Produkt') ? slugifyWizard(truncatedProductName) : '';
     
     // Pliki JSON to wersje robocze (arkusz), Excel/ODT to raporty (podsumowanie)
     const prefix = (extension === 'json') ? 'arkusz' : 'podsumowanie';
@@ -3122,7 +3235,12 @@ window.showClause = (id, triggerEl = null) => {
             const stringified = arr.map(item => {
                 if (item && typeof item === 'object' && item.type === 'test') {
                     let text = `**${item.title || ''}**`;
-                    if (item.description) text += `: ${item.description}`;
+                    if (item.description) {
+                        let desc = item.description;
+                        if (W.fixOrphans) desc = W.fixOrphans(desc);
+                        if (W.parseMarkdown) desc = W.parseMarkdown(desc);
+                        text += `: ${desc}`;
+                    }
                     return text;
                 }
                 return item;

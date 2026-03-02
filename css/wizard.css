@@ -1648,6 +1648,10 @@ fieldset[aria-invalid="true"] {
     margin-top: 1rem;
 }
 
+.detailed-checklist-container p {
+    margin-bottom: 0.5rem;
+}
+
 .example-label {
     display: block;
     font-size: 0.85rem;
