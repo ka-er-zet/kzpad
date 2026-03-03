@@ -3088,7 +3088,7 @@ document.getElementById('auditForm').onsubmit = (e) => {
             }).map(prefix => `
                 <section class="clause-group">
                     <h5 class="clause-group-title">${chapterNames[prefix] || prefix}</h5>
-                    ${grouped[prefix].map(c => {
+                    ${grouped[prefix].sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).map(c => {
                 const clauseData = (dictionaryData && dictionaryData[c]) ? dictionaryData[c] : null;
                 const clauseTitle = clauseData && clauseData.title ? clauseData.title.replace(/&nbsp;|\u00A0/g, ' ') : '';
                 const cleanTitle = stripNumbering(clauseTitle);

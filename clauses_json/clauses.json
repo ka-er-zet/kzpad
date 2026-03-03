@@ -149,9 +149,8 @@
       "Instrukcja obsługi nie znajduje się na samym produkcie, lecz została udostępniona publicznie w inny sposób (np. jako plik PDF do pobrania lub treść na stronie internetowej)."
     ],
     "procedure": [
-      "Przepis nakłada obowiązek, aby instrukcje zewnętrzne udostępnione w formie cyfrowej spełniały te same wymagania, co informacje zintegrowane z produktem (zdefiniowane w Art. 7 ust. 1 pkt 1).",
-      "Weryfikacja opiera się na ocenie podstawowych parametrów dostępności cyfrowej określonych w normie EN 301 549 (odpowiednio Rozdział 9 dla stron WWW lub Rozdział 10 dla dokumentów nieinternetowych).",
-      "Główne rygory oceny dokumentu obejmują: 1. dostępność dla więcej niż jednego zmysłu (wymóg posiadania warstwy tekstowej umożliwiającej odczyt maszynowy), 2. obecność opisów alternatywnych dla grafik, 3. możliwość powiększenia zawartości bez utraty treści."
+      "Przepis nakłada obowiązek, aby instrukcje zewnętrzne udostępnione cyfrowo spełniały te same wymagania, co informacje zintegrowane z produktem (zdefiniowane w Art. 7 ust. 1 pkt 1).",
+      "Weryfikacja w tym punkcie obejmuje wyłącznie ocenę warstwy tekstowej oraz jej parametrów typograficznych."
     ],
     "evaluation": "Inspekcja i Kontrola",
     "checklist": [
@@ -160,19 +159,23 @@
         "title": "Test weryfikacji warstwy tekstowej (w zależności od formatu docelowego)",
         "description": "Należy zweryfikować, czy instrukcja cyfrowa posiada aktywną warstwę tekstową, a nie jest wyłącznie obrazem tekstu. Metodyka zależy od środowiska:\n1. Pliki PDF: Należy podjąć próbę wyselekcjonowania pojedynczego słowa za pomocą kursora. Jeżeli zaznacza się cały blok strony jako pojedyncza grafika, oznacza to brak warstwy tekstowej (skan).\n2. Pliki edytorów tekstu (DOCX, ODT, RTF): Należy otworzyć plik i zweryfikować, czy w tekście można ustawić kursor edycji między poszczególnymi literami. Należy upewnić się, że treść instrukcji nie została wklejona do pliku jako seria zrzutów ekranu (zdjęć tekstu).\n3. Strony WWW (HTML): Należy podjąć próbę zaznaczenia tekstu w przeglądarce. Tekst instrukcji nie może być osadzony jako plik graficzny (np. JPG, PNG), z wyłączeniem logotypów.\nWynik weryfikacji jest negatywny, jeżeli treść instrukcji ma postać spłaszczonego obrazu, co całkowicie uniemożliwia jej przetworzenie przez technologie asystujące (np. czytniki ekranu dla osób niewidomych)."
       },
-      {
+       {
         "type": "test",
-        "title": "Test obecności alternatywy tekstowej dla elementów graficznych",
-        "description": "Należy zidentyfikować w instrukcji kluczowe ilustracje niosące treść (np. schematy podłączeń kabli, rysunki układu przycisków, diagramy operacyjne). Należy zweryfikować (wykorzystując narzędzia do badania struktury PDF lub inspektor kodu dla HTML), czy elementy te posiadają zdefiniowany opis alternatywny. Wynik jest negatywny, jeżeli ważna dla obsługi grafika nie zawiera ukrytego tekstu wyjaśniającego, co uniemożliwia jej zrozumienie za pomocą drugiego kanału sensorycznego (słuchu)."
+        "title": "Test zmiany rozmiaru tekstu (skalowalność)",
+        "description": "Należy wymusić powiększenie widoku dokumentu docelowego (pliku lub strony WWW) do poziomu co najmniej 200%. Wynik testu jest negatywny, jeżeli powiększenie skutkuje utratą widoczności treści, nakładaniem się na siebie wierszy lub – w przypadku dokumentów o płynnym układzie (HTML/ePUB) – jeżeli wymusza na użytkowniku przewijanie ekranu w dwóch wymiarach (poziomo i pionowo) w celu przeczytania jednej linii tekstu."
+      },
+       {
+        "type": "test",
+        "title": "Pomiar cyfrowego kontrastu tekstu",
+        "description": "Należy zbadać współczynnik kontrastu pomiędzy tekstem instrukcji a jej tłem. Weryfikację przeprowadza się z wykorzystaniem oprogramowania analitycznego (np. Colour Contrast Analyser), badając surowe wartości RGB pliku docelowego. Stosunek jasności standardowego tekstu do tła musi wynosić co najmniej 4,5:1 dla standardowego tekstu (lub 3:1 dla tekstów powiększonych/nagłówków)."
       },
       {
-        "type": "test",
-        "title": "Test powiększania i skalowalności dokumentu",
-        "description": "Należy wymusić powiększenie widoku dokumentu docelowego do poziomu 200%. Należy zweryfikować jakość i układ tekstu po powiększeniu. Wynik testu jest negatywny, jeżeli powiększenie skutkuje pikselizacją utrudniającą odczyt, ucinaniem tekstu lub – w przypadku dokumentów o płynnym układzie (strony WWW) – jeżeli tekst nie podlega procesowi zawijania (reflow) i wymusza na użytkowniku przewijanie ekranu w dwóch wymiarach (poziomo i pionowo) w celu przeczytania jednej linii tekstu."
-      }
+  "type": "test",
+  "title": "Test adaptacji odstępów w tekście",
+  "description": "W przypadku instrukcji opartych na językach znaczników (strony WWW, EPUB) należy wymusić nadpisanie stylów w celu zwiększenia świateł w tekście. Do weryfikacji wykorzystuje się dedykowaną skryptozakładkę (bookmarklet - np. [Text Spacing Bookmarklet](https://www.html5accessibility.com/tests/tsbookmarklet.html). Użyte narzędzie musi narzucić w badanym dokumencie następujące wartości minimalne: wysokość linii na poziomie 1,5-krotności rozmiaru czcionki, odstępy pod akapitami na poziomie 2-krotności rozmiaru czcionki, odstępy między literami na poziomie 0,12-krotności rozmiaru czcionki oraz odstępy między słowami na poziomie 0,16-krotności rozmiaru czcionki. Wynik testu jest negatywny, jeżeli narzucenie tych rygorów powoduje obcięcie treści, jej zniknięcie poza obszarem roboczym lub trwałe nałożenie się tekstu na inne elementy interfejsu."
+}
     ],
     "notes": [
-      "Uwaga metodyczna: Sama obecność pliku z instrukcją w sieci internetowej nie jest równoznaczna ze spełnieniem wymogu. Jeżeli udostępniony plik ma postać nieotagowanego, płaskiego skanu, podmiot gospodarczy nie spełnia warunków ustawy."
     ],
     "form": {}
   },
