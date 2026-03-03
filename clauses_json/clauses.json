@@ -363,7 +363,7 @@
     "procedure": [
       "Przepis ten dotyczy dokumentacji technicznej towarzyszącej produktowi, która obejmuje instalację, konserwację, przechowywanie i utylizację. Jeśli producent decyduje się nie drukować tych instrukcji, lecz udostępnić je w internecie (np. jako PDF do pobrania), musi zapewnić ich pełną dostępność cyfrową.\nUstawodawca precyzuje, że te konkretne dokumenty muszą spełniać wybrane wymogi dostępności:\n1. Dostępność sensoryczna (Pkt 1): Dokument musi być czytelny dla różnych zmysłów (np. wzrok i słuch poprzez czytnik ekranu). Tekst musi mieć odpowiedni kontrast, krój czcionki i odstępy.\n2. Alternatywa dla grafik (Pkt 2 lit. b tiret pierwsze): Wszystkie schematy montażowe, rysunki konserwacyjne czy ikony ostrzegawcze dotyczące utylizacji muszą posiadać opis tekstowy (tekst alternatywny).",
       "3. Format tekstowy dla AAC (Pkt 2 lit. c): Plik musi być technicznie przygotowany tak, aby oprogramowanie do komunikacji alternatywnej mogło przetworzyć jego treść (nie może to być skan, musi mieć zdefiniowany język).",
-      "Uwaga: W przeciwieństwie do głównej instrukcji obsługi, te dokumenty nie muszą zawierać opisu interfejsu użytkownika ani deklaracji zgodności z technologiami wspomagającymi (chyba że wynika to z innych przepisów)."
+      "Uwaga: W przeciwieństwie do głównej instrukcji obsługi, te dokumenty nie muszą zawierać opisu interfejsu użytkownika ani informacji o zgodności z technologiami wspomagającymi (chyba że wynika to z innych przepisów)."
     ],
     "evaluation": "Inspekcja i Kontrola Dostępności",
     "checklist": [
@@ -390,8 +390,8 @@
     "procedure": [
       "Wymóg ten rozszerza zasady dostępności informacji o produkcie (opisane w Art. 7 ust. 1 pkt 1) na jego fizyczne opakowanie. Oznacza to, że informacje nadrukowane na pudełku, folii lub etykiecie zewnętrznej nie mogą dyskryminować użytkowników ze względu na ich możliwości sensoryczne.",
       "Ponieważ norma EN 301 549 dotyczy technologii informacyjno-komunikacyjnych (ICT) i nie zawiera procedur badawczych dla fizycznego druku na opakowaniach, weryfikacja tego punktu opiera się bezpośrednio na funkcjonalnym celu przepisów z Art. 7 ust. 1 pkt 1 oraz na analogii do parametrów funkcjonalnych z Rozdziału 4 normy EN 301 549:",
-      "1. Wielozmysłowość: Jeśli na opakowaniu jest ważna informacja (np. ostrzeżenie o alergenach, wymagania systemowe), musi być ona dostępna dla więcej niż jednego zmysłu. W praktyce realizuje się to często poprzez umieszczenie kodu QR lub tagu NFC prowadzącego do dostępnej wersji cyfrowej, rzadziej przez napisy w alfabecie Braille'a.",
-      "2. Postrzegalność i Czytelność: Tekst na opakowaniu musi cechować się wysokim kontrastem względem tła oraz odpowiednią wielkością i krojem czcionki, aby był czytelny dla osób słabowidzących i starszych.",
+      "1. Wielozmysłowość: Informacje znajdujące się na opakowaniu muszą być dostępne dla więcej niż jednego zmysłu. W praktyce realizuje się to często poprzez umieszczenie kodu QR lub tagu NFC prowadzącego do dostępnej wersji cyfrowej, rzadziej przez napisy w alfabecie Braille'a.",
+      "2. Postrzegalność i czytelność: Tekst na opakowaniu musi cechować się wysokim kontrastem względem tła oraz odpowiednią wielkością i krojem czcionki, aby był czytelny dla osób słabowidzących i starszych.",
       "3. Zrozumiałość: Informacje muszą być sformułowane w sposób prosty, a układ graficzny nie może wprowadzać w błąd co do zawartości."
     ],
     "evaluation": "Inspekcja",
