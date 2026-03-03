@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karta Audytu - Art. 7 ust. 1</title>
+  
+  <!-- Pico CSS (v2) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  
+  <style>
+    :root {
+      --pico-border-radius: 0.5rem;
+      --pico-typography-spacing: 1rem;
+    }
+
+    body {
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+      background-color: #ffffff;
+    }
+
+    /* Stylizacja "Karty" */
+    article.audit-card {
+      padding: 2rem;
+      border: 1px solid var(--pico-muted-border-color);
+      box-shadow: none;
+      margin-bottom: 2rem;
+      background: #ffffff;
+    }
+
+    /* Nag³ówek przepisu */
+    .article-header {
+      border-bottom: 2px solid var(--pico-primary);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .article-header h1 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--pico-secondary);
+    }
+
+    /* Sekcje informacyjne z pionow¹ lini¹ */
+    .info-section {
+      border-left: 3px solid var(--pico-primary);
+      padding-left: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-section h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+      color: var(--pico-primary);
+      margin-bottom: 1rem;
+    }
+
+    /* Elementy checklisty */
+    .test-group {
+      margin-top: 1.5rem;
+    }
+
+    .test-group h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--pico-h2-color);
+      border-bottom: 1px solid var(--pico-muted-border-color);
+      display: inline-block;
+      padding-bottom: 0.2rem;
+    }
+
+    .checklist-item {
+      background: transparent;
+      border: 1px solid var(--pico-muted-border-color);
+      border-left: 4px solid var(--pico-muted-border-color); /* Neutralny stan pocz¹tkowy */
+      padding: 1.25rem;
+      border-radius: var(--pico-border-radius);
+      margin-bottom: 1rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* Usuniêcie domyœlnego focus-within z Pico, aby nie nak³ada³o obwódki na tekst */
+    .checklist-item:focus-within {
+      box-shadow: none;
+      border-color: var(--pico-primary);
+    }
+
+    .checklist-item legend {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--pico-h3-color);
+    }
+
+    .checklist-item p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: var(--pico-muted-color);
+      line-height: 1.5;
+    }
+
+    .options-row {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .options-row label {
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    /* WskaŸniki stanu oparte wy³¹cznie na krawêdzi bocznej */
+    .checklist-item.is-pass { 
+      border-left-color: #2e7d32; 
+      border-left-width: 8px;
+    }
+    
+    .checklist-item.is-fail { 
+      border-left-color: #d32f2f; 
+      border-left-width: 8px;
+    }
+
+    .checklist-item.is-na {
+      border-left-color: var(--pico-muted-color);
+      opacity: 0.7;
+    }
+
+    /* Sekcja oceny koñcowej */
+    .final-evaluation {
+      border-top: 2px solid var(--pico-muted-border-color);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+
+    .final-evaluation h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .final-status-container {
+      margin-bottom: 1.5rem;
+      padding: 1.25rem;
+      border: 1px solid var(--pico-muted-border-color);
+      border-radius: var(--pico-border-radius);
+    }
+
+    textarea {
+      min-height: 120px;
+      font-size: 0.9rem;
+      border-radius: var(--pico-border-radius);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <article class="audit-card">
+      
+      <!-- Nag³ówek karty -->
+      <header class="article-header">
+        <h1>Art. 7 ust. 1 pkt 1 lit. b tiret pierwsze</h1>
+        <p>Instrukcje, etykiety i ostrze¿enia dotycz¹ce u¿ytkowania produktu, które zosta³y zamieszczone w lub na produkcie s¹ przedstawione w sposób zapewniaj¹cy zrozumia³oœæ i postrzegalnoœæ.</p>
+      </header>
+
+      <!-- Sekcja 1: Jak to rozumieæ? -->
+      <section class="info-section">
+        <h2>Jak to rozumieæ?</h2>
+        <p>Wymóg ten dotyczy sposobu prezentacji informacji tak, aby by³y one logiczne i mo¿liwe do zinterpretowania przez ka¿dego u¿ytkownika. „Zrozumia³oœæ i postrzegalnoœæ” oznacza dwie rzeczy:</p>
+        <ol>
+          <li><strong>Lokalizacja i relacje:</strong> Informacja musi znajdowaæ siê w miejscu, które jednoznacznie wskazuje, czego dotyczy.</li>
+          <li><strong>Jêzyk i forma:</strong> Treœæ musi byæ przedstawiona w sposób umo¿liwiaj¹cy jej poprawne odczytanie (kodowanie jêzyka, syntezator mowy, powszechne symbole).</li>
+        </ol>
+      </section>
+
+      <!-- Sekcja 2: Jak sprawdziæ? -->
+      <section class="info-section">
+        <h2>Jak sprawdziæ?</h2>
+        
+        <form id="audit-form" onsubmit="return false;">
+          
+          <!-- Grupa A: Weryfikacja fizyczna -->
+          <div class="test-group">
+            <h3>Weryfikacja fizyczna (Obudowa i przyciski)</h3>
+            
+            <fieldset class="checklist-item">
+              <legend>Test bliskoœci</legend>
+              <p>SprawdŸ, czy etykiety i symbole s¹ umieszczone w bezpoœrednim s¹siedztwie elementów steruj¹cych. Czy jest jasne, ¿e dany napis opisuje ten konkretny przycisk?</p>
+              <div class="options-row">
+                <label><input type="radio" name="f1" value="pass"> Spe³nione</label>
+                <label><input type="radio" name="f1" value="fail"> Niespe³nione</label>
+                <label><input type="radio" name="f1" value="na"> Nie dotyczy</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="checklist-item">
+              <legend>Test symboli</legend>
+              <p>Zweryfikuj, czy u¿yte ikony s¹ standardowe i intuicyjne (np. standardowy symbol w³¹cznika, a nie autorska grafika producenta).</p>
+              <div class="options-row">
+                <label><input type="radio" name="f2" value="pass"> Spe³nione</label>
+                <label><input type="radio" name="f2" value="fail"> Niespe³nione</label>
+                <label><input type="radio" name="f2" value="na"> Nie dotyczy</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="checklist-item">
+              <legend>Sprawdzenie dotykowe</legend>
+              <p>Czy przyciski steruj¹ce s¹ mo¿liwe do zidentyfikowania bez u¿ycia wzroku (np. symbole wypuk³e, grawer lub Braille)?</p>
+              <div class="options-row">
+                <label><input type="radio" name="f3" value="pass"> Spe³nione</label>
+                <label><input type="radio" name="f3" value="fail"> Niespe³nione</label>
+                <label><input type="radio" name="f3" value="na"> Nie dotyczy</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Grupa B: Weryfikacja cyfrowa -->
+          <div class="test-group" style="margin-top: 2rem;">
+            <h3>Weryfikacja interfejsu cyfrowego (Menu na ekranie)</h3>
+            
+            <fieldset class="checklist-item">
+              <legend>Test relacji (dla czytnika ekranu)</legend>
+              <p>Czy czytnik odczytuje etykietê pola (np. nazwê przycisku)? Jeœli czytnik mówi tylko „przycisk” bez nazwy, relacja nie jest zachowana.</p>
+              <div class="options-row">
+                <label><input type="radio" name="c1" value="pass"> Spe³nione</label>
+                <label><input type="radio" name="c1" value="fail"> Niespe³nione</label>
+                <label><input type="radio" name="c1" value="na"> Nie dotyczy</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="checklist-item">
+              <legend>Test jêzyka</legend>
+              <p>SprawdŸ, czy syntezator mowy czyta komunikaty poprawnie w jêzyku polskim (bez obcego akcentu lub b³êdów w literowaniu).</p>
+              <div class="options-row">
+                <label><input type="radio" name="c2" value="pass"> Spe³nione</label>
+                <label><input type="radio" name="c2" value="fail"> Niespe³nione</label>
+                <label><input type="radio" name="c2" value="na"> Nie dotyczy</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="checklist-item">
+              <legend>Test spójnoœci</legend>
+              <p>SprawdŸ, czy ta sama funkcja (np. „Pomoc” lub „Wstecz”) jest zawsze oznaczona t¹ sam¹ ikon¹ i tekstem na ka¿dym ekranie urz¹dzenia.</p>
+              <div class="options-row">
+                <label><input type="radio" name="c3" value="pass"> Spe³nione</label>
+                <label><input type="radio" name="c3" value="fail"> Niespe³nione</label>
+                <label><input type="radio" name="c3" value="na"> Nie dotyczy</label>
+              </div>
+            </fieldset>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Sekcja 3: Ocena koñcowa -->
+      <footer class="final-evaluation">
+        <h2>Ocena spe³nienia wymagania dla Art. 7</h2>
+        
+        <div class="final-status-container">
+          <div class="options-row">
+            <label><input type="radio" name="final-status" value="pass"> Spe³nione</label>
+            <label><input type="radio" name="final-status" value="fail"> Niespe³nione</label>
+            <label><input type="radio" name="final-status" value="na"> Nie dotyczy</label>
+          </div>
+        </div>
+        
+        <label for="comments">Komentarz / Uzasadnienie</label>
+        <textarea id="comments" placeholder="Wpisz uwagi z przeprowadzonego testu..."></textarea>
+      </footer>
+
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const radios = document.querySelectorAll('input[type="radio"]');
+
+      function updateUI() {
+        const groups = [...new Set(Array.from(radios).map(r => r.name))];
+        groups.forEach(name => {
+          const selected = document.querySelector(`input[name="${name}"]:checked`);
+          const parent = document.querySelector(`input[name="${name}"]`).closest('.checklist-item');
+          
+          if (parent) {
+            parent.classList.remove('is-pass', 'is-fail', 'is-na');
+            if (selected) {
+              parent.classList.add(`is-${selected.value}`);
+            }
+          }
+        });
+      }
+
+      radios.forEach(r => r.addEventListener('change', updateUI));
+    });
+  </script>
+</body>
+</html>
