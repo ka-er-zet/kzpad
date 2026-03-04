@@ -2360,13 +2360,13 @@ p.hero-card-title {
 }
 
 /* Badge for unevaluated tests */
-.checklist-test-item:not(.is-pass):not(.is-fail):not(.is-na) .checklist-test-summary::after {
+.checklist-test-item:not(.is-pass):not(.is-fail):not(.is-na):not(.browser-minimal) .checklist-test-summary::after {
     display: flex !important;
     content: 'Brak oceny';
     margin-left: auto;
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 0rem 0.55rem 1.1rem 0.55rem;
+    padding: 0rem 0.55rem;
     border-radius: 999px;
     border: 1px solid var(--contrast);
     white-space: nowrap;

@@ -661,21 +661,13 @@ const Browser = {
         const renderListContent = (arr) => {
             if (!arr || arr.length === 0) return '';
             
-            // Special handling for test objects - each test gets its own paragraph
+            // Special handling for test objects - render as interactive cards (browser view)
             const hasTests = arr.some(item => item && typeof item === 'object' && item.type === 'test');
             if (hasTests) {
                 return arr.map(item => {
                     if (item && typeof item === 'object' && item.type === 'test') {
-                        let titleHtml = `<p><strong>${item.title || ''}</strong></p>`;
-                        if (item.description) {
-                            let desc = item.description;
-                            if (W.fixOrphans) desc = W.fixOrphans(desc);
-                            if (W.parseMarkdown) desc = W.parseMarkdown(desc);
-                            // Return title and description as separate semantic elements
-                            // This ensures proper HTML structure: title in <p>, description as-is from parseMarkdown
-                            return titleHtml + desc;
-                        }
-                        return titleHtml;
+                        // Use the minimal test card (without form controls) for browser view
+                        return renderTestCardMinimal(item);
                     }
                     // Parse markdown for regular string items
                     let itemText = item || '';
@@ -685,7 +677,7 @@ const Browser = {
                 }).join('');
             }
             
-            // Convert test objects to readable text for this summary/browser view
+            // Convert test objects to readable text for summary views (non-browser)
             const stringified = arr.map(item => {
                 if (item && typeof item === 'object' && item.type === 'test') {
                     let text = `**${item.title || ''}**`;
@@ -2651,6 +2643,25 @@ function renderTestCard(clauseId, testObj, testIndex) {
     </details>`;
 }
 
+/**
+ * Renders a test card for the clause browser (bez formularza oceny)
+ * Reuses the card structure from renderTestCard but without rating options and comment field
+ */
+function renderTestCardMinimal(testObj) {
+    const title = (W.fixOrphans ? W.fixOrphans(testObj.title || '') : (testObj.title || ''));
+    let descHtml = '';
+    if (testObj.description) {
+        let d = testObj.description;
+        if (W.fixOrphans) d = W.fixOrphans(d);
+        if (W.parseMarkdown) d = W.parseMarkdown(d);
+        descHtml = `<div class="test-description">${d}</div>`;
+    }
+    return `<details class="checklist-test-item browser-minimal">
+        <summary class="checklist-test-summary">${title}</summary>
+        ${descHtml}
+    </details>`;
+}
+
 function populateRadioList() {
     const fieldset = document.getElementById('productFieldset');
     const container = fieldset.querySelector('fieldset') || fieldset;
@@ -3306,15 +3317,16 @@ window.showClause = (id, triggerEl = null) => {
                 <h4 class="browser-card-section-title">Jak to sprawdzić?</h4>
                 <div class="section-content">
                     ${data.checklist && data.checklist.length > 0 ? data.checklist.map(item => {
-                        let rawText;
+                        // Render test cards for items with type === 'test'
                         if (item && typeof item === 'object' && item.type === 'test') {
-                            rawText = `**${item.title || ''}**${item.description ? ': ' + item.description : ''}`;
+                            return renderTestCardMinimal(item);
                         } else {
-                            rawText = String(item);
+                            // Render regular text items
+                            let rawText = String(item);
+                            let text = (W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(rawText));
+                            if (W.parseMarkdown) text = W.parseMarkdown(text);
+                            return `<p class="checklist-item">${text}</p>`;
                         }
-                        let text = (W.fixOrphans || (s=>s))((W.stripNumbering || (s=>s))(rawText));
-                        if (W.parseMarkdown) text = W.parseMarkdown(text);
-                        return `<p class="checklist-item">${text}</p>`;
                     }).join('') : `<p><i>Brak danych</i></p>`}
                 </div>
             </section>
