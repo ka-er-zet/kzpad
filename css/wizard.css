@@ -185,6 +185,7 @@ dialog#clauseModal a,
 /* Icon for links that open in a new tab — markup inserted by JS for full flexibility */
 #main-content a[target="_blank"]::after,
 dialog#clauseModal a[target="_blank"]::after,
+.section-content a[target="_blank"]::after,
 .u-interpretation a[target="_blank"]::after,
 .technical-area a[target="_blank"]::after {
     /* removed textual fallback; JS will insert Lucide icon element */
