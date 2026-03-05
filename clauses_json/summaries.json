@@ -5,12 +5,16 @@
       "id": "full_compliance",
       "status": "ZGODNY",
       "title": "Podsumowanie kontroli dostępności",
-      "description": "Na podstawie przeprowadzonej weryfikacji stwierdza się, że {productName} jest w pełni zgodny z wymaganiami Ustawy z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze.\n\nWszystkie kryteria dostępności przewidziane dla tej kategorii zostały sprawdzone i ocenione jako spełnione. Produkt/usługa zapewnia pełny dostęp dla osób z niepełnosprawnościami zgodnie z obowiązującymi standardami.",
+      "description": "Na podstawie przeprowadzonej weryfikacji stwierdza się, że {productName} jest w pełni zgodny z wymaganiami Ustawy z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze.\n\nWszystkie kryteria dostępności przewidziane dla tej kategorii zostały sprawdzone i ocenione jako spełnione. ",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",
         "inapplicable_label": "Kryteria niemające zastosowania:",
-        "untested_label": "Kryteria niepoddane ocenie:"
+        "untested_label": "Kryteria niepoddane ocenie:",
+        "conclusions_label": "",
+        "conclusions_value": "",
+        "note_label": "",
+        "note_value": ""
       },
       "meta": {
         "date_label": "Data zakończenia kontroli",
@@ -22,7 +26,7 @@
       "id": "non_compliance_full",
       "status": "NIEZGODNY",
       "title": "Podsumowanie kontroli dostępności",
-      "description": "Na podstawie przeprowadzonej weryfikacji stwierdza się, że {productName} nie spełnia wymagań Ustawy z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze.\n\nMimo przeprowadzenia pełnej kontroli wszystkich kryteriów, stwierdzono uchybienia, które wymagają podjęcia działań naprawczych w celu zapewnienia dostępności.",
+      "description": "Na podstawie przeprowadzonej weryfikacji stwierdza się, że {productName} nie spełnia wymagań Ustawy z dnia 26 kwietnia 2024 r. o zapewnianiu spełniania wymagań dostępności niektórych produktów i usług przez podmioty gospodarcze.\n\nPo przeprowadzeniu pełnej kontroli wszystkich kryteriów, stwierdzono uchybienia, które wymagają podjęcia działań naprawczych w celu zapewnienia zgodności z wymogami Ustawy.",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",
@@ -36,12 +40,14 @@
       "id": "partial_compliance_passed",
       "status": "ZGODNY W SPRAWDZONYM ZAKRESIE",
       "title": "Podsumowanie kontroli dostępności (Częściowe)",
-      "description": "Przeprowadzono kontrolę wybranych kryteriów dostępności dla {productName} pod kątem zgodności z Ustawą z dnia 26 kwietnia 2024 r.\n\nW zweryfikowanym zakresie nie stwierdzono uchybień – wszystkie sprawdzone parametry są zgodne z ustawą. Należy jednak pamiętać, że kontrola nie objęła pełnego spektrum wymagań, co nie pozwala na wydanie ostatecznej deklaracji o całkowitej zgodności produktu/usługi.",
+      "description": "Przeprowadzono kontrolę wybranych kryteriów dostępności dla {productName} pod kątem zgodności z Ustawą z dnia 26 kwietnia 2024 r.\n\nW zweryfikowanym zakresie nie stwierdzono uchybień – wszystkie sprawdzone parametry są zgodne z ustawą. Należy jednak pamiętać, że kontrola nie objęła pełnego zakresu wymagań, co nie pozwala na wydanie ostatecznej deklaracji o całkowitej zgodności produktu/usługi.",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",
         "inapplicable_label": "Kryteria niemające zastosowania:",
         "untested_label": "Kryteria niepoddane ocenie:",
+        "conclusions_label": "",
+        "conclusions_value": "",
         "note_label": "Uwaga:",
         "note_value": "Pełne potwierdzenie zgodności wymaga dokończenia procesu weryfikacji w obszarach wskazanych jako niesprawdzone."
       }
@@ -50,14 +56,16 @@
       "id": "partial_compliance_failed",
       "status": "NIEZGODNY",
       "title": "Podsumowanie kontroli dostępności (Częściowe)",
-      "description": "Przeprowadzono kontrolę wybranych kryteriów dostępności dla {productName} pod kątem zgodności z Ustawą z dnia 26 kwietnia 2024 r.\n\nJuż na etapie częściowej weryfikacji stwierdzono istotne niezgodności z wymaganiami ustawy. Produkt/usługa w obecnym stanie nie zapewnia odpowiedniej dostępności w obszarach poddanych kontroli.",
+      "description": "Przeprowadzono kontrolę wybranych kryteriów dostępności dla {productName} pod kątem zgodności z Ustawą z dnia 26 kwietnia 2024 r.\n\nJuż na etapie częściowej weryfikacji stwierdzono istotne niezgodności z wymaganiami ustawy. Produkt/usługa w obecnym stanie wymaga działań naprawczych.",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",
         "inapplicable_label": "Kryteria niemające zastosowania:",
         "untested_label": "Kryteria niepoddane ocenie:",
         "conclusions_label": "Wnioski:",
-        "conclusions_value": "Niezależnie od wyników kontroli w pozostałych obszarach, konieczne jest niezwłoczne przystąpienie do naprawy już zidentyfikowanych błędów."
+        "conclusions_value": "Niezależnie od wyników kontroli w pozostałych obszarach, konieczne jest niezwłoczne przystąpienie do naprawy już zidentyfikowanych błędów.",
+        "note_label": "",
+        "note_value": ""
       }
     },
     "no_assessment": {
@@ -70,24 +78,30 @@
       "id": "all_inapplicable",
       "status": "BRAK MAJĄCYCH ZASTOSOWANIE WYMAGAŃ",
       "title": "Podsumowanie kontroli dostępności",
-      "description": "Na podstawie przeprowadzonej weryfikacji stwierdzono, że żadne z wybranych kryteriów dostępności nie ma zastosowania do produktu/usługi {productName}.\n\nOznacza to, że ze względu na charakter produktu lub jego specyficzne funkcjonalności, badane wymagania ustawowe nie nakładają na niego konkretnych obowiązków technicznych w wybranym profilu kontroli.",
+      "description": "Na podstawie przeprowadzonej weryfikacji stwierdzono, że żadne z wybranych kryteriów dostępności nie ma zastosowania do produktu/usługi {productName}.\n\nOznacza to, że ze względu na charakter produktu/usługi lub jego specyficzne funkcjonalności, badane wymagania ustawowe nie nakładają na niego konkretnych obowiązków technicznych w wybranym profilu kontroli.",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",
         "inapplicable_label": "Kryteria niemające zastosowania:",
-        "untested_label": "Kryteria niepoddane ocenie:"
+        "untested_label": "Kryteria niepoddane ocenie:",
+        "conclusions_label": "",
+        "conclusions_value": "",
+        "note_label": "",
+        "note_value": ""
       }
     },
     "all_inapplicable_partial": {
       "id": "all_inapplicable_partial",
       "status": "BRAK MAJĄCYCH ZASTOSOWANIE WYMAGAŃ W SPRAWDZONYM ZAKRESIE",
       "title": "Podsumowanie kontroli dostępności (Częściowe)",
-      "description": "W zweryfikowanym zakresie kontroli stwierdzono, że żadne z wybranych kryteriów dostępności nie ma zastosowania do produktu/usługi {productName}.\n\nOznacza to, że w sprawdzonym obszarze badane wymagania ustawowe nie nakładają na produkt konkretnych obowiązków technicznych.",
+      "description": "W zweryfikowanym zakresie kontroli stwierdzono, że żadne z wybranych kryteriów dostępności nie ma zastosowania do produktu/usługi {productName}.\n\nOznacza to, że w sprawdzonym obszarze badane wymagania ustawowe nie nakładają na produkt/usługę konkretnych obowiązków.",
       "sections": {
         "failures_label": "Wykryte niezgodności:",
         "passed_label": "Kryteria ocenione jako spełnione:",
         "inapplicable_label": "Kryteria niemające zastosowania:",
         "untested_label": "Kryteria niepoddane ocenie:",
+        "conclusions_label": "",
+        "conclusions_value": "",
         "note_label": "Uwaga:",
         "note_value": "Pełne potwierdzenie braku obowiązków wymaga dokończenia procesu weryfikacji w pozostałych obszarach."
       }
