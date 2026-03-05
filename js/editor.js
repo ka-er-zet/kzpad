@@ -1379,6 +1379,14 @@ function renderClauseForm(id, data) {
                 <label>Tytuł klauzuli
                     <input type="text" id="edit-title" value="${data.title || ''}">
                 </label>
+                <label>Kategoria
+                    <select id="edit-category">
+                        <option value="">-- Brak kategorii --</option>
+                        <option value="accessibility_requirements" ${data.category === 'accessibility_requirements' ? 'selected' : ''}>Wymagania dostępności</option>
+                        <option value="service_provider_obligations" ${data.category === 'service_provider_obligations' ? 'selected' : ''}>Obowiązki usługodawcy</option>
+                        <option value="other" ${data.category === 'other' ? 'selected' : ''}>Inne</option>
+                    </select>
+                </label>
             </div>
             
             <label>Metoda oceny (Evaluation)
@@ -2199,8 +2207,10 @@ function updateStateFromUI() {
         const item = currentData[activeItemId];
         const titleInput = document.getElementById('edit-title');
         const evalInput = document.getElementById('edit-evaluation');
+        const categoryInput = document.getElementById('edit-category');
         if (titleInput) item.title = titleInput.value;
         if (evalInput) item.evaluation = evalInput.value;
+        if (categoryInput) item.category = categoryInput.value;
 
         // Note: form.legend and form.noteId are no longer used/saved from UI
     } else if (currentType === 'mapping') {

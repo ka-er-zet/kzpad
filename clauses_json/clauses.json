@@ -28,7 +28,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.1.b-01": {
     "id": "U.7.1.1.b-01",
@@ -77,7 +78,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.1.b-02": {
     "id": "U.7.1.1.b-02",
@@ -126,7 +128,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2": {
     "id": "U.7.1.2",
@@ -150,7 +153,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2.a": {
     "id": "U.7.1.2.a",
@@ -186,7 +190,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2.b-01": {
     "id": "U.7.1.2.b-01",
@@ -216,7 +221,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2.b-02": {
     "id": "U.7.1.2.b-02",
@@ -248,7 +254,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2.b-03": {
     "id": "U.7.1.2.b-03",
@@ -285,7 +292,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2.c": {
     "id": "U.7.1.2.c",
@@ -316,7 +324,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.2.d": {
     "id": "U.7.1.2.d",
@@ -347,7 +356,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.3": {
     "id": "U.7.1.3",
@@ -374,7 +384,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.7.1.4": {
     "id": "U.7.1.4",
@@ -403,7 +414,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.1.a": {
     "id": "U.8.0.1.a",
@@ -453,7 +465,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.1.b": {
     "id": "U.8.0.1.b",
@@ -478,7 +491,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
    "U.8.0.1.c": {
     "id": "U.8.0.1.c",
@@ -513,7 +527,8 @@
   }
 ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.1.d": {
     "id": "U.8.0.1.d",
@@ -549,7 +564,8 @@
   }
 ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.1.e": {
     "id": "U.8.0.1.e",
@@ -577,7 +593,8 @@
   }
 ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.1.f": {
     "id": "U.8.0.1.f",
@@ -617,7 +634,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.1.g": {
     "id": "U.8.0.1.g",
@@ -652,7 +670,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
    "U.8.0.2": {
     "id": "U.8.0.2",
@@ -688,7 +707,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
    "U.8.0.3": {
     "id": "U.8.0.3",
@@ -710,7 +730,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.4": {
     "id": "U.8.0.4",
@@ -747,7 +768,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.5.a": {
     "id": "U.8.0.5.a",
@@ -771,7 +793,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.5.b": {
     "id": "U.8.0.5.b",
@@ -798,7 +821,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
    "U.8.0.5.c": {
     "id": "U.8.0.5.c",
@@ -828,7 +852,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.8.0.5.d": {
     "id": "U.8.0.5.d",
@@ -862,7 +887,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
    "U.19.02.01.a-01": {
     "id": "U.19.02.01.a-01",
@@ -898,7 +924,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.01.a-02": {
     "id": "U.19.02.01.a-02",
@@ -936,7 +963,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.01.a-03": {
     "id": "U.19.02.01.a-03",
@@ -967,7 +995,8 @@
       }
     ],
     "form": {},
-    "notes": []
+    "notes": [],
+    "category": "accessibility_requirements"
   },
   "U.19.02.01.b": {
     "id": "U.19.02.01.b",
@@ -1005,7 +1034,8 @@
       }
     ],
     "form": {},
-    "notes": []
+    "notes": [],
+    "category": "accessibility_requirements"
   },
   "U.19.02.02.a": {
     "id": "U.19.02.02.a",
@@ -1046,7 +1076,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.02.b": {
     "id": "U.19.02.02.b",
@@ -1082,7 +1113,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.03": {
     "id": "U.19.02.03",
@@ -1123,7 +1155,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.04.a": {
     "id": "U.19.02.04.a",
@@ -1159,7 +1192,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.04.b": {
     "id": "U.19.02.04.b",
@@ -1194,7 +1228,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.05.a": {
     "id": "U.19.02.05.a",
@@ -1228,7 +1263,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.05.b": {
     "id": "U.19.02.05.b",
@@ -1268,7 +1304,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.19.02.05.c": {
     "id": "U.19.02.05.c",
@@ -1309,7 +1346,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.23.6.1": {
     "id": "U.23.6.1",
@@ -1339,7 +1377,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.23.6.2": {
     "id": "U.23.6.2",
@@ -1373,7 +1412,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.23.7.0": {
     "id": "U.23.7.0",
@@ -1407,7 +1447,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.24.1.0": {
     "id": "U.24.1.0",
@@ -1453,7 +1494,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.24.2.0": {
     "id": "U.24.2.0",
@@ -1487,7 +1529,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.24.3.0": {
     "id": "U.24.3.0",
@@ -1517,7 +1560,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
    "U.26.1.0": {
     "id": "U.26.1.0",
@@ -1551,7 +1595,8 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.26.2.0": {
     "id": "U.26.2.0",
@@ -1585,27 +1630,50 @@
       }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "service_provider_obligations"
   },
   "U.22.00.1-4": {
     "id": "U.22.00.1-4",
-    "title": "Art 22 pkt 1-4 Usługi wsparcia (Art. 22)",
+    "title": "U.22.00.1-4 Usługi wsparcia (Art. 22 pkt 1-4)",
     "preconditions": [
       "Podmiot gospodarczy oferuje **usługi wsparcia** towarzyszące produktowi lub usłudze głównej.",
-      "Ustawa wymienia katalog otwarty tych usług:\n    1.  Pomoc techniczna (Help Desk / Service Desk).\n    2.  Centra obsługi telefonicznej (Call Center).\n    3.  Usługi przekazu (tłumacze PJM, konwersja mowy na tekst/tekstu na mowę).\n    4.  Usługi szkoleniowe."
+      "Ustawa wymienia katalog otwarty tych usług:\n1. Pomoc techniczna (Help Desk / Service Desk).\n2. Centra obsługi telefonicznej (Call Center).\n3. Usługi przekazu (tłumacze PJM, konwersja mowy na tekst/tekstu na mowę).\n4. Usługi szkoleniowe."
     ],
     "procedure": [
-      "Przepis ten wiąże jakość obsługi klienta z wymogami dostępności. Nie wystarczy, że produkt jest dostępny – użytkownik musi mieć możliwość uzyskania pomocy w jego obsłudze w sposób dostępny.\n\nAnaliza w oparciu o ustawę i normę EN 301 549 (Rozdział 12.2):\n\n1.  **Informacja o funkcjach dostępności (Klauzula 12.2.2):** Usługi wsparcia muszą posiadać wiedzę i udzielać informacji o tym, jak produkt spełnia wymogi dostępności.\n    -   *Przykład:* Konsultant infolinii bankowej powinien móc udzielić informacji czy aplikacja mobilna banku wspiera osoby niewidome.\n2.  **Efektywna komunikacja (Klauzula 12.2.3):** Usługi wsparcia muszą zaspokajać potrzeby komunikacyjne osób z niepełnosprawnościami, bezpośrednio lub przez punkt pośredni (np. tłumacz online). Oznacza to, że kanał wsparcia nie może być wyłącznie głosowy (tylko telefon) – musi istnieć alternatywa (czat, e-mail, wideo z PJM).\n3.  **Usługi przekazu (Art. 22 pkt 3 i Art. 13):** Jeśli usługa wsparcia polega na zapewnieniu łączności (np. usługa tłumacza migowego online dla klienta urzędu/banku), musi ona spełniać techniczne wymogi **Art. 13** ustawy (przekazywanie komunikacji głosowej, tekstowej w czasie rzeczywistym i wideo) oraz normy EN 301 549 (Rozdział 13). Kluczowa jest tu jakość i synchronizacja przekazu, aby konwersja (np. mowy na tekst) była zrozumiała.\n4.  **Dostępność dokumentacji (Klauzula 12.2.4):** Dokumentacja przekazywana przez wsparcie techniczne (np. instrukcje wysyłane mailem przez serwisanta, materiały szkoleniowe na kursie) musi być dostępna cyfrowo zgodnie z **Art. 12** (czyli spełniać WCAG/PDF UA)."
+      "Przepis ten wiąże jakość obsługi klienta z wymogami dostępności. Nie wystarczy, że produkt jest dostępny – użytkownik musi mieć możliwość uzyskania pomocy w jego obsłudze w sposób dostępny.",
+      "Analiza w oparciu o ustawę i normę EN 301 549 (Rozdział 12.2):",
+      "1. Informacja o funkcjach dostępności (Klauzula 12.2.2): Usługi wsparcia muszą posiadać wiedzę i udzielać informacji o tym, jak produkt spełnia wymogi dostępności. Przykład: Konsultant infolinii powinien móc udzielić informacji czy aplikacja mobilna wspiera osoby niewidome.",
+      "2. Efektywna komunikacja (Klauzula 12.2.3): Usługi wsparcia muszą zaspokajać potrzeby komunikacyjne osób z niepełnosprawnościami, bezpośrednio lub przez punkt pośredni (np. tłumacz online). Oznacza to, że kanał wsparcia nie może być wyłącznie głosowy (tylko telefon) – musi istnieć alternatywa (czat, e-mail, wideo z PJM).",
+      "3. Usługi przekazu (Art. 22 pkt 3 i Art. 13): Jeśli usługa wsparcia polega na zapewnieniu łączności (np. usługa tłumacza migowego online dla klienta usługi bankowości detalicznej), musi ona spełniać techniczne wymogi Art. 13 ustawy (przekazywanie komunikacji głosowej, tekstowej w czasie rzeczywistym i wideo) oraz normy EN 301 549 (Rozdział 13). Kluczowa jest tu jakość i synchronizacja przekazu, aby konwersja (np. mowy na tekst) była zrozumiała.",
+      "4. Dostępność dokumentacji (Klauzula 12.2.4): Dokumentacja przekazywana przez wsparcie techniczne (np. instrukcje wysyłane mailem przez serwisanta, materiały szkoleniowe na kursie) musi być dostępna cyfrowo zgodnie z Art. 12 (czyli spełniać WCAG/PDF UA)."
     ],
-    "evaluation": "Inspekcja i testy",
+    "evaluation": "Inspekcja i testy funkcjonalne",
     "checklist": [
-      "Weryfikacja wiedzy (Zgodność z 12.2.2 EN 301 549)\n- **Działanie:** Skontaktuj się z pomocą techniczną lub infolinią.\n- **Pytanie:** Zadaj pytanie specyficzne dla dostępności, np. \"Jak włączyć napisy w państwa materiale wideo?\" lub \"Które bankomaty w mojej okolicy mają gniazdo słuchawkowe dla niewidomych?\".\n- **Sprawdzenie:** Czy pracownik posiada dostęp do bazy wiedzy o dostępności produktu i potrafi udzielić informacji, czy też twierdzi, że \"nie posiada takich danych\"?",
-      "Weryfikacja kanałów komunikacji (Zgodność z 12.2.3 EN 301 549)\n- **Działanie:** Sprawdź stronę \"Kontakt\" lub \"Pomoc\".\n- **Sprawdzenie:** Czy dla osoby głuchej (niekorzystającej z telefonu głosowego) dostępna jest alternatywna, dwukierunkowa metoda kontaktu w czasie rzeczywistym (np. czat, dedykowany numer SMS, wideoczat)?\n    - *Uwaga:* Formularz kontaktowy (e-mail) często nie jest wystarczający w sytuacjach awaryjnych (np. zastrzeżenie karty), gdzie wymagana jest \"efektywna komunikacja\" tu i teraz.",
-      "Weryfikacja usług szkoleniowych (Jeśli dotyczy)\n- **Działanie:** Jeśli firma oferuje szkolenia z obsługi produktu (stacjonarne lub online).\n- **Sprawdzenie:**\n    - Czy materiały szkoleniowe (prezentacje, PDF) są dostępne cyfrowo?\n    - Czy filmy instruktażowe posiadają napisy/audiodeskrypcję?\n    - Czy trenerzy są przygotowani do obsługi osoby z niepełnosprawnością (np. czy wiedzą, jak udostępnić ekran osobie słabowidzącej)?",
-      "Usługi przekazu (Zgodność z Art. 13)\n*Dotyczy tylko podmiotów świadczących usługi konwersji (np. tłumacze online).*\n- **Sprawdzenie:** Czy usługa zapewnia synchronizację obrazu i dźwięku (w przypadku tłumacza PJM) oraz czy tekst w czasie rzeczywistym (jeśli jest oferowany) pojawia się płynnie, umożliwiając swobodną rozmowę? (Zgodnie z wymaganiami technicznymi dla RTT i Total Conversation)."
+      {
+        "type": "test",
+        "title": "Weryfikacja wiedzy personelu (Zgodność z 12.2.2 EN 301 549)",
+        "description": "**Działanie:** Skontaktuj się z pomocą techniczną lub infolinią i zadaj pytanie specyficzne dla dostępności (np. \"Jak włączyć napisy w państwa materiale wideo?\" lub \"Które terminale samoobsługowe w mojej okolicy mają gniazdo słuchawkowe dla niewidomych?\").\n**Sprawdzenie:** Czy pracownik wsparcia posiada dostęp do bazy wiedzy o dostępności produktu i potrafi merytorycznie udzielić informacji?\n**Interpretacja:** Oświadczenie personelu o nieposiadaniu takich danych lub niemożność udzielenia informacji o funkcjach dostępności skutkuje wynikiem NEGATYWNYM."
+      },
+      {
+        "type": "test",
+        "title": "Weryfikacja kanałów komunikacji (Zgodność z 12.2.3 EN 301 549)",
+        "description": "**Działanie:** Przeanalizuj mechanizmy udostępnione na stronie w sekcji \"Kontakt\" lub \"Pomoc\".\n**Sprawdzenie:** Czy dla osoby niekorzystającej z telefonu głosowego (np. głuchej) dostępna jest alternatywna, dwukierunkowa metoda kontaktu w czasie rzeczywistym (np. czat, dedykowany numer SMS, wideoczat z tłumaczem PJM)?\n**Interpretacja:** Poleganie wyłącznie na tradycyjnej infolinii głosowej lub formularzu asynchronicznym (e-mail) w sytuacjach wymagających efektywnej komunikacji \"tu i teraz\" (np. zastrzeżenie karty w systemie bankowości detalicznej) skutkuje wynikiem NEGATYWNYM."
+      },
+      {
+        "type": "test",
+        "title": "Weryfikacja dostępności usług szkoleniowych",
+        "description": "**Warunek:** Podmiot udostępnia usługi szkoleniowe z obsługi produktu (stacjonarne lub online).\n**Działanie:** Dokonaj przeglądu dystrybuowanych w ramach szkolenia materiałów dydaktycznych (np. prezentacji, instrukcji).\n**Sprawdzenie:** Należy zweryfikować, czy:\n1. Dokumenty elektroniczne posiadają warstwę tekstową i strukturę umożliwiającą odczyt przez technologie wspomagające (nie są płaskimi skanami obrazkowymi).\n2. Filmy instruktażowe odtwarzane w ramach kursu posiadają napisy dla niesłyszących oraz audiodeskrypcję (lub transkrypcję).\n**Interpretacja:** Dystrybucja materiałów w postaci niedostępnych obrazów tekstu lub emisja filmów bez zsynchronizowanych napisów stanowi naruszenie wymogów dostępności cyfrowej i skutkuje wynikiem NEGATYWNYM."
+      },
+      {
+        "type": "test",
+        "title": "Weryfikacja usług przekazu (Zgodność z Art. 13)",
+        "description": "**Warunek:** Podmiot gospodarczy świadczy w ramach wsparcia usługi konwersji lub przekazu (np. tłumacz PJM online w ramach usługi bankowości detalicznej).\n**Działanie:** Nawiąż testowe połączenie z wykorzystaniem usługi przekazu. Do pomiaru opóźnień tekstu wykorzystaj analizator ruchu sieciowego. Do analizy wideo wykorzystaj szybkie ruchy dłońmi symulujące komunikację w PJM.\n**Sprawdzenie:** Należy zweryfikować fizyczne parametry transmisji:\n1. Czy infrastruktura wideo zapewnia płynność na poziomie co najmniej 20 klatek na sekundę (brak klatkowania i rozmycia rąk podczas szybkich ruchów) oraz pełną synchronizację obrazu z dźwiękiem (opóźnienie do 100 ms)?\n2. Czy wprowadzany tekst w czasie rzeczywistym (RTT) jest przekazywany do sieci w czasie nie dłuższym niż 500 ms od momentu rejestracji na urządzeniu nadawczym (pomiar analizatorem sieciowym, bez użycia stopera ręcznego)?\n**Interpretacja:** Desynchronizacja obrazu utrudniająca czytanie z ruchu warg, niska przepustowość powodująca rwanie obrazu przy szybkich gestach lub blokowe przesyłanie tekstu zamiast transmisji w czasie rzeczywistym z opóźnieniem powyżej 500 ms skutkuje wynikiem NEGATYWNYM."
+      }
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.9.01.01": {
     "id": "U.9.01.01",
@@ -1624,7 +1692,8 @@
       "Zakres \"Mowy\" (Pokrycie interfejsu)\n- **Sprawdzenie:** Czy synteza mowy obejmuje cały interfejs niezbędny do obsługi? Jeśli terminal posiada ekran dotykowy, czy dotknięcie elementu powoduje jego odczytanie? (Brak odczytu dla któregokolwiek elementu sterującego narusza ten wymóg)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.9.01.02.a": {
     "id": "U.9.01.02.a",
@@ -1643,7 +1712,8 @@
       "Regulacja głośności w słuchawkach\n- **Działanie:** Przy podłączonych słuchawkach spróbuj zmienić głośność za pomocą interfejsu (przycisków fizycznych lub ekranowych).\n- **Sprawdzenie:** Czy zmiana głośności wpływa na poziom dźwięku w słuchawkach?\n- **Wymóg:** Użytkownik musi mieć możliwość niezależnej regulacji głośności w trybie prywatnym."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.9.01.02.b": {
     "id": "U.9.01.02.b",
@@ -1662,7 +1732,8 @@
       "Weryfikacja dostępności bez logowania\n- **Sprawdzenie:** Czy funkcje dostępności działają **przed** włożeniem karty płatniczej lub zalogowaniem się? Użytkownik musi mieć wsparcie (np. głosowe) już na etapie ekranu powitalnego, aby wiedzieć, gdzie włożyć kartę lub jak rozpocząć transakcję."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.9.02.00": {
     "id": "U.9.02.00",
@@ -1681,7 +1752,8 @@
       "Weryfikacja klawisza \"5\"\n- **Działanie:** Znajdź dotykiem klawiaturę numeryczną.\n- **Sprawdzenie:** Czy na klawiszu z cyfrą \"5\" znajduje się wyraźna, wypukła kropka lub kreska? Brak tego znacznika na standardowej klawiaturze numerycznej (np. PIN padzie) jest niezgodnością z normą."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.9.03.00": {
     "id": "U.9.03.00",
@@ -1700,7 +1772,8 @@
       "Metoda interakcji**\n-   **Sprawdzenie:** Czy wydłużenie czasu wymaga skomplikowanych gestów? Powinno być możliwe za pomocą prostego naciśnięcia fizycznego klawisza lub dotknięcia wyraźnego pola na ekranie (zgodnie z wymogami motorycznymi)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.9.04.00": {
     "id": "U.9.04.00",
@@ -1719,7 +1792,8 @@
       "Weryfikacja zakłóceń**\n- **Działanie:** Przeprowadź próbę odsłuchową za pomocą aparatu słuchowego ustawionego w tryb \"T\" lub testera.\n- **Sprawdzenie:** Czy oprócz pożądanego sygnału audio słychać głośne buczenie, trzaski lub pisk pochodzący z elektroniki terminala (np. ekranu)? Czystość sygnału jest kluczowa dla kompatybilności."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.10.01.00": {
     "id": "U.10.01.00",
@@ -1738,7 +1812,8 @@
       "Prywatność i Głośność\n- **Działanie:** Podłącz słuchawki (przewodowe lub Bluetooth).\n- **Sprawdzenie:**\n    - Czy dźwięk syntezatora został przekierowany do słuchawek?\n    - Czy głośnik zewnętrzny został wyciszony? (Ochrona prywatności czytanej treści).\n    - Czy można regulować głośność i szybkość czytania?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.11.00.01.a-01": {
     "id": "U.11.00.01.a-01",
@@ -1757,7 +1832,8 @@
       "Interoperacyjność\n- **Sprawdzenie:** Czy RTT działa nie tylko wewnątrz własnego ekosystemu producenta (np. tylko między dwoma telefonami tej samej marki), ale korzysta ze standardów umożliwiających połączenie z innymi sieciami (np. po protokole SIP/IMS)?."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.11.00.01.a-02": {
     "id": "U.11.00.01.a-02",
@@ -1777,7 +1853,8 @@
       "Identyfikacja mówcy w wideo\n- **Sprawdzenie:** Czy w przypadku konferencji wieloosobowej urządzenie wskazuje wizualnie, która osoba (okno wideo) aktualnie nadaje dźwięk lub \"miga\"? Jest to niezbędne dla orientacji osoby niesłyszącej w dyskusji."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.11.00.01.b-01": {
     "id": "U.11.00.01.b-01",
@@ -1795,7 +1872,8 @@
       "Weryfikacja jakości dźwięku i braku zakłóceń\n- **Działanie:** Nawiąż połączenie głosowe przy użyciu podłączonego bezprzewodowo zestawu.\n- **Sprawdzenie:**\n    - Czy dźwięk w narzędziu wspomagającym jest czysty i zrozumiały?\n    - Czy występują istotne opóźnienia (latencja), które utrudniałyby prowadzenie rozmowy (desynchronizacja ruchu warg z dźwiękiem)?\n    - Czy występują zakłócenia elektromagnetyczne (buczenie, piski) wynikające z pracy anteny urządzenia? (Wymóg ten jest ściśle powiązany z *lit. c* tego samego artykułu ustawy, mówiącym o unikaniu zakłóceń)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.11.00.01.c-01": {
     "id": "U.11.00.01.c-01",
@@ -1815,7 +1893,8 @@
       "Mechanizmy redukcji zakłóceń (Oprogramowanie)**\n- **Działanie:** Sprawdź ustawienia dostępności w menu urządzenia.\n- **Sprawdzenie:** Czy istnieje opcja „Tryb aparatu słuchowego” (Hearing Aid Mode)?\n    - Włączenie tej opcji często zmienia parametry pracy nadajnika radiowego lub charakterystykę audio, aby zminimalizować interferencje. Obecność i skuteczność tej funkcji potwierdza spełnienie wymogu unikania zakłóceń."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.11.00.02": {
     "id": "U.11.00.02",
@@ -1836,7 +1915,8 @@
       "Współpraca z narzędziami wspomagającymi\n- **Sprawdzenie:** Czy menu wyboru udogodnień (napisów/języka) jest odczytywane przez wbudowany w urządzenie czytnik ekranu (Voice Guide/TalkBack itp.)? Jest to niezbędne, aby osoba niewidoma mogła samodzielnie uruchomić audiodeskrypcję."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.01": {
     "id": "U.12.01",
@@ -1853,7 +1933,8 @@
       "Analiza wyjątków (Data wdrożenia)\nJeśli produkt nie spełnia wymagań, sprawdź datę jego instalacji/uruchomienia.\n*   Jeśli terminal zainstalowano przed 28.06.2025 – sprawdź, czy mieści się w okresie ochronnym (do 20 lat użyteczności) zgodnie z art. 85 ust. 3."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.01.a": {
     "id": "U.12.02.01.a",
@@ -1872,7 +1953,8 @@
       "Weryfikacja kompletności treści\n- **Sprawdzenie:** Czy w udostępnianych materiałach (niezależnie od formatu) znajdują się wyraźne informacje o:\n    - Funkcjach dostępności sprzętu (np. \"To urządzenie wspiera technologię zamiany treści tekstowych na głos\")?\n    - Interoperacyjności (np. \"Możesz podłączyć własne słuchawki\")?\n    - *Błąd:* Brak informacji o tym, że urządzenie jest dostępne, jest naruszeniem tego przepisu, nawet jeśli samo urządzenie jest technicznie doskonałe. Użytkownik musi wiedzieć o dostępności, aby z niej skorzystać."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.01.b": {
     "id": "U.12.02.01.b",
@@ -1889,7 +1971,8 @@
       "Analiza prostoty i struktury (Inspekcja ekspercka)\n- **Działanie:** Przeanalizuj instrukcję obsługi terminala lub opis usługi.\n- **Sprawdzenie:**\n    - Czy zdania są krótkie i niezłożone wielokrotnie?\n    - Czy terminy specjalistyczne (np. „autoryzacja”, „uwierzytelnianie dwuskładnikowe”) są wyjaśnione w tekście lub słowniczku?\n    - Czy zastosowano podział na akapity, listy punktowane i nagłówki ułatwiające skanowanie tekstu?\n    - Czy instrukcje są sformułowane w trybie rozkazującym lub bezosobowym w sposób jednoznaczny (np. „Włóż kartę”, a nie „Zaleca się umieszczenie instrumentu płatniczego w odpowiednim slotcie”)?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.01.c": {
     "id": "U.12.02.01.c",
@@ -1908,7 +1991,8 @@
       "Dostępność wielokanałowa**\n- **Sprawdzenie:** Czy ten sam plik tekstowy, bez modyfikacji dokonanych przez użytkownika, może być jednocześnie wyświetlony na ekranie i odczytany głosowo? (Wymóg ten jest spełniony domyślnie przez poprawny dokument cyfrowy)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.01.d": {
     "id": "U.12.02.01.d",
@@ -1926,7 +2010,8 @@
       "Krój czcionki (Inspekcja ekspercka)**\n-   **Sprawdzenie:** Czy zastosowano czcionkę bezszeryfową (np. Arial, Verdana, Tahoma) lub inną o prostym kroju? Unikanie czcionek ozdobnych, kursywy i pisania całych zdań wielkimi literami (all-caps) jest kluczowe dla „odpowiedniego kroju” wymaganego ustawą."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.01.e": {
     "id": "U.12.02.01.e",
@@ -1946,7 +2031,8 @@
       "Testy z użytkownikami (Weryfikacja funkcjonalna)\n- **Działanie:** Przeprowadź test z osobą niewidomą (korzystającą z czytnika ekranu).\n- **Cel:** Potwierdzenie, czy alternatywy tekstowe dla skomplikowanych wykresów lub schematów (np. schemat procesu reklamacji) są zrozumiałe i pozwalają na zbudowanie w wyobraźni poprawnego modelu informacji."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.02": {
     "id": "U.12.02.02",
@@ -1965,7 +2051,8 @@
       "Kompatybilność (Kod i Parsowanie)\n- **Działanie:** Użyj walidatora kodu (np. W3C Validator) oraz czytnika ekranu (NVDA/VoiceOver).\n- **Sprawdzenie:**\n    - Czy kod nie zawiera błędów składniowych (np. niezamknięte tagi, zduplikowane ID), które mogą zmylić technologię asystującą?\n    - Czy nazwy, role i wartości elementów interfejsu (np. przycisków, zakładek) są poprawnie komunikowane przez czytnik ekranu?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.12.02.03": {
     "id": "U.12.02.03",
@@ -1985,7 +2072,8 @@
       "Wynik końcowy (Raport):\nDokumentacja musi wskazywać konkretne niezgodności z kryteriami sukcesu WCAG (np. \"Niezgodność z 1.4.3 - Kontrast\"), określać ich priorytet (krytyczny/wysoki/średni) oraz zawierać rekomendacje naprawcze dla programistów."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.13": {
     "id": "U.13",
@@ -2004,7 +2092,8 @@
       "Jakość wideo dla języka migowego\n- **Sprawdzenie:** Czy usługa zapewnia przepustowość wystarczającą do utrzymania rozdzielczości min. QVGA (320x240) i płynności min. 20 klatek na sekundę?\n- **Interpretacja:** Jeśli usługa agresywnie kompresuje obraz przy słabszym zasięgu, czyniąc język migowy nieczytelnym (rozmycie dłoni), usługa nie spełnia wymogu obsługi \"pełnej konwersacji\" w rozumieniu ustawy."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.14.00.01": {
     "id": "U.14.00.01",
@@ -2025,7 +2114,8 @@
       "Test z technologią asystującą (TTS)\n- **Działanie:** Włącz funkcję lektora (Screen Reader) w urządzeniu (dekoderze/TV).\n- **Sprawdzenie:** Przejdź przez siatkę programów. Czy syntezator odczytuje poprawnie: Tytuł, Godzinę rozpoczęcia, Kanał? Czy zapowiedzi głosowe nie nakładają się na dźwięk bieżącego programu w sposób uniemożliwiający zrozumienie (audio ducking)?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.14.00.02": {
     "id": "U.14.00.02",
@@ -2045,7 +2135,8 @@
       "Weryfikacja personalizacji (Jakość wyświetlania)\n- **Działanie:** Sprawdź ustawienia wyświetlania.\n- **Sprawdzenie:** Czy usługa umożliwia zmianę wielkości czcionki napisów? Jest to kluczowe dla „właściwego wyświetlania” dla osób słabowidzących. Brak możliwości powiększenia napisów w usłudze VOD/TV jest niezgodnością z normą."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.01.01.a": {
     "id": "U.15.01.01.a",
@@ -2066,7 +2157,8 @@
       "Alternatywne kanały kontaktu**\n*Dotyczy procedur asysty.*\n- **Sprawdzenie:** Czy w przypadku braku pewności co do stanu pojazdu, usługodawca podaje bezpośredni kontakt (telefon/czat) w celu weryfikacji dostępności konkretnego kursu dla osoby ze szczególnymi potrzebami?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.01.01.b": {
     "id": "U.15.01.01.b",
@@ -2086,7 +2178,8 @@
       "Dostępność cyfrowa opisu\n- **Sprawdzenie:** Czy mapa dworca lub schemat otoczenia (otaczająca infrastruktura) są dostępne cyfrowo?\n    -   Jeśli jest to grafika (mapa), czy posiada opis alternatywny lub wersję tekstową opisującą drogę dojścia? (Zgodnie z Art. 12 ust. 2 pkt 1 lit. e)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.01.02": {
     "id": "U.15.01.02",
@@ -2107,7 +2200,8 @@
       "Dostępność usług wsparcia (Zgodność z Art. 22 i EN 301 549 Rozdz. 12.2)\n- **Sprawdzenie:** Jeśli przewoźnik udostępnia infolinię do zamawiania asysty, czy zapewnia ona alternatywne metody komunikacji dla osób, które nie mogą mówić lub słyszeć (np. czat tekstowy, obsługa SMS, wideo z tłumaczem PJM)?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.01.03": {
     "id": "U.15.01.03",
@@ -2128,7 +2222,8 @@
       "Dostępność samej informacji**\n- **Sprawdzenie:** Czy instrukcja obsługi biletomatu (np. umieszczona w sieci jako PDF lub na obudowie urządzenia) spełnia wymogi Art. 12 ust. 2 pkt 1 (wielokanałowość, zrozumiałość, kontrast)? Informacja o systemie sprzedaży musi być dostępna dla osoby, która nie może jej zobaczyć."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.01.04": {
     "id": "U.15.01.04",
@@ -2148,7 +2243,8 @@
       "Alternatywne kanały wsparcia\n- **Sprawdzenie:** Czy w przypadku awarii systemów cyfrowych wskazano kontakt (np. numer infolinii lub punkt obsługi), gdzie pasażer ze szczególnymi potrzebami może uzyskać te informacje werbalnie?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.02.01": {
     "id": "U.15.02.01",
@@ -2169,7 +2265,8 @@
       "Weryfikacja informacji o psach asystujących\n- **Działanie:** Sprawdź regulamin lub zakładkę \"Dostępność\".\n- **Sprawdzenie:** Czy znajduje się tam wyraźna informacja o prawie wstępu z psem asystującym? (Jest to kluczowe dla upewnienia pasażera, że nie zostanie wyproszony przez ochronę)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.15.02.02": {
     "id": "U.15.02.02",
@@ -2189,7 +2286,8 @@
       "Dostępność cyfrowa informacji\n- **Sprawdzenie:** Czy dokument zawierający te informacje (np. Plan Ewakuacji, Opis Dworca) jest dostępny cyfrowo? (zgodnie z Art. 12 ust. 2 i Art. 15 ust. 1). Częstym błędem jest publikowanie planów ewakuacyjnych jako skanów (obrazków) bez opisu tekstowego, co czyni informację o bezpieczeństwie niedostępną dla osób niewidomych."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.32.02.01.a": {
     "id": "U.32.02.01.a",
@@ -2209,7 +2307,8 @@
     ],
     "notes": [],
     "form": {},
-    "evaluation": "Inspekcja techniczna dokumentu"
+    "evaluation": "Inspekcja techniczna dokumentu",
+    "category": "service_provider_obligations"
   },
   "U.32.02.01.b": {
     "id": "U.32.02.01.b",
@@ -2227,7 +2326,8 @@
     ],
     "notes": [],
     "form": {},
-    "evaluation": "Analiza dokumentów"
+    "evaluation": "Analiza dokumentów",
+    "category": "service_provider_obligations"
   },
   "U.32.02.01.c": {
     "id": "U.32.02.01.c",
@@ -2245,7 +2345,8 @@
     ],
     "notes": [],
     "form": {},
-    "evaluation": "Sprawdzenie zawartości merytorycznej oraz technicznej"
+    "evaluation": "Sprawdzenie zawartości merytorycznej oraz technicznej",
+    "category": "service_provider_obligations"
   },
   "U.32.02.02": {
     "id": "U.32.02.02",
@@ -2261,7 +2362,8 @@
     ],
     "notes": [],
     "form": {},
-    "evaluation": "Ocena treści oraz formy dokumentacji"
+    "evaluation": "Ocena treści oraz formy dokumentacji",
+    "category": "service_provider_obligations"
   },
   "U.33.01.01": {
     "id": "U.33.01.01",
@@ -2279,7 +2381,8 @@
     ],
     "notes": [],
     "form": {},
-    "evaluation": "Analiza treści"
+    "evaluation": "Analiza treści",
+    "category": "service_provider_obligations"
   },
   "U.33.02": {
     "id": "U.33.02",
@@ -2298,7 +2401,8 @@
     ],
     "notes": [],
     "form": {},
-    "evaluation": "Szczegółowa analiza"
+    "evaluation": "Szczegółowa analiza",
+    "category": "service_provider_obligations"
   },
   "U.16.00.01": {
     "id": "U.16.00.01",
@@ -2318,7 +2422,8 @@
       "Weryfikacja tokenów sprzętowych/mobilnych (Kompatybilność)**\n*Dotyczy klauzul 11.5.2 (Współpraca z technologią wspomagającą).*\n- **Sprawdzenie:** Jeśli do autoryzacji wymagane jest przepisanie kodu z aplikacji mobilnej (tokena), czy ten kod jest odczytywany przez czytnik ekranu (TalkBack/VoiceOver) w telefonie? Jeśli aplikacja tokena jest \"niema\", usługa płatnicza jest niedostępna."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.16.00.02": {
     "id": "U.16.00.02",
@@ -2338,7 +2443,8 @@
       "Dostępność cyfrowa wersji obcojęzycznych\n*Dotyczy Art. 12 ust. 2 pkt 1 lit. c (formaty tekstowe).*\n- **Sprawdzenie:** Czy dokumenty w języku obcym (np. PDF w j. angielskim) są dostępne cyfrowo (otagowane, z warstwą tekstową), tak jak ich polskie odpowiedniki? Częstym błędem jest dbanie o dostępność wersji polskich, a udostępnianie wersji obcojęzycznych jako niedostępnych skanów."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.17.00.01": {
     "id": "U.17.00.01",
@@ -2359,7 +2465,8 @@
       "Dostępność kontrolek synchronizacji\n- **Sprawdzenie:** Czy funkcje sterujące synchronizacją (włącz/wyłącz podświetlenie, pauza, prędkość czytania) są dostępne dla technologii asystujących (np. czy przyciski mają etykiety tekstowe dla czytnika ekranu)?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.17.00.02": {
     "id": "U.17.00.02",
@@ -2379,7 +2486,8 @@
       "Weryfikacja elementów interaktywnych (Interakcja)**\n*Dotyczy klauzuli 10.4.1.2.*\n- **Działanie:** Jeśli e-book zawiera testy, formularze lub aktywne przypisy.\n- **Sprawdzenie:** Użyj czytnika ekranu. Czy po najechaniu na element interaktywny słyszysz jego etykietę i rolę (np. \"Przycisk Sprawdź odpowiedź\")?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.17.00.03": {
     "id": "U.17.00.03",
@@ -2400,7 +2508,8 @@
       "**Uwaga dotycząca metadanych:** Choć weryfikacja metadanych o dostępności (np.`schema:accessMode`) jest technicznie możliwa na tym etapie, formalnie jest ona przedmiotem **Art. 17 ust. 6**. W ramach ust. 3 weryfikujemy metadane strukturalne (Tytuł, Język)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.17.00.04": {
     "id": "U.17.00.04",
@@ -2420,7 +2529,8 @@
       "Metadane i dokumentacja (Wsparcie informacyjne)**\n*Dotyczy Art. 17 ust. 6 oraz dobrej praktyki.*\n- **Sprawdzenie:** Czy metadane pliku lub opis produktu informują o dostępnych trybach prezentacji (np. \"Layout: reflowable\" vs \"fixed-layout\")? Użytkownik powinien wiedzieć przed zakupem, czy książka obsługuje dynamiczny układ."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.17.00.05": {
     "id": "U.17.00.05",
@@ -2440,7 +2550,8 @@
       "Brak utraty danych**\n- **Sprawdzenie:** Czy po przełączeniu na „tryb nocny” lub powiększeniu tekstu, elementy nawigacyjne (spis treści, zakładki) nadal działają poprawnie i prowadzą do właściwych miejsc w książce?"
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.17.00.06": {
     "id": "U.17.00.06",
@@ -2460,7 +2571,8 @@
       "Czytelność dla człowieka (Podsumowanie)**\n- **Sprawdzenie:** Czy pole`accessibilitySummary` (lub jego odpowiednik w opisie produktu na stronie sklepu) zawiera jasną informację o poziomie dostępności, zrozumiałą dla użytkownika nietechnicznego? (np. informacja o braku transkrypcji dla materiałów audio)."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.18.00.01": {
     "id": "U.18.00.01",
@@ -2481,7 +2593,8 @@
       "Metadane (Opcjonalnie - Dobra praktyka)\n- **Sprawdzenie:** Czy sklep wykorzystuje metadane (np. schema.org) do oznaczania produktów dostępnych, co pozwalałoby na filtrowanie wyników wyszukiwania (np. „Pokaż tylko telefony z dużą czcionką”)? Chociaż ustawa wprost tego nie nakazuje w Art. 18 (jak robi to w Art. 17 dla e-booków), norma wskazuje to jako metodę dostarczania informacji o produkcie."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "U.18.00.02": {
     "id": "U.18.00.02",
@@ -2502,7 +2615,8 @@
       "Komunikaty błędów w formularzach\n- **Działanie:** Wpisz błędne dane w formularzu płatności (np. niepoprawny format karty kredytowej).\n- **Sprawdzenie:** Czy komunikat o błędzie jest dostępny tekstowo (a nie tylko przez zmianę koloru ramki na czerwony – zgodnie z 9.1.4.1) i czy system sugeruje, jak poprawić błąd? [4, 14]."
     ],
     "notes": [],
-    "form": {}
+    "form": {},
+    "category": "accessibility_requirements"
   },
   "C.5.1.2.2": {
     "id": "C.5.1.2.2",
