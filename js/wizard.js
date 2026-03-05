@@ -1297,7 +1297,7 @@ function generateDescriptiveSummary(isInitial = false) {
                         ${showFailedTests && item.failedTests && item.failedTests.length > 0 ? `
                         ${(() => {
                             const failed = item.failedTests.filter(t => t.status === 'fail');
-                            const passed = item.failedTests.filter(t => t.status === 'pass');
+                            const passed = item.failedTests.filter(t => t.status === 'pass' && t.comment);
                             const na = item.failedTests.filter(t => t.status === 'na');
                             
                             let html = '';
@@ -1609,6 +1609,12 @@ async function downloadSummaryODT() {
          
          // Podział na dwie kategorie artykułów
          const toItems = list => list.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests }));
+         // Dla spełnionych kryteriów - tylko testy z komentarzem
+         const toItemsWithCommentedTests = list => list.map(f => ({ 
+             label: f.label, 
+             note: f.comment, 
+             tests: f.failedTests.filter(t => t.comment) 
+         }));
          const fc = cat => summaryData.failures.filter(f => f.category === cat);
          const pc = cat => summaryData.passed.filter(f => f.category === cat);
          const nc = cat => summaryData.inapplicable.filter(f => f.category === cat);
@@ -1623,7 +1629,7 @@ async function downloadSummaryODT() {
              }
              if (cP.length > 0) {
                  customSections.push({ type: 'title', level: 3, text: sections.passed_label || 'Kryteria ocenione jako spełnione:' });
-                 customSections.push({ type: 'list', items: toItems(cP) });
+                 customSections.push({ type: 'list', items: toItemsWithCommentedTests(cP) });
              }
              if (cN.length > 0) {
                  customSections.push({ type: 'title', level: 3, text: sections.inapplicable_label || 'Kryteria niemające zastosowania:' });
@@ -1636,12 +1642,12 @@ async function downloadSummaryODT() {
          };
 
          pushCategorySection(
-             'Wymagania dostępności (Art. 7–22)',
+             'Wymagania dostępności',
              fc('accessibility_requirements'), pc('accessibility_requirements'),
              nc('accessibility_requirements'), uc('accessibility_requirements')
          );
          pushCategorySection(
-             'Obowiązki usługodawcy (Art. 23, 24, 26, 32, 33)',
+             'Obowiązki producenta/usługodawcy',
              fc('service_provider_obligations'), pc('service_provider_obligations'),
              nc('service_provider_obligations'), uc('service_provider_obligations')
          );
@@ -1844,7 +1850,7 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
                 // Testy jednostkowe - podzielone na grupy wg statusu
                 if (item.failedTests && item.failedTests.length > 0) {
                     const failed = item.failedTests.filter(t => t.status === 'fail');
-                    const passed = item.failedTests.filter(t => t.status === 'pass');
+                    const passed = item.failedTests.filter(t => t.status === 'pass' && t.comment);
                     const na = item.failedTests.filter(t => t.status === 'na');
                     
                     // Niespełnione
@@ -1904,33 +1910,49 @@ async function downloadWizardSpreadsheet(includeSummary = false) {
 
         const sections = config.sections || {};
 
-        // Niezgodności
-        const failuresLabel = sections.failures_label || "Wykryte niezgodności:";
-        if (summaryData.failures.length > 0) {
-            addSummaryTitle(failuresLabel, 12);
-            addListItems(summaryData.failures);
-        }
+        // Podział na dwie kategorie artykułów
+        const filterByCat = (list, cat) => list.filter(item => item.category === cat);
 
-        // Zgodności
-        const passedLabel = sections.passed_label || "Kryteria ocenione jako spełnione:";
-        if (summaryData.passed.length > 0) {
-            addSummaryTitle(passedLabel, 12);
-            addListItems(summaryData.passed);
-        }
+        const addCategorySection = (catTitle, cF, cP, cN, cU) => {
+            if (cF.length + cP.length + cN.length + cU.length === 0) return;
+            
+            addSummaryTitle(catTitle, 12);
+            
+            if (cF.length > 0) {
+                addSummaryTitle(sections.failures_label || 'Wykryte niezgodności:', 11);
+                addListItems(cF);
+            }
+            if (cP.length > 0) {
+                addSummaryTitle(sections.passed_label || 'Kryteria ocenione jako spełnione:', 11);
+                addListItems(cP);
+            }
+            if (cN.length > 0) {
+                addSummaryTitle(sections.inapplicable_label || 'Kryteria niemające zastosowania:', 11);
+                addListItems(cN);
+            }
+            if (cU.length > 0) {
+                addSummaryTitle(sections.untested_label || 'Kryteria niepoddane ocenie:', 11);
+                addListItems(cU);
+            }
+        };
 
-        // Nie dotyczy
-        const naLabel = sections.inapplicable_label || "Kryteria niemające zastosowania:";
-        if (summaryData.inapplicable.length > 0) {
-            addSummaryTitle(naLabel, 12);
-            addListItems(summaryData.inapplicable);
-        }
-        
-        // Kryteria nieocenione
-        const untestedLabel = sections.untested_label || "Kryteria niepoddane ocenie:";
-        if (summaryData.untested.length > 0) {
-            addSummaryTitle(untestedLabel, 12);
-            addListItems(summaryData.untested);
-        }
+        // Wymagania dostępności
+        addCategorySection(
+            'Wymagania dostępności',
+            filterByCat(summaryData.failures, 'accessibility_requirements'),
+            filterByCat(summaryData.passed, 'accessibility_requirements'),
+            filterByCat(summaryData.inapplicable, 'accessibility_requirements'),
+            filterByCat(summaryData.untested, 'accessibility_requirements')
+        );
+
+        // Obowiązki producenta/usługodawcy
+        addCategorySection(
+            'Obowiązki producenta/usługodawcy',
+            filterByCat(summaryData.failures, 'service_provider_obligations'),
+            filterByCat(summaryData.passed, 'service_provider_obligations'),
+            filterByCat(summaryData.inapplicable, 'service_provider_obligations'),
+            filterByCat(summaryData.untested, 'service_provider_obligations')
+        );
 
         // Wnioski
         if (sections.conclusions_label) {
