@@ -205,8 +205,8 @@ async function init() {
                 if (!isArt19A && isArt19B) return -1; // A before B
                 
                 // First try to sort by category (using any article numbers found in them)
-                const artA = (a.category || "").match(/Art\.\s*(\d+)/);
-                const artB = (b.category || "").match(/Art\.\s*(\d+)/);
+                const artA = (a.category || "").match(/Art\.?\s*(\d+)/);
+                const artB = (b.category || "").match(/Art\.?\s*(\d+)/);
                 
                 if (artA && artB) {
                     const numA = parseInt(artA[1], 10);
@@ -1114,10 +1114,18 @@ function getAssessmentSummaryData() {
             return null;
         }).filter(t => t !== null);
 
+        // Wyznacz kategorię na podstawie numeru artykułu z tekstu ("Art. 7 ust. ..." lub "Art 22 pkt ...")
+        const artMatch = article.match(/Art\.?\s*(\d+)/);
+        const artNum = artMatch ? parseInt(artMatch[1], 10) : 0;
+        let itemCategory = '';
+        if (artNum >= 7 && artNum <= 22) itemCategory = 'accessibility_requirements';
+        else if ([23, 24, 26, 32, 33].includes(artNum)) itemCategory = 'service_provider_obligations';
+
         // Obiekt pomocniczy dla linku i danych
         const itemData = { 
             label: fullLabel, 
             article: article,
+            category: itemCategory,
             requirement: requirementText,
             comment: comment,
             failedTests: allTests,
@@ -1291,14 +1299,6 @@ function generateDescriptiveSummary(isInitial = false) {
                             const failed = item.failedTests.filter(t => t.status === 'fail');
                             const passed = item.failedTests.filter(t => t.status === 'pass');
                             const na = item.failedTests.filter(t => t.status === 'na');
-                            const totalEvaluated = item.failedTests.length;
-                            
-                            // Proponowana ocena na bazie testów
-                            let proposalHtml = '<p class="summary-proposed-assessment"><strong>Proponowana ocena:</strong><br>';
-                            if (failed.length > 0) proposalHtml += `Niespełnione testy jednostkowe: ${failed.length}<br>`;
-                            if (passed.length > 0) proposalHtml += `Spełnione testy jednostkowe: ${passed.length}<br>`;
-                            if (na.length > 0) proposalHtml += `Wykluczone testy jednostkowe: ${na.length}<br>`;
-                            proposalHtml += `Oceniono ${totalEvaluated} testów jednostkowych</p>`;
                             
                             let html = '';
                             if (failed.length > 0) {
@@ -1319,35 +1319,46 @@ function generateDescriptiveSummary(isInitial = false) {
                                     ${na.map(t => `<li><strong>${t.title}</strong>${t.comment ? ` — ${t.comment}` : ''}</li>`).join('')}
                                 </ul>`;
                             }
-                            return proposalHtml + html;
+                            return html;
                         })()}` : ''}
                     </div>
                 </li>`).join('')}</ul>`;
         };
 
-        // Niezgodności
-        if (failures.length > 0) {
-            const label = sections.failures_label || 'Wykryte niezgodności:';
-            html += `<h3>${label}</h3>${renderLinkList(failures, true)}`;
-        }
-        
-        // Zgodności
-        if (passed.length > 0) {
-            const label = sections.passed_label || 'Kryteria ocenione jako spełnione:';
-            html += `<h3>${label}</h3>${renderLinkList(passed, true)}`;
-        }
+        // Podział na dwie kategorie artykułów
+        const filterByCat = (list, cat) => list.filter(item => item.category === cat);
 
-        // Nie dotyczy
-        if (inapplicable.length > 0) {
-            const label = sections.inapplicable_label || 'Kryteria niemające zastosowania:';
-            html += `<h3>${label}</h3>${renderLinkList(inapplicable, true)}`;
-        }
+        const renderCategorySection = (catTitle, catItems) => {
+            const { failures: cF, passed: cP, inapplicable: cN, untested: cU } = catItems;
+            if (cF.length + cP.length + cN.length + cU.length === 0) return '';
+            let catHtml = `<h3 class="summary-category-header">${catTitle}</h3>`;
+            if (cF.length > 0) {
+                catHtml += `<h4>${sections.failures_label || 'Wykryte niezgodności:'}</h4>${renderLinkList(cF, true)}`;
+            }
+            if (cP.length > 0) {
+                catHtml += `<h4>${sections.passed_label || 'Kryteria ocenione jako spełnione:'}</h4>${renderLinkList(cP, true)}`;
+            }
+            if (cN.length > 0) {
+                catHtml += `<h4>${sections.inapplicable_label || 'Kryteria niemające zastosowania:'}</h4>${renderLinkList(cN, true)}`;
+            }
+            if (cU.length > 0) {
+                catHtml += `<h4>${sections.untested_label || 'Kryteria niepoddane ocenie:'}</h4>${renderLinkList(cU, true)}`;
+            }
+            return catHtml;
+        };
 
-        // Nieocenione
-        if (untested.length > 0) {
-            const label = sections.untested_label || 'Kryteria niepoddane ocenie:';
-            html += `<h3>${label}</h3>${renderLinkList(untested, true)}`;
-        }
+        html += renderCategorySection('Wymagania dostępności (Art. 7–22)', {
+            failures: filterByCat(failures, 'accessibility_requirements'),
+            passed: filterByCat(passed, 'accessibility_requirements'),
+            inapplicable: filterByCat(inapplicable, 'accessibility_requirements'),
+            untested: filterByCat(untested, 'accessibility_requirements')
+        });
+        html += renderCategorySection('Obowiązki usługodawcy (Art. 23, 24, 26, 32, 33)', {
+            failures: filterByCat(failures, 'service_provider_obligations'),
+            passed: filterByCat(passed, 'service_provider_obligations'),
+            inapplicable: filterByCat(inapplicable, 'service_provider_obligations'),
+            untested: filterByCat(untested, 'service_provider_obligations')
+        });
 
         // Uwaga / Wnioski
         if (sections.note_label) {
@@ -1596,33 +1607,44 @@ async function downloadSummaryODT() {
          const config = summaryTemplates.compliance_summaries[templateKey];
          const sections = config.sections || {};
          
-         // Niezgodności
-         const failuresLabel = sections.failures_label || "Wykryte niezgodności:";
-         if (summaryData.failures.length > 0) {
-             customSections.push({ type: 'title', level: 3, text: failuresLabel });
-             customSections.push({ type: 'list', items: summaryData.failures.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
-         }
-         
-         // Zgodności
-         const passedLabel = sections.passed_label || "Kryteria ocenione jako spełnione:";
-         if (summaryData.passed.length > 0) {
-              customSections.push({ type: 'title', level: 3, text: passedLabel });
-              customSections.push({ type: 'list', items: summaryData.passed.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
-         }
-         
-         // Nie dotyczy
-         const naLabel = sections.inapplicable_label || "Kryteria niemające zastosowania:";
-         if (summaryData.inapplicable.length > 0) {
-              customSections.push({ type: 'title', level: 3, text: naLabel });
-              customSections.push({ type: 'list', items: summaryData.inapplicable.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
-         }
-         
-         // Nieocenione
-         const untestedLabel = sections.untested_label || "Kryteria niepoddane ocenie:";
-         if (summaryData.untested.length > 0) {
-             customSections.push({ type: 'title', level: 3, text: untestedLabel });
-             customSections.push({ type: 'list', items: summaryData.untested.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests })) });
-         }
+         // Podział na dwie kategorie artykułów
+         const toItems = list => list.map(f => ({ label: f.label, note: f.comment, tests: f.failedTests }));
+         const fc = cat => summaryData.failures.filter(f => f.category === cat);
+         const pc = cat => summaryData.passed.filter(f => f.category === cat);
+         const nc = cat => summaryData.inapplicable.filter(f => f.category === cat);
+         const uc = cat => summaryData.untested.filter(f => f.category === cat);
+
+         const pushCategorySection = (catTitle, cF, cP, cN, cU) => {
+             if (cF.length + cP.length + cN.length + cU.length === 0) return;
+             customSections.push({ type: 'title', level: 2, text: catTitle });
+             if (cF.length > 0) {
+                 customSections.push({ type: 'title', level: 3, text: sections.failures_label || 'Wykryte niezgodności:' });
+                 customSections.push({ type: 'list', items: toItems(cF) });
+             }
+             if (cP.length > 0) {
+                 customSections.push({ type: 'title', level: 3, text: sections.passed_label || 'Kryteria ocenione jako spełnione:' });
+                 customSections.push({ type: 'list', items: toItems(cP) });
+             }
+             if (cN.length > 0) {
+                 customSections.push({ type: 'title', level: 3, text: sections.inapplicable_label || 'Kryteria niemające zastosowania:' });
+                 customSections.push({ type: 'list', items: toItems(cN) });
+             }
+             if (cU.length > 0) {
+                 customSections.push({ type: 'title', level: 3, text: sections.untested_label || 'Kryteria niepoddane ocenie:' });
+                 customSections.push({ type: 'list', items: toItems(cU) });
+             }
+         };
+
+         pushCategorySection(
+             'Wymagania dostępności (Art. 7–22)',
+             fc('accessibility_requirements'), pc('accessibility_requirements'),
+             nc('accessibility_requirements'), uc('accessibility_requirements')
+         );
+         pushCategorySection(
+             'Obowiązki usługodawcy (Art. 23, 24, 26, 32, 33)',
+             fc('service_provider_obligations'), pc('service_provider_obligations'),
+             nc('service_provider_obligations'), uc('service_provider_obligations')
+         );
 
          // Konkluzje (np. walidator)
          if (sections.conclusions_label) {
