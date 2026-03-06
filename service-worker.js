@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eaa-audit-v15';
+const CACHE_NAME = 'kz-pad-v1';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -94,14 +94,53 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // For everything else, Stale-While-Revalidate or Cache First
-    // Here we use a generic Cache First strategy for files that don't change often (images, libs)
-    // and Network First for JSON data if we want updates. 
-    // BUT since static versioning is used, Cache First usually safest + fastest for PWA.
-    
+    // For JSON data (clauses, mapping, summaries) - Network First to always get latest
+    if (event.request.url.includes('.json')) {
+        event.respondWith(
+            fetch(event.request)
+                .then((response) => {
+                    // Cache the fresh response
+                    if (response.ok) {
+                        const responseClone = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, responseClone);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    // Fall back to cache if network fails
+                    return caches.match(event.request);
+                })
+        );
+        return;
+    }
+
+    // For CSS and JS files - Network First
+    if (event.request.url.includes('.css') || event.request.url.includes('.js')) {
+        event.respondWith(
+            fetch(event.request)
+                .then((response) => {
+                    if (response.ok) {
+                        const responseClone = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, responseClone);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match(event.request);
+                })
+        );
+        return;
+    }
+
+    // For images and other assets - Cache First (they rarely change)
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        })
+        caches.match(event.request)
+            .then((response) => {
+                return response || fetch(event.request);
+            })
     );
 });

@@ -1077,9 +1077,9 @@
     "notes": [],
     "form": {}
   },
-  "U.11.00.01.b-01": {
-    "id": "U.11.00.01.b-01",
-    "title": "U.11.00.01.b-01 Połączenia z narzędziami wspomagającymi wzmacniającymi dźwięk (Art. 11 pkt 1 lit. b)",
+  "U.11.00.01.b": {
+    "id": "U.11.00.01.b",
+    "title": "U.11.00.01.b Połączenia z narzędziami wspomagającymi wzmacniającymi dźwięk (Art. 11 pkt 1 lit. b)",
     "preconditions": [
       "Produkt jest **konsumenckim urządzeniem końcowym z interaktywnymi zdolnościami obliczeniowymi** (np. smartfon, tablet).",
       "Urządzenie jest wykorzystywane do usług telekomunikacyjnych (np. połączenia głosowe, VoIP)"
@@ -1095,9 +1095,9 @@
     "notes": [],
     "form": {}
   },
-  "U.11.00.01.c-01": {
-    "id": "U.11.00.01.c-01",
-    "title": "U.11.00.01.c-01 Unikanie zakłóceń podczas współpracy z narzędziami wspomagającymi (Art. 11 pkt 1 lit. c)",
+  "U.11.00.01.c": {
+    "id": "U.11.00.01.c",
+    "title": "U.11.00.01.c Unikanie zakłóceń podczas współpracy z narzędziami wspomagającymi (Art. 11 pkt 1 lit. c)",
     "preconditions": [
       "Produkt jest konsumenckim urządzeniem końcowym z interaktywnymi zdolnościami obliczeniowymi (np. smartfon, tablet).",
       "Urządzenie jest wykorzystywane do usług telekomunikacyjnych (połączenia głosowe/wideo).",

@@ -109,6 +109,83 @@ code {
     --code-color: var(--color);
 }
 
+code em,
+code strong {
+    font-style: inherit;
+    font-weight: inherit;
+    color: var(--code-color) !important;
+}
+
+/* Enhanced contrast for code elements in summary sections (WCAG AA: 4.5:1) */
+.summary-result-card code,
+.summary-anchor code,
+.summary-item-content code {
+    color: var(--primary) !important;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.summary-result-card code em,
+.summary-anchor code em,
+.summary-item-content code em,
+.summary-result-card code strong,
+.summary-anchor code strong,
+.summary-item-content code strong {
+    font-style: inherit;
+    font-weight: inherit;
+    color: var(--primary) !important;
+}
+
+/* Dark theme: use bright cyan/light blue for code elements */
+:root:not([data-theme="light"]) .summary-result-card code,
+:root:not([data-theme="light"]) .summary-anchor code,
+:root:not([data-theme="light"]) .summary-item-content code,
+[data-theme="dark"] .summary-result-card code,
+[data-theme="dark"] .summary-anchor code,
+[data-theme="dark"] .summary-item-content code {
+    color: #7DD3FC !important;
+}
+
+:root:not([data-theme="light"]) .summary-result-card code em,
+:root:not([data-theme="light"]) .summary-anchor code em,
+:root:not([data-theme="light"]) .summary-item-content code em,
+:root:not([data-theme="light"]) .summary-result-card code strong,
+:root:not([data-theme="light"]) .summary-anchor code strong,
+:root:not([data-theme="light"]) .summary-item-content code strong,
+[data-theme="dark"] .summary-result-card code em,
+[data-theme="dark"] .summary-anchor code em,
+[data-theme="dark"] .summary-item-content code em,
+[data-theme="dark"] .summary-result-card code strong,
+[data-theme="dark"] .summary-anchor code strong,
+[data-theme="dark"] .summary-item-content code strong {
+    color: #7DD3FC !important;
+}
+
+/* Light theme: use dark teal */
+:root[data-theme="light"] .summary-result-card code,
+:root[data-theme="light"] .summary-anchor code,
+:root[data-theme="light"] .summary-item-content code,
+[data-theme="light"] .summary-result-card code,
+[data-theme="light"] .summary-anchor code,
+[data-theme="light"] .summary-item-content code {
+    color: #0A5B76 !important;
+}
+
+:root[data-theme="light"] .summary-result-card code em,
+:root[data-theme="light"] .summary-anchor code em,
+:root[data-theme="light"] .summary-item-content code em,
+:root[data-theme="light"] .summary-result-card code strong,
+:root[data-theme="light"] .summary-anchor code strong,
+:root[data-theme="light"] .summary-item-content code strong,
+[data-theme="light"] .summary-result-card code em,
+[data-theme="light"] .summary-anchor code em,
+[data-theme="light"] .summary-item-content code em,
+[data-theme="light"] .summary-result-card code strong,
+[data-theme="light"] .summary-anchor code strong,
+[data-theme="light"] .summary-item-content code strong {
+    color: #0A5B76 !important;
+}
+
 body {
     background-color: var(--background-color);
     min-height: 100vh;
@@ -1415,6 +1492,22 @@ img,
     font-size: 1.25rem;
 }
 
+.summary-category-header {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.2rem;
+    border-left: 4px solid var(--primary);
+    background: var(--card-background-color);
+    border-radius: 0 6px 6px 0;
+}
+
+.summary-sections h4 {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 .summary-link-list {
     list-style: disc;
     padding-left: 1.5rem;
@@ -2367,7 +2460,7 @@ p.hero-card-title {
     margin-left: auto;
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 0rem 0.55rem;
+    padding: 0rem 0.55rem 1.1rem 0.55rem;
     border-radius: 999px;
     border: 1px solid var(--contrast);
     white-space: nowrap;
@@ -2485,7 +2578,7 @@ p.hero-card-title {
     margin-left: auto;
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 0rem 0.55rem;
+    padding: 0rem 0.55rem 1.1rem 0.55rem;
     border-radius: 999px;
     white-space: nowrap;
     flex-shrink: 0;

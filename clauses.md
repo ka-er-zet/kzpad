@@ -1126,7 +1126,7 @@ Wymogi techniczne wg normy EN 301 549 (Rozdział 6.5):
 
 ---
 
-## U.11.00.01.b-01 - U.11.00.01.b-01 Połączenia z narzędziami wspomagającymi wzmacniającymi dźwięk (Art. 11 pkt 1 lit. b)
+## U.11.00.01.b - U.11.00.01.b Połączenia z narzędziami wspomagającymi wzmacniającymi dźwięk (Art. 11 pkt 1 lit. b)
 
 **Warunki wstępne:**
 
@@ -1146,7 +1146,7 @@ Termin „narzędzia wspomagające wzmacniające dźwięk” obejmuje szeroką g
 
 ---
 
-## U.11.00.01.c-01 - U.11.00.01.c-01 Unikanie zakłóceń podczas współpracy z narzędziami wspomagającymi (Art. 11 pkt 1 lit. c)
+## U.11.00.01.c - U.11.00.01.c Unikanie zakłóceń podczas współpracy z narzędziami wspomagającymi (Art. 11 pkt 1 lit. c)
 
 **Warunki wstępne:**
 

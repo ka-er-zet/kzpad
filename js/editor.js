@@ -2070,12 +2070,31 @@ function renderSummaryForm(id, data) {
             <div class="field-group" style="margin-top: 2rem;">
                 <h6>Etykiety sekcji (Teksty nagłówków list w raporcie)</h6>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
-                    ${Object.entries(data.sections || {}).map(([sKey, sVal]) => {
+                    ${Object.entries(data.sections || {})
+        .filter(([sKey]) => !sKey.includes('conclusions') && !sKey.includes('note'))
+        .map(([sKey, sVal]) => {
         const friendlyLabels = {
             failures_label: 'Nagłówek: Niezgodności',
             passed_label: 'Nagłówek: Spełnione',
             inapplicable_label: 'Nagłówek: Nie dotyczy',
-            untested_label: 'Nagłówek: Niepoddane ocenie',
+            untested_label: 'Nagłówek: Niepoddane ocenie'
+        };
+        return `
+                            <label>${friendlyLabels[sKey] || sKey}
+                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}">
+                            </label>
+                        `;
+    }).join('')}
+                </div>
+            </div>
+
+            <div class="field-group" style="margin-top: 2rem;">
+                <h6>Dodatkowe sekcje podsumowania</h6>
+                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                    ${Object.entries(data.sections || {})
+        .filter(([sKey]) => sKey.includes('conclusions') || sKey.includes('note'))
+        .map(([sKey, sVal]) => {
+        const friendlyLabels = {
             conclusions_label: 'Nagłówek: Wnioski',
             conclusions_value: 'Treść wniosków (domyślna)',
             note_label: 'Nagłówek: Uwaga',
