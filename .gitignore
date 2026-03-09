@@ -15,3 +15,12 @@ Desktop.ini
 # Editor directories
 .vscode/
 .idea/
+
+# Generated/exported/backup files not required for runtime
+clauses_export.md
+clauses_for_notebook_lm.json
+differences_report.txt
+compare_mappings.py
+clauses_json/clauses_old.json
+mapping.md
+przyklad.txt
