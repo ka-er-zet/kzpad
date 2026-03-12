@@ -143,7 +143,7 @@ input::placeholder,
 textarea::placeholder,
 #sidebar-search::placeholder {
     color: var(--form-element-placeholder-color) !important;
-    opacity: 0.9 !important;
+    opacity: 1 !important;
 }
 
 /* Label styling based on wizard.css patterns */
@@ -201,7 +201,7 @@ button:not(.secondary):not(.outline):not(.hero-card):not(.icon-btn):not(.drag-ha
 .product-mapping-grid {
     display: grid;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.5rem;
     grid-template-columns: max-content 1fr max-content;
     margin-bottom: 0;
 }
@@ -239,7 +239,7 @@ button:not(.secondary):not(.outline):not(.hero-card):not(.icon-btn):not(.drag-ha
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.025em;
-    color: var(--muted-color);
+    color: inherit;
 }
 
 .prod-mapping-input {
@@ -250,10 +250,13 @@ button:not(.secondary):not(.outline):not(.hero-card):not(.icon-btn):not(.drag-ha
 }
 
 .picker-btn {
-    margin-bottom: 0;
-    padding: 0.25rem 1rem;
-    font-size: 0.85rem;
-    min-width: 8rem;
+    margin-bottom: 0 !important;
+    margin-top: 20px !important;
+    padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal) !important;
+    font-size: 0.875rem;
+    display: inline-block !important;
+    width: auto !important;
+    white-space: nowrap;
 }
 
 .product-row {
@@ -303,6 +306,11 @@ button:not(.secondary):not(.outline):not(.hero-card):not(.icon-btn):not(.drag-ha
     z-index: 100;
     position: sticky;
     top: 0;
+    transition: transform 0.3s ease;
+}
+
+.app-header.header-hidden {
+    transform: translateY(-100%);
 }
 
 .header-content {
@@ -368,6 +376,22 @@ button:not(.secondary):not(.outline):not(.hero-card):not(.icon-btn):not(.drag-ha
 }
 
 /* compact loader cards */
+#file-input {
+    display: none !important;
+    width: 0;
+    height: 0;
+    position: absolute;
+    overflow: hidden;
+}
+
+label[for="file-input"] {
+    display: none !important;
+    width: 0;
+    height: 0;
+    position: absolute;
+    overflow: hidden;
+}
+
 .loader-compact {
     display: flex;
     gap: 0.75rem;
@@ -596,6 +620,36 @@ button.small {
     background: transparent;
 }
 
+.special-action-item {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-left: 4px solid var(--primary);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    text-align: left;
+    background: var(--card-background-color);
+    color: var(--color);
+    user-select: none;
+}
+
+.special-action-item:hover {
+    background: var(--primary-focus);
+    color: var(--color);
+}
+
+.special-action-item.active {
+    background: var(--primary-focus);
+    color: var(--color);
+}
+
 .drag-handle {
     cursor: grab;
     display: flex;
@@ -606,7 +660,7 @@ button.small {
     margin: 0 !important;
     width: 2.75rem !important;
     height: 2.75rem !important;
-    opacity: 0.7;
+    opacity: 1;
     /* Consistent visibility across themes */
     transition: opacity 0.2s, color 0.1s;
     background: transparent !important;
@@ -682,17 +736,37 @@ button.small {
 }
 
 .array-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
     gap: 10px;
     margin-bottom: 8px;
-    align-items: flex-start;
-    /* keep button aligned with top of textarea */
+}
+
+.array-item label {
+    grid-column: 1 / -1;
+    display: block;
+    margin-bottom: 0;
+}
+
+.array-item textarea {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.array-item button {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    width: auto;
+    flex: 0 0 auto;
 }
 
 /* Test object editor row: fields stacked vertically, delete button at top-right */
 .array-item--test {
-    flex-direction: row;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
     border: 1px solid var(--form-element-border-color);
     border-left: 3px solid var(--primary);
     border-radius: 6px;
@@ -701,8 +775,22 @@ button.small {
 }
 
 .array-item--test .test-item-fields {
-    flex: 1 1 auto;
+    grid-column: 1;
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     min-width: 0;
+}
+
+.array-item--test button {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+}
+
+.array-item__inner {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -743,7 +831,7 @@ button.small {
     border: 1px dashed var(--muted-border-color);
     border-radius: 6px;
     font-size: 0.85rem;
-    color: var(--muted-color);
+    color: var(--color);
     margin-bottom: 0.75rem;
     line-height: 1.4;
 }
@@ -755,6 +843,14 @@ button.small {
 
 .list-hint strong {
     color: var(--primary);
+}
+
+.field-hint {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
 }
 
 .editor-nav {
@@ -868,6 +964,7 @@ button.small {
     align-items: center;
     justify-content: center;
     z-index: 1200;
+    overflow: hidden;
 }
 
 .clause-picker {
@@ -875,7 +972,9 @@ button.small {
     color: var(--color);
     width: min(920px, 94%);
     max-height: 80vh;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: var(--card-box-shadow);
@@ -884,6 +983,9 @@ button.small {
 .clause-picker-list {
     margin-top: 0.5rem;
     display: block;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 .clause-picker-row {
@@ -937,8 +1039,12 @@ button.small {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    padding-top: 4rem;
+    padding-top: 0.5rem;
     text-align: center;
+}
+
+#loader-section {
+    margin-top: 2rem;
 }
 
 /* Utility classes added to replace inline styles */
@@ -1062,23 +1168,36 @@ button.small {
 .grid-1-2-auto,
 #form-inputs-container>div {
     display: grid !important;
-    grid-template-columns: 1fr 2fr 2.5rem !important;
+    grid-template-columns: minmax(150px, 1fr) minmax(250px, 2fr) auto !important;
     gap: 0.5rem !important;
     margin-bottom: 0.5rem !important;
-    align-items: end !important;
 }
 
 /* Header-specific styling */
 .table-header-compact {
     font-size: 0.8rem !important;
     font-weight: 600 !important;
-    color: var(--muted-color) !important;
+    color: inherit !important;
     margin-bottom: 0.25rem !important;
     border-bottom: 1px solid var(--muted-border-color);
     padding-bottom: 0.25rem;
+    align-items: center;
+}
+
+/* Input rows - align items start (budowanie align do gory) */
+.grid-1-2-auto {
+    align-items: start !important;
 }
 
 /* Ensure inputs/columns don't overflow */
+.grid-1-2-auto > .col-stack {
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.1rem;
+    height: auto;
+}
+
 .grid-1-2-auto>div,
 #form-inputs-container input {
     min-width: 0 !important;
@@ -1089,11 +1208,11 @@ button.small {
 .grid-1-2-auto .btn-tight,
 #form-inputs-container .btn-tight {
     width: auto !important;
-    padding: 0.25rem 0.5rem !important;
-    margin: 0 0 4px 0 !important;
-    /* tiny bottom margin to align with input baseline better */
+    padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal) !important;
+    margin: 0 !important;
     grid-column: 3;
-    justify-self: end;
+    justify-self: center !important;
+    align-self: flex-start !important;
 }
 
 .grid-1-maxcontent {
@@ -1144,12 +1263,59 @@ button.small {
 .dialog-article {
     max-width: 50rem;
     width: 95%;
+    max-height: 80vh;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: visible !important;
+}
+
+.dialog-article > header {
+    flex-shrink: 0;
+    padding: calc(var(--block-spacing-vertical) * .5) var(--block-spacing-horizontal);
+    margin-bottom: 0 !important;
+}
+
+.dialog-article > .field-group {
+    flex-shrink: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    border: none !important;
+}
+
+.dialog-article .clause-picker-list {
+    flex: 1 1 auto;
+    overflow: auto;
+    border: 1px solid var(--muted-border-color);
+    padding: 0.5rem;
+}
+
+.dialog-article > footer {
+    flex-shrink: 0;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    gap: 0.5rem;
+    padding: calc(var(--block-spacing-vertical) * .5) var(--block-spacing-horizontal);
+    margin-top: 0 !important;
+}
+
+.dialog-article > footer button {
+    display: inline-block !important;
+    width: auto !important;
+    margin: 0 !important;
 }
 
 .picker-action-btn {
-    margin-bottom: 0;
-    padding: 0.25rem 1rem;
-    font-size: 0.85rem;
+    margin-bottom: 0 !important;
+    padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal) !important;
+    display: inline-block !important;
+    width: auto !important;
+    white-space: nowrap;
+}
+
+.grid-1-maxcontent {
+    align-items: baseline !important;
 }
 
 .empty-list-msg {
@@ -1327,6 +1493,11 @@ button.small {
     margin-bottom: 0 !important;
     line-height: 1.5 !important;
     height: auto !important;
+}
+
+.filter-btn {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
 }
 
 .filter-btn.active {

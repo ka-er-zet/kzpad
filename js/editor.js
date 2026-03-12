@@ -338,6 +338,8 @@ let currentData = null;      // shortcut to editorState[currentType].data
 let activeItemId = null;
 let currentPrefixFilter = ''; // Quick filter for clauses (C. or U.)
 let isFormDirty = false;     // Tracks if the current form has unsaved changes
+let isCreatingNewItem = false; // Flag: are we creating a new item or editing existing
+let currentNewItemPrefix = null; // Stores forcedPrefix for new items so re-renders stay correct
 
 // DOM Elements
 const typeButtons = document.querySelectorAll('#file-type-selector button');
@@ -409,8 +411,51 @@ function init() {
                 const loaderTitle = document.getElementsByClassName('loader-title')[0];
                 if (loaderTitle) {
                     loaderTitle.classList.remove('hidden');
-                    loaderTitle.focus();
-                    loaderTitle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Update heading text to reflect selected category with specific messages
+                    const categoryMessages = {
+                        'clauses': 'Wczytaj plik z klauzulami',
+                        'mapping': 'Wczytaj plik z mapowaniem',
+                        'summaries': 'Wczytaj plik z podsumowaniami',
+                        'glossary': 'Załaduj plik słownika'
+                    };
+                    const headingText = categoryMessages[currentType];
+                    loaderTitle.textContent = headingText;
+                    loaderTitle.className = 'loader-title';
+                    
+                    // Update loader card descriptions based on category
+                    const categoryLabels = {
+                        'clauses': 'klauzulami',
+                        'mapping': 'mapowaniem',
+                        'summaries': 'podsumowaniami',
+                        'glossary': 'słownika'
+                    };
+                    const categoryLabel = categoryLabels[currentType];
+                    
+                    const defaultsDesc = document.getElementById('defaults-desc');
+                    if (defaultsDesc) {
+                        if (currentType === 'glossary') {
+                            defaultsDesc.innerHTML = `<small>Załaduj plik słownika, na którym pracuje aplikacja</small>`;
+                        } else {
+                            defaultsDesc.innerHTML = `<small>Użyj pliku z ${categoryLabel}, na którym pracuje aplikacja</small>`;
+                        }
+                    }
+                    
+                    const fileDesc = document.getElementById('file-desc');
+                    if (fileDesc) {
+                        if (currentType === 'glossary') {
+                            fileDesc.innerHTML = `<small>Załaduj plik słownika z dysku komputera</small>`;
+                        } else {
+                            fileDesc.innerHTML = `<small>Załaduj plik z ${categoryLabel} z dysku komputera</small>`;
+                        }
+                    }
+                    
+                    // Focus first action button to provide immediate interaction point
+                    // Screen reader announces heading automatically when text changes
+                    const firstButton = document.getElementById('btn-load-defaults');
+                    if (firstButton) {
+                        firstButton.focus();
+                    }
+                    loaderSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
 
                 // reset editor view state (keep other types' data)
@@ -485,92 +530,75 @@ function addNewItem(forcedPrefix) {
         return;
     }
 
-    const modal = document.getElementById('modal-add-item');
-    const input = document.getElementById('new-item-id');
-    const hintsList = document.getElementById('modal-add-hints');
-    const title = modal ? modal.querySelector('h3') : null;
-
-    if (modal && input) {
-        input.value = (typeof forcedPrefix === 'string') ? forcedPrefix : "";
-
-        if (title) {
-            if (currentType === 'clauses') {
-                if (forcedPrefix === 'C.') title.textContent = 'Nowa klauzula techniczna (C)';
-                else if (forcedPrefix === 'U.') title.textContent = 'Nowa klauzula prawna (U)';
-                else title.textContent = 'Dodaj nową klauzulę';
-            } else {
-                title.textContent = currentType === 'glossary' ? 'Dodaj nowe pojęcie' : 'Dodaj nowe mapowanie';
-            }
-        }
-
-        // Update hints based on current context
-        if (hintsList) {
-            if (currentType === 'mapping') {
-                hintsList.innerHTML = `
-                    <li><strong>A07-04-01-a</strong> - Format: [Art]-[Ust]-[Pkt]-[Lit]</li>
-                `;
-            } else if (currentType === 'clauses') {
-                if (forcedPrefix === 'C.') {
-                    hintsList.innerHTML = `
-                        <li>Format: <strong>C.[rozdział].[punkt]</strong> (np. C.9.2.1.1)</li>
-                        <li>Używaj numeracji zgodnej z rozdziałami normy <strong>EN 301 549</strong></li>
-                        <li>Kropki rozdzielają kolejne poziomy zagłębienia wymagań</li>
-                    `;
-                } else if (forcedPrefix === 'U.') {
-                    hintsList.innerHTML = `
-                        <li>Format: <strong>U.[art].[ust].[pkt].[lit]</strong> (np. U.7.1.1.a)</li>
-                        <li>Stosuj kropki jako separatory dla łatwiejszego wyszukiwania</li>
-                        <li>Opcjonalnie: dodaj tiret na końcu (np. U.7.1.1.a-01)</li>
-                    `;
-                } else {
-                    hintsList.innerHTML = `
-                        <li><strong>C.[Numer]</strong> dla klauzul technicznych (Norma EN)</li>
-                        <li><strong>U.[Numer]</strong> dla klauzul prawnych (Ustawa PAD)</li>
-                    `;
-                }
-            } else {
-                hintsList.innerHTML = ""; // No hints for glossary/summaries
-            }
-        }
-
-        if (currentType === 'glossary') {
-            input.placeholder = "Np. Dostępność";
-            // Customize modal text for glossary
-            const modal = document.getElementById('modal-add-item');
-            if (modal) {
-                const pElement = modal.querySelector('p');
-                if (pElement) pElement.textContent = 'Podaj nazwę wpisu';
-                const labelElement = modal.querySelector('label[for="new-item-id"]');
-                if (labelElement) labelElement.textContent = 'Hasło (ID/term)';
-            }
-        } else {
-            // Reset to default for other types
-            const modal = document.getElementById('modal-add-item');
-            if (modal) {
-                const pElement = modal.querySelector('p');
-                if (pElement) pElement.textContent = 'Podaj identyfikator nowego elementu. Rekomendowane formaty:';
-                const labelElement = modal.querySelector('label[for="new-item-id"]');
-                if (labelElement) labelElement.textContent = 'Identyfikator (ID)';
-            }
-            if (currentType === 'mapping') {
-                input.placeholder = "Np. A07-01";
-            } else {
-                input.placeholder = "Np. C.5.1 lub U.12.01";
-            }
-        }
-
-        // Add Enter key listener
-        input.onkeydown = (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                confirmAddItem();
-            }
+    // Mark as creating new item and open form directly
+    isCreatingNewItem = true;
+    activeItemId = '';
+    
+    let newItemData = null;
+    
+    if (currentType === 'clauses') {
+        const baseStructure = {
+            id: '',
+            title: "",
+            evaluation: "",
+            procedure: [],
+            checklist: [],
+            preconditions: [],
+            notes: []
         };
 
-        modal.showModal();
-
-        setTimeout(() => input.focus(), 100);
+        if (forcedPrefix === 'C.') {
+            baseStructure.title = "";
+            baseStructure.form = { inputs: [] };
+        } else {
+            baseStructure.title = "";
+            baseStructure.form = {};
+        }
+        newItemData = { ...baseStructure };
+    } else if (currentType === 'glossary') {
+        newItemData = "";
+    } else if (currentType === 'mapping') {
+        newItemData = {
+            id: '',
+            legal_id: "",
+            article: "",
+            category: "",
+            requirement: "",
+            product_mappings: Object.fromEntries(Object.keys(currentData.products || {}).map(p => [p, null]))
+        };
     }
+
+    // Show form directly
+    itemsList.style.display = 'none';
+    formContainer.style.display = 'block';
+    
+    const addActions = document.getElementById('add-item-actions');
+    if (addActions) addActions.style.display = 'none';
+    
+    document.getElementById('sidebar-search').style.display = 'none';
+    const quickFilters = document.getElementById('quick-filters');
+    if (quickFilters) quickFilters.classList.add('hidden');
+    
+    const specialActions = document.getElementById('special-actions');
+    if (specialActions) specialActions.style.display = 'none';
+
+    if (currentType === 'clauses') {
+        currentData[''] = newItemData;
+        currentNewItemPrefix = forcedPrefix;
+        renderClauseForm('', newItemData, forcedPrefix);
+    } else if (currentType === 'glossary') {
+        renderGlossaryForm('', newItemData);
+    } else if (currentType === 'mapping') {
+        renderMappingForm('', newItemData);
+    }
+
+    if (window.lucide) window.lucide.createIcons();
+
+    setTimeout(() => {
+        // Focus on ID input field
+        const idInput = document.getElementById('edit-id');
+        if (idInput) idInput.focus();
+    }, 0);
 }
 
 window.closeAddItemModal = () => {
@@ -757,7 +785,6 @@ function updateDownloadButtonState() {
         navDownload.classList.add('secondary');
     }
 
-    navDownload.title = label;
     navDownload.setAttribute('aria-label', label);
     navDownload.setAttribute('data-icon-label', label);
 
@@ -866,7 +893,7 @@ function onDataLoaded(sourceInfo) {
     workspaceSection.classList.remove('hidden');
 
     // update editor H2
-    const mapNames = { clauses: 'Klauzule', mapping: 'Mapowania', summaries: 'Podsumowania', glossary: 'Słownik' };
+    const mapNames = { clauses: 'klauzule', mapping: 'mapowania', summaries: 'podsumowania', glossary: 'słownik' };
     const catName = mapNames[currentType] || currentType;
     const editorCat = document.getElementById('editor-category-name');
     if (editorCat) editorCat.textContent = catName;
@@ -890,10 +917,8 @@ function onDataLoaded(sourceInfo) {
     // żeby live region nie był przerywany przez zmianę fokusu
     const editorTitle = document.getElementById('editor-title');
     if (editorTitle) {
-        setTimeout(() => {
-            editorTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            editorTitle.focus();
-        }, 50);
+        editorTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        editorTitle.focus({ preventScroll: true });
     }
 
     // Ogłoszenie SR po tym jak NVDA skończy czytać nagłówek (~500ms)
@@ -910,11 +935,13 @@ function renderList(searchTerm = '') {
     // Podpowiedź jako pierwszy element listy (li), tylko dla listy
     if (currentType !== 'summaries') {
         const hintLi = document.createElement('li');
-        hintLi.id = 'items-list-hint';
         hintLi.className = 'list-hint';
-        hintLi.innerHTML = '<i data-lucide="info" class="icon-sm" aria-hidden="true"></i> <span>Chwyć uchwyt kropkowany, aby przeciągnąć, lub użyj <strong>Alt + strzałki</strong>, aby zmienić kolejność.</span>';
+        let hintText = '<i data-lucide="info" class="icon-sm" aria-hidden="true"></i> <span>Chwyć uchwyt kropkowany, aby przeciągnąć, lub użyj <strong>Alt + strzałki</strong>, aby zmienić kolejność.</span>';
+        if (currentType === 'glossary') {
+            hintText = '<i data-lucide="info" class="icon-sm" aria-hidden="true"></i> <span>W aplikacji, wpisy w słowniku są automatycznie ułożone <strong>alfabetycznie</strong></span>';
+        }
+        hintLi.innerHTML = hintText;
         itemsList.appendChild(hintLi);
-        itemsList.setAttribute('aria-describedby', 'items-list-hint');
     } else {
         itemsList.removeAttribute('aria-describedby');
     }
@@ -957,33 +984,15 @@ function renderList(searchTerm = '') {
     if (specialActions) {
         specialActions.innerHTML = '';
         if (currentType === 'mapping') {
-            const productItem = document.createElement('div');
+            const productItem = document.createElement('button');
+            productItem.type = 'button';
             productItem.className = 'special-action-item' + (activeItemId === '_products' ? ' active' : '');
-            // Stylizacja bez dziedziczenia efektów drag/move z .list-item
-            productItem.style.cssText = `
-                border-left: 4px solid var(--primary);
-                font-weight: bold;
-                padding: 0.5rem 0.75rem;
-                background: ${activeItemId === '_products' ? 'var(--secondary-focus)' : 'var(--card-background-color)'};
-                border-radius: var(--border-radius);
-                cursor: pointer;
-                margin-bottom: 0.5rem;
-                display: flex;
-                align-items: center;
-                user-select: none;
-            `;
-            productItem.setAttribute('role', 'button');
-            productItem.setAttribute('tabindex', '0');
             productItem.setAttribute('aria-pressed', activeItemId === '_products' ? 'true' : 'false');
-            productItem.setAttribute('aria-label', 'Zarządzaj produktami');
             productItem.innerHTML = `
-                <i data-lucide="package" class="icon-md icon-primary" aria-hidden="true" style="margin-right: 0.25rem"></i>
-                <span>Zarządzaj produktami</span>
+                <i data-lucide="package" class="icon-md" aria-hidden="true"></i>
+                Zarządzaj produktami
             `;
             productItem.onclick = () => loadItem('_products');
-            productItem.onkeydown = (e) => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadItem('_products'); }
-            };
             specialActions.appendChild(productItem);
         }
     }
@@ -1051,7 +1060,7 @@ function renderList(searchTerm = '') {
             li.onclick = () => loadItem(key);
 
             // 1. Add Drag Handle (Grip) for visual cue only
-            if (currentType !== 'summaries') {
+            if (currentType !== 'summaries' && currentType !== 'glossary') {
                 const handle = document.createElement('span');
                 handle.className = 'drag-handle';
                 handle.setAttribute('aria-hidden', 'true');
@@ -1060,7 +1069,7 @@ function renderList(searchTerm = '') {
             }
 
             // Drag and Drop support — ENABLED only when reordering is allowed
-            if (currentType !== 'summaries') {
+            if (currentType !== 'summaries' && currentType !== 'glossary') {
                 li.draggable = true;
 
                 li.addEventListener('dragstart', (e) => {
@@ -1159,7 +1168,7 @@ function renderList(searchTerm = '') {
             editBtn.setAttribute('aria-label', `Edytuj: ${displayText}`);
 
             // Keyboard reordering (Alt+Arrow) handled on the edit button
-            if (currentType !== 'summaries') {
+            if (currentType !== 'summaries' && currentType !== 'glossary') {
                 editBtn.addEventListener('keydown', (e) => {
                     if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
                         e.preventDefault();
@@ -1184,9 +1193,9 @@ function renderList(searchTerm = '') {
             li.appendChild(editBtn);
 
             // Delete button
-            if (currentType !== 'summaries') {
+            if (currentType !== 'summaries' && currentType !== 'glossary') {
                 const delBtn = document.createElement('button');
-                delBtn.className = 'error outline small';
+                delBtn.className = 'primary outline small';
                 delBtn.innerHTML = '<i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i>';
                 delBtn.style.margin = '0';
                 delBtn.setAttribute('aria-label', `Usuń: ${key}`);
@@ -1219,6 +1228,9 @@ async function showList(force = false) {
     isFormDirty = false;
     const lastActiveId = activeItemId; // zapamiętaj przed wyzerowaniem
     activeItemId = null;
+    // Clean up new-item placeholder if user cancels without saving
+    if (currentData && currentData['']) delete currentData[''];
+    currentNewItemPrefix = null;
     itemsList.style.display = 'block';
     formContainer.style.display = 'none';
 
@@ -1274,7 +1286,7 @@ window.setPrefixFilter = (prefix) => {
 /**
  * Loads an item into the editor form
  */
-async function loadItem(id, force = false) {
+async function loadItem(id, force = false, suppressHeaderFocus = false) {
     if (!force && isFormDirty && activeItemId !== id) {
         const confirmResult = await showConfirm(
             "Zmiana edytowanej pozycji",
@@ -1288,12 +1300,10 @@ async function loadItem(id, force = false) {
 
     activeItemId = id;
     isFormDirty = false; // Reset the dirty flag when a new item is loaded
+    if (id !== '') isCreatingNewItem = false; // Keep true while still in new-item mode
     renderList(searchInput.value); // refresh active state in list
     // Ukryj listę i podpowiedź, gdy edytujemy formularz
     itemsList.style.display = 'none';
-    // Usuń podpowiedź z DOM po przejściu do edycji
-    const hintEl = document.getElementById('items-list-hint');
-    if (hintEl) hintEl.remove();
     formContainer.style.display = 'block';
 
     // Hide add actions container instead of individual button
@@ -1310,7 +1320,7 @@ async function loadItem(id, force = false) {
     let itemData = null;
     if (currentType === 'clauses') {
         itemData = currentData[id];
-        renderClauseForm(id, itemData);
+        renderClauseForm(id, itemData, id === '' ? currentNewItemPrefix : null);
     } else if (currentType === 'glossary') {
         itemData = currentData[id];
         renderGlossaryForm(id, itemData);
@@ -1334,9 +1344,11 @@ async function loadItem(id, force = false) {
         document.querySelectorAll('#form-container textarea').forEach(tx => {
             autoResize(tx);
         });
-        // Ustaw focus na nagłówku formularza (h3)
-        const h3 = document.querySelector('#form-container h3');
-        if (h3) h3.focus();
+        if (!suppressHeaderFocus) {
+            // Ustaw focus na nagłówku formularza (h3)
+            const h3 = document.querySelector('#form-container h3');
+            if (h3) h3.focus();
+        }
     }, 0);
 }
 
@@ -1352,8 +1364,9 @@ window.autoResize = (el) => {
 /**
  * EDITOR: Clauses
  */
-function renderClauseForm(id, data) {
-    const isLegal = id.startsWith('U.');
+function renderClauseForm(id, data, forcedPrefix = null) {
+    const isLegal = id.startsWith('U.') || forcedPrefix === 'U.';
+    const isNew = isCreatingNewItem;
 
     // Ensure all required arrays exist
     if (!data.preconditions) data.preconditions = [];
@@ -1363,57 +1376,88 @@ function renderClauseForm(id, data) {
     if (!data.form) data.form = {};
     if (!data.form.inputs && !isLegal) data.form.inputs = [];
 
+    // Build ID hints HTML — always shown so layout is consistent for new and edit
+    let idHintsHTML;
+    if (forcedPrefix === 'C.' || id.startsWith('C.')) {
+        idHintsHTML = `
+            <small class="field-hint">
+                Format: <strong>C.[rozdział].[punkt]</strong> (np. C.9.2.1.1)<br>
+                Używaj numeracji zgodnej z rozdziałami normy <strong>EN 301 549</strong>
+            </small>
+        `;
+    } else if (forcedPrefix === 'U.' || id.startsWith('U.')) {
+        idHintsHTML = `
+            <small class="field-hint">
+                Format: <strong>U.[art].[ust].[pkt].[lit]-[tiret]</strong> (np. U.7.1.1.a lub U.7.1.1.a-01)<br>
+                Art. = numer artykułu, Ust. = ustęp, Pkt = punkt, Lit. = litera, Tiret = myślnik numeryczny
+            </small>
+        `;
+    } else {
+        idHintsHTML = `
+            <small class="field-hint">
+                <strong>C.[Numer]</strong> dla klauzul technicznych (Norma EN 301 549)<br>
+                <strong>U.[Numer]</strong> dla klauzul prawnych (Ustawa PAD)
+            </small>
+        `;
+    }
+
     formContainer.innerHTML = `
         <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         
-        <div class="field-group">
+        <div class="field-group" role="region" aria-labelledby="h3-clause-header">
             <div class="section-header">
                 <i data-lucide="${isLegal ? 'scale' : 'code'}" class="icon-md icon-primary" aria-hidden="true"></i>
-                <h3 class="m-0" tabindex="-1">Edycja: ${isLegal ? 'Klauzula Prawna' : 'Klauzula Techniczna'}</h3>
+                <h3 id="h3-clause-header" class="m-0" tabindex="-1">${isNew ? (forcedPrefix === 'U.' ? 'Nowa klauzula prawna (U)' : forcedPrefix === 'C.' ? 'Nowa klauzula techniczna (C)' : 'Nowa klauzula') : 'Edycja: ' + (isLegal ? 'Klauzula Prawna' : 'Klauzula Techniczna')}</h3>
             </div>
 
-            <div class="grid-1-3">
-                <label>Identyfikator (ID)
-                    <input type="text" id="edit-id" value="${id}">
+            <label for="edit-id">Identyfikator (ID)
+                ${idHintsHTML}
+                <input type="text" id="edit-id" value="${id}">
+            </label>
+
+            <label for="edit-title">Tytuł klauzuli
+                <input type="text" id="edit-title" value="${data.title || ''}">
+            </label>
+
+            ${isLegal ? `
+            <fieldset>
+                <legend>Kategoria</legend>
+                <label for="edit-category-accessibility">
+                    <input type="radio" name="edit-category" id="edit-category-accessibility" value="accessibility_requirements" ${(data.category === 'accessibility_requirements' || !data.category) ? 'checked' : ''}>
+                    Wymagania dostępności
                 </label>
-                <label>Tytuł klauzuli
-                    <input type="text" id="edit-title" value="${data.title || ''}">
+                <label for="edit-category-obligations">
+                    <input type="radio" name="edit-category" id="edit-category-obligations" value="service_provider_obligations" ${data.category === 'service_provider_obligations' ? 'checked' : ''}>
+                    Obowiązki producenta / usługodawcy
                 </label>
-                <label>Kategoria
-                    <select id="edit-category">
-                        <option value="">-- Brak kategorii --</option>
-                        <option value="accessibility_requirements" ${data.category === 'accessibility_requirements' ? 'selected' : ''}>Wymagania dostępności</option>
-                        <option value="service_provider_obligations" ${data.category === 'service_provider_obligations' ? 'selected' : ''}>Obowiązki usługodawcy</option>
-                        <option value="other" ${data.category === 'other' ? 'selected' : ''}>Inne</option>
-                    </select>
-                </label>
-            </div>
+            </fieldset>
+            ` : ''}
             
-            <label>Metoda oceny (Evaluation)
+            <label for="edit-evaluation">Metoda oceny (Evaluation)
                 <input type="text" id="edit-evaluation" value="${data.evaluation || ''}">
             </label>
         </div>
 
-        <div class="field-group">
-            <h6>Wymagania wstępne (Preconditions)</h6>
+        <div class="field-group" role="region" aria-labelledby="h4-preconditions">
+            <h4 id="h4-preconditions">Wymagania wstępne (Preconditions)</h4>
             <div id="preconditions-container">
-                ${data.preconditions.map((item, idx) => renderArrayItem('preconditions', item, idx)).join('')}
+                ${data.preconditions.map((item, idx) => renderArrayItem('preconditions', item, idx, isLegal, data.preconditions)).join('')}
             </div>
             <button class="outline contrast small" onclick="addArrayItem('preconditions')">+ Dodaj warunek</button>
         </div>
 
-        <div class="field-group">
-            <h6>${isLegal ? 'Jak to rozumieć?' : 'Procedura badania (Procedure)'}</h6>
+        <div class="field-group" role="region" aria-labelledby="h4-procedure">
+            <h4 id="h4-procedure">${isLegal ? 'Jak to rozumieć?' : 'Procedura badania (Procedure)'}</h4>
             <div id="procedure-container">
-                ${data.procedure.map((item, idx) => renderArrayItem('procedure', item, idx)).join('')}
+                ${data.procedure.map((item, idx) => renderArrayItem('procedure', item, idx, isLegal, data.procedure)).join('')}
             </div>
             <button class="outline contrast small" onclick="addArrayItem('procedure')">${isLegal ? '+ Dodaj punkt' : '+ Dodaj krok'}</button>
         </div>
 
         ${!isLegal ? `
         <!-- KRYTERIA SUKCESU (form) - Tylko dla technicznych -->
-        <div class="field-group">
-            <h6><i data-lucide="check-square" class="icon-inline" aria-hidden="true"></i> Kryteria sukcesu (Logic)</h6>
+        <div class="field-group" role="region" aria-labelledby="h4-criteria">
+            <h4 id="h4-criteria">Kryteria sukcesu (Logic)</h4>
             
             <div class="mt-1">
                 <!-- Nagłówki dla dostępności i przejrzystości -->
@@ -1425,7 +1469,7 @@ function renderClauseForm(id, data) {
 
                 <div id="form-inputs-container">
                     ${data.form.inputs.map((inp, idx) => `
-                        <div class="grid-1-2-auto">
+                        <div class="grid-1-2-auto array-item" data-index="${idx}">
                             <div class="col-stack">
                                 <label for="form-val-${idx}" class="sr-only">Wynik (Wartość)</label>
                                 <input type="text" id="form-val-${idx}" value="${inp.value}" onchange="syncFormInput(${idx}, 'value', this.value)" placeholder="Np. Zaliczone">
@@ -1434,30 +1478,32 @@ function renderClauseForm(id, data) {
                                 <label for="form-lab-${idx}" class="sr-only">Warunek / Kryterium wyboru</label>
                                 <input type="text" id="form-lab-${idx}" value="${inp.label}" onchange="syncFormInput(${idx}, 'label', this.value)" placeholder="Np. Wszystkie elementy mają opisy alternatywne">
                             </div>
-                            <button class="outline error small btn-tight" onclick="removeFormInput(${idx})" aria-label="Usuń wiersz ${idx + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+                            <div class="col-stack" style="justify-content: flex-start;">
+                                <button class="outline error small btn-tight" onclick="removeFormInput(${idx})" aria-label="Usuń wiersz ${idx + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+                            </div>
                         </div>
                     `).join('')}
                 </div>
-                <button class="outline contrast small" onclick="addFormInput()">+ Dodaj nową opcję</button>
+                <button class="outline contrast small" onclick="addFormInput()">+ Dodaj nowe kryterium sukcesu</button>
             </div>
         </div>
         ` : ''}
         
-        <div class="field-group">
-            <h6>${isLegal ? 'Jak sprawdzić?' : 'Jak sprawdzić?'}</h6>
+        <div class="field-group" role="region" aria-labelledby="h4-checklist">
+            <h4 id="h4-checklist">${isLegal ? 'Jak sprawdzić?' : 'Jak sprawdzić?'}</h4>
             <div id="checklist-container">
-                ${data.checklist.map((item, idx) => renderArrayItem('checklist', item, idx)).join('')}
+                ${data.checklist.map((item, idx) => renderArrayItem('checklist', item, idx, isLegal, data.checklist)).join('')}
             </div>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
                 <button class="outline contrast small" onclick="addArrayItem('checklist')">${isLegal ? '+ Dodaj blok tekstu' : '+ Dodaj punkt'}</button>
-                <button class="outline contrast small" onclick="addTestItem('checklist')">+ Dodaj test</button>
+                ${isLegal ? `<button class="outline contrast small" onclick="addTestItem('checklist')">+ Dodaj test</button>` : ''}
             </div>
         </div>
 
-        <div class="field-group">
-            <h6>Dodatkowe uwagi / Wyjątki (Notes)</h6>
+        <div class="field-group" role="region" aria-labelledby="h4-notes">
+            <h4 id="h4-notes">Dodatkowe uwagi / Wyjątki (Notes)</h4>
             <div id="notes-container">
-                ${data.notes.map((item, idx) => renderArrayItem('notes', item, idx)).join('')}
+                ${data.notes.map((item, idx) => renderArrayItem('notes', item, idx, isLegal, data.notes)).join('')}
             </div>
             <button class="outline contrast small" onclick="addArrayItem('notes')">+ Dodaj uwagę</button>
         </div>
@@ -1480,11 +1526,11 @@ function renderProductsForm() {
 
     formContainer.innerHTML = `
         <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
-        <div class="field-group">
+        <div class="field-group" role="region" aria-labelledby="h3-products-header">
             <div class="section-border">
                 <div class="section-title-row">
                     <i data-lucide="package" class="icon-lg icon-primary" aria-hidden="true"></i>
-                    <h3 class="m-0">Zarządzanie bazą produktów i usług</h3>
+                    <h3 id="h3-products-header" class="m-0">Zarządzanie bazą produktów i usług</h3>
                 </div>
                 <p class="muted">Zmieniaj nazwy produktów używanych w całej aplikacji. Zmiany są widoczne we wszystkich mapowaniach.</p>
             </div>
@@ -1499,7 +1545,7 @@ function renderProductsForm() {
                     <div class="product-row">
                         <span class="product-id-badge">${pId}</span>
                         <div class="product-name-wrap">
-                            <label for="prod-name-${pId}" class="sr-only">Pełna nazwa produktu ${pId}</label>
+                            <label for="prod-name-${pId}">Pełna nazwa produktu / usługi</label>
                             <input type="text" id="prod-name-${pId}" class="product-name-input" value="${pName}" oninput="updateProductName('${pId}', this.value)" placeholder="Wpisz nazwę produktu...">
                         </div>
                         <button class="outline error small product-remove-btn" onclick="removeProduct('${pId}')" aria-label="Usuń produkt: ${pName} (${pId})">
@@ -1525,34 +1571,50 @@ function renderProductsForm() {
  * EDITOR: Mapping
  */
 function renderMappingForm(id, data) {
+    const isNew = isCreatingNewItem;
+    
+    let idHintsHTML = '';
+    if (isNew) {
+        idHintsHTML = `
+            <small class="field-hint">
+                Format: <strong>[Art]-[Ust]-[Pkt]-[Lit]</strong> (np. A07-04-01-a)<br>
+                Identyfikator artykułu ustawy lub normy
+            </small>
+        `;
+    }
+    
     formContainer.innerHTML = `
         <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
         
-        <div class="form-header">
-            <h3 class="m-0">Edycja mapowania artykułu</h3>
-        </div>
+        <div class="field-group" role="region" aria-labelledby="h3-mapping-header">
+            <div class="section-header">
+                <i data-lucide="map" class="icon-md icon-primary" aria-hidden="true"></i>
+                <h3 id="h3-mapping-header" class="m-0" tabindex="-1">${isNew ? 'Nowe mapowanie' : 'Edycja mapowania artykułu'}</h3>
+            </div>
 
-        <label>Identyfikator (ID)
+        <label for="edit-id">Identyfikator (ID)
+            ${idHintsHTML}
             <input type="text" id="edit-id" value="${id}">
         </label>
-        <label>Identyfikator Klauzuli Ustawowej (U.*)
+        <label for="edit-legal-id">Identyfikator powiązanej klauzuli ustawowej (U.*)
             <div class="grid grid-1-maxcontent">
                 <input type="text" id="edit-legal-id" value="${data.legal_id || ''}" placeholder="Np. U.7.1.1.a">
-                <button class="outline picker-action-btn" onclick="openLegalClausePicker()">Wybierz z listy</button>
+                <button class="outline picker-action-btn" onclick="openLegalClausePicker()">Wybierz powiązaną klauzulę z listy</button>
             </div>
         </label>
-        <label>Artykuł
+        <label for="edit-article">Artykuł
             <input type="text" id="edit-article" value="${data.article || ''}">
         </label>
-        <label>Kategoria
+        <label for="edit-category">Kategoria
             <input type="text" id="edit-category" value="${data.category || ''}">
         </label>
-        <label>Wymaganie (treść)
+        <label for="edit-requirement">Wymaganie (treść)
             <textarea id="edit-requirement" rows="4" oninput="autoResize(this)">${data.requirement || ''}</textarea>
         </label>
+        </div>
         
-        <div class="field-group">
-            <h6>Powiązane produkty i klauzule techniczne</h6>
+        <div class="field-group" role="region" aria-labelledby="h4-mappings">
+            <h4 id="h4-mappings">Powiązane produkty i klauzule techniczne</h4>
             <p><small>Zaznacz produkty objęte tym artykułem. Jeśli produkt wymaga specyficznych klauzul technicznych (C.*), wpisz je lub wybierz przyciskiem.</small></p>
             <div id="product-mappings-container">
                 ${Object.entries(currentData.products || {}).map(([pId, pName]) => {
@@ -1569,11 +1631,11 @@ function renderMappingForm(id, data) {
                                     <input type="checkbox" class="prod-mapping-check" data-pid="${pId}" ${isChecked ? 'checked' : ''} onchange="toggleMappingInput('${pId}', this.checked)" aria-label="Dotyczy: ${pName} (${pId})">
                                     <span class="prod-mapping-label-text">Dotyczy</span>
                                 </label>
-                                <div class="prod-mapping-codes">
+                                <div class="prod-mapping-codes" data-pid="${pId}" style="display: ${isChecked ? '' : 'none'}">
                                     <label for="input-${pId}" class="prod-mapping-codes-label">Klauzule techniczne (C.*):</label>
                                     <input type="text" class="prod-mapping-input" id="input-${pId}" data-pid="${pId}" value="${isChecked ? (val || '') : ''}" ${!isChecked ? 'disabled' : ''} placeholder="Np. C.9.1.1.1; C.9.1.1.2">
                                 </div>
-                                <button class="outline picker-btn" aria-label="Wybierz kody klauzul dla: ${pName} (${pId})" onclick="openClausePicker('${pId}')">Wybierz kody</button>
+                                <button class="outline picker-btn" data-pid="${pId}" aria-label="Wybierz powiązane klauzule techniczne dla: ${pName} (${pId})" onclick="openClausePicker('${pId}')" style="display: ${isChecked ? '' : 'none !important'}">Wybierz powiązane klauzule techniczne</button>
                             </div>
                         </div>
                     `;
@@ -1581,7 +1643,10 @@ function renderMappingForm(id, data) {
             </div>
         </div>
 
-        <button onclick="saveCurrent()">Zatwierdź zmiany</button>
+        <div class="form-actions">
+            <button class="primary flex-2" onclick="saveCurrent()">Zatwierdź zmiany</button>
+            <button class="outline secondary flex-1" onclick="showList()">Anuluj</button>
+        </div>
         </div>
     `;
 }
@@ -1710,6 +1775,7 @@ window.openClausePicker = async (productId) => {
     // Cleanup on close
     overlay.addEventListener('close', () => {
         overlay.remove();
+        document.body.classList.remove('modal-is-open');
         // Return focus to the trigger button
         const trigger = document.querySelector(`button[onclick="openClausePicker('${productId}')"]`);
         if (trigger) trigger.focus();
@@ -1718,6 +1784,7 @@ window.openClausePicker = async (productId) => {
     if (window.lucide) window.lucide.createIcons();
 
     overlay.showModal();
+    document.body.classList.add('modal-is-open');
 
     const listEl = overlay.querySelector('.clause-picker-list');
     const searchEl = overlay.querySelector('.clause-picker-search');
@@ -1734,7 +1801,7 @@ window.openClausePicker = async (productId) => {
             if (k.startsWith('U.')) return false;
             if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
             return true;
-        }).sort(([, a], [, b]) => (a.title || '').localeCompare(b.title || ''));
+        }).sort(([kA], [kB]) => kA.localeCompare(kB, undefined, { numeric: true, sensitivity: 'base' }));
 
         if (entries.length === 0) {
             listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul.</p>';
@@ -1830,12 +1897,14 @@ window.openLegalClausePicker = async () => {
     // Cleanup on close
     overlay.addEventListener('close', () => {
         overlay.remove();
+        document.body.classList.remove('modal-is-open');
         // Return focus to the trigger button
         const trigger = document.querySelector('button[onclick="openLegalClausePicker()"]');
         if (trigger) trigger.focus();
     });
 
     overlay.showModal();
+    document.body.classList.add('modal-is-open');
 
     const listEl = overlay.querySelector('.clause-picker-list');
     const searchEl = overlay.querySelector('.clause-picker-search');
@@ -1848,7 +1917,7 @@ window.openLegalClausePicker = async () => {
             if (!k.startsWith('U.')) return false;
             if (filter && !k.toLowerCase().includes(filter) && !(v.title || '').toLowerCase().includes(filter)) return false;
             return true;
-        }).sort(([, a], [, b]) => (a.title || '').localeCompare(b.title || ''));
+        }).sort(([kA], [kB]) => kA.localeCompare(kB, undefined, { numeric: true, sensitivity: 'base' }));
 
         if (entries.length === 0) {
             listEl.innerHTML = '<p class="empty-list-msg">Brak pasujących klauzul ustawowych.</p>';
@@ -2049,26 +2118,26 @@ function renderSummaryForm(id, data) {
 
     formContainer.innerHTML = `
         <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
-        <div class="field-group">
+        <div class="field-group" role="region" aria-labelledby="h3-summary-header">
             <div class="section-header">
                 <i data-lucide="file-text" class="icon-md icon-primary" aria-hidden="true"></i>
-                <h3 class="m-0">Edycja Szablonu: ${templateNames[id] || data.status || id}</h3>
+                <h3 id="h3-summary-header" class="m-0">Edycja Szablonu: ${templateNames[id] || data.status || id}</h3>
             </div>
 
-            <label>Tytuł dokumentu
+            <label for="edit-title">Tytuł dokumentu
                 <input type="text" id="edit-title" value="${data.title || ''}">
             </label>
 
-            <label>Opis / Treść główna
+            <label for="edit-description">Opis / Treść główna
                 <small class="mb-0-5" style="display: block;">
                     <i data-lucide="info" class="icon-inline" aria-hidden="true" style="width: 14px; height: 14px; vertical-align: text-bottom;"></i>
                     <strong>Wskazówka:</strong> Użyj klucza <code>{productName}</code> w treści, aby system automatycznie wstawił nazwę audytowanego produktu.
                 </small>
-                <textarea id="edit-description" rows="8" oninput="autoResize(this)" placeholder="Wprowadź treść podsumowania...">${data.description || ''}</textarea>
+                <textarea id="edit-description" rows="8" oninput="autoResize(this)" placeholder="Wprowadź treść podsumowania...">${data.description || ''}</textarea></textarea>
             </label>
             
-            <div class="field-group" style="margin-top: 2rem;">
-                <h6>Etykiety sekcji (Teksty nagłówków list w raporcie)</h6>
+            <div class="field-group" role="region" aria-labelledby="h4-section-labels" style="margin-top: 2rem;">
+                <h4 id="h4-section-labels">Etykiety sekcji (Teksty nagłówków list w raporcie)</h4>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                     ${Object.entries(data.sections || {})
         .filter(([sKey]) => !sKey.includes('conclusions') && !sKey.includes('note'))
@@ -2081,15 +2150,15 @@ function renderSummaryForm(id, data) {
         };
         return `
                             <label>${friendlyLabels[sKey] || sKey}
-                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}">
+                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
                             </label>
                         `;
     }).join('')}
                 </div>
             </div>
 
-            <div class="field-group" style="margin-top: 2rem;">
-                <h6>Dodatkowe sekcje podsumowania</h6>
+            <div class="field-group" role="region" aria-labelledby="h4-additional-sections" style="margin-top: 2rem;">
+                <h4 id="h4-additional-sections">Dodatkowe sekcje podsumowania</h4>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                     ${Object.entries(data.sections || {})
         .filter(([sKey]) => sKey.includes('conclusions') || sKey.includes('note'))
@@ -2102,7 +2171,7 @@ function renderSummaryForm(id, data) {
         };
         return `
                             <label>${friendlyLabels[sKey] || sKey}
-                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}">
+                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
                             </label>
                         `;
     }).join('')}
@@ -2110,8 +2179,8 @@ function renderSummaryForm(id, data) {
             </div>
 
             ${data.meta ? `
-            <div class="field-group" style="margin-top: 2rem;">
-                <h6>Metadane (Etykiety danych dodatkowych)</h6>
+            <div class="field-group" role="region" aria-labelledby="h4-metadata" style="margin-top: 2rem;">
+                <h4 id="h4-metadata">Metadane (Etykiety danych dodatkowych)</h4>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                     ${Object.entries(data.meta || {}).map(([mKey, mVal]) => {
         const friendlyMeta = {
@@ -2121,7 +2190,7 @@ function renderSummaryForm(id, data) {
         };
         return `
                             <label>${friendlyMeta[mKey] || mKey}
-                                <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}">
+                                <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}" aria-label="${friendlyMeta[mKey] || mKey}">
                             </label>
                         `;
     }).join('')}
@@ -2141,23 +2210,39 @@ function renderSummaryForm(id, data) {
  * EDITOR: Glossary (read/edit)
  */
 function renderGlossaryForm(id, data) {
+    const isNew = isCreatingNewItem;
+    
     // data is the definition string from glossary.json
+    let idHintsHTML = '';
+    if (isNew) {
+        idHintsHTML = `
+            <small class="field-hint">
+                Podaj hasło/pojęcie (np. "Dostępność", "Funkcjonalność")
+            </small>
+        `;
+    }
+    
     formContainer.innerHTML = `
         <p class="text-left"><a href="#" aria-label="Powrót do listy" onclick="showList(); return false;"><span aria-hidden="true">← </span>Powrót do listy</a></p>
-        <div class="field-group">
-            <div class="flex-between">
-                <h3 class="m-0">Słownik</h3>
+        <div class="field-group" role="region" aria-labelledby="h3-glossary-header">
+            <div class="section-header">
+                <i data-lucide="book" class="icon-md icon-primary" aria-hidden="true"></i>
+                <h3 id="h3-glossary-header" class="m-0" tabindex="-1">${isNew ? 'Nowe pojęcie w słowniku' : 'Edycja pojęcia w słowniku'}</h3>
             </div>
-            <label>Hasło (ID/term)
-                <input type="text" id="edit-id" value="${id.replace(/"/g, '&quot;')}">
+            <label for="edit-id">Hasło (ID/term)
+                ${idHintsHTML}
             </label>
-            <label>Definicja / opis
+            <input type="text" id="edit-id" value="${id.replace(/"/g, '&quot;')}" style="width: 100%;">
+            <label for="edit-definition">Definicja / opis
                 <textarea id="edit-definition" rows="8" oninput="autoResize(this)">${(data || '').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</textarea>
             </label>
-            <button onclick="saveCurrent()">Zatwierdź zmiany</button>
+            <div class="form-actions">
+                <button class="primary flex-2" onclick="saveCurrent()">Zatwierdź zmiany</button>
+                <button class="outline secondary flex-1" onclick="showList()">Anuluj</button>
+            </div>
         </div>
     `;
-}
+};
 
 window.toggleGlossaryEdit = () => {
     // simple UX: focus the definition field
@@ -2168,30 +2253,53 @@ window.toggleGlossaryEdit = () => {
 /**
  * Helpers for Array fields (Checklist/Preconditions)
  */
-function renderArrayItem(type, value, index) {
+function renderArrayItem(type, value, index, isLegal = false, allItems = []) {
+    // Calculate separate numbering for tests vs non-test items
+    let itemNumber = index + 1;
+    if (value && typeof value === 'object' && value.type === 'test') {
+        // Count only tests before this index
+        itemNumber = allItems.slice(0, index).filter(item => item && typeof item === 'object' && item.type === 'test').length + 1;
+    } else {
+        // Count only non-test items before this index
+        itemNumber = allItems.slice(0, index).filter(item => !item || typeof item !== 'object' || item.type !== 'test').length + 1;
+    }
+    
     // Object items (test cards) get a specialised two-field editor
     if (value && typeof value === 'object' && value.type === 'test') {
         return `
         <div class="array-item array-item--test" data-type="${type}" data-index="${index}">
             <div class="test-item-fields">
-                <label for="arr-${type}-${index}-title">Tytuł testu ${index + 1}</label>
+                <label for="arr-${type}-${index}-title">Tytuł testu ${itemNumber}</label>
                 <input id="arr-${type}-${index}-title" type="text" value="${(value.title || '').replace(/"/g, '&quot;')}"
                        oninput="syncTestArrayValue('${type}', ${index}, 'title', this.value)"
                        placeholder="Nazwa / tytuł testu">
-                <label for="arr-${type}-${index}-desc">Opis testu (markdown)</label>
+                <label for="arr-${type}-${index}-desc">Opis testu ${itemNumber}</label>
                 <textarea id="arr-${type}-${index}-desc" rows="3"
                           oninput="syncTestArrayValue('${type}', ${index}, 'description', this.value); autoResize(this)"
                           placeholder="Szczegółowy opis kroku testowego…">${value.description || ''}</textarea>
             </div>
-            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń test ${index + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń test ${itemNumber}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
         </div>
         `;
     }
+    
+    // Generate label text based on type
+    let labelText = `Element ${itemNumber}`;
+    if (type === 'preconditions') {
+        labelText = `Warunek wstępny ${itemNumber}`;
+    } else if (type === 'procedure') {
+        labelText = isLegal ? `Punkt wyjaśnienia ${itemNumber}` : `Krok procedury ${itemNumber}`;
+    } else if (type === 'checklist') {
+        labelText = isLegal ? `Blok tekstu ${itemNumber}` : `Punkt kontrolny ${itemNumber}`;
+    } else if (type === 'notes') {
+        labelText = `Uwaga ${itemNumber}`;
+    }
+    
     return `
         <div class="array-item" data-type="${type}" data-index="${index}">
-            <label class="sr-only" for="arr-${type}-${index}">Element listy ${index + 1}</label>
+            <label for="arr-${type}-${index}">${labelText}</label>
             <textarea id="arr-${type}-${index}" rows="2" oninput="syncArrayValue('${type}', ${index}, this.value); autoResize(this)">${value}</textarea>
-            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń element ${index + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+            <button class="outline error small btn-tight" onclick="removeArrayItem('${type}', ${index})" aria-label="Usuń ${labelText.toLowerCase()}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
         </div>
     `;
 }
@@ -2202,7 +2310,7 @@ function renderArrayItem(type, value, index) {
  * Returns true if successful, false if there was a validation error (currently only for empty ID).
  */
 function updateStateFromUI() {
-    if (!activeItemId || !currentData) return true;
+    if (activeItemId == null || !currentData) return true;
     if (activeItemId === '_products') return true;
 
     if (currentType === 'clauses') {
@@ -2226,10 +2334,10 @@ function updateStateFromUI() {
         const item = currentData[activeItemId];
         const titleInput = document.getElementById('edit-title');
         const evalInput = document.getElementById('edit-evaluation');
-        const categoryInput = document.getElementById('edit-category');
+        const categoryRadio = document.querySelector('input[name="edit-category"]:checked');
         if (titleInput) item.title = titleInput.value;
         if (evalInput) item.evaluation = evalInput.value;
-        if (categoryInput) item.category = categoryInput.value;
+        if (categoryRadio) item.category = categoryRadio.value;
 
         // Note: form.legend and form.noteId are no longer used/saved from UI
     } else if (currentType === 'mapping') {
@@ -2361,13 +2469,57 @@ const scrollToLastArrayItem = (type) => {
     }, 50);
 };
 
+/**
+ * Add new array item directly to DOM without re-rendering the entire form
+ * This ensures screen reader only announces the new item, not the whole form
+ */
+const addArrayItemToDOM = (type) => {
+    const container = document.getElementById(type + '-container');
+    if (!container) return;
+
+    const isLegal = activeItemId.startsWith('U.') || (isCreatingNewItem && currentNewItemPrefix === 'U.');
+    const data = currentData[activeItemId][type];
+    const newIndex = data.length - 1; // Already added by addArrayItem
+    const newItem = data[newIndex];
+    
+    // Render just the new item
+    const itemHTML = renderArrayItem(type, newItem, newIndex, isLegal, data);
+    
+    // Create wrapper div and insert
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = itemHTML;
+    const newElement = wrapper.firstElementChild;
+    container.appendChild(newElement);
+    
+    // Initialize Lucide icons only for the new element
+    if (window.lucide) {
+        window.lucide.createIcons({ elements: [newElement] });
+    }
+    
+    // Announce to screen reader
+    const label = {
+        'preconditions': 'Warunek wstępny',
+        'procedure': isLegal ? 'Punkt wyjaśnienia' : 'Krok procedury',
+        'checklist': isLegal ? 'Blok tekstu' : 'Punkt kontrolny',
+        'notes': 'Uwaga'
+    }[type] || 'Element';
+    
+    srAnnounce(`Dodano ${label}`);
+    
+    // Scroll and focus the new item - delay to let screen reader announce first (1200ms)
+    setTimeout(() => {
+        newElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        const focusTarget = newElement.querySelector('input[type="text"], textarea');
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+    }, 1200);
+};
+
 window.addArrayItem = (type) => {
     updateStateFromUI();
     if (!currentData[activeItemId][type]) currentData[activeItemId][type] = [];
     currentData[activeItemId][type].push("");
     markAsModified();
-    loadItem(activeItemId, true);
-    scrollToLastArrayItem(type);
+    addArrayItemToDOM(type);
 };
 
 window.addTestItem = (type) => {
@@ -2375,8 +2527,34 @@ window.addTestItem = (type) => {
     if (!currentData[activeItemId][type]) currentData[activeItemId][type] = [];
     currentData[activeItemId][type].push({ type: 'test', title: '', description: '' });
     markAsModified();
-    loadItem(activeItemId, true);
-    scrollToLastArrayItem(type);
+    addArrayItemToDOM(type);
+};
+
+/**
+ * Remove array item directly from DOM without re-rendering the entire form
+ * This ensures screen reader only announces the removal, not the whole form
+ */
+const removeArrayItemFromDOM = (type, index) => {
+    const container = document.getElementById(type + '-container');
+    if (!container) return;
+
+    // Find element by data-index attribute (not by position)
+    const itemToRemove = container.querySelector(`.array-item[data-index="${index}"]`);
+    if (!itemToRemove) return;
+    
+    const labelText = {
+        'preconditions': 'Warunek wstępny',
+        'procedure': 'Krok procedury',
+        'checklist': 'Punkt kontrolny',
+        'notes': 'Uwaga'
+    }[type] || 'Element';
+    
+    itemToRemove.remove();
+    
+    // Announce to screen reader
+    srAnnounce(`Usunięto ${labelText}`);
+    
+    // Don't focus after removal - let screen reader announce cleanly without triggering region hierarchy read
 };
 
 window.removeArrayItem = (type, index) => {
@@ -2384,16 +2562,7 @@ window.removeArrayItem = (type, index) => {
     const list = currentData[activeItemId][type];
     list.splice(index, 1);
     markAsModified();
-    loadItem(activeItemId, true);
-    // Scroll to the item that took this slot (or the last one if it was the last)
-    setTimeout(() => {
-        const container = document.getElementById(type + '-container');
-        if (!container) return;
-        const items = container.querySelectorAll('.array-item');
-        if (items.length === 0) return;
-        const targetIndex = Math.min(index, items.length - 1);
-        items[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 50);
+    removeArrayItemFromDOM(type, index);
 };
 
 // Funkcje do obsługi formularza (inputs w klauzulach C)
@@ -2406,20 +2575,91 @@ window.syncFormInput = (index, field, value) => {
     }
 };
 
+/**
+ * Add new form input directly to DOM without re-rendering the entire form
+ * This ensures screen reader only announces the new input, not the whole form
+ */
+const addFormInputToDOM = () => {
+    const container = document.getElementById('form-inputs-container');
+    if (!container) return;
+
+    const data = currentData[activeItemId].form;
+    const newIndex = data.inputs.length - 1;
+    const newInput = data.inputs[newIndex];
+    
+    // Render just the new form input row
+    const inputHTML = `
+        <div class="grid-1-2-auto array-item" data-index="${newIndex}">
+            <div class="col-stack">
+                <label for="form-val-${newIndex}" class="sr-only">Wynik (Wartość)</label>
+                <input type="text" id="form-val-${newIndex}" value="${newInput.value}" onchange="syncFormInput(${newIndex}, 'value', this.value)" placeholder="Np. Zaliczone">
+            </div>
+            <div class="col-stack">
+                <label for="form-lab-${newIndex}" class="sr-only">Warunek / Kryterium wyboru</label>
+                <input type="text" id="form-lab-${newIndex}" value="${newInput.label}" onchange="syncFormInput(${newIndex}, 'label', this.value)" placeholder="Np. Wszystkie elementy mają opisy alternatywne">
+            </div>
+            <div class="col-stack" style="justify-content: flex-start;">
+                <button class="outline error small btn-tight" onclick="removeFormInput(${newIndex})" aria-label="Usuń wiersz ${newIndex + 1}"><i data-lucide="trash-2" class="icon-xs" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    `;
+    
+    // Create wrapper div and insert
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = inputHTML;
+    const newElement = wrapper.firstElementChild;
+    container.appendChild(newElement);
+    
+    // Initialize Lucide icons only for the new element
+    if (window.lucide) {
+        window.lucide.createIcons({ elements: [newElement] });
+    }
+    
+    // Announce to screen reader
+    srAnnounce(`Dodano wiersz warunku ${newIndex + 1}`);
+    
+    // Scroll and focus the new item - delay to let screen reader announce first (1200ms)
+    setTimeout(() => {
+        newElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        const focusTarget = newElement.querySelector('input[type="text"]');
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+    }, 1200);
+};
+
 window.addFormInput = () => {
     updateStateFromUI();
     if (!currentData[activeItemId].form) currentData[activeItemId].form = {};
     if (!currentData[activeItemId].form.inputs) currentData[activeItemId].form.inputs = [];
     currentData[activeItemId].form.inputs.push({ value: "", label: "" });
     markAsModified();
-    loadItem(activeItemId, true);
+    addFormInputToDOM();
+};
+
+/**
+ * Remove form input directly from DOM without re-rendering the entire form
+ * This ensures screen reader only announces the removal, not the whole form
+ */
+const removeFormInputFromDOM = (index) => {
+    const container = document.getElementById('form-inputs-container');
+    if (!container) return;
+
+    // Find element by data-index attribute (not by position)
+    const itemToRemove = container.querySelector(`.array-item[data-index="${index}"]`);
+    if (!itemToRemove) return;
+    
+    itemToRemove.remove();
+    
+    // Announce to screen reader
+    srAnnounce('Usunięto wiersz warunku');
+    
+    // Don't focus after removal - let screen reader announce cleanly without triggering region hierarchy read
 };
 
 window.removeFormInput = (index) => {
     updateStateFromUI();
     currentData[activeItemId].form.inputs.splice(index, 1);
     markAsModified();
-    loadItem(activeItemId, true);
+    removeFormInputFromDOM(index);
 };
 
 /**
@@ -2452,10 +2692,15 @@ window.saveCurrent = () => {
 
     if (!newId) {
         error = "ID nie może być puste!";
-    } else if (newId !== activeItemId) {
+    } else if (newId !== activeItemId && activeItemId !== '') {
+        // ID changed - check if new ID already exists
         if (currentType === 'clauses' && currentData[newId]) error = "Element o tym ID już istnieje!";
         else if (currentType === 'mapping' && currentData.matrix.find(it => it.id === newId)) error = "Element o tym ID już istnieje!";
-        else if (currentType === 'summaries' && currentData.compliance_summaries[newId]) error = "Element o tym ID już istnieje!";
+        else if (currentType === 'glossary' && currentData[newId]) error = "Takie hasło już istnieje w słowniku!";
+    } else if (newId !== activeItemId && activeItemId === '') {
+        // New item - check if ID already exists
+        if (currentType === 'clauses' && currentData[newId]) error = "Element o tym ID już istnieje!";
+        else if (currentType === 'mapping' && currentData.matrix.find(it => it.id === newId)) error = "Element o tym ID już istnieje!";
         else if (currentType === 'glossary' && currentData[newId]) error = "Takie hasło już istnieje w słowniku!";
     }
 
@@ -2464,9 +2709,33 @@ window.saveCurrent = () => {
         return;
     }
 
+    // Handle ID change or new item creation
+    if (newId !== activeItemId) {
+        if (activeItemId !== '') {
+            // ID was changed - remove old ID, add new ID
+            if (currentType === 'clauses' || currentType === 'glossary') {
+                currentData[newId] = currentData[activeItemId];
+                delete currentData[activeItemId];
+            } else if (currentType === 'mapping') {
+                const idx = currentData.matrix.findIndex(it => it.id === activeItemId);
+                if (idx !== -1) {
+                    currentData.matrix[idx].id = newId;
+                }
+            }
+        } else {
+            // New item — move placeholder '' data to the real ID
+            if (currentType === 'clauses' || currentType === 'glossary') {
+                currentData[newId] = currentData[''];
+                delete currentData[''];
+            }
+        }
+        activeItemId = newId;
+    }
+
     // Call state update
     updateStateFromUI();
-    isFormDirty = false; // Changes are now saved to the editor state
+    isFormDirty = false;
+    isCreatingNewItem = false; // Reset flag after save
 
     // Refresh the sidebar list to show potential name/ID changes
     renderList(searchInput.value);
@@ -2666,7 +2935,34 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('resize', () => {
     document.querySelectorAll('.icon-label').forEach(label => placeIconLabel(label.parentElement, label));
 });
-window.addEventListener('scroll', () => hideAllIconLabels());
+
+// Header hide/show on scroll
+let lastScrollY = window.pageYOffset;
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.app-header');
+    if (!header) {
+        hideAllIconLabels();
+        return;
+    }
+
+    const currentScrollY = window.pageYOffset;
+    
+    // Don't hide at the top or on minimal scroll
+    if (currentScrollY < 100) {
+        header.classList.remove('header-hidden');
+        lastScrollY = currentScrollY;
+    } else {
+        // Hide on scroll down, show on scroll up
+        if (currentScrollY > lastScrollY && !header.classList.contains('header-hidden')) {
+            header.classList.add('header-hidden');
+        } else if (currentScrollY < lastScrollY && header.classList.contains('header-hidden')) {
+            header.classList.remove('header-hidden');
+        }
+        lastScrollY = currentScrollY;
+    }
+    
+    hideAllIconLabels();
+}, { passive: true });
 document.addEventListener('click', (e) => {
     if (!e.target.closest('button')) hideAllIconLabels();
 });
@@ -2708,13 +3004,26 @@ init();
 
 window.toggleMappingInput = (pId, isChecked) => {
     const input = document.getElementById(`input-${pId}`);
+    const codesLabel = document.querySelector(`label[for="input-${pId}"]`);
+    const button = document.querySelector(`button.picker-btn[data-pid="${pId}"]`);
+    const codesDiv = document.querySelector(`.prod-mapping-codes[data-pid="${pId}"]`);
+    
     if (input) {
         input.disabled = !isChecked;
+        input.style.display = isChecked ? '' : 'none';
         if (isChecked) {
             input.focus();
         } else {
-            input.value = ""; // Clear if unchecked? Usually safer.
+            input.value = "";
         }
     }
+    
+    if (codesLabel) codesLabel.style.display = isChecked ? '' : 'none';
+    if (button) {
+        button.style.display = isChecked ? '' : 'none';
+        button.style.visibility = isChecked ? 'visible' : 'hidden';
+    }
+    if (codesDiv) codesDiv.style.display = isChecked ? '' : 'none';
+    
     markAsModified();
 };

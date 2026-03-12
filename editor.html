@@ -89,17 +89,17 @@
         </nav>
 
         <!-- Sekcja ładowania plików (pokazywana po wybraniu typu) - kompaktowy widok -->
-        <section id="loader-section" class="hidden" aria-labelledby="loader-title">
+        <section id="loader-section" class="hidden">
             <h2 id="loader-title" class="loader-title" tabindex="-1">Wczytaj pliki</h2>
             <div class="loader-compact">
                 <div class="loader-card">
                     <div class="loader-icon"><i data-lucide="download-cloud" aria-hidden="true"></i></div>
                     <div class="loader-body">
                         <div class="loader-title">Załaduj domyślne</div>
-                        <div class="loader-desc"><small>Użyj plików z repozytorium aplikacji</small></div>
+                        <div class="loader-desc" id="defaults-desc"><small>Użyj pliku z klauzulami, na którym pracuje aplikacja</small></div>
                     </div>
                     <div class="loader-action">
-                        <button id="btn-load-defaults" class="primary small">Wczytaj</button>
+                        <button id="btn-load-defaults" class="primary small" aria-describedby="defaults-desc">Wczytaj</button>
                     </div>
                 </div>
 
@@ -107,11 +107,12 @@
                     <div class="loader-icon"><i data-lucide="upload-cloud" aria-hidden="true"></i></div>
                     <div class="loader-body">
                         <div class="loader-title">Wczytaj plik</div>
-                        <div class="loader-desc"><small>Załaduj lokalny plik JSON</small></div>
+                        <div class="loader-desc" id="file-desc"><small>Załaduj plik z klauzulami z dysku komputera</small></div>
                     </div>
                     <div class="loader-action">
-                        <input type="file" id="file-input" accept=".json" style="display: none;">
-                        <button type="button" class="primary small"
+                        <label for="file-input" class="sr-only">Wczytaj plik JSON</label>
+                        <input type="file" id="file-input" accept=".json" style="display: none;" aria-label="Wczytaj plik JSON">
+                        <button type="button" class="primary small" aria-controls="file-input" aria-describedby="file-desc"
                             onclick="document.getElementById('file-input').click()">Wybierz plik</button>
                     </div>
                 </div>
@@ -120,8 +121,8 @@
 
         <!-- Obszar edycji (ukryty do czasu załadowania danych) -->
         <div class="editor-title-container hidden">
-            <h2 id="editor-title" class="editor-title" style="margin-top: 1.5rem; margin-bottom: 0;" tabindex="-1">
-                Edycja: <span id="editor-category-name">(brak)</span>
+            <h2 id="editor-title" class="editor-title" style="margin-top: 0; margin-bottom: 0;" tabindex="-1">
+                Edytuj <span id="editor-category-name">(brak)</span>
             </h2>
         </div>
         <section id="editor-workspace" class="hidden" aria-labelledby="editor-title">
