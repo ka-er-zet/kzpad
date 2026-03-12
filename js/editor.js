@@ -2138,7 +2138,6 @@ function renderSummaryForm(id, data) {
         
         <div class="field-group" role="region" aria-labelledby="h4-section-labels">
             <h4 id="h4-section-labels">Etykiety sekcji (Teksty nagłówków list w raporcie)</h4>
-                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                 ${Object.entries(data.sections || {})
         .filter(([sKey]) => !sKey.includes('conclusions') && !sKey.includes('note'))
         .map(([sKey, sVal]) => {
@@ -2150,16 +2149,14 @@ function renderSummaryForm(id, data) {
         };
         return `
                     <label>${friendlyLabels[sKey] || sKey}
-                        <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
+                        <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" style="width: 100%;" aria-label="${friendlyLabels[sKey] || sKey}">
                     </label>
                 `;
     }).join('')}
-            </div>
         </div>
 
         <div class="field-group" role="region" aria-labelledby="h4-additional-sections">
             <h4 id="h4-additional-sections">Dodatkowe sekcje podsumowania</h4>
-            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                 ${Object.entries(data.sections || {})
         .filter(([sKey]) => sKey.includes('conclusions') || sKey.includes('note'))
         .map(([sKey, sVal]) => {
@@ -2171,17 +2168,15 @@ function renderSummaryForm(id, data) {
         };
         return `
                     <label>${friendlyLabels[sKey] || sKey}
-                        <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
+                        <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" style="width: 100%;" aria-label="${friendlyLabels[sKey] || sKey}">
                     </label>
                 `;
     }).join('')}
-            </div>
         </div>
 
         ${data.meta ? `
         <div class="field-group" role="region" aria-labelledby="h4-metadata">
             <h4 id="h4-metadata">Metadane (Etykiety danych dodatkowych)</h4>
-            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
                 ${Object.entries(data.meta || {}).map(([mKey, mVal]) => {
         const friendlyMeta = {
             date_label: 'Etykieta: Data kontroli',
@@ -2190,11 +2185,10 @@ function renderSummaryForm(id, data) {
         };
         return `
                     <label>${friendlyMeta[mKey] || mKey}
-                        <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}" aria-label="${friendlyMeta[mKey] || mKey}">
+                        <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}" style="width: 100%;" aria-label="${friendlyMeta[mKey] || mKey}">
                     </label>
                 `;
     }).join('')}
-            </div>
         </div>
         ` : ''}
 
