@@ -853,6 +853,22 @@ button.small {
     line-height: 1.4;
 }
 
+.field-hint code,
+code {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary);
+    font-weight: 600;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+[data-theme="light"] .field-hint code,
+[data-theme="light"] code {
+    background-color: rgba(10, 91, 118, 0.08);
+    color: var(--primary);
+}
+
 .editor-nav {
     margin-bottom: 2rem;
     margin-top: 2rem;

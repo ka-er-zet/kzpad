@@ -2129,17 +2129,17 @@ function renderSummaryForm(id, data) {
             </label>
 
             <label for="edit-description">Opis / Treść główna
-                <small class="mb-0-5" style="display: block;">
-                    <i data-lucide="info" class="icon-inline" aria-hidden="true" style="width: 14px; height: 14px; vertical-align: text-bottom;"></i>
+                <small class="field-hint">
                     <strong>Wskazówka:</strong> Użyj klucza <code>{productName}</code> w treści, aby system automatycznie wstawił nazwę audytowanego produktu.
                 </small>
-                <textarea id="edit-description" rows="8" oninput="autoResize(this)" placeholder="Wprowadź treść podsumowania...">${data.description || ''}</textarea></textarea>
+                <textarea id="edit-description" rows="8" oninput="autoResize(this)" placeholder="Wprowadź treść podsumowania...">${data.description || ''}</textarea>
             </label>
-            
-            <div class="field-group" role="region" aria-labelledby="h4-section-labels" style="margin-top: 2rem;">
-                <h4 id="h4-section-labels">Etykiety sekcji (Teksty nagłówków list w raporcie)</h4>
+        </div>
+        
+        <div class="field-group" role="region" aria-labelledby="h4-section-labels">
+            <h4 id="h4-section-labels">Etykiety sekcji (Teksty nagłówków list w raporcie)</h4>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
-                    ${Object.entries(data.sections || {})
+                ${Object.entries(data.sections || {})
         .filter(([sKey]) => !sKey.includes('conclusions') && !sKey.includes('note'))
         .map(([sKey, sVal]) => {
         const friendlyLabels = {
@@ -2149,18 +2149,18 @@ function renderSummaryForm(id, data) {
             untested_label: 'Nagłówek: Niepoddane ocenie'
         };
         return `
-                            <label>${friendlyLabels[sKey] || sKey}
-                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
-                            </label>
-                        `;
+                    <label>${friendlyLabels[sKey] || sKey}
+                        <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
+                    </label>
+                `;
     }).join('')}
-                </div>
             </div>
+        </div>
 
-            <div class="field-group" role="region" aria-labelledby="h4-additional-sections" style="margin-top: 2rem;">
-                <h4 id="h4-additional-sections">Dodatkowe sekcje podsumowania</h4>
-                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
-                    ${Object.entries(data.sections || {})
+        <div class="field-group" role="region" aria-labelledby="h4-additional-sections">
+            <h4 id="h4-additional-sections">Dodatkowe sekcje podsumowania</h4>
+            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                ${Object.entries(data.sections || {})
         .filter(([sKey]) => sKey.includes('conclusions') || sKey.includes('note'))
         .map(([sKey, sVal]) => {
         const friendlyLabels = {
@@ -2170,38 +2170,37 @@ function renderSummaryForm(id, data) {
             note_value: 'Treść uwagi (domyślna)'
         };
         return `
-                            <label>${friendlyLabels[sKey] || sKey}
-                                <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
-                            </label>
-                        `;
+                    <label>${friendlyLabels[sKey] || sKey}
+                        <input type="text" class="section-label-input" data-skey="${sKey}" value="${sVal}" aria-label="${friendlyLabels[sKey] || sKey}">
+                    </label>
+                `;
     }).join('')}
-                </div>
             </div>
+        </div>
 
-            ${data.meta ? `
-            <div class="field-group" role="region" aria-labelledby="h4-metadata" style="margin-top: 2rem;">
-                <h4 id="h4-metadata">Metadane (Etykiety danych dodatkowych)</h4>
-                <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
-                    ${Object.entries(data.meta || {}).map(([mKey, mVal]) => {
+        ${data.meta ? `
+        <div class="field-group" role="region" aria-labelledby="h4-metadata">
+            <h4 id="h4-metadata">Metadane (Etykiety danych dodatkowych)</h4>
+            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                ${Object.entries(data.meta || {}).map(([mKey, mVal]) => {
         const friendlyMeta = {
             date_label: 'Etykieta: Data kontroli',
             scope_label: 'Etykieta: Zakres kontroli',
             scope_value: 'Wartość: Zakres (np. Pełny)'
         };
         return `
-                            <label>${friendlyMeta[mKey] || mKey}
-                                <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}" aria-label="${friendlyMeta[mKey] || mKey}">
-                            </label>
-                        `;
+                    <label>${friendlyMeta[mKey] || mKey}
+                        <input type="text" class="meta-label-input" data-mkey="${mKey}" value="${mVal}" aria-label="${friendlyMeta[mKey] || mKey}">
+                    </label>
+                `;
     }).join('')}
-                </div>
             </div>
-            ` : ''}
+        </div>
+        ` : ''}
 
-            <div class="form-actions">
-                <button class="primary flex-2" onclick="saveCurrent()">Zatwierdź zmiany</button>
-                <button class="outline secondary flex-1" onclick="showList()">Anuluj</button>
-            </div>
+        <div class="form-actions">
+            <button class="primary flex-2" onclick="saveCurrent()">Zatwierdź zmiany</button>
+            <button class="outline secondary flex-1" onclick="showList()">Anuluj</button>
         </div>
     `;
 }
